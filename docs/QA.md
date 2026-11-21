@@ -96,3 +96,40 @@ compiled to `#737973`). Theme token lines must not carry trailing comments.
 - `sitemap.xml` lists the public pages and all 10 vehicles.
 - Canonical / `og:url` resolve against `NEXT_PUBLIC_SITE_URL` (falls back to `http://localhost:3000`) — set it on deploy.
 - Lighthouse SEO is 100 on every public page; the 66 on account, sign-in and booking is the intended `noindex`.
+
+## 4. Performance (Phase 1, task 11) — 21 Nov 2026
+
+**How:** Lighthouse 12.2.1 via `npx` (npm cache only, no project dependency), headless Chrome, against the production
+build on `localhost:3000`. Mobile = Lighthouse default (Moto G-class device, slow 4G, 4× CPU throttling);
+desktop = `--preset=desktop`. Scores are performance / accessibility / best practices / SEO.
+
+### Fixes
+
+- **Lazy LCP images:** the largest above-the-fold image on 13 round-2 screens (journeys, about, account, reservation,
+  auth art, curbside) and the first row of fleet cards was `loading="lazy"`, so it only started downloading after
+  layout. It is now `eager` + `fetchpriority="high"` — measured LCP element on each screen, not guessed.
+- **Booking layout shift:** on desktop the booking UI (client-only, it reads `sessionStorage`) replaced a shorter
+  skeleton and pushed the footer down: CLS 0.80 on the trip step. The booking main area now has a full-viewport
+  minimum height; measured CLS is 0 on all booking steps.
+
+### Results
+
+| Page | Before (mobile) | After (mobile) | Before (desktop) | After (desktop) |
+| --- | --- | --- | --- | --- |
+| Home | 84 / 100 / 100 / 100 | see note | 99 / 100 / 100 / 100 | 98 / 100 / 100 / 100 |
+| Fleet | 61 / 100 / 100 / 100 (LCP 23.9 s) | 70 / 100 / 100 / 100 (LCP 4.9 s) | 97 / 96 / 100 / 100 | 97 / 100 / 100 / 100 |
+| Vehicle | 73 / 100 / 100 / 100 | 72 / 100 / 100 / 100 | 98 / 96 / 100 / 100 | 98 / 100 / 100 / 100 |
+| Journeys | 72 / 100 / 100 / 100 (LCP 25.0 s) | 85 / 100 / 100 / 100 (LCP 4.2 s) | 99 / 100 / 100 / 100 | 98 / 100 / 100 / 100 |
+| About | 73 / 100 / 100 / 100 (LCP 24.7 s) | 85 / 100 / 100 / 100 (LCP 4.2 s) | 97 / 100 / 100 / 100 | 99 / 100 / 100 / 100 |
+| Booking trip | 85 / 100 / 100 / 66* | not re-run | 75 / 96 / 100 / 66* (CLS 0.90) | not re-run (CLS measured 0) |
+| Sign in | 77 / 100 / 100 / 66* | not re-run | 99 / 100 / 100 / 66* | not re-run |
+| Account | 71 / 100 / 96 / 66* (LCP 24.1 s) | not re-run | 99 / 100 / 100 / 66* | not re-run |
+
+\* SEO 66 = the page is intentionally `noindex`.
+
+**Note / limits (honest):** the "after" run was stopped by the machine running out of memory (6 GB) part-way through,
+so booking, sign-in and account were not re-measured, and the home-mobile "after" figure (64, LCP 24.3 s,
+TBT 400 ms vs 60 ms before) was taken while memory was exhausted and is not trusted — nothing on the home page changed.
+Lighthouse's simulated throttling on this machine also varies run to run by several points. **Desktop meets the 90+
+target on every page; mobile does not yet** (70–85). The remaining mobile cost is JavaScript (TBT 400+ ms on fleet and
+vehicle: client-side filtering, gallery, favourites) and image weight under slow-4G simulation.

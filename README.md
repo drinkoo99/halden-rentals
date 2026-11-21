@@ -56,7 +56,14 @@ npm test           # Vitest unit tests
   detail pages) and the **curbside mobile console** (`/staff/curbside`, `/handover`, `/lookup`): Stitch designs with
   demo data and their micro-interactions; not protected and not connected to data until the backend phase.
 - **System states** (`/states`): the Stitch reference board for loading, empty, error and dialog states.
-- 404 page, sitemap, robots, per-vehicle metadata.
+- **Site-wide**: shared header (patron menu, mobile menu) and footer; placeholder **Terms**, **Privacy** and **Imprint**
+  pages (clearly marked as needing legal review); 404, error and offline states; loading skeletons; cookie consent
+  (only strictly necessary storage, preferences reopenable from the footer); sitemap, robots, canonical and social
+  preview tags on public pages.
+- **Controls**: every visible control either works or is greyed out and labelled "Planned" (features that need the
+  backend, e.g. receipts and PDF dossiers). Staff screens carry a demo-console banner instead of per-button labels.
+- **Staff console on small screens**: below 1280 px the desktop console keeps its layout inside a sideways-scrolling
+  frame, with a link to the curbside console that Stitch designed for phones.
 
 ## Honest limits (demo)
 
@@ -64,6 +71,14 @@ npm test           # Vitest unit tests
   emails or payments. Every place that would normally confirm a real action is labelled as a demo.
 - Copy for vehicles other than the Range Rover (which Stitch designed in full) follows the same structure but was
   written for this build; specs marked in `src/data/vehicles.ts` should be verified before launch.
+
+## Quality checks (Phase 1)
+
+Results and method are in `docs/QA.md`: responsive sweep (37 routes × 5 widths), accessibility (axe-core, WCAG 2.1
+AA, 33 routes × 2 widths), SEO, Lighthouse and browser checks. Small grey labels were darkened slightly from the Stitch
+values to reach 4.5:1 contrast; nothing else about the design was changed for these checks.
+
+Set `NEXT_PUBLIC_SITE_URL` in production so canonical URLs, social previews and the sitemap use the real domain.
 
 ## Deliberate deviations from the Stitch mockups
 
@@ -74,6 +89,7 @@ npm test           # Vitest unit tests
 | "Total settled" on confirmation (23) | "Total reserved · due at handover" | No payment is taken |
 | Card number pre-filled (24) | Illustrative placeholders, no card fields | No card data is collected online |
 | Counts like "24 cars", "Showing 6 of 24" | Derived from the data | The UI never claims numbers it can't back up |
+| Some small grey / sage labels | Slightly darker shade | WCAG AA contrast (4.5:1) |
 
 ## Round 2 notes
 
@@ -88,11 +104,11 @@ npm test           # Vitest unit tests
 
 ```
 design/            Stitch exports (source of truth), token dump, image originals backup
-docs/              Implementation plan
+docs/              Implementation plan, QA record (QA.md), design coverage
 public/images/     Photography (Stitch exports + Stitch originals at full size)
 src/app/           Routes
 src/components/    home/, fleet/, vehicle/, booking/ (+ mobile/), account/, auth/, content/, staff/, states/, site/, ui/
 src/data/          vehicles, locations, extras, media (single place for every image)
-src/lib/           itinerary, pricing, fleet filters, favourites, booking validation, ics, countdown (+ *.test.ts)
+src/lib/           itinerary, pricing, fleet filters, favourites, booking validation, ics, countdown, seo (+ *.test.ts)
 scripts/           image finalize (Real-ESRGAN blend), photo-sizes generator
 ```
