@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Photo } from "@/components/ui/Photo";
 import { media } from "@/data/media";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteHeader } from "@/components/site/SiteHeader";
 
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_about_the_standard_desktop/code.html */
 export function AboutDesktop() {
@@ -11,27 +12,7 @@ export function AboutDesktop() {
   const [sent, setSent] = useState(false);
   return (
     <div className="hidden md:block bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
-      <header className="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-        <div className="h-20 w-full px-margin flex items-center justify-between">
-          <div className="flex items-center gap-space-md">
-            <Photo src={media.aboutCuratorPortrait} alt="HALDEN Atelier Concierge Curatorial Directorate Portrait" className="h-8 w-auto object-contain" sizes="(max-width: 767px) 100vw, 30vw" />
-            <Link className="font-headline-sm text-headline-sm tracking-[0.2em] text-on-surface uppercase select-none" href="/fleet">HALDEN</Link>
-            <span className="font-label-mono text-label-mono text-secondary uppercase tracking-[0.2em] hidden lg:inline-block pl-space-xs">ATELIER № 01</span>
-          </div>
-          <nav className="flex items-center gap-space-lg">
-            <Link className="font-action text-action uppercase tracking-[0.16em] text-on-surface-variant hover:text-on-surface transition-colors" href="/fleet">FLEET</Link>
-            <Link className="font-action text-action uppercase tracking-[0.16em] text-on-surface-variant hover:text-on-surface transition-colors" href="/journeys">JOURNEYS</Link>
-            <Link aria-current="page" className="bg-primary-container text-on-primary-container font-action text-action uppercase tracking-[0.16em] px-space-md py-space-sm rounded-[2px] transition-all" href="/about">ABOUT</Link>
-          </nav>
-          <div className="flex items-center gap-space-md">
-            <Link className="font-label-mono text-label-mono uppercase tracking-[0.14em] text-on-surface-variant hover:text-on-surface transition-colors hidden sm:inline-block" href="/sign-in">PATRON LOGIN</Link>
-            <div className="flex items-center gap-space-sm pl-space-xs">
-              <span className="font-body-sm text-body-sm text-secondary hidden xl:inline-block">Clara V.</span>
-              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span className="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <SiteHeader active="about" />
       <main className="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]">
         <div className="flex flex-col w-full">
           {/* SECTION 1: MANIFESTO HERO */}
@@ -287,7 +268,7 @@ export function AboutDesktop() {
             </div>
           </section>
           {/* SECTION 4: HUBS LEDGER & CARTOGRAPHY */}
-          <section className="w-full px-margin py-space-xl">
+          <section id="hubs" className="w-full px-margin py-space-xl">
             <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#D8D6CE] pb-space-sm mb-space-lg gap-space-xs">
               <div>
                 <span className="font-label-mono text-label-mono uppercase tracking-[0.2em] text-secondary block mb-space-xs">{"ARCHIVAL STATIONS // CONTINENTAL REACH"}</span>
@@ -560,51 +541,7 @@ export function AboutDesktop() {
           </section>
         </div>
       </main>
-      <footer className="w-full bg-[#171B19] text-[#EAE8E1] pt-space-xl pb-space-lg">
-        <div className="w-full px-margin">
-          <div className="grid grid-cols-12 gap-gutter mb-space-xl">
-            <div className="col-span-12 lg:col-span-5 flex flex-col justify-between pr-space-lg">
-              <div className="space-y-space-md">
-                <span className="font-headline-md text-headline-md tracking-[0.15em] text-[#EAE8E1] uppercase block">HALDEN</span>
-                <p className="font-body-md text-body-md text-[#B4B2AC] max-w-md font-light">An architectural archive of rare vehicular kinetic sculpture. Halden curates peerless performance machinery preserved in pristine mechanical provenance for deliberated road journeys.</p>
-              </div>
-              <div className="pt-space-lg"><span className="font-label-mono text-label-mono text-[#8C908A] uppercase tracking-[0.18em] block">EXHIBITION ARCHIVE • GENEVA • MUNICH • ZURICH</span></div>
-            </div>
-            <div className="col-span-12 md:col-span-4 lg:col-span-2 space-y-space-md">
-              <span className="font-label-mono text-label-mono uppercase tracking-[0.2em] text-[#8C908A] block">EXHIBITION</span>
-              <ul className="space-y-space-sm font-body-sm text-body-sm text-[#B4B2AC]">
-                <li><Link className="hover:text-[#EAE8E1] transition-colors" href="/fleet">Permanent Collection</Link></li>
-                <li><Link className="hover:text-[#EAE8E1] transition-colors" href="/journeys">Archival Monographs</Link></li>
-                <li><Link className="hover:text-[#EAE8E1] transition-colors" href="/journeys">Curatorial Notes</Link></li>
-                <li><Link className="hover:text-[#EAE8E1] transition-colors" href="/about">Provenance Registries</Link></li>
-                <li><Link className="hover:text-[#EAE8E1] transition-colors" href="/about">Atelier Transport</Link></li>
-              </ul>
-            </div>
-            <div className="col-span-12 md:col-span-4 lg:col-span-2 space-y-space-md">
-              <span className="font-label-mono text-label-mono uppercase tracking-[0.2em] text-[#8C908A] block">REGISTRY</span>
-              <ul className="space-y-space-sm font-body-sm text-body-sm text-[#B4B2AC]">
-                <li><Link className="hover:text-[#EAE8E1] transition-colors" href="/account">Patron Chambers</Link></li>
-                <li><Link className="hover:text-[#EAE8E1] transition-colors" href="/journeys">Alpine Expeditions</Link></li>
-                <li><Link className="hover:text-[#EAE8E1] transition-colors" href="/about#contact">Atelier Consignment</Link></li>
-                <li><Link className="hover:text-[#EAE8E1] transition-colors" href="/sign-in">Custodianship Charter</Link></li>
-                <li><Link className="hover:text-[#EAE8E1] transition-colors" href="/reset-passcode">Chassis Verification</Link></li>
-              </ul>
-            </div>
-            <div className="col-span-12 md:col-span-4 lg:col-span-3 space-y-space-md">
-              <span className="font-label-mono text-label-mono uppercase tracking-[0.2em] text-[#8C908A] block">ARCHIVAL DISCLAIMER</span>
-              <p className="font-body-sm text-body-sm text-[#8C908A] leading-relaxed font-light">Exhibition vehicles are maintained within museum conservation parameters. Reservation entails private custodianship transfer subject to atelier verification, bespoke mechanical briefing, and Swiss road preservation protocols.</p>
-            </div>
-          </div>
-          <div className="pt-space-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-space-md">
-            <span className="font-label-mono text-label-mono text-[#8C908A] uppercase tracking-[0.16em]">© 2025 HALDEN ARCHIVES AG. ALL PROVENANCES RESERVED.</span>
-            <div className="flex items-center gap-space-lg">
-              <Link className="font-label-mono text-label-mono text-[#8C908A] hover:text-[#EAE8E1] uppercase tracking-[0.14em] transition-colors" href="/about">LEGAL CHARTER</Link>
-              <Link className="font-label-mono text-label-mono text-[#8C908A] hover:text-[#EAE8E1] uppercase tracking-[0.14em] transition-colors" href="/about">CONSERVATION PROTOCOLS</Link>
-              <Link className="font-label-mono text-label-mono text-[#8C908A] hover:text-[#EAE8E1] uppercase tracking-[0.14em] transition-colors" href="/about">CURATORIAL BOARD</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

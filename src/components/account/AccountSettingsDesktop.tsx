@@ -2,39 +2,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteHeader } from "@/components/site/SiteHeader";
 
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_patron_circle_account_settings/code.html */
 export function AccountSettingsDesktop() {
   const [saved, setSaved] = useState(false);
   return (
     <div className="hidden md:block bg-surface font-body-md text-body-md text-on-surface antialiased">
-      <header className="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant">
-        <div className="h-20 max-w-7xl mx-auto px-margin-mobile lg:px-margin flex items-center justify-between">
-          <Link className="font-headline-sm text-headline-sm tracking-widest uppercase text-on-surface" href="/account">HALDEN</Link>
-          <nav className="hidden md:flex items-center gap-space-lg">
-            <Link className="font-action text-action uppercase text-on-surface-variant hover:text-on-surface transition-colors" href="/fleet">Fleet</Link>
-            <Link className="font-action text-action uppercase text-on-surface-variant hover:text-on-surface transition-colors" href="/journeys">Journeys</Link>
-            <Link className="font-action text-action uppercase text-on-surface-variant hover:text-on-surface transition-colors" href="/about">About</Link>
-          </nav>
-          <div className="relative group flex items-center gap-space-sm">
-            <button className="flex items-center gap-space-sm py-space-xs text-on-surface hover:text-primary transition-colors" type="button">
-              <span className="font-body-sm text-body-sm font-medium">Clara V.</span>
-              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span className="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
-              <span className="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
-            </button>
-            <div className="hidden group-hover:block absolute right-0 top-full pt-space-xs w-52 z-50">
-              <nav className="bg-surface border border-outline-variant py-space-xs flex flex-col">
-                <Link className="px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="/account">Overview</Link>
-                <Link className="px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="/account#reservations">Reservations</Link>
-                <Link className="px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="/account#saved">Saved cars</Link>
-                <Link className="px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="/account/settings">Settings</Link>
-                <div className="my-space-xs border-t border-outline-variant" />
-                <Link className="px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="/sign-in">Sign out</Link>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </header>
+      <SiteHeader patron />
       <main className="w-full pt-20 bg-surface">
         <div className="flex flex-col w-full">
           <div className="max-w-7xl mx-auto w-full px-margin-mobile lg:px-margin py-space-lg lg:py-space-xl">
@@ -373,44 +349,7 @@ export function AccountSettingsDesktop() {
           {/* Interactive script for toast demo */}
         </div>
       </main>
-      <footer className="w-full bg-inverse-surface text-inverse-on-surface py-space-xl border-t border-outline-variant">
-        <div className="max-w-7xl mx-auto px-margin-mobile lg:px-margin">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-space-lg pb-space-lg border-b border-outline/30">
-            <div>
-              <span className="font-headline-sm text-headline-sm tracking-widest uppercase text-inverse-on-surface">HALDEN</span>
-              <p className="mt-space-sm font-body-sm text-body-sm text-on-tertiary-container">Architectural mobility and curated automotive archives for the discerning patron.</p>
-            </div>
-            <div>
-              <h4 className="font-label-mono text-label-mono uppercase text-on-tertiary-container mb-space-md">Fleet</h4>
-              <ul className="space-y-space-sm font-body-sm text-body-sm">
-                <li><Link className="text-inverse-on-surface hover:text-primary-fixed transition-colors" href="/fleet">Grand Tourers</Link></li>
-                <li><Link className="text-inverse-on-surface hover:text-primary-fixed transition-colors" href="/fleet">Heritage Coupes</Link></li>
-                <li><Link className="text-inverse-on-surface hover:text-primary-fixed transition-colors" href="/fleet">Electric Flagships</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-label-mono text-label-mono uppercase text-on-tertiary-container mb-space-md">Locations</h4>
-              <ul className="space-y-space-sm font-body-sm text-body-sm">
-                <li><Link className="text-inverse-on-surface hover:text-primary-fixed transition-colors" href="/about">Munich Archive</Link></li>
-                <li><Link className="text-inverse-on-surface hover:text-primary-fixed transition-colors" href="/about">Zurich Salon</Link></li>
-                <li><Link className="text-inverse-on-surface hover:text-primary-fixed transition-colors" href="/about">Milan Gallery</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-label-mono text-label-mono uppercase text-on-tertiary-container mb-space-md">Support</h4>
-              <ul className="space-y-space-sm font-body-sm text-body-sm">
-                <li><Link className="text-inverse-on-surface hover:text-primary-fixed transition-colors" href="/account">Patron Concierge</Link></li>
-                <li><Link className="text-inverse-on-surface hover:text-primary-fixed transition-colors" href="/account#reservations">Reservation Terms</Link></li>
-                <li><Link className="text-inverse-on-surface hover:text-primary-fixed transition-colors" href="/account/settings">Account Preferences</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md font-label-mono text-label-mono uppercase text-on-tertiary-container">
-            <span>© 2025 HALDEN PATRON CIRCLE. ALL RIGHTS RESERVED.</span>
-            <span>{"ARCHIVE EDITION // EU"}</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

@@ -8,12 +8,12 @@ export function JourneyDetailMobile() {
     <div className="md:hidden bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen">
       <header className="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] pt-safe">
         <div className="h-16 px-margin-mobile flex items-center justify-between">
-          <button aria-label="Return to Archive" className="w-11 h-11 flex items-center justify-start text-on-surface hover:text-primary transition-colors"><span className="material-symbols-outlined text-[22px]">arrow_back_ios_new</span></button>
+          <Link aria-label="Back to journeys" className="w-11 h-11 flex items-center justify-start text-on-surface hover:text-primary transition-colors" href="/journeys"><span className="material-symbols-outlined text-[22px]">arrow_back_ios_new</span></Link>
           <div className="flex flex-col items-center justify-center">
             <span className="font-display-mobile text-[19px] leading-tight tracking-[0.24em] font-normal uppercase text-on-surface">HALDEN</span>
             <span className="font-label-mono text-[9px] leading-none tracking-[0.18em] text-on-surface-variant uppercase mt-0.5">Catalogue Placard Detail</span>
           </div>
-          <div className="flex items-center justify-end w-11 h-11"><div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span className="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div>
+          <Link aria-label="Patron sign in" className="w-11 h-11 flex items-center justify-end shrink-0" href="/sign-in"><span className="w-8 h-8 rounded-full border border-outline-variant text-on-surface flex items-center justify-center"><span className="material-symbols-outlined text-[18px]" aria-hidden>person</span></span></Link>
         </div>
       </header>
       <main className="flex flex-col relative w-full pt-16 bg-surface min-h-screen pb-safe">

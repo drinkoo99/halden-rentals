@@ -6,6 +6,8 @@ import { useState } from "react";
 import { markCancelled } from "@/lib/reservations";
 import { Photo } from "@/components/ui/Photo";
 import { media } from "@/data/media";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteHeader } from "@/components/site/SiteHeader";
 
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_reservation_cancel_confirmation_overlay/code.html */
 export function ReservationCancelScreen() {
@@ -19,26 +21,7 @@ export function ReservationCancelScreen() {
   }
   return (
     <div className="bg-surface font-body-md text-on-surface antialiased">
-      <header className="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
-        <div className="h-20 w-full px-margin-mobile lg:px-margin flex items-center justify-between">
-          <div className="flex items-center gap-space-lg">
-            <Link className="font-display text-headline-sm uppercase tracking-[0.25em] text-on-surface hover:text-primary transition-colors" href="/fleet">HALDEN</Link>
-            <span className="hidden lg:inline-block font-label-mono text-label-mono uppercase text-on-surface-variant/60">ARCHIVE • ED. 2025</span>
-          </div>
-          <nav className="hidden md:flex items-center gap-space-lg h-full">
-            <Link className="font-action text-action uppercase tracking-[0.14em] text-on-surface-variant hover:text-on-surface transition-colors py-2" href="/fleet">FLEET</Link>
-            <Link className="font-action text-action uppercase tracking-[0.14em] text-on-surface-variant hover:text-on-surface transition-colors py-2" href="/journeys">JOURNEYS</Link>
-            <Link className="font-action text-action uppercase tracking-[0.14em] text-on-surface-variant hover:text-on-surface transition-colors py-2" href="/about">ABOUT</Link>
-          </nav>
-          <div className="flex items-center gap-space-md">
-            <div className="text-right hidden sm:block">
-              <div className="font-action text-action text-on-surface">Clara V.</div>
-              <div className="font-label-mono text-label-mono uppercase text-on-surface-variant">PATRON № 802</div>
-            </div>
-            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span className="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
-          </div>
-        </div>
-      </header>
+      <SiteHeader patron />
       <main className="w-full pt-20 min-h-screen bg-surface">
         <div className="flex flex-col w-full relative">
           {/* DIMMED BACKGROUND: FULL RESERVATION DETAIL DOSSIER (HLD-0612-4821) */}
@@ -280,47 +263,7 @@ export function ReservationCancelScreen() {
           {/* INTERACTIVITY CONTROLLER SCRIPT */}
         </div>
       </main>
-      <footer className="w-full bg-inverse-surface text-inverse-on-surface border-t border-outline/30">
-        <div className="w-full px-margin-mobile lg:px-margin py-space-xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg pb-space-xl border-b border-outline/20">
-            <div className="space-y-space-md">
-              <div className="font-display text-headline-sm uppercase tracking-[0.2em] text-inverse-on-surface">HALDEN</div>
-              <p className="font-body-sm text-body-sm text-on-tertiary-container max-w-xs">An architectural sanctuary of rare automotive exhibits and curated private journeys across the continent.</p>
-            </div>
-            <div className="space-y-space-sm">
-              <div className="font-label-mono text-label-mono uppercase tracking-[0.15em] text-on-tertiary-container">FLEET ARCHIVE</div>
-              <ul className="space-y-space-xs font-body-sm text-body-sm">
-                <li className="text-inverse-on-surface hover:text-surface-bright cursor-pointer transition-colors">Exhibition Series I</li>
-                <li className="text-inverse-on-surface hover:text-surface-bright cursor-pointer transition-colors">Munich Archives</li>
-                <li className="text-inverse-on-surface hover:text-surface-bright cursor-pointer transition-colors">Modena Monoliths</li>
-                <li className="text-inverse-on-surface hover:text-surface-bright cursor-pointer transition-colors">Stuttgart Prototypes</li>
-              </ul>
-            </div>
-            <div className="space-y-space-sm">
-              <div className="font-label-mono text-label-mono uppercase tracking-[0.15em] text-on-tertiary-container">LOCATIONS</div>
-              <ul className="space-y-space-xs font-body-sm text-body-sm">
-                <li className="text-inverse-on-surface hover:text-surface-bright cursor-pointer transition-colors">Engadin Pavilions</li>
-                <li className="text-inverse-on-surface hover:text-surface-bright cursor-pointer transition-colors">Copenhagen Atelier</li>
-                <li className="text-inverse-on-surface hover:text-surface-bright cursor-pointer transition-colors">Milan Vault</li>
-                <li className="text-inverse-on-surface hover:text-surface-bright cursor-pointer transition-colors">Kyoto Sanctuary</li>
-              </ul>
-            </div>
-            <div className="space-y-space-sm">
-              <div className="font-label-mono text-label-mono uppercase tracking-[0.15em] text-on-tertiary-container">SUPPORT</div>
-              <ul className="space-y-space-xs font-body-sm text-body-sm">
-                <li className="text-inverse-on-surface hover:text-surface-bright cursor-pointer transition-colors">Patron Concierge</li>
-                <li className="text-inverse-on-surface hover:text-surface-bright cursor-pointer transition-colors">Curatorial Enquiries</li>
-                <li className="text-inverse-on-surface hover:text-surface-bright cursor-pointer transition-colors">Private Storage</li>
-                <li className="text-inverse-on-surface hover:text-surface-bright cursor-pointer transition-colors">Terms of Custody</li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-space-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm">
-            <div className="font-label-mono text-label-mono uppercase text-on-tertiary-container">© 2025 HALDEN AUTOMOTIVE GALLERY. ALL RIGHTS RESERVED.</div>
-            <div className="font-label-mono text-label-mono uppercase text-on-tertiary-container">{"CATALOGUE ARCHIVE // 46.4983° N, 9.8355° E"}</div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

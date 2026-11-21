@@ -1,31 +1,14 @@
 import Link from "next/link";
 import { Photo } from "@/components/ui/Photo";
 import { media } from "@/data/media";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteHeader } from "@/components/site/SiteHeader";
 
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_journey_detail_the_high_alpine_transversal_desktop/code.html */
 export function JourneyDetailDesktop() {
   return (
     <div className="hidden md:block bg-surface font-body-md text-on-surface antialiased">
-      <header className="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
-        <div className="h-20 w-full px-gutter-mobile md:px-margin flex items-center justify-between">
-          <div className="flex items-center gap-space-lg">
-            <Link className="font-headline-sm text-headline-sm uppercase tracking-widest text-primary font-normal" href="/fleet">HALDEN</Link>
-            <span className="hidden lg:inline-block font-label-mono text-label-mono uppercase text-outline tracking-widest">{"ARCHIVE // EST. 1928"}</span>
-          </div>
-          <nav className="hidden md:flex items-center gap-space-md">
-            <Link className="font-action text-action uppercase tracking-widest px-space-md py-space-sm text-on-surface-variant hover:text-on-surface transition-colors" href="/fleet">Fleet</Link>
-            <Link aria-current="page" className="uppercase tracking-widest px-space-md py-space-sm transition-colors bg-primary-container text-on-primary font-bold" href="/journeys">Journeys</Link>
-            <Link className="font-action text-action uppercase tracking-widest px-space-md py-space-sm text-on-surface-variant hover:text-on-surface transition-colors" href="/about">About</Link>
-          </nav>
-          <div className="flex items-center gap-space-md">
-            <div className="hidden sm:flex flex-col text-right">
-              <span className="font-action text-action text-on-surface leading-tight">Clara V.</span>
-              <span className="font-label-mono text-label-mono uppercase text-outline">Patron Member</span>
-            </div>
-            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span className="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
-          </div>
-        </div>
-      </header>
+      <SiteHeader active="journeys" />
       <main className="w-full pt-20 bg-surface min-h-[calc(100vh-20rem)]">
         <div className="flex flex-col w-full">
           {/* Hero Section (Bleeds subtly under fixed header) */}
@@ -407,42 +390,7 @@ export function JourneyDetailDesktop() {
           </section>
         </div>
       </main>
-      <footer className="w-full bg-[#171B19] text-[#F8FAF6] pt-space-xl pb-space-lg">
-        <div className="w-full px-gutter-mobile md:px-margin">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-space-xl">
-            <div className="md:col-span-5 flex flex-col justify-between">
-              <div className="space-y-space-sm">
-                <span className="font-headline-md text-headline-md tracking-wider uppercase text-[#F8FAF6] block">HALDEN</span>
-                <p className="font-body-sm text-body-sm text-[#A0B9A8] max-w-sm">An architectural catalogue of automotive craft, honoring rare provenance, mechanical sculpture, and grand touring heritage.</p>
-              </div>
-              <div className="pt-space-md"><span className="font-label-mono text-label-mono tracking-widest uppercase text-[#737973]">{"CATALOGUE DIVISION // GENEVA • MUNICH • COMO"}</span></div>
-            </div>
-            <div className="md:col-span-3 space-y-space-sm">
-              <span className="font-label-mono text-label-mono uppercase tracking-widest text-[#A0B9A8] block mb-space-sm">Exhibition</span>
-              <ul className="space-y-space-xs font-action text-action">
-                <li className="h-6"><Link className="text-[#F8FAF6]/80 hover:text-[#F8FAF6] transition-colors" href="/fleet">Fleet Archive</Link></li>
-                <li className="h-6"><Link className="text-[#F8FAF6]/80 hover:text-[#F8FAF6] transition-colors" href="/journeys">Curated Journeys</Link></li>
-                <li className="h-6"><Link className="text-[#F8FAF6]/80 hover:text-[#F8FAF6] transition-colors" href="/about">{"The Atelier & Provenance"}</Link></li>
-                <li className="h-6"><Link className="text-[#F8FAF6]/80 hover:text-[#F8FAF6] transition-colors" href="/account">Private Patron Ledger</Link></li>
-              </ul>
-            </div>
-            <div className="md:col-span-4 space-y-space-sm">
-              <span className="font-label-mono text-label-mono uppercase tracking-widest text-[#A0B9A8] block mb-space-sm">Archival Disclaimer</span>
-              <p className="font-body-sm text-body-sm text-[#737973] leading-relaxed">Vehicles preserved within the HALDEN collection are accessioned under private curatorial charters. Access to select historical machinery is granted exclusively to credentialed patrons for sanctioned transcontinental itineraries and private concourse exhibitions.</p>
-            </div>
-          </div>
-          <div className="pt-space-md flex flex-col md:flex-row items-baseline justify-between gap-space-sm">
-            <span className="font-label-mono text-label-mono text-[#737973] uppercase">© 2024 HALDEN ARCHIVE. ALL RIGHTS RESERVED.</span>
-            <div className="flex items-center gap-space-md font-label-mono text-label-mono text-[#737973] uppercase">
-              <Link className="hover:text-[#F8FAF6] transition-colors" href="/about">Curatorial Registry</Link>
-              <span>•</span>
-              <Link className="hover:text-[#F8FAF6] transition-colors" href="/about">Terms of Custody</Link>
-              <span>•</span>
-              <Link className="hover:text-[#F8FAF6] transition-colors" href="/about">Conservation Protocol</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

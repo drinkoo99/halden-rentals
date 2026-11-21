@@ -22,7 +22,7 @@ export function JourneysIndexMobile() {
             <span className="font-display-mobile text-[19px] leading-tight tracking-[0.24em] font-normal uppercase text-on-surface">HALDEN</span>
             <span className="font-label-mono text-[9px] leading-none tracking-[0.2em] text-on-surface-variant uppercase mt-0.5">ARCHIVE</span>
           </div>
-          <div className="flex items-center justify-end w-11 h-11"><div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span className="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div>
+          <Link aria-label="Patron sign in" className="w-11 h-11 flex items-center justify-end shrink-0" href="/sign-in"><span className="w-8 h-8 rounded-full border border-outline-variant text-on-surface flex items-center justify-center"><span className="material-symbols-outlined text-[18px]" aria-hidden>person</span></span></Link>
         </div>
       </header>
       <main className="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen">

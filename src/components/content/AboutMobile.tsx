@@ -26,13 +26,12 @@ export function AboutMobile() {
         <div className="h-16 px-margin-mobile flex items-center justify-between">
           <MobileMenu variant="icon" triggerClassName="-ml-2" />
           <div className="flex items-center gap-space-sm">
-            <Photo src={media.aboutCuratorPortrait} alt="HALDEN Atelier Concierge Curator" className="h-8 w-auto object-contain" sizes="(max-width: 767px) 100vw, 30vw" />
             <div className="flex flex-col items-center">
               <span className="font-headline-sm text-headline-sm uppercase tracking-[0.2em] text-on-surface leading-none">HALDEN</span>
               <span className="font-label-mono text-[9px] uppercase tracking-[0.25em] text-on-surface-variant/80 mt-1">ARCHIVE</span>
             </div>
           </div>
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span className="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
+          <Link aria-label="Patron sign in" className="w-11 h-11 flex items-center justify-end shrink-0" href="/sign-in"><span className="w-8 h-8 rounded-full border border-outline-variant text-on-surface flex items-center justify-center"><span className="material-symbols-outlined text-[18px]" aria-hidden>person</span></span></Link>
         </div>
       </header>
       <main className="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface">
