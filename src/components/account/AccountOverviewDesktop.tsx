@@ -107,11 +107,11 @@ export function AccountOverviewDesktop() {
                           <td className="py-space-md pr-space-md">
                             <div className="flex items-center gap-space-md">
                               <Photo src={media.porscheGt3Editorial} alt="Porsche 911 GT3 Touring" className="w-20 h-12 object-cover shrink-0 bg-surface-container" sizes="(max-width: 767px) 100vw, 13vw" />
-                              <span className="font-body-md text-body-md text-on-surface font-medium whitespace-nowrap">Porsche 911 GT3 Touring</span>
+                              <span className="font-body-md text-body-md text-on-surface font-medium">Porsche 911 GT3 Touring</span>
                             </div>
                           </td>
                           <td className="py-space-md px-space-md font-spec-numeral text-spec-numeral text-on-surface-variant whitespace-nowrap">14 – 17 May 2025</td>
-                          <td className="py-space-md px-space-md font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap">Zurich Kloten</td>
+                          <td className="py-space-md px-space-md font-body-sm text-body-sm text-on-surface-variant">Zurich Kloten</td>
                           <td className="py-space-md px-space-md font-spec-numeral text-spec-numeral text-on-surface whitespace-nowrap">€1,320.00</td>
                           <td className="py-space-md px-space-md whitespace-nowrap">
                             <span className="inline-flex items-center gap-1 font-label-mono text-label-mono uppercase text-secondary">
@@ -119,18 +119,18 @@ export function AccountOverviewDesktop() {
                               {" "}COMPLETED
                             </span>
                           </td>
-                          <td className="py-space-md pl-space-md text-right whitespace-nowrap"><button className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Receipt</button></td>
+                          <td className="py-space-md pl-space-md text-right"><button className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Receipt</button></td>
                         </tr>
                         {/* Row 2 */}
                         <tr className="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
                           <td className="py-space-md pr-space-md">
                             <div className="flex items-center gap-space-md">
                               <Photo src={media.mercedesS500Studio} alt="Mercedes-Benz S 500 4MATIC" className="w-20 h-12 object-cover shrink-0 bg-surface-container" sizes="(max-width: 767px) 100vw, 10vw" />
-                              <span className="font-body-md text-body-md text-on-surface font-medium whitespace-nowrap">Mercedes-Benz S 500 4MATIC</span>
+                              <span className="font-body-md text-body-md text-on-surface font-medium">Mercedes-Benz S 500 4MATIC</span>
                             </div>
                           </td>
                           <td className="py-space-md px-space-md font-spec-numeral text-spec-numeral text-on-surface-variant whitespace-nowrap">02 – 05 Apr 2025</td>
-                          <td className="py-space-md px-space-md font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap">Munich Airport</td>
+                          <td className="py-space-md px-space-md font-body-sm text-body-sm text-on-surface-variant">Munich Airport</td>
                           <td className="py-space-md px-space-md font-spec-numeral text-spec-numeral text-on-surface whitespace-nowrap">€930.00</td>
                           <td className="py-space-md px-space-md whitespace-nowrap">
                             <span className="inline-flex items-center gap-1 font-label-mono text-label-mono uppercase text-secondary">
@@ -138,18 +138,18 @@ export function AccountOverviewDesktop() {
                               {" "}COMPLETED
                             </span>
                           </td>
-                          <td className="py-space-md pl-space-md text-right whitespace-nowrap"><button className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Receipt</button></td>
+                          <td className="py-space-md pl-space-md text-right"><button className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Receipt</button></td>
                         </tr>
                         {/* Row 3 */}
                         <tr className="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
                           <td className="py-space-md pr-space-md">
                             <div className="flex items-center gap-space-md">
                               <Photo src={media.bmw530eStudio} alt="BMW 530e xDrive" className="w-20 h-12 object-cover shrink-0 bg-surface-container" sizes="(max-width: 767px) 100vw, 6vw" />
-                              <span className="font-body-md text-body-md text-on-surface font-medium whitespace-nowrap">BMW 530e xDrive</span>
+                              <span className="font-body-md text-body-md text-on-surface font-medium">BMW 530e xDrive</span>
                             </div>
                           </td>
                           <td className="py-space-md px-space-md font-spec-numeral text-spec-numeral text-on-surface-variant whitespace-nowrap">18 – 20 Feb 2025</td>
-                          <td className="py-space-md px-space-md font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap">Geneva Cointrin</td>
+                          <td className="py-space-md px-space-md font-body-sm text-body-sm text-on-surface-variant">Geneva Cointrin</td>
                           <td className="py-space-md px-space-md font-spec-numeral text-spec-numeral text-on-surface-variant whitespace-nowrap">€530.00</td>
                           <td className="py-space-md px-space-md whitespace-nowrap">
                             <span className="inline-flex items-center gap-1 font-label-mono text-label-mono uppercase text-secondary">
@@ -157,7 +157,7 @@ export function AccountOverviewDesktop() {
                               {" "}CANCELLED
                             </span>
                           </td>
-                          <td className="py-space-md pl-space-md text-right whitespace-nowrap"><button className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Receipt</button></td>
+                          <td className="py-space-md pl-space-md text-right"><button className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Receipt</button></td>
                         </tr>
                       </tbody>
                     </table>

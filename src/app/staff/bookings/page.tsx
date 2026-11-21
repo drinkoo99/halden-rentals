@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { StaffDemoBanner } from "@/components/staff/StaffDemoBanner";
+import { StaffConsoleFrame } from "@/components/staff/StaffConsoleFrame";
 import { StaffBookings } from "@/components/staff/StaffBookings";
 
 export const metadata: Metadata = { title: "Bookings — HALDEN Operations", robots: { index: false } };
@@ -7,9 +7,8 @@ export const metadata: Metadata = { title: "Bookings — HALDEN Operations", rob
 /** Stitch "Staff Console: Bookings". Staff console with demo data until the backend phase. */
 export default function Page() {
   return (
-    <>
+    <StaffConsoleFrame>
       <StaffBookings />
-      <StaffDemoBanner />
-    </>
+    </StaffConsoleFrame>
   );
 }

@@ -325,10 +325,10 @@
   cursor: not-allowed;
 }
 [data-planned]:not([data-planned="quiet"])::after {
-  content: " · Planned";
+  /* zero-width space is the only break point, so "· Planned" drops to its own line as a unit */
+  content: "\200B\00a0·\00a0Planned";
   font-family: var(--font-label-mono);
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  white-space: nowrap;
 }

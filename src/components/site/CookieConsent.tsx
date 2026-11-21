@@ -72,7 +72,7 @@ export function CookieConsent() {
     <>
       {!decided && !prefs && (
         <section aria-label="Cookie consent" className="fixed bottom-0 inset-x-0 z-70 bg-surface-dark text-white border-t border-[#333835] p-6">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             <div className="space-y-1.5 max-w-3xl">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-sage rounded-full" aria-hidden />

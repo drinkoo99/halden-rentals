@@ -8,12 +8,12 @@ export function SystemStatesSheet() {
       {/* TOP HEADER / DOSSIER SPECIFICATION */}
       <header className="border-b hairline-border bg-white sticky top-0 z-40">
         <div className="max-w-[1720px] mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center space-x-6">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <span className="font-serif text-2xl tracking-[0.2em] font-normal uppercase text-ink">H A L D E N</span>
             <div className="h-4 w-[1px] bg-stone" />
             <span className="font-mono text-xs uppercase tracking-wider text-neutral-500">{"SYSTEM SPECIFICATION № 08 · COMPONENT & STATE MATRIX"}</span>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <span className="inline-flex items-center px-2.5 py-1 text-[11px] font-mono uppercase tracking-wider bg-surface-dim text-forest-accent border hairline-border">
               <span className="w-1.5 h-1.5 rounded-full bg-forest mr-2" />
               {" "}THE GALLERY DESIGN SYSTEM 1.0
@@ -25,7 +25,7 @@ export function SystemStatesSheet() {
       {/* SUBHEADER / INDEX */}
       <div className="bg-surface-dim/50 border-b hairline-border px-6 py-3">
         <div className="max-w-[1720px] mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-mono uppercase tracking-widest text-neutral-600">
-          <div className="flex items-center space-x-6">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <a href="#skeletons" className="hover:text-forest transition-colors">01 / Loading Skeletons</a>
             <a href="#empty-states" className="hover:text-forest transition-colors">02 / Empty States</a>
             <a href="#error-pages" className="hover:text-forest transition-colors">03 / Error Pages</a>
@@ -702,7 +702,7 @@ export function SystemStatesSheet() {
           <div className="pt-8">
             <div className="border-t hairline-border pt-4 pb-2"><span className="font-mono text-xs uppercase tracking-wider text-neutral-500">{"C. Archival Cookie & Privacy Consent Banner (Pinned to Viewport Bottom)"}</span></div>
             <div className="bg-surface-dark text-white border hairline-border-dark p-6 shadow-2xl">
-              <div className="max-w-[1720px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="max-w-[1720px] mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
                 <div className="space-y-1.5 max-w-3xl">
                   <div className="flex items-center space-x-2">
                     <span className="w-2 h-2 bg-sage rounded-full" />
