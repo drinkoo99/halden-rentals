@@ -27,6 +27,7 @@
 
   /* Stitch border-radius config (same values as Tailwind v3 defaults) */
   --radius: 0.25rem;
+  --radius-sm: 0.125rem;
   --radius-lg: 0.5rem;
   --radius-xl: 0.75rem;
 
@@ -51,6 +52,14 @@
   --color-stone: #EAE8E1;
   --color-stone-dim: #D8D6CE;
   --color-stone-surface: #F0EEE7;
+  /* Round 2 (system states sheet S8): status colours and dark-room surfaces */
+  --color-amber: #C98A2C;
+  --color-amber-soft: #FAF5EB;
+  --color-crimson: #B94A48;
+  --color-crimson-soft: #FBF2F2;
+  --color-surface-dark: #171B19;
+  --color-surface-card: #252A27;
+  --color-forest-accent: #344A3D;
   --color-muted: #666B65;
   --color-dark: #171B19;
   --color-darkpanel: #252A27;
@@ -265,4 +274,46 @@
 }
 .range-thumb:focus-visible {
   opacity: 0.35;
+}
+
+/* Round 2 Stitch helpers: safe-area padding on phones, loading shimmer, hairlines (system states sheet S8) */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #e6e4dc 25%, #f0eee8 50%, #e6e4dc 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite ease-in-out;
+}
+.skeleton-shimmer-dark {
+  background: linear-gradient(90deg, #202422 25%, #2b302d 50%, #202422 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite ease-in-out;
+}
+.hairline-border {
+  border-color: #d8d6ce;
+}
+.hairline-border-dark {
+  border-color: #333835;
+}
+/* The S8 states board was generated with its own palette (forest = #1E3327, sage = #7A8B7B,
+   stone = hairline #D8D6CE, Space Mono labels); scope those values to the board only. */
+.states-board {
+  --color-forest: #1e3327;
+  --color-sage: #7a8b7b;
+  --color-stone: #d8d6ce;
+  --color-surface-dim: #eae8e1;
+  --font-mono: var(--font-space-mono), "Space Mono", monospace;
+  --font-sans: var(--font-manrope), "Manrope", sans-serif;
 }

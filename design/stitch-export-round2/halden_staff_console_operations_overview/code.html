@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>HALDEN — Operations Console</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600&amp;family=Manrope:wght@400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-tint":"#4d6355","on-tertiary-fixed-variant":"#474742","on-error-container":"#93000a","on-tertiary-fixed":"#1b1c18","on-secondary-fixed":"#121e14","surface-bright":"#f8faf6","on-secondary-fixed-variant":"#3c4a3d","secondary":"#546254","on-primary-container":"#a0b9a8","inverse-on-surface":"#f0f1ed","on-tertiary":"#ffffff","on-surface":"#191c1a","primary-container":"#344a3d","error-container":"#ffdad6","secondary-fixed":"#d7e7d5","surface-container-low":"#f3f4f0","inverse-primary":"#b4cdbb","tertiary":"#2e2f2a","secondary-fixed-dim":"#bbcbba","surface-container":"#edeeeb","surface-variant":"#e1e3df","surface-container-lowest":"#ffffff","error":"#ba1a1a","secondary-container":"#d7e7d5","background":"#f8faf6","on-primary-fixed":"#0a2015","surface-container-highest":"#e1e3df","on-background":"#191c1a","outline":"#737973","tertiary-container":"#454540","inverse-surface":"#2e312f","on-surface-variant":"#424844","surface-container-high":"#e7e9e5","primary-fixed":"#cfe9d7","surface":"#f8faf6","on-secondary-container":"#59685a","primary-fixed-dim":"#b4cdbb","on-primary":"#ffffff","tertiary-fixed-dim":"#c8c6c0","on-primary-fixed-variant":"#364c3f","on-error":"#ffffff","on-secondary":"#ffffff","outline-variant":"#c2c8c2","surface-dim":"#d9dad7","on-tertiary-container":"#b4b2ac","primary":"#1e3327","tertiary-fixed":"#e4e2db"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","space-md":"1rem","space-xl":"4rem","margin":"4rem","margin-mobile":"1.5rem","gutter":"1.5rem","gutter-mobile":"1rem","space-lg":"2rem","space-sm":"0.5rem"},"fontFamily":{"headline-sm":["Bodoni Moda"],"action":["Manrope"],"headline-md":["Bodoni Moda"],"label-mono":["Space Mono"],"headline-lg":["Bodoni Moda"],"spec-numeral":["Space Mono"],"headline-lg-mobile":["Bodoni Moda"],"body-sm":["Manrope"],"display":["Bodoni Moda"],"body-md":["Manrope"],"body-lg":["Manrope"],"display-mobile":["Bodoni Moda"]},"fontSize":{"headline-sm":["22px",{"lineHeight":"28px","fontWeight":"400"}],"action":["13px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-md":["28px",{"lineHeight":"36px","fontWeight":"400"}],"label-mono":["11px",{"lineHeight":"16px","letterSpacing":"0.12em","fontWeight":"400"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.015em","fontWeight":"400"}],"spec-numeral":["14px",{"lineHeight":"20px","letterSpacing":"0.02em","fontWeight":"400"}],"headline-lg-mobile":["28px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"display":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"display-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-60 bg-on-tertiary-fixed text-inverse-on-surface z-50 flex flex-col border-r border-tertiary"><div class="h-14 px-6 flex items-center border-b border-tertiary"><span class="font-headline-sm text-headline-sm tracking-widest uppercase text-inverse-on-surface">HALDEN</span></div><div class="px-4 py-4 border-b border-tertiary"><label class="block font-label-mono text-label-mono uppercase text-on-tertiary-container mb-2">ACTIVE HUB</label><select class="w-full bg-tertiary text-on-tertiary font-label-mono text-label-mono uppercase px-3 py-2 rounded-none border border-tertiary-container focus:outline-none focus:border-primary-fixed"><option value="all">ALL HUBS</option><option value="muc">MUC — MUNICH</option><option value="zrh">ZRH — ZURICH</option><option value="gva">GVA — GENEVA</option><option value="mxp">MXP — MILAN</option><option value="vie">VIE — VIENNA</option></select></div><nav class="flex-1 py-4 flex flex-col gap-1" data-active-classes="bg-primary text-on-primary font-bold"><a aria-current="page" class="px-6 py-2.5 uppercase transition-colors bg-primary text-on-primary font-bold" data-path="overview" href="#">OVERVIEW</a><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" data-path="bookings" href="#">BOOKINGS</a><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" data-path="fleet" href="#">FLEET</a><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" data-path="availability" href="#">AVAILABILITY</a><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" data-path="customers" href="#">CUSTOMERS</a><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" data-path="pricing" href="#">PRICING</a><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" data-path="settings" href="#">SETTINGS</a></nav><div class="px-6 py-4 border-t border-tertiary"><span class="font-label-mono text-label-mono uppercase text-on-tertiary-container">CONSOLE V2.4</span></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-14 bg-surface border-b border-outline-variant z-40 px-8 flex items-center justify-between"><div class="flex items-center w-96"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-3 py-1.5 rounded-none border border-outline-variant focus:outline-none focus:border-primary placeholder:text-on-surface-variant" placeholder="Search booking ref, plate, customer..." type="text"/></div></div><div class="flex items-center gap-6"><span class="font-label-mono text-label-mono uppercase text-on-surface-variant">THU 24 OCT 2024</span><button aria-label="Notifications" class="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute -top-0.5 -right-0.5 w-2 h-2 bg-error rounded-full"></span></button><div class="flex items-center gap-3 pl-4 border-l border-outline-variant"><span class="font-body-sm text-body-sm text-on-surface">M. Weber</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-14 w-full px-8 bg-surface"><div class="flex flex-col w-full">
+<!-- Page Header -->
+<div class="flex items-end justify-between py-6 border-b border-outline-variant">
+<div class="flex flex-col gap-1">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">CONSOLIDATED DISPATCH // ALL HUBS</span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Operations overview</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 border border-on-surface text-on-surface font-action text-action uppercase hover:bg-surface-container transition-colors rounded-none" type="button">
+        EXPORT LOG
+      </button>
+<button class="px-5 py-2 bg-primary-container text-on-primary font-action text-action uppercase hover:bg-primary transition-colors rounded-none" type="button">
+        + NEW RESERVATION
+      </button>
+</div>
+</div>
+<!-- KPI Strip: 5 Hairline-Separated Figures -->
+<section class="grid grid-cols-5 border-b border-outline-variant bg-surface-container-low">
+<div class="p-5 border-r border-outline-variant flex flex-col justify-between gap-3">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">01 / HANDOVERS TODAY</span>
+<div class="flex items-baseline justify-between">
+<span class="font-spec-numeral text-[28px] leading-none text-on-surface">8</span>
+<span class="font-label-mono text-label-mono text-primary-container">+2 VS AVG</span>
+</div>
+</div>
+<div class="p-5 border-r border-outline-variant flex flex-col justify-between gap-3">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">02 / RETURNS TODAY</span>
+<div class="flex items-baseline justify-between">
+<span class="font-spec-numeral text-[28px] leading-none text-on-surface">5</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">ON SCHEDULE</span>
+</div>
+</div>
+<div class="p-5 border-r border-outline-variant flex flex-col justify-between gap-3">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">03 / CARS ON THE ROAD</span>
+<div class="flex items-baseline justify-between">
+<span class="font-spec-numeral text-[28px] leading-none text-on-surface">31</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">OF 42 TOTAL</span>
+</div>
+</div>
+<div class="p-5 border-r border-outline-variant flex flex-col justify-between gap-3">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">04 / FLEET UTILISATION</span>
+<div class="flex items-baseline justify-between">
+<span class="font-spec-numeral text-[28px] leading-none text-on-surface">74%</span>
+<span class="font-label-mono text-label-mono text-primary-container">+4.2% WK</span>
+</div>
+</div>
+<div class="p-5 flex flex-col justify-between gap-3">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">05 / REVENUE THIS WEEK</span>
+<div class="flex items-baseline justify-between">
+<span class="font-spec-numeral text-[28px] leading-none text-on-surface">€48,210</span>
+<span class="font-label-mono text-label-mono text-primary-container">+11.4%</span>
+</div>
+</div>
+</section>
+<!-- Today Timeline: Side-by-Side Handovers & Returns -->
+<section class="grid grid-cols-12 border-b border-outline-variant">
+<!-- Handovers Column -->
+<div class="col-span-6 border-r border-outline-variant flex flex-col">
+<div class="px-5 py-3.5 bg-surface-container border-b border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-label-mono uppercase text-on-surface font-bold">TODAY — HANDOVERS</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">08 SCHEDULED</span>
+</div>
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">CHRONOLOGICAL</span>
+</div>
+<div class="flex flex-col divide-y divide-outline-variant">
+<!-- Row 1 -->
+<div class="px-5 py-3.5 flex items-center justify-between gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4 min-w-0">
+<span class="font-spec-numeral text-spec-numeral text-on-surface w-12 shrink-0">09:00</span>
+<div class="w-18 h-12 bg-surface-container shrink-0 overflow-hidden border border-outline-variant">
+<img alt="Range Rover Autobiography" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrDIN1axWqJAjksNHWJYgy50Qk3jf3nK4ou8WHDIRa6GSerDdyA8oaArSzBKVbWaYRZEkFVZGAEpq_hzuMdyD6UO2oe1e0PBxmKptlKg8i2KEmUDL4aO_0G01_Sf50nd02BSiPG5MOBe8CeWOQkH7qv-aaE4Mx6tBJ3UltMp8pXEOqgzKzXD6t-H03cEWupy-Q8VGonkcsfM4hnPijBxKupjctM1Cuq2vlcv8Mx8oiXR"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm font-medium text-on-surface truncate">Range Rover Autobiography</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant shrink-0">M-HL 4821</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">H. Lindqvist</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">• HLD-88412</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="font-label-mono text-label-mono text-on-surface px-2 py-0.5 border border-outline-variant">MUC</span>
+<span class="font-label-mono text-label-mono uppercase px-2.5 py-1 bg-primary-container text-on-primary">READY</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="px-5 py-3.5 flex items-center justify-between gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4 min-w-0">
+<span class="font-spec-numeral text-spec-numeral text-on-surface w-12 shrink-0">10:30</span>
+<div class="w-18 h-12 bg-surface-container shrink-0 overflow-hidden border border-outline-variant">
+<img alt="Porsche 911 GT3 Touring" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrDbFJem8E487IBRJ1f-fDpCmeD41hYCYMXvFa6xTiMa_AkJ18Qm04R8O3HmWbWjJBYAaA6eWoUzEcjMVCSEHtpPcfNNLJmJR8JqifKuW4IVgCgCt9TItJWMrVN8Dx5NzvzGG3Y3wF7VEcFDQVl9IXJXURcVwj8hvi6d0wyxcdkZl4_lDZCAR3jEDUI2ymGMUjjYJonB6yJrWOu96TZF2z5E69MKnnf71pJ0HpWSOq4y"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm font-medium text-on-surface truncate">Porsche 911 GT3 Touring</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant shrink-0">ZH-91104</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">C. Vance</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">• HLD-88419</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="font-label-mono text-label-mono text-on-surface px-2 py-0.5 border border-outline-variant">ZRH</span>
+<span class="font-label-mono text-label-mono uppercase px-2.5 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant border border-outline-variant">PREPARING</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="px-5 py-3.5 flex items-center justify-between gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4 min-w-0">
+<span class="font-spec-numeral text-spec-numeral text-on-surface w-12 shrink-0">11:15</span>
+<div class="w-18 h-12 bg-surface-container shrink-0 overflow-hidden border border-outline-variant">
+<img alt="Mercedes-Benz S-Class" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrA-qoJRR8GvaSdR0gEFCnvtPza0D6kCyb6olS9QBTm2643kOmw0xaHLlfnJ_YCVeatYeNyXRV_EWZThwJqIfkvTHS8d6U8-sVLDz3Y-tLYNh6finxXh-upozAhvCsacc26Nt4YifcF7zeb14VdgdKh49rnkcbvoMzx6lwey63XwQHBl-DF5qLnYFEoWTFRFadBS81YyoJt5MNSJP-WlgVfBHVlfGjzldIn_uAeYzdNX"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm font-medium text-on-surface truncate">Mercedes-Benz S 580</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant shrink-0">GE-40219</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">E. Moreau</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">• HLD-88425</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="font-label-mono text-label-mono text-on-surface px-2 py-0.5 border border-outline-variant">GVA</span>
+<span class="font-label-mono text-label-mono uppercase px-2.5 py-1 bg-primary-container text-on-primary">READY</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="px-5 py-3.5 flex items-center justify-between gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4 min-w-0">
+<span class="font-spec-numeral text-spec-numeral text-on-surface w-12 shrink-0">14:00</span>
+<div class="w-18 h-12 bg-surface-container shrink-0 overflow-hidden border border-outline-variant">
+<img alt="Lexus LC 500" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrAizIN_J1h_jExplL1fYg2MRe1Crqp1URazztBdSThtt0obbxMEtWnMhX3z2pghzMbn4RtbbWFxKceGbGd9OuiNwTJ5YvU5nVyukHStFsy5y2279EQ-GW1s_VDvJSNtDsWUA8Wf7LZUHU659I42kaYp5g7bwvLrdIk1qkO4eZXeUwmTvdiso976-Mf0xpxq4o3tu7n2Mtc47TCmFKGcH7a4Rtky93C2DRhLqkfbx5tF"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm font-medium text-on-surface truncate">Lexus LC 500 Coupe</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant shrink-0">MI-77210</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">L. Conti</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">• HLD-88431</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="font-label-mono text-label-mono text-on-surface px-2 py-0.5 border border-outline-variant">MXP</span>
+<span class="font-label-mono text-label-mono uppercase px-2.5 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant border border-outline-variant">PREPARING</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Returns Column -->
+<div class="col-span-6 flex flex-col">
+<div class="px-5 py-3.5 bg-surface-container border-b border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-label-mono uppercase text-on-surface font-bold">TODAY — RETURNS</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">05 SCHEDULED</span>
+</div>
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant">INSPECTION QUEUE</span>
+</div>
+<div class="flex flex-col divide-y divide-outline-variant">
+<!-- Row 1 -->
+<div class="px-5 py-3.5 flex items-center justify-between gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4 min-w-0">
+<span class="font-spec-numeral text-spec-numeral text-on-surface w-12 shrink-0">08:45</span>
+<div class="w-18 h-12 bg-surface-container shrink-0 overflow-hidden border border-outline-variant">
+<img alt="BMW 5 Series" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrDKvCzvo71woD3UHNs1nC6FrxNA4D9ImbWU6XHwneqPDMnuk4SCxolg8PUjBkq5kKhrH3SNuo2GIhTwniq1tGBWgd9b-EOEYiL1jecVezBBdWtuKPuXaiOSwXB4szuaoC_N2feN1jwOqbqhEZtnHtVPYqPjXHbbd__COiDAJkzaDvWoc206qOsF-LGQnqWXAzmtfhHq8FWllz619OFSQ7fTpkVbdjHm4R6HfV07928M"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm font-medium text-on-surface truncate">BMW 540i xDrive</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant shrink-0">M-HL 3390</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">K. Richter</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">• HLD-88104</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="font-label-mono text-label-mono text-on-surface px-2 py-0.5 border border-outline-variant">MUC</span>
+<span class="font-label-mono text-label-mono uppercase px-2.5 py-1 bg-surface-container-highest text-on-surface-variant">DONE</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="px-5 py-3.5 flex items-center justify-between gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4 min-w-0">
+<span class="font-spec-numeral text-spec-numeral text-on-surface w-12 shrink-0">10:00</span>
+<div class="w-18 h-12 bg-surface-container shrink-0 overflow-hidden border border-outline-variant">
+<img alt="Audi RS6 Avant" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrBrFiMSE29Lba71NZ4I4GuEpTkNwLvuxTz-Pb_UtvNhWENJr6X9-bQt30GPZKGWfELZUCx-dZNyn489kxXyMezKd9AJ-0RAoosF74AVP-RbAGGRQWMfHu98H4qvIxTtX_CUctqNBR9lyCKBI2J_LhGDBZCr5lhYuXamFTeqf8SD3g4Uh2pFGUctXjK8I75SfHx9fXjXJyBz__nAWzS8CZYN6ZblHoiCZUGMek5W_emK"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm font-medium text-on-surface truncate">Audi RS6 Avant</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant shrink-0">W-8821H</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">F. Gruber</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">• HLD-88118</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="font-label-mono text-label-mono text-on-surface px-2 py-0.5 border border-outline-variant">VIE</span>
+<span class="font-label-mono text-label-mono uppercase px-2.5 py-1 bg-error text-on-error">LATE</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="px-5 py-3.5 flex items-center justify-between gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4 min-w-0">
+<span class="font-spec-numeral text-spec-numeral text-on-surface w-12 shrink-0">13:30</span>
+<div class="w-18 h-12 bg-surface-container shrink-0 overflow-hidden border border-outline-variant">
+<img alt="Range Rover Autobiography" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrDIN1axWqJAjksNHWJYgy50Qk3jf3nK4ou8WHDIRa6GSerDdyA8oaArSzBKVbWaYRZEkFVZGAEpq_hzuMdyD6UO2oe1e0PBxmKptlKg8i2KEmUDL4aO_0G01_Sf50nd02BSiPG5MOBe8CeWOQkH7qv-aaE4Mx6tBJ3UltMp8pXEOqgzKzXD6t-H03cEWupy-Q8VGonkcsfM4hnPijBxKupjctM1Cuq2vlcv8Mx8oiXR"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm font-medium text-on-surface truncate">Range Rover Autobiography</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant shrink-0">ZH-44902</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">S. Keller</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">• HLD-88140</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="font-label-mono text-label-mono text-on-surface px-2 py-0.5 border border-outline-variant">ZRH</span>
+<span class="font-label-mono text-label-mono uppercase px-2.5 py-1 bg-primary-container text-on-primary">READY</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="px-5 py-3.5 flex items-center justify-between gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4 min-w-0">
+<span class="font-spec-numeral text-spec-numeral text-on-surface w-12 shrink-0">16:15</span>
+<div class="w-18 h-12 bg-surface-container shrink-0 overflow-hidden border border-outline-variant">
+<img alt="Mercedes-Benz S-Class" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrA-qoJRR8GvaSdR0gEFCnvtPza0D6kCyb6olS9QBTm2643kOmw0xaHLlfnJ_YCVeatYeNyXRV_EWZThwJqIfkvTHS8d6U8-sVLDz3Y-tLYNh6finxXh-upozAhvCsacc26Nt4YifcF7zeb14VdgdKh49rnkcbvoMzx6lwey63XwQHBl-DF5qLnYFEoWTFRFadBS81YyoJt5MNSJP-WlgVfBHVlfGjzldIn_uAeYzdNX"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm font-medium text-on-surface truncate">Mercedes-Benz S 580</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant shrink-0">M-HL 1094</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">A. Sterling</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">• HLD-88152</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="font-label-mono text-label-mono text-on-surface px-2 py-0.5 border border-outline-variant">MUC</span>
+<span class="font-label-mono text-label-mono uppercase px-2.5 py-1 bg-surface-container-highest text-on-surface-variant">DONE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Split: Needs Attention & 14-Day Forward Utilisation -->
+<section class="grid grid-cols-12">
+<!-- Needs Attention List -->
+<div class="col-span-5 border-r border-outline-variant flex flex-col">
+<div class="px-5 py-3.5 bg-surface-container border-b border-outline-variant flex items-center justify-between">
+<span class="font-label-mono text-label-mono uppercase text-on-surface font-bold">NEEDS ATTENTION</span>
+<span class="font-label-mono text-label-mono uppercase text-error">3 ACTION ITEMS</span>
+</div>
+<div class="flex flex-col divide-y divide-outline-variant">
+<!-- Item 1: Warning -->
+<div class="p-5 flex items-start justify-between gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-start gap-3">
+<span class="w-2 h-2 mt-1.5 bg-tertiary-fixed-dim border border-on-surface shrink-0"></span>
+<div class="flex flex-col gap-1">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Licence pending verification</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">PATRON DOSSIER • C. VANCE (HLD-88419)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">International driving permit scan requires manual review before 10:30 ZRH handover.</span>
+</div>
+</div>
+<button class="font-label-mono text-label-mono uppercase text-on-surface border border-outline-variant px-2.5 py-1 hover:bg-surface-container shrink-0" type="button">
+            REVIEW →
+          </button>
+</div>
+<!-- Item 2: Problem -->
+<div class="p-5 flex items-start justify-between gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-start gap-3">
+<span class="w-2 h-2 mt-1.5 bg-error shrink-0"></span>
+<div class="flex flex-col gap-1">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Car overdue for 48-point service</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">CHASSIS WBA730291 • M-HL 3390</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">BMW 540i xDrive exceeded 15,000 km interval by 340 km. Hold from MUC dispatch.</span>
+</div>
+</div>
+<button class="font-label-mono text-label-mono uppercase text-error border border-error px-2.5 py-1 hover:bg-error-container shrink-0" type="button">
+            HOLD →
+          </button>
+</div>
+<!-- Item 3: Problem -->
+<div class="p-5 flex items-start justify-between gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-start gap-3">
+<span class="w-2 h-2 mt-1.5 bg-error shrink-0"></span>
+<div class="flex flex-col gap-1">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Payment pre-authorisation failed</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">REF HLD-88431 • €3,500.00 DEPOSIT</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Card issuer declined security hold for L. Conti (MXP). Retry link dispatched.</span>
+</div>
+</div>
+<button class="font-label-mono text-label-mono uppercase text-on-surface border border-outline-variant px-2.5 py-1 hover:bg-surface-container shrink-0" type="button">
+            RETRY →
+          </button>
+</div>
+</div>
+</div>
+<!-- 14-Day Forward Fleet Utilisation Bar Chart -->
+<div class="col-span-7 flex flex-col">
+<div class="px-5 py-3.5 bg-surface-container border-b border-outline-variant flex items-center justify-between">
+<span class="font-label-mono text-label-mono uppercase text-on-surface font-bold">14-DAY FORWARD FLEET UTILISATION</span>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 bg-primary-container inline-block"></span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">≥75%</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 bg-secondary inline-block"></span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">50–74%</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 bg-on-surface inline-block"></span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">&lt;50%</span>
+</div>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between bg-surface">
+<!-- Chart Area -->
+<div class="relative h-56 flex items-end gap-2 pl-10 pr-2 pb-6 border-b border-outline-variant">
+<!-- Y-Axis Labels -->
+<div class="absolute left-0 top-0 bottom-6 w-8 flex flex-col justify-between items-end pr-2 font-label-mono text-label-mono text-on-surface-variant">
+<span>100%</span>
+<span>75%</span>
+<span>50%</span>
+<span>25%</span>
+<span>0%</span>
+</div>
+<!-- Horizontal Hairline Grid -->
+<div class="absolute left-10 right-2 top-0 h-px bg-outline-variant/40"></div>
+<div class="absolute left-10 right-2 top-1/4 h-px bg-outline-variant/40"></div>
+<div class="absolute left-10 right-2 top-2/4 h-px bg-outline-variant/40"></div>
+<div class="absolute left-10 right-2 top-3/4 h-px bg-outline-variant/40"></div>
+<!-- 14 Bars -->
+<div class="flex-1 h-full flex items-end justify-between gap-2 z-10" id="utilisation-bars">
+<!-- Day 1 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-secondary transition-opacity group-hover:opacity-80" style="height: 74%;" title="24 OCT: 74%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">24</span>
+</div>
+<!-- Day 2 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-primary-container transition-opacity group-hover:opacity-80" style="height: 82%;" title="25 OCT: 82%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">25</span>
+</div>
+<!-- Day 3 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-primary-container transition-opacity group-hover:opacity-80" style="height: 88%;" title="26 OCT: 88%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">26</span>
+</div>
+<!-- Day 4 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-primary-container transition-opacity group-hover:opacity-80" style="height: 79%;" title="27 OCT: 79%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">27</span>
+</div>
+<!-- Day 5 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-secondary transition-opacity group-hover:opacity-80" style="height: 68%;" title="28 OCT: 68%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">28</span>
+</div>
+<!-- Day 6 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-secondary transition-opacity group-hover:opacity-80" style="height: 64%;" title="29 OCT: 64%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">29</span>
+</div>
+<!-- Day 7 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-secondary transition-opacity group-hover:opacity-80" style="height: 71%;" title="30 OCT: 71%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">30</span>
+</div>
+<!-- Day 8 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-primary-container transition-opacity group-hover:opacity-80" style="height: 76%;" title="31 OCT: 76%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">31</span>
+</div>
+<!-- Day 9 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-primary-container transition-opacity group-hover:opacity-80" style="height: 85%;" title="01 NOV: 85%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">01</span>
+</div>
+<!-- Day 10 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-primary-container transition-opacity group-hover:opacity-80" style="height: 90%;" title="02 NOV: 90%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">02</span>
+</div>
+<!-- Day 11 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-secondary transition-opacity group-hover:opacity-80" style="height: 62%;" title="03 NOV: 62%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">03</span>
+</div>
+<!-- Day 12 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-on-surface transition-opacity group-hover:opacity-80" style="height: 45%;" title="04 NOV: 45%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">04</span>
+</div>
+<!-- Day 13 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-on-surface transition-opacity group-hover:opacity-80" style="height: 48%;" title="05 NOV: 48%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">05</span>
+</div>
+<!-- Day 14 -->
+<div class="flex-1 h-full flex flex-col justify-end items-center group">
+<div class="w-full bg-secondary transition-opacity group-hover:opacity-80" style="height: 55%;" title="06 NOV: 55%"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-2 -mb-6">06</span>
+</div>
+</div>
+</div>
+<!-- Chart Footer Summary -->
+<div class="pt-4 flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-on-surface-variant">OCT 24 — NOV 06, 2024 (ALL HUBS)</span>
+<span class="font-spec-numeral text-spec-numeral text-on-surface">PEAK: 90% (38/42 UNITS) ON 02 NOV</span>
+</div>
+</div>
+</div>
+</section>
+</div></main></div></body></html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@100..900&family=Manrope:wght@100..900&family=Space+Mono:wght@100..900&display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-high": "#e7e9e5", "on-primary-fixed-variant": "#364c3f", "on-primary": "#ffffff", "on-surface-variant": "#424844", "on-primary-fixed": "#0a2015", "inverse-on-surface": "#f0f1ed", "primary": "#1e3327", "on-secondary-fixed-variant": "#3c4a3d", "surface": "#f8faf6", "tertiary": "#2e2f2a", "on-primary-container": "#a0b9a8", "primary-container": "#344a3d", "secondary-container": "#d7e7d5", "outline-variant": "#c2c8c2", "inverse-surface": "#2e312f", "on-error-container": "#93000a", "background": "#f8faf6", "on-secondary-container": "#59685a", "surface-container-low": "#f3f4f0", "surface-bright": "#f8faf6", "surface-tint": "#4d6355", "surface-container": "#edeeeb", "on-secondary": "#ffffff", "on-secondary-fixed": "#121e14", "secondary-fixed": "#d7e7d5", "error": "#ba1a1a", "primary-fixed-dim": "#b4cdbb", "secondary-fixed-dim": "#bbcbba", "on-background": "#191c1a", "on-error": "#ffffff", "on-tertiary-fixed-variant": "#474742", "on-tertiary": "#ffffff", "on-tertiary-fixed": "#1b1c18", "surface-variant": "#e1e3df", "error-container": "#ffdad6", "on-tertiary-container": "#b4b2ac", "tertiary-fixed-dim": "#c8c6c0", "inverse-primary": "#b4cdbb", "outline": "#737973", "on-surface": "#191c1a", "primary-fixed": "#cfe9d7", "surface-dim": "#d9dad7", "surface-container-highest": "#e1e3df", "tertiary-fixed": "#e4e2db", "tertiary-container": "#454540", "secondary": "#546254", "surface-container-lowest": "#ffffff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin-mobile": "1.5rem", "space-xl": "4rem", "gutter": "1.5rem", "space-lg": "2rem", "space-xs": "0.25rem", "margin": "4rem", "space-sm": "0.5rem", "space-md": "1rem", "gutter-mobile": "1rem" }, fontFamily: { "display": ["Bodoni Moda"], "headline-lg": ["Bodoni Moda"], "action": ["Manrope"], "label-mono": ["Space Mono"], "body-lg": ["Manrope"], "body-md": ["Manrope"], "spec-numeral": ["Space Mono"], "headline-md": ["Bodoni Moda"], "body-sm": ["Manrope"], "display-mobile": ["Bodoni Moda"], "headline-lg-mobile": ["Bodoni Moda"], "headline-sm": ["Bodoni Moda"] }, fontSize: { "display": ["56px", { lineHeight: "64px", letterSpacing: "-0.02em", fontWeight: "400" }], "headline-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.015em", fontWeight: "400" }], "action": ["13px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "600" }], "label-mono": ["11px", { lineHeight: "16px", letterSpacing: "0.12em", fontWeight: "400" }], "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }], "body-md": ["15px", { lineHeight: "24px", fontWeight: "400" }], "spec-numeral": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "400" }], "headline-md": ["28px", { lineHeight: "36px", fontWeight: "400" }], "body-sm": ["13px", { lineHeight: "20px", fontWeight: "400" }], "display-mobile": ["38px", { lineHeight: "44px", letterSpacing: "-0.01em", fontWeight: "400" }], "headline-lg-mobile": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "400" }], "headline-sm": ["22px", { lineHeight: "28px", fontWeight: "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe"><div class="h-16 px-gutter-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Menu" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">menu</span></button><span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-on-surface-variant font-medium">HALDEN</span></div><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface hidden">Overview</span><button aria-label="Archive Index" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full pt-16 pb-20 bg-surface flex flex-col"><div class="flex flex-col w-full">
+<!-- Status & Welcome Ledger Header -->
+<section class="px-gutter-mobile pt-space-md pb-space-lg bg-surface">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-on-surface-variant">HALDEN ARCHIVE • DOSSIER № 802</span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-secondary-container text-on-secondary-fixed text-[10px] font-label-mono tracking-widest uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+        ACTIVE PATRON
+      </span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight mb-2">Welcome back, Clara.</h1>
+<p class="font-label-mono text-[10px] uppercase tracking-[0.14em] text-on-surface-variant leading-relaxed">
+      PATRON CIRCLE // TIER-1 ARCHIVE CLEARANCE • 03 JOURNEYS COMPLETED
+    </p>
+<!-- Space Mono Tab Strip -->
+<div class="flex items-center gap-6 mt-6 overflow-x-auto no-scrollbar">
+<button class="relative pb-2 font-label-mono text-[11px] tracking-[0.18em] uppercase text-primary font-bold">
+        OVERVIEW
+        <span class="absolute bottom-0 left-0 right-0 h-[2px] bg-primary"></span>
+</button>
+<button class="pb-2 font-label-mono text-[11px] tracking-[0.18em] uppercase text-on-surface-variant hover:text-on-surface transition-colors">
+        RESERVATIONS
+      </button>
+<button class="pb-2 font-label-mono text-[11px] tracking-[0.18em] uppercase text-on-surface-variant hover:text-on-surface transition-colors">
+        SAVED
+      </button>
+<button class="pb-2 font-label-mono text-[11px] tracking-[0.18em] uppercase text-on-surface-variant hover:text-on-surface transition-colors">
+        SETTINGS
+      </button>
+</div>
+</section>
+<!-- Section 1: Upcoming Allocation (Exhibit Placard Signature Component) -->
+<section class="px-gutter-mobile mb-space-lg">
+<div class="bg-surface-container-lowest p-0">
+<!-- Allocation Bar -->
+<div class="px-4 py-3 bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-mono text-[11px] tracking-[0.15em] uppercase text-on-surface">UPCOMING ALLOCATION • HLD-0612-4821</span>
+</div>
+<span class="font-label-mono text-[10px] tracking-wider uppercase text-secondary font-medium">CONFIRMED // STAGED</span>
+</div>
+<!-- Vehicle Stage -->
+<div class="relative w-full aspect-[4/3] bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Editorial studio portrait of a silver Range Rover Autobiography parked in an architectural concrete pavilion with gentle overhead diffused softbox lighting and neutral stone flooring, catalog aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB97bgP-Z-VhDQ-4Ic6nwmMrAweyzwt1SdKyB7VJPAEsGMC-FQrtGxtcni0yrPfsn49bNdOcX8jBJ7W9HMiVB3ZIPqYJG8w7ka7rzanSU9ralBpb_wVO4JmlvBGhTkzLJZVIFXv6qwfXJ9mUZ6Eg1qo9_V-X4sP3_ME3UKbJBFgD-Xvw2GF-zAgl56KBR3SUiFoMsi7KcIezLrcvDDP5y36iTdl7EiaiJE4_8C__po"/>
+<div class="absolute top-3 left-3 bg-surface/90 px-2 py-1 font-label-mono text-[9px] uppercase tracking-widest text-on-surface">
+          STAGE 01 • MUNICH
+        </div>
+</div>
+<!-- Information & Specs Ledger -->
+<div class="p-space-md bg-surface-container-lowest">
+<div class="flex flex-col mb-4">
+<span class="font-label-mono text-[10px] tracking-[0.16em] uppercase text-secondary mb-1">CATALOGUE № 14 // SOLIHULL ATELIER</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Range Rover Autobiography</h2>
+<span class="font-spec-numeral text-spec-numeral text-on-surface-variant mt-0.5">MY2024 • 4.4L V8 TWIN-TURBO • 530 PS</span>
+</div>
+<div class="grid grid-cols-2 gap-2 p-3 bg-surface-container-low mb-4">
+<div>
+<span class="block font-label-mono text-[9px] tracking-widest text-on-surface-variant uppercase">DISPATCH SCHEDULE</span>
+<span class="font-spec-numeral text-[13px] text-on-surface font-medium">12 JUN → 15 JUN 2025</span>
+<span class="block font-label-mono text-[9px] text-secondary mt-0.5">3 DIURNAL CYCLES</span>
+</div>
+<div>
+<span class="block font-label-mono text-[9px] tracking-widest text-on-surface-variant uppercase">STAGING SALON</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Munich Airport (MUC)</span>
+<span class="block font-label-mono text-[9px] text-secondary mt-0.5">TERMINAL 2 VIP PAVILION</span>
+</div>
+</div>
+<!-- Financial Ledger Row -->
+<div class="flex items-center justify-between py-2 px-1 mb-5 bg-surface-container-high/40 px-3">
+<span class="font-label-mono text-label-mono uppercase tracking-[0.15em] text-on-surface-variant">TOTAL COMMITMENT</span>
+<span class="font-spec-numeral text-spec-numeral text-on-surface font-semibold tracking-wider">€1,731.45 <span class="font-label-mono text-[9px] font-normal text-secondary">VAT INCL.</span></span>
+</div>
+<!-- Actions -->
+<div class="grid grid-cols-2 gap-3">
+<button class="w-full py-3.5 px-3 bg-surface-container text-on-surface font-action text-action uppercase tracking-[0.06em] text-center hover:bg-surface-container-high transition-colors">
+            Modify Itinerary
+          </button>
+<button class="w-full py-3.5 px-3 bg-primary text-on-primary font-action text-action uppercase tracking-[0.06em] text-center flex items-center justify-center gap-1.5 hover:bg-primary-container transition-colors">
+<span>View Dossier</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Past Journeys (Compact Archival Ledger Rows) -->
+<section class="px-gutter-mobile mb-space-lg">
+<div class="flex items-center justify-between pb-2 mb-3">
+<h3 class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-on-surface font-medium">
+        PAST JOURNEYS // 02 ARCHIVED
+      </h3>
+<span class="font-label-mono text-[10px] text-secondary tracking-widest">LOGS VERIFIED</span>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Ledger Row 1 -->
+<a class="block p-3.5 bg-surface-container-lowest hover:bg-surface-container transition-colors" href="#">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-mono text-[10px] tracking-wider text-secondary">HLD-0419-8802</span>
+<span class="font-label-mono text-[9px] uppercase tracking-widest bg-secondary-container px-2 py-0.5 text-on-secondary-fixed">COMPLETED</span>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h4 class="font-headline-sm text-[18px] text-on-surface">Porsche 911 GT3 Touring</h4>
+<p class="font-label-mono text-[10px] text-on-surface-variant mt-0.5">18 APR – 21 APR 2025 • ZURICH SALON • 642 KM</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">chevron_right</span>
+</div>
+</a>
+<!-- Ledger Row 2 -->
+<a class="block p-3.5 bg-surface-container-lowest hover:bg-surface-container transition-colors" href="#">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-mono text-[10px] tracking-wider text-secondary">HLD-0108-3319</span>
+<span class="font-label-mono text-[9px] uppercase tracking-widest bg-secondary-container px-2 py-0.5 text-on-secondary-fixed">COMPLETED</span>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h4 class="font-headline-sm text-[18px] text-on-surface">Audi RS6 Avant</h4>
+<p class="font-label-mono text-[10px] text-on-surface-variant mt-0.5">10 JAN – 14 JAN 2025 • ENGADIN PAVILION • 810 KM</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">chevron_right</span>
+</div>
+</a>
+</div>
+</section>
+<!-- Section 3: Saved Cars (Monitored Archive Strip) -->
+<section class="pl-gutter-mobile mb-space-lg">
+<div class="flex items-center justify-between pr-gutter-mobile pb-2 mb-3">
+<h3 class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-on-surface font-medium">
+        SAVED CARS // 03 MONITORED
+      </h3>
+<a class="font-label-mono text-[10px] text-primary uppercase tracking-widest underline underline-offset-4" href="#">VIEW ALL</a>
+</div>
+<!-- Horizontal Swipe Strip -->
+<div class="flex gap-3 overflow-x-auto pr-gutter-mobile pb-2 no-scrollbar">
+<!-- Card 1: Lexus LC 500 Coupe -->
+<div class="flex-shrink-0 w-[240px] bg-surface-container-lowest flex flex-col">
+<div class="relative w-full aspect-[3/2] bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Sculptural metallic champagne gold Lexus LC 500 Coupe in an architectural studio setting with warm textured monolithic concrete walls and polished pale stone flooring" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi5EFQCT7TsMNwx2efUyUS492iLnw-QoOtHpzn6zSzYBLmkhYz1AIyxunS5soVe4BuaKoyqKHNLXI5KFYiKWhYu-yV9y1da9b0FmUX8O3swS8CoYpmlHjb4HsMog95UrSU5ICjZ7uUQ9xEf0-uQfKoMGhBeo9lKUTtLgmlxeBiAfRmCU7Ypakkytsh5yHWK5s0Y_nVnJ9EqqnCAgmgz6dD_AzKhWuvviNWPoY3UWw"/>
+<span class="absolute top-2 left-2 bg-surface/90 px-1.5 py-0.5 font-label-mono text-[8px] uppercase tracking-widest text-primary font-bold">
+            AVAILABLE
+          </span>
+</div>
+<div class="p-3 flex-1 flex flex-col justify-between">
+<div>
+<span class="font-label-mono text-[9px] uppercase tracking-wider text-secondary">ARCHIVE № 28</span>
+<h4 class="font-headline-sm text-[16px] text-on-surface leading-tight mt-0.5">Lexus LC 500</h4>
+<p class="font-label-mono text-[10px] text-on-surface-variant mt-1">5.0L V8 • 477 PS</p>
+</div>
+<div class="flex items-center justify-between pt-3 mt-3 bg-surface-container-low px-2 py-1.5">
+<span class="font-spec-numeral text-[13px] text-on-surface font-semibold">€380 <span class="font-label-mono text-[8px] text-secondary font-normal">/ DAY</span></span>
+<button aria-label="Reserve Lexus LC 500" class="text-primary hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">bookmark_added</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Porsche 911 GT3 Touring -->
+<div class="flex-shrink-0 w-[240px] bg-surface-container-lowest flex flex-col">
+<div class="relative w-full aspect-[3/2] bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Side profile shot of a jet black Porsche 911 GT3 Touring staged in a minimalist museum gallery hall with brutalist concrete textures and soft natural skylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdg5Y7UkYbaEj3nto6JKbR54q9mH6DFyBBEcSGoO3yOGn7jY5vzRjGvT7jjMw7pqxBbMunBQJrK64Gv2nsah4XB_kHgW9N8TT2xMaOwKCt0eEjZ0nv4WCyDi71vygcftrY7vHf9rO_WM7db6flE4VwPlj45ojK4Kw27g6buEDfV2qwuNgGG_zUCYpFQOTVRUwkS37EbQRpkyKbIT1lF_bqFxdipdPSiidjY0Xn6iA"/>
+<span class="absolute top-2 left-2 bg-surface/90 px-1.5 py-0.5 font-label-mono text-[8px] uppercase tracking-widest text-primary font-bold">
+            AVAILABLE
+          </span>
+</div>
+<div class="p-3 flex-1 flex flex-col justify-between">
+<div>
+<span class="font-label-mono text-[9px] uppercase tracking-wider text-secondary">ARCHIVE № 09</span>
+<h4 class="font-headline-sm text-[16px] text-on-surface leading-tight mt-0.5">911 GT3 Touring</h4>
+<p class="font-label-mono text-[10px] text-on-surface-variant mt-1">4.0L FLAT-6 • 510 PS</p>
+</div>
+<div class="flex items-center justify-between pt-3 mt-3 bg-surface-container-low px-2 py-1.5">
+<span class="font-spec-numeral text-[13px] text-on-surface font-semibold">€540 <span class="font-label-mono text-[8px] text-secondary font-normal">/ DAY</span></span>
+<button aria-label="Reserve Porsche 911" class="text-primary hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">bookmark_added</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3: Audi RS6 Avant -->
+<div class="flex-shrink-0 w-[240px] bg-surface-container-lowest flex flex-col">
+<div class="relative w-full aspect-[3/2] bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Deep metallic blue Audi RS6 Avant wagon positioned inside a sunlit architectural museum wing featuring tall travertine walls and muted neutral stone floors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD8vBKdCPN1kdq9wVkgLuAw5dFLA4StoBfhbBr7pcwfrrN6pdqrxOap2O5eetVhS-veOFZPtqth-TMzyncJ2EVz1pd2A_zsMdkyWEvoVW7oZCr2wyD6sXoI0LnAoPuJ-MNzUAaL-zhZDmp6yIWTELsBGBEvGA_0VEksJf2C2_ZJJTrGH7L1o-mvUNRAqupTWvZmqzqvsW4YiCu2I2jvJT5Hbmb9DlZjgANo6nd7Y0"/>
+<span class="absolute top-2 left-2 bg-inverse-surface/90 text-inverse-on-surface px-1.5 py-0.5 font-label-mono text-[8px] uppercase tracking-widest">
+            STAGED UNTIL 16 JUN
+          </span>
+</div>
+<div class="p-3 flex-1 flex flex-col justify-between">
+<div>
+<span class="font-label-mono text-[9px] uppercase tracking-wider text-secondary">ARCHIVE № 19</span>
+<h4 class="font-headline-sm text-[16px] text-on-surface leading-tight mt-0.5">Audi RS6 Avant</h4>
+<p class="font-label-mono text-[10px] text-on-surface-variant mt-1">4.0L TFSI V8 • 600 PS</p>
+</div>
+<div class="flex items-center justify-between pt-3 mt-3 bg-surface-container-low px-2 py-1.5">
+<span class="font-spec-numeral text-[13px] text-on-surface font-semibold">€410 <span class="font-label-mono text-[8px] text-secondary font-normal">/ DAY</span></span>
+<button aria-label="Reserve Audi RS6" class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Patron Concierge Direct Line Capsule -->
+<section class="px-gutter-mobile mb-space-lg">
+<div class="p-space-md bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">concierge</span>
+</div>
+<div>
+<span class="font-label-mono text-[10px] uppercase tracking-[0.15em] text-on-surface-variant block">DIRECT CURATOR DESK</span>
+<span class="font-action text-[13px] text-on-surface font-semibold">Julian von Berg • Liaison № 4</span>
+</div>
+</div>
+<button class="px-3 py-1.5 bg-surface-container-lowest text-primary font-label-mono text-[10px] tracking-wider uppercase hover:bg-primary hover:text-on-primary transition-colors">
+        TRANSMIT →
+      </button>
+</div>
+</section>
+</div></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(23,26,24,0.03)]" data-active-classes="text-primary border-t-2 border-primary"><div class="flex items-center justify-around h-16 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] h-11 px-2 transition-colors text-primary border-t-2 border-primary" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">account_circle</span><span class="font-label-mono text-[9px] uppercase tracking-widest mt-0.5">Circle</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-11 px-2 text-on-surface-variant hover:text-on-surface transition-colors" data-path="sanctuary-fleet" href="#"><span class="material-symbols-outlined text-[20px]">garage</span><span class="font-label-mono text-[9px] uppercase tracking-widest mt-0.5">Fleet</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-11 px-2 text-on-surface-variant hover:text-on-surface transition-colors" data-path="dossier-archive" href="#"><span class="material-symbols-outlined text-[20px]">folder_special</span><span class="font-label-mono text-[9px] uppercase tracking-widest mt-0.5">Dossier</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-11 px-2 text-on-surface-variant hover:text-on-surface transition-colors" data-path="concierge-desk" href="#"><span class="material-symbols-outlined text-[20px]">room_service</span><span class="font-label-mono text-[9px] uppercase tracking-widest mt-0.5">Liaison</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-11 px-2 text-on-surface-variant hover:text-on-surface transition-colors" data-path="patron-settings" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span class="font-label-mono text-[9px] uppercase tracking-widest mt-0.5">Config</span></a></div></nav></body></html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600&amp;family=Manrope:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"surface-bright":"#f8faf6","surface-dim":"#d9dad7","on-background":"#191c1a","on-secondary-fixed":"#121e14","tertiary-container":"#454540","on-tertiary":"#ffffff","tertiary":"#2e2f2a","on-secondary-fixed-variant":"#3c4a3d","secondary-fixed":"#d7e7d5","primary-fixed-dim":"#b4cdbb","surface-variant":"#e1e3df","tertiary-fixed":"#e4e2db","on-secondary-container":"#59685a","on-surface":"#191c1a","on-error-container":"#93000a","surface-tint":"#4d6355","inverse-primary":"#b4cdbb","error":"#ba1a1a","on-tertiary-fixed-variant":"#474742","on-primary-container":"#a0b9a8","background":"#f8faf6","secondary":"#546254","surface-container-highest":"#e1e3df","on-error":"#ffffff","secondary-fixed-dim":"#bbcbba","surface-container-low":"#f3f4f0","secondary-container":"#d7e7d5","outline":"#737973","on-primary-fixed-variant":"#364c3f","surface-container-lowest":"#ffffff","on-secondary":"#ffffff","surface":"#f8faf6","on-primary-fixed":"#0a2015","primary-container":"#344a3d","on-primary":"#ffffff","on-surface-variant":"#424844","primary-fixed":"#cfe9d7","surface-container-high":"#e7e9e5","inverse-surface":"#2e312f","inverse-on-surface":"#f0f1ed","primary":"#1e3327","error-container":"#ffdad6","outline-variant":"#c2c8c2","on-tertiary-fixed":"#1b1c18","tertiary-fixed-dim":"#c8c6c0","surface-container":"#edeeeb","on-tertiary-container":"#b4b2ac"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter":"1.5rem","space-lg":"2rem","space-sm":"0.5rem","gutter-mobile":"1rem","space-xs":"0.25rem","margin":"4rem","space-xl":"4rem","margin-mobile":"1.5rem","space-md":"1rem"},"fontFamily":{"action":["Manrope"],"display":["Bodoni Moda"],"headline-lg":["Bodoni Moda"],"headline-sm":["Bodoni Moda"],"headline-md":["Bodoni Moda"],"body-sm":["Manrope"],"label-mono":["Space Mono"],"body-lg":["Manrope"],"spec-numeral":["Space Mono"],"headline-lg-mobile":["Bodoni Moda"],"display-mobile":["Bodoni Moda"],"body-md":["Manrope"]},"fontSize":{"action":["13px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"display":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"400"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.015em","fontWeight":"400"}],"headline-sm":["22px",{"lineHeight":"28px","fontWeight":"400"}],"headline-md":["28px",{"lineHeight":"36px","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"label-mono":["11px",{"lineHeight":"16px","letterSpacing":"0.12em","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"spec-numeral":["14px",{"lineHeight":"20px","letterSpacing":"0.02em","fontWeight":"400"}],"headline-lg-mobile":["28px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"400"}],"display-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant"><div class="h-20 max-w-7xl mx-auto px-margin-mobile lg:px-margin flex items-center justify-between"><a class="font-headline-sm text-headline-sm tracking-widest uppercase text-on-surface" data-path="overview" href="#">HALDEN</a><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-primary font-semibold"><a class="font-action text-action uppercase text-on-surface-variant hover:text-on-surface transition-colors" data-path="fleet" href="#">Fleet</a><a class="font-action text-action uppercase text-on-surface-variant hover:text-on-surface transition-colors" data-path="journeys" href="#">Journeys</a><a class="font-action text-action uppercase text-on-surface-variant hover:text-on-surface transition-colors" data-path="about" href="#">About</a></nav><div class="relative group flex items-center gap-space-sm"><button class="flex items-center gap-space-sm py-space-xs text-on-surface hover:text-primary transition-colors" type="button"><span class="font-body-sm text-body-sm font-medium">Clara V.</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></button><div class="hidden group-hover:block absolute right-0 top-full pt-space-xs w-52 z-50"><nav class="bg-surface border border-outline-variant py-space-xs flex flex-col" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="overview" href="#">Overview</a><a class="px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="reservations" href="#">Reservations</a><a class="px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="saved-cars" href="#">Saved cars</a><a class="px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="settings" href="#">Settings</a><div class="my-space-xs border-t border-outline-variant"></div><a class="px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="sign-out" href="#">Sign out</a></nav></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<div class="max-w-7xl mx-auto w-full px-margin-mobile lg:px-margin py-space-lg lg:py-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- LEFT COLUMN: Sticky Navigation & Patron Metadata -->
+<aside class="lg:col-span-3 lg:sticky lg:top-28 space-y-space-lg">
+<nav aria-label="Account Settings Sections" class="bg-surface-container-low border border-outline-variant p-space-md">
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest pb-space-sm border-b border-outline-variant">
+            ARCHIVE // ACCOUNT
+          </p>
+<ul class="mt-space-sm space-y-space-xs font-label-mono text-label-mono uppercase">
+<li>
+<a class="block py-space-sm px-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface transition-colors" data-path="overview" href="#">
+                01 OVERVIEW
+              </a>
+</li>
+<li>
+<a class="block py-space-sm px-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface transition-colors" data-path="reservations" href="#">
+                02 RESERVATIONS
+              </a>
+</li>
+<li>
+<a class="block py-space-sm px-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface transition-colors" data-path="saved-cars" href="#">
+                03 SAVED CARS
+              </a>
+</li>
+<li>
+<a class="block py-space-sm px-space-xs text-on-surface bg-surface font-semibold border-l-2 border-primary-container pl-space-sm" data-path="settings" href="#">
+                04 SETTINGS
+              </a>
+</li>
+</ul>
+</nav>
+<!-- Patron Placard -->
+<div class="bg-surface-container border border-outline-variant p-space-md">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant block">Patron Identification</span>
+<p class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">№ 802</p>
+<div class="w-full h-px bg-outline-variant my-space-sm"></div>
+<div class="flex items-center justify-between font-label-mono text-label-mono text-on-surface-variant">
+<span>PATRON SINCE</span>
+<span class="font-spec-numeral text-spec-numeral text-on-surface font-semibold">2025</span>
+</div>
+<div class="flex items-center justify-between font-label-mono text-label-mono text-on-surface-variant mt-space-xs">
+<span>JOURNEYS COMPLETED</span>
+<span class="font-spec-numeral text-spec-numeral text-on-surface font-semibold">03</span>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-none bg-primary"></span>
+<span class="font-label-mono text-label-mono text-primary uppercase font-bold tracking-wider">TIER-1 ARCHIVE CLEARANCE</span>
+</div>
+</div>
+</aside>
+<!-- MAIN COLUMN: Settings Spec Matrix -->
+<section class="lg:col-span-9 space-y-space-xl">
+<!-- Header -->
+<header class="space-y-space-xs border-b border-outline-variant pb-space-lg">
+<span class="font-label-mono text-label-mono uppercase text-on-surface-variant tracking-widest block">
+            PATRON CIRCLE // PROFILE &amp; CREDENTIAL SPECIFICATION
+          </span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Account Settings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl pt-space-xs">
+            Manage your custodial credentials, driving privileges, bespoke communications, and authentication security.
+          </p>
+</header>
+<!-- Form Shell -->
+<form class="space-y-space-xl" onsubmit="event.preventDefault();">
+<!-- 01 // Personal Details -->
+<fieldset class="space-y-space-md pt-space-xs">
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-outline-variant pb-space-xs">
+<legend class="font-headline-md text-headline-md text-on-surface">Personal Details</legend>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mt-1 sm:mt-0">SECTION // 01</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-space-xs">
+<!-- First Name -->
+<div class="space-y-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-mono text-label-mono uppercase text-on-surface" for="first-name">Legal Forename</label>
+<span class="font-label-mono text-label-mono text-on-surface-variant">PASSPORT ID</span>
+</div>
+<input class="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-none transition-colors rounded-[2px]" id="first-name" type="text" value="Clara"/>
+</div>
+<!-- Last Name -->
+<div class="space-y-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-mono text-label-mono uppercase text-on-surface" for="last-name">Legal Surname</label>
+<span class="font-label-mono text-label-mono text-on-surface-variant">PASSPORT ID</span>
+</div>
+<input class="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-none transition-colors rounded-[2px]" id="last-name" type="text" value="von Bergmann"/>
+</div>
+<!-- Email Field with Verified Badge -->
+<div class="space-y-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-mono text-label-mono uppercase text-on-surface" for="email">Custodial Email</label>
+<span class="inline-flex items-center gap-1 font-label-mono text-label-mono text-primary bg-secondary-fixed px-1.5 py-0.5 uppercase tracking-wider">
+<span class="w-1.5 h-1.5 bg-primary"></span>
+                    Verified
+                  </span>
+</div>
+<input class="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-none transition-colors rounded-[2px]" id="email" type="email" value="clara.bergmann@atelier-v.ch"/>
+</div>
+<!-- Mobile Phone -->
+<div class="space-y-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-mono text-label-mono uppercase text-on-surface" for="phone">Mobile Telephone</label>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">PRIMARY DISPATCH SMS</span>
+</div>
+<input class="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-none transition-colors rounded-[2px]" id="phone" type="tel" value="+49 170 558 9124"/>
+</div>
+<!-- Date of Birth -->
+<div class="space-y-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-mono text-label-mono uppercase text-on-surface" for="dob">Date of Birth</label>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">REQUIRED FOR INSURANCE</span>
+</div>
+<input class="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-none transition-colors rounded-[2px]" id="dob" type="text" value="14 / 08 / 1988"/>
+</div>
+<!-- Error State Demonstration: Emergency Dispatch Field -->
+<div class="space-y-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-mono text-label-mono uppercase text-error font-semibold" for="emergency-contact">Secondary Hotline / Escort</label>
+<span class="font-label-mono text-label-mono text-error uppercase">REQUIRED // INVALID FORMAT</span>
+</div>
+<input aria-describedby="emergency-error" aria-invalid="true" class="w-full h-12 px-space-sm bg-surface-container-lowest border border-error text-error font-body-md focus:border-error focus:outline-none rounded-[2px]" id="emergency-contact" type="text" value="089 / 41-T2"/>
+<p class="font-label-mono text-label-mono text-error uppercase tracking-normal" id="emergency-error">
+                  Please enter a valid Swiss or EU mobile telephone number (+41 / +49).
+                </p>
+</div>
+</div>
+</fieldset>
+<!-- 02 // Driving Licence & Qualifications -->
+<fieldset class="space-y-space-md pt-space-md">
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-outline-variant pb-space-xs">
+<legend class="font-headline-md text-headline-md text-on-surface">Driving Licence</legend>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mt-1 sm:mt-0">SECTION // 02</span>
+</div>
+<!-- Hint Box -->
+<div class="bg-surface-container border border-outline-variant p-space-sm flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">verified_user</span>
+<p class="font-label-mono text-label-mono text-on-surface-variant leading-relaxed">
+                TIER-1 VERIFICATION PROTOCOL: Archival grand tourers and twin-turbocharged platforms require authenticated Swiss Category B or equivalent international reciprocal permits with active road verification.
+              </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="space-y-space-xs md:col-span-2">
+<label class="font-label-mono text-label-mono uppercase text-on-surface block" for="licence-country">Issuing Authority / Category</label>
+<select class="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-none rounded-[2px]" id="licence-country">
+<option selected="">Switzerland (CH) — Category B / BE</option>
+<option>Germany (DE) — Klasse B / BE</option>
+<option>Austria (AT) — Klasse B</option>
+<option>Italy (IT) — Patente B</option>
+</select>
+</div>
+<div class="space-y-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-mono text-label-mono uppercase text-on-surface" for="licence-validity">Status</label>
+<span class="font-label-mono text-label-mono text-primary font-semibold">VALID</span>
+</div>
+<div class="h-12 px-space-sm bg-secondary-fixed border border-secondary text-primary font-label-mono text-label-mono flex items-center justify-between">
+<span class="tracking-widest">VERIFIED // TIER-1 ACCREDITED</span>
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+</div>
+</div>
+<div class="space-y-space-xs md:col-span-2">
+<label class="font-label-mono text-label-mono uppercase text-on-surface block" for="licence-number">Licence Identification Code</label>
+<input class="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-none rounded-[2px]" id="licence-number" type="text" value="B-84920419-ZH"/>
+</div>
+<div class="space-y-space-xs">
+<label class="font-label-mono text-label-mono uppercase text-on-surface block" for="licence-expiry">Expiration Spec</label>
+<input class="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-none rounded-[2px]" id="licence-expiry" type="text" value="12 / 2031"/>
+</div>
+</div>
+<!-- Upload Zone -->
+<div class="space-y-space-xs pt-space-xs">
+<label class="font-label-mono text-label-mono uppercase text-on-surface block">Physical Document Scans (Front &amp; Rear Dossier)</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Front Scan: Uploaded -->
+<div class="border border-outline-variant bg-surface-container-lowest p-space-md flex flex-col justify-between h-36">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-mono text-label-mono uppercase text-primary font-semibold block flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+                        FRONT SCAN ATTACHED
+                      </span>
+<p class="font-label-mono text-body-sm text-on-surface mt-1 truncate max-w-[200px]">CH_PERMIS_BERGMANN_FRONT.PDF</p>
+<span class="font-spec-numeral text-body-sm text-on-surface-variant">2.4 MB · Cryptographic Hash OK</span>
+</div>
+</div>
+<div class="flex justify-end pt-space-xs border-t border-outline-variant">
+<button class="font-action text-action uppercase text-on-surface hover:text-primary transition-colors" type="button">
+                      Replace Document
+                    </button>
+</div>
+</div>
+<!-- Rear Scan: Dropzone -->
+<div class="border border-dashed border-outline-variant bg-surface-container-low hover:bg-surface-container p-space-md flex flex-col items-center justify-center text-center cursor-pointer transition-colors h-36">
+<span class="material-symbols-outlined text-on-surface-variant text-[24px] mb-1">upload_file</span>
+<p class="font-label-mono text-label-mono uppercase text-on-surface">DROP REAR SCAN OR BROWSE FILES</p>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-1">PDF, TIFF, JPG UP TO 15MB</span>
+</div>
+</div>
+</div>
+</fieldset>
+<!-- 03 // Preferences & Logistics -->
+<fieldset class="space-y-space-md pt-space-md">
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-outline-variant pb-space-xs">
+<legend class="font-headline-md text-headline-md text-on-surface">Preferences</legend>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mt-1 sm:mt-0">SECTION // 03</span>
+</div>
+<!-- Pick-up Hub -->
+<div class="space-y-space-xs max-w-xl">
+<div class="flex justify-between items-center">
+<label class="font-label-mono text-label-mono uppercase text-on-surface" for="primary-hub">Default Archival Pavilion (Pick-up Hub)</label>
+<span class="font-label-mono text-label-mono text-on-surface-variant">PRIORITY TRANSIT</span>
+</div>
+<select class="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-none rounded-[2px]" id="primary-hub">
+<option selected="">Munich Airport (MUC) — Terminal 2 VIP Pavilion</option>
+<option>Zurich Kloten (ZRH) — Executive Aviation Center</option>
+<option>Milan Linate (LIN) — Private Aviation Gallery</option>
+<option>Geneva Cointrin (GVA) — Salon de Manutention</option>
+</select>
+</div>
+<!-- Communication Toggles -->
+<div class="space-y-space-sm pt-space-xs">
+<span class="font-label-mono text-label-mono uppercase text-on-surface block">Dispatch &amp; Curatorial Signals</span>
+<!-- Item 1 -->
+<label class="flex items-start gap-space-sm p-space-sm bg-surface-container-low border border-outline-variant cursor-pointer hover:bg-surface-container transition-colors">
+<input checked="" class="mt-1 w-4 h-4 rounded-none accent-primary border border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Booking &amp; dossier updates by encrypted email</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Receive cryptographically verified condition reports, invoice ledgers, and terminal access tokens.</span>
+</div>
+</label>
+<!-- Item 2 -->
+<label class="flex items-start gap-space-sm p-space-sm bg-surface-container-low border border-outline-variant cursor-pointer hover:bg-surface-container transition-colors">
+<input checked="" class="mt-1 w-4 h-4 rounded-none accent-primary border border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">SMS handover concierge reminders &amp; chauffeur coordinates</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Direct mobile telemetry updates 60 minutes prior to pavilion arrivals or staging changes.</span>
+</div>
+</label>
+<!-- Item 3 -->
+<label class="flex items-start gap-space-sm p-space-sm bg-surface-container-low border border-outline-variant cursor-pointer hover:bg-surface-container transition-colors">
+<input checked="" class="mt-1 w-4 h-4 rounded-none accent-primary border border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold">"The Dispatch" — Halden quarterly automotive monograph &amp; private salon invitations</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Delivered physically to primary billing address and previewed via private digital archive view.</span>
+</div>
+</label>
+</div>
+</fieldset>
+<!-- 04 // Security & Authentication -->
+<fieldset class="space-y-space-md pt-space-md">
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-outline-variant pb-space-xs">
+<legend class="font-headline-md text-headline-md text-on-surface">Security</legend>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mt-1 sm:mt-0">SECTION // 04</span>
+</div>
+<!-- Passcode Update Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-xs">
+<div class="space-y-space-xs">
+<label class="font-label-mono text-label-mono uppercase text-on-surface block" for="current-pass">Current Passcode</label>
+<input class="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-none rounded-[2px]" id="current-pass" type="password" value="••••••••••••"/>
+</div>
+<div class="space-y-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-mono text-label-mono uppercase text-on-surface" for="new-pass">New Passcode</label>
+<span class="font-label-mono text-label-mono text-primary font-bold">STRONG</span>
+</div>
+<input class="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-none rounded-[2px]" id="new-pass" type="password" value="vB-Munich_2025!"/>
+<!-- Password Strength Meter: 4 Segments -->
+<div aria-label="Passcode Strength: 4 out of 4" class="grid grid-cols-4 gap-1 pt-1">
+<div class="h-1 bg-primary"></div>
+<div class="h-1 bg-primary"></div>
+<div class="h-1 bg-primary"></div>
+<div class="h-1 bg-primary"></div>
+</div>
+</div>
+<div class="space-y-space-xs">
+<label class="font-label-mono text-label-mono uppercase text-on-surface block" for="confirm-pass">Confirm New Passcode</label>
+<input class="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-none rounded-[2px]" id="confirm-pass" type="password" value="vB-Munich_2025!"/>
+</div>
+</div>
+<!-- Active Sessions List -->
+<div class="space-y-space-xs pt-space-md">
+<span class="font-label-mono text-label-mono uppercase text-on-surface block">Authenticated Sessions</span>
+<div class="border border-outline-variant bg-surface-container-lowest divide-y divide-outline-variant">
+<!-- Session 1: Current -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 bg-primary shrink-0"></span>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Munich, Germany · Safari on macOS</span>
+<span class="font-label-mono text-[10px] tracking-wider uppercase bg-secondary-fixed text-primary px-1 py-0.5 font-bold">Active Now</span>
+</div>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-0.5">IP: 84.114.22.18 · SESSION ID: #HAL-MUC-991A</p>
+</div>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase self-start md:self-auto">Primary Terminal</span>
+</div>
+<!-- Session 2 -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 bg-outline-variant shrink-0"></span>
+<div>
+<span class="font-body-md text-body-md font-medium text-on-surface">Zurich, Switzerland · Halden Mobile App (iOS 18)</span>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-0.5">LAST ACTIVE: YESTERDAY 21:14 · IP: 178.197.230.12</p>
+</div>
+</div>
+<button class="font-action text-action uppercase text-on-surface-variant hover:text-error transition-colors self-start md:self-auto" type="button">
+                    Sign out
+                  </button>
+</div>
+<!-- Session 3 -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 bg-outline-variant shrink-0"></span>
+<div>
+<span class="font-body-md text-body-md font-medium text-on-surface">Milan, Italy · Chrome on iPadOS</span>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-0.5">LAST ACTIVE: 28 MAY 2025 · IP: 93.42.180.77</p>
+</div>
+</div>
+<button class="font-action text-action uppercase text-on-surface-variant hover:text-error transition-colors self-start md:self-auto" type="button">
+                    Sign out
+                  </button>
+</div>
+</div>
+</div>
+</fieldset>
+<!-- 05 // Danger Zone -->
+<fieldset class="space-y-space-md pt-space-md">
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-outline-variant pb-space-xs">
+<legend class="font-headline-md text-headline-md text-error">Danger Zone</legend>
+<span class="font-label-mono text-label-mono text-error uppercase tracking-widest mt-1 sm:mt-0">SECTION // 05</span>
+</div>
+<div class="bg-surface-container border border-outline-variant p-space-md flex flex-col sm:flex-row justify-between sm:items-center gap-space-md">
+<div class="space-y-space-xs max-w-xl">
+<span class="font-headline-sm text-headline-sm text-on-surface block">Decommission Patron Dossier</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  Permanently purge your patron history, release verified driving credentials, and forfeit accrued Patron Circle reservation priority. This irreversible action revokes physical pavilion access tokens.
+                </p>
+</div>
+<button class="font-action text-action uppercase text-error hover:bg-error-container hover:text-on-error-container px-space-md py-space-sm border border-error transition-colors shrink-0 rounded-[2px] text-center" type="button">
+                Delete account / Void membership
+              </button>
+</div>
+</fieldset>
+</form>
+<!-- Sticky Save Bar -->
+<div class="sticky bottom-0 z-40 bg-surface-container-high border-t border-outline-variant p-space-md flex flex-col sm:flex-row justify-between items-center gap-space-sm mt-space-xl">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-none bg-amber-600 animate-pulse"></span>
+<span class="font-label-mono text-label-mono uppercase tracking-wider text-on-surface">
+              UNSAVED CHANGES // EDITED 1 MIN AGO
+            </span>
+</div>
+<div class="flex items-center gap-space-md w-full sm:w-auto justify-end">
+<button class="font-action text-action uppercase text-on-surface hover:text-primary transition-colors px-space-sm py-space-xs" type="button">
+              Discard changes
+            </button>
+<button class="bg-primary-container text-on-primary font-action text-action uppercase tracking-widest px-6 py-3 rounded-[2px] hover:bg-primary transition-colors" onclick="triggerToast()" type="button">
+              Save changes
+            </button>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Confirmation Toast Notification (Bottom Right) -->
+<aside aria-live="polite" class="fixed bottom-6 right-6 z-50 bg-inverse-surface border border-outline text-inverse-on-surface p-space-md max-w-md shadow-none flex items-start gap-space-sm transition-all duration-300 translate-y-0 opacity-100" id="confirmation-toast" role="status">
+<div class="w-5 h-5 bg-primary text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-mono text-label-mono text-primary-fixed uppercase tracking-wider font-bold">
+        SETTINGS SAVED
+      </span>
+<p class="font-body-sm text-body-sm text-inverse-on-surface">
+        Patron credentials and notification dispatch preferences updated in the archival ledger.
+      </p>
+</div>
+<button aria-label="Close notification" class="text-on-tertiary-container hover:text-inverse-on-surface ml-auto -mr-1 -mt-1 p-1" onclick="closeToast()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</aside>
+<!-- Interactive script for toast demo -->
+<script>
+    function closeToast() {
+      const toast = document.getElementById('confirmation-toast');
+      if (toast) {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(16px)';
+        setTimeout(() => { toast.style.display = 'none'; }, 300);
+      }
+    }
+
+    function triggerToast() {
+      const toast = document.getElementById('confirmation-toast');
+      if (toast) {
+        toast.style.display = 'flex';
+        setTimeout(() => {
+          toast.style.opacity = '1';
+          toast.style.transform = 'translateY(0)';
+        }, 10);
+      }
+    }
+  </script>
+</div></main><footer class="w-full bg-inverse-surface text-inverse-on-surface py-space-xl border-t border-outline-variant"><div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-lg pb-space-lg border-b border-outline/30"><div><span class="font-headline-sm text-headline-sm tracking-widest uppercase text-inverse-on-surface">HALDEN</span><p class="mt-space-sm font-body-sm text-body-sm text-on-tertiary-container">Architectural mobility and curated automotive archives for the discerning patron.</p></div><div><h4 class="font-label-mono text-label-mono uppercase text-on-tertiary-container mb-space-md">Fleet</h4><ul class="space-y-space-sm font-body-sm text-body-sm"><li><a class="text-inverse-on-surface hover:text-primary-fixed transition-colors" data-path="fleet" href="#">Grand Tourers</a></li><li><a class="text-inverse-on-surface hover:text-primary-fixed transition-colors" data-path="fleet" href="#">Heritage Coupes</a></li><li><a class="text-inverse-on-surface hover:text-primary-fixed transition-colors" data-path="fleet" href="#">Electric Flagships</a></li></ul></div><div><h4 class="font-label-mono text-label-mono uppercase text-on-tertiary-container mb-space-md">Locations</h4><ul class="space-y-space-sm font-body-sm text-body-sm"><li><a class="text-inverse-on-surface hover:text-primary-fixed transition-colors" data-path="about" href="#">Munich Archive</a></li><li><a class="text-inverse-on-surface hover:text-primary-fixed transition-colors" data-path="about" href="#">Zurich Salon</a></li><li><a class="text-inverse-on-surface hover:text-primary-fixed transition-colors" data-path="about" href="#">Milan Gallery</a></li></ul></div><div><h4 class="font-label-mono text-label-mono uppercase text-on-tertiary-container mb-space-md">Support</h4><ul class="space-y-space-sm font-body-sm text-body-sm"><li><a class="text-inverse-on-surface hover:text-primary-fixed transition-colors" data-path="overview" href="#">Patron Concierge</a></li><li><a class="text-inverse-on-surface hover:text-primary-fixed transition-colors" data-path="reservations" href="#">Reservation Terms</a></li><li><a class="text-inverse-on-surface hover:text-primary-fixed transition-colors" data-path="settings" href="#">Account Preferences</a></li></ul></div></div><div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md font-label-mono text-label-mono uppercase text-on-tertiary-container"><span>© 2025 HALDEN PATRON CIRCLE. ALL RIGHTS RESERVED.</span><span>ARCHIVE EDITION // EU</span></div></div></footer>
+</body></html>

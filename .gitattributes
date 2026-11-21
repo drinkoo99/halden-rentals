@@ -12,3 +12,4 @@
 
 # Verbatim Google Stitch exports: keep byte-for-byte, exclude from whitespace checks and GitHub language stats
 design/stitch-export/** -whitespace linguist-vendored
+design/stitch-export-round2/** -whitespace linguist-vendored

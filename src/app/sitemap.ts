@@ -7,6 +7,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${SITE}/`, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE}/fleet`, changeFrequency: "daily", priority: 0.9 },
+    { url: `${SITE}/journeys`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE}/journeys/high-alpine-transversal`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE}/about`, changeFrequency: "monthly", priority: 0.6 },
     ...vehicles.map((v) => ({ url: `${SITE}/fleet/${v.slug}`, changeFrequency: "weekly" as const, priority: 0.8 })),
   ];
 }

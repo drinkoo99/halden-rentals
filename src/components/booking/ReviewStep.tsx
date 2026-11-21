@@ -322,7 +322,7 @@ export function ReviewStep() {
               <span className="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">
                 I confirm that the principal driver is 28+ years of age, holds a valid Class B driving license for at least 3 years, and agree to
                 the{" "}
-                <Link className="text-primary underline underline-offset-4 hover:text-primary-container" href="/#about">
+                <Link className="text-primary underline underline-offset-4 hover:text-primary-container" href="/about">
                   HALDEN Exhibition Terms &amp; Conditions
                 </Link>
                 .

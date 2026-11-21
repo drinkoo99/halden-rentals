@@ -4,7 +4,8 @@ A premium European car-rental platform — "The Gallery". Cars are presented lik
 gallery: warm ivory and stone, deep ink, forest green, Bodoni Moda headlines, Manrope UI and mono specifications.
 
 The visual design is a faithful implementation of the Google Stitch project **"Halden Luxury Car Rental"**
-(exports in `design/stitch-export/`). See `docs/IMPLEMENTATION_PLAN.md` for the screen → route map.
+(round 1 exports in `design/stitch-export/`, round 2 in `design/stitch-export-round2/`). See
+`docs/IMPLEMENTATION_PLAN.md` for the screen → route map.
 
 ## Stack
 
@@ -40,8 +41,21 @@ npm test           # Vitest unit tests
 - **Booking** (`/book/[slug]/trip → extras → details → review → confirmed`): range calendar with past dates disabled,
   handover times, one-way returns, opt-in extras with live totals, validated driver form (age 28+, international phone,
   licence), review with consent, demo confirmation with printable dossier. State is kept in `sessionStorage`.
-- **Sign in** (`/sign-in`): validated sign-in / request-access forms. Accounts are not live yet; the page says so
-  instead of pretending to sign in. `?next=` only accepts same-site paths.
+- **Mobile booking**: phones get the Stitch mobile booking screens (trip with hub and calendar sheets, extras,
+  details with licence-country sheet, review with the disabled → active confirm state, confirmation with .ics
+  download), sharing the same state and validation as desktop.
+- **Patron account** (`/account`, `/account/settings`, `/account/reservations/hld-0612-4821` + `/modify`, `/cancel`):
+  overview (empty state after cancelling), saved cars, settings with save confirmation, reservation dossier on desktop
+  and mobile, modify drawer, cancel dialog → cancelled dossier. Demo data for one patron and one reservation.
+- **Sign in & access** (`/sign-in`, `/request-access`, `/forgot-passcode`, `/reset-passcode`, `/sign-in/error`):
+  validated forms, live passcode strength, resend countdowns, error/lockout state. Accounts are not live yet; the pages
+  say so instead of pretending. `?next=` only accepts same-site paths.
+- **Content** (`/about`, `/journeys`, `/journeys/high-alpine-transversal`): The Standard, enquiry form, route index with
+  region/duration/season filters, journey detail with "Reserve for this route" into booking.
+- **Staff console** (`/staff`, `/staff/fleet`, `/staff/bookings`, `/staff/availability`, `/staff/customers` and their
+  detail pages) and the **curbside mobile console** (`/staff/curbside`, `/handover`, `/lookup`): Stitch designs with
+  demo data and their micro-interactions; not protected and not connected to data until the backend phase.
+- **System states** (`/states`): the Stitch reference board for loading, empty, error and dialog states.
 - 404 page, sitemap, robots, per-vehicle metadata.
 
 ## Honest limits (demo)
@@ -62,11 +76,14 @@ npm test           # Vitest unit tests
 | Counts like "24 cars", "Showing 6 of 24" | Derived from the data | The UI never claims numbers it can't back up |
 | "View my bookings" (23) | "Browse the fleet" | No account dashboard exists yet |
 
-## Not designed in Stitch yet
+## Round 2 notes
 
-Customer dashboard / reservations / favourites page, registration flow, admin dashboard, About and Journeys pages,
-mobile booking and mobile sign-in layouts (the desktop layouts are responsive in the meantime), and dialogs such as
-the itinerary editor and photo lightbox (built from existing tokens).
+- The round 2 screens were converted from the Stitch HTML with a markup-preserving converter (React attribute names,
+  Tailwind v3 → v4 class renames, local images through `next/image`), then wired by hand. Layout and copy are Stitch's.
+- 23 Stitch photos are only viewable inside Stitch (private `/aida/` URLs, not even in its own previews); they were
+  matched to the same cars/scenes already in `public/images` (HD versions from round 1).
+- Booking data uses the app's real hubs, extras and prices in euros where the mockups showed other hubs or dollars.
+- Staff and account pages are demo screens: a real launch needs authentication and the database first.
 
 ## Project layout
 
@@ -75,7 +92,8 @@ design/            Stitch exports (source of truth), token dump, image originals
 docs/              Implementation plan
 public/images/     Photography (Stitch exports + Stitch originals at full size)
 src/app/           Routes
-src/components/    home/, fleet/, vehicle/, booking/, auth/, site/, ui/
+src/components/    home/, fleet/, vehicle/, booking/ (+ mobile/), account/, auth/, content/, staff/, states/, site/, ui/
 src/data/          vehicles, locations, extras, media (single place for every image)
-src/lib/           itinerary, pricing, fleet filters, favourites, booking validation (+ *.test.ts)
+src/lib/           itinerary, pricing, fleet filters, favourites, booking validation, ics, countdown (+ *.test.ts)
+scripts/           image finalize (Real-ESRGAN blend), photo-sizes generator
 ```

@@ -13,10 +13,10 @@ type TriggerVariant = "bars" | "icon";
 const links = [
   { n: "01", label: "Fleet", href: "/fleet", tag: `${vehicles.length} EXHIBITS`, sub: "Sculptural Automotive Archive" },
   // Anchors point at the mobile homepage sections (screen 28), since this menu only shows below md.
-  { n: "02", label: "Journeys", href: "/#routes", tag: "CURATED ROUTES", sub: "Alpine Passes & St. Moritz" },
-  { n: "03", label: "The Standard", href: "/#standard-mobile", tag: "MANIFESTO", sub: "Purity & Mechanical Protocol" },
-  { n: "04", label: "Patron Circle", href: "/sign-in", tag: "PRIVILEGES", sub: "Private Key Access & Garaging" },
-  { n: "05", label: "About HALDEN", href: "/#dispatch", tag: null, sub: "Design Architecture & Team" },
+  { n: "02", label: "Journeys", href: "/journeys", tag: "CURATED ROUTES", sub: "Alpine Passes & St. Moritz" },
+  { n: "03", label: "The Standard", href: "/about", tag: "MANIFESTO", sub: "Purity & Mechanical Protocol" },
+  { n: "04", label: "Patron Circle", href: "/account", tag: "PRIVILEGES", sub: "Private Key Access & Garaging" },
+  { n: "05", label: "About HALDEN", href: "/about#contact", tag: null, sub: "Design Architecture & Team" },
 ];
 
 function useCetClock(enabled: boolean) {

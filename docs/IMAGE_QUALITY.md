@@ -73,6 +73,16 @@ For production-grade imagery, in order of quality:
 2. A dedicated high-resolution image generator (several offer 2K–4K output; most are paid — needs approval).
 3. Stitch regeneration + this Real-ESRGAN pipeline (free, what is in place now).
 
+## Round 2 (21 Nov 2026)
+
+- 43 public Stitch photos downloaded at original size (`=s0`, 1,200–1,408 px). 23 more are private to the Stitch
+  canvas (`/aida/` URLs return 403 outside Stitch); those slots use the matching round-1 HD photo of the same car/scene.
+- Upscaled (Real-ESRGAN x4 + 30 % Lanczos blend) where the measured slot needs more pixels than the source:
+  journey hero and About atelier hero → 3,840 px; reservation detail / modify / cancel photos → 2,560 px; High Alpine
+  card → 2,048 px; journey portraits and concierge portraits → 1,792 px. Everything else is used at ≤ its source size.
+- `src/components/ui/Photo.tsx` serves every round-2 photo through the Next.js optimiser; intrinsic sizes come from
+  `src/data/photoSizes.ts` (regenerate with `node scripts/photo-sizes.mjs`).
+
 ## Re-running the pipeline
 
 Real-ESRGAN portable: `C:\Users\Drin\Desktop\HALDEN-tools\realesrgan`. Per image:

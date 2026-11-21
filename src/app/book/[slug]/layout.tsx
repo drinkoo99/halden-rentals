@@ -28,7 +28,11 @@ function Skeleton() {
   );
 }
 
-/** Booking flow shell (Stitch screens 20–24): fixed header + step index, content column, dossier sidebar. */
+/**
+ * Booking flow shell. Desktop (Stitch screens 20–24): fixed header + step index, content column, dossier
+ * sidebar. Phones: the Stitch mobile booking screens bring their own header and bottom bar, so the desktop
+ * chrome is hidden below the md breakpoint.
+ */
 export default function BookingLayout({ params, children }: LayoutProps<"/book/[slug]">) {
   // params are resolved inside the boundary so navigation can render instantly
   return (
@@ -44,7 +48,9 @@ export default function BookingLayout({ params, children }: LayoutProps<"/book/[
       >
         <Shell params={params}>{children}</Shell>
       </Suspense>
-      <BookingFooter />
+      <div className="hidden md:block">
+        <BookingFooter />
+      </div>
     </div>
   );
 }
@@ -55,9 +61,11 @@ async function Shell({ params, children }: { params: LayoutProps<"/book/[slug]">
   if (!vehicle) notFound();
   return (
     <>
-      <BookingHeader slug={vehicle.slug} />
-      <main className="w-full pt-[112px] print:pt-0 bg-surface">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
+      <div className="hidden md:block">
+        <BookingHeader slug={vehicle.slug} />
+      </div>
+      <main className="w-full md:pt-[112px] print:pt-0 bg-surface">
+        <div className="md:max-w-7xl md:mx-auto md:px-6 lg:px-8 md:py-10">
           <BookingProvider vehicle={vehicle} fallback={<Skeleton />}>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <div className="lg:col-span-8">{children}</div>

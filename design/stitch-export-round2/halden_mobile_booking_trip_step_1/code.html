@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-background" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Manrope:wght@300;400;500;600;700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "inverse-on-surface": "#f0f1ed", "on-primary": "#ffffff", "on-secondary-fixed": "#121e14", "background": "#f8faf6", "tertiary-fixed": "#e4e2db", "on-secondary": "#ffffff", "on-secondary-fixed-variant": "#3c4a3d", "outline": "#737973", "surface-bright": "#f8faf6", "inverse-surface": "#2e312f", "tertiary-container": "#454540", "surface-container-low": "#f3f4f0", "surface-container-high": "#e7e9e5", "on-primary-container": "#a0b9a8", "on-primary-fixed": "#0a2015", "tertiary": "#2e2f2a", "on-tertiary": "#ffffff", "on-primary-fixed-variant": "#364c3f", "inverse-primary": "#b4cdbb", "on-tertiary-fixed": "#1b1c18", "surface-container-lowest": "#ffffff", "primary-container": "#344a3d", "surface-container-highest": "#e1e3df", "primary-fixed-dim": "#b4cdbb", "on-surface-variant": "#424844", "on-tertiary-container": "#b4b2ac", "surface": "#f8faf6", "on-surface": "#191c1a", "primary": "#1e3327", "error-container": "#ffdad6", "primary-fixed": "#cfe9d7", "on-error-container": "#93000a", "secondary-fixed": "#d7e7d5", "surface-variant": "#e1e3df", "on-error": "#ffffff", "on-tertiary-fixed-variant": "#474742", "error": "#ba1a1a", "on-secondary-container": "#59685a", "surface-dim": "#d9dad7", "on-background": "#191c1a", "tertiary-fixed-dim": "#c8c6c0", "surface-tint": "#4d6355", "secondary-fixed-dim": "#bbcbba", "outline-variant": "#c2c8c2", "surface-container": "#edeeeb", "secondary": "#546254", "secondary-container": "#d7e7d5" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "4rem", "space-lg": "2rem", "gutter-mobile": "1rem", "space-sm": "0.5rem", "margin-mobile": "1.5rem", "margin": "4rem", "space-md": "1rem", "gutter": "1.5rem", "space-xs": "0.25rem" }, fontFamily: { "headline-sm": ["Bodoni Moda"], "body-md": ["Manrope"], "headline-lg-mobile": ["Bodoni Moda"], "action": ["Manrope"], "display-mobile": ["Bodoni Moda"], "body-sm": ["Manrope"], "display": ["Bodoni Moda"], "headline-lg": ["Bodoni Moda"], "label-mono": ["Space Mono"], "body-lg": ["Manrope"], "headline-md": ["Bodoni Moda"], "spec-numeral": ["Space Mono"] }, fontSize: { "headline-sm": ["22px", { "lineHeight": "28px", "fontWeight": "400" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "action": ["13px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "display-mobile": ["38px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "display": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "label-mono": ["11px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "400" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "400" }], "spec-numeral": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-background text-on-surface antialiased flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-28 flex flex-col justify-between"><div class="h-14 px-margin-mobile flex items-center justify-between"><button aria-label="Close Reservation" class="w-11 h-11 -ml-2 flex items-center justify-center text-on-surface active:opacity-60 transition-opacity" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[20px]">close</span></button><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px] text-primary">lock</span><span class="font-label-mono text-label-mono uppercase tracking-[0.16em] text-on-surface">Secure Reservation</span></div><div class="flex items-center gap-2"><span class="font-spec-numeral text-spec-numeral text-on-surface-variant font-medium">02 / 06</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="w-full px-margin-mobile pb-2"><div class="grid grid-cols-6 gap-1 w-full"><div class="h-[2px] bg-primary"></div><div class="h-[2px] bg-primary"></div><div class="h-[2px] bg-outline-variant/50"></div><div class="h-[2px] bg-outline-variant/50"></div><div class="h-[2px] bg-outline-variant/50"></div><div class="h-[2px] bg-outline-variant/50"></div></div></div><div class="h-12 px-margin-mobile bg-surface-container-low/70 flex items-center justify-between"><div class="flex items-center gap-2.5 overflow-hidden"><div class="w-8 h-8 bg-surface-container-highest shrink-0 overflow-hidden flex items-center justify-center"><img alt="Vehicle Miniature" class="w-full h-full object-cover object-center" onerror="this.parentElement.innerHTML='&lt;span class=\'material-symbols-outlined text-primary text-[18px]\'&gt;directions_car&lt;/span&gt;'" src="https://lh3.googleusercontent.com/aida/ALJJyrDIN1axWqJAjksNHWJYgy50Qk3jf3nK4ou8WHDIRa6GSerDdyA8oaArSzBKVbWaYRZEkFVZGAEpq_hzuMdyD6UO2oe1e0PBxmKptlKg8i2KEmUDL4aO_0G01_Sf50nd02BSiPG5MOBe8CeWOQkH7qv-aaE4Mx6tBJ3UltMp8pXEOqgzKzXD6t-H03cEWupy-Q8VGonkcsfM4hnPijBxKupjctM1Cuq2vlcv8Mx8oiXR"/></div><span class="font-headline-sm text-body-md text-on-surface truncate">Range Rover Autobiography</span></div><button aria-label="Toggle Price Breakdown" class="flex items-center gap-1.5 h-11 pl-2 -mr-1 active:opacity-60 transition-opacity" type="button"><span class="font-spec-numeral text-spec-numeral text-primary font-semibold">$1,450<span class="text-[10px] text-on-surface-variant font-normal">/day</span></span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></button></div></div></header><main class="flex flex-col relative w-full max-w-[390px] mx-auto pt-28 pb-28 bg-surface min-h-screen px-margin-mobile"><div class="flex flex-col w-full pb-8">
+<!-- Architectural Index & Section Title -->
+<div class="pt-4 pb-6">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-mono text-label-mono uppercase tracking-[0.16em] text-primary">Step 01 // Transit &amp; Allocation</span>
+<span class="font-label-mono text-[10px] tracking-widest text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-[2px]">EDITION 2025.06</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Trip Itinerary</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+      Specify sovereign departure credentials and custody transfer intervals.
+    </p>
+</div>
+<!-- Allocation Status Beacon -->
+<div class="w-full bg-secondary-container/60 p-3.5 mb-5 flex items-start gap-3 rounded-[2px] transition-colors duration-200">
+<div class="relative flex items-center justify-center shrink-0 w-3 h-3 mt-1">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-primary font-bold">Allocation Confirmed</span>
+<span class="font-body-sm text-[12px] text-on-secondary-fixed leading-tight mt-0.5">
+        Range Rover Autobiography is staged and available at Munich Pavilion for the selected schedule.
+      </span>
+</div>
+</div>
+<!-- Primary Logistics Form Container -->
+<div class="flex flex-col gap-4">
+<!-- Hub Selector (Pick-up Hub) -->
+<button class="w-full text-left bg-surface-container-lowest p-4 rounded-[2px] active:bg-surface-container transition-colors group" type="button">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-mono text-[10px] uppercase tracking-[0.14em] text-outline font-medium">Pick-up Archival Hub</span>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-primary flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform">
+          Change <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+</span>
+</div>
+<div class="flex items-start gap-3 mt-1">
+<div class="w-8 h-8 rounded-[2px] bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">Munich Airport (MUC)</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant truncate">Terminal 2 VIP Pavilion · Archival Vault 04</span>
+</div>
+</div>
+</button>
+<!-- Return Location Architectural Toggle -->
+<div class="w-full bg-surface-container-low p-4 rounded-[2px] flex items-center justify-between gap-4">
+<div class="flex flex-col pr-2">
+<span class="font-body-md text-body-md font-medium text-on-surface">Return to same location</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">Complimentary same-hub vehicle repatriation</span>
+</div>
+<!-- Architectural Geometric Toggle (Square) -->
+<button aria-checked="true" class="shrink-0 w-12 h-6 bg-primary p-0.5 rounded-[2px] relative transition-colors duration-200" id="hub-toggle" onclick="toggleHubReturn()" role="switch" type="button">
+<div class="w-5 h-5 bg-on-primary rounded-[1px] transform translate-x-6 transition-transform duration-200 flex items-center justify-center" id="toggle-knob">
+<span class="material-symbols-outlined text-primary text-[12px]">check</span>
+</div>
+</button>
+</div>
+<!-- Drop-off Hub (Conditional Drawer, hidden by default) -->
+<div class="hidden flex-col bg-surface-container-lowest p-4 rounded-[2px] -mt-1" id="dropoff-drawer">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-mono text-[10px] uppercase tracking-[0.14em] text-outline font-medium">Return Archival Hub</span>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-primary">Select</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-[2px] bg-surface-container flex items-center justify-center shrink-0 text-outline">
+<span class="material-symbols-outlined text-[18px]">storefront</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant italic">Select secondary drop-off point...</span>
+</div>
+</div>
+<!-- Reservation Dates Selector -->
+<button class="w-full text-left bg-surface-container-lowest p-4 rounded-[2px] active:bg-surface-container transition-colors group" type="button">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-mono text-[10px] uppercase tracking-[0.14em] text-outline font-medium">Reservation Dates</span>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-primary flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform">
+          Calendar <span class="material-symbols-outlined text-[12px]">calendar_today</span>
+</span>
+</div>
+<div class="flex items-center justify-between mt-1">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-spec-numeral text-[16px] font-semibold text-on-surface">12 Jun</span>
+<span class="font-label-mono text-outline text-[12px]">→</span>
+<span class="font-spec-numeral text-[16px] font-semibold text-on-surface">15 Jun 2025</span>
+</div>
+<span class="font-label-mono text-[11px] text-secondary tracking-wider mt-0.5">3 DIURNAL CYCLES (72 HOURS)</span>
+</div>
+<div class="w-8 h-8 rounded-[2px] bg-surface-container-low flex items-center justify-center shrink-0 text-on-surface">
+<span class="material-symbols-outlined text-[18px]">edit_calendar</span>
+</div>
+</div>
+</button>
+<!-- Handover Times: Twin Column Split -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Pick-up Time -->
+<div class="bg-surface-container-lowest p-3.5 rounded-[2px] flex flex-col justify-between">
+<span class="font-label-mono text-[10px] uppercase tracking-[0.12em] text-outline">Pick-up Time</span>
+<button class="mt-2 text-left flex items-center justify-between group" type="button">
+<div class="flex flex-col">
+<span class="font-spec-numeral text-[15px] font-medium text-on-surface">10:00</span>
+<span class="font-label-mono text-[10px] text-on-surface-variant">CEST · Curbside</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px] group-hover:text-primary transition-colors">schedule</span>
+</button>
+</div>
+<!-- Return Time -->
+<div class="bg-surface-container-lowest p-3.5 rounded-[2px] flex flex-col justify-between">
+<span class="font-label-mono text-[10px] uppercase tracking-[0.12em] text-outline">Return Time</span>
+<button class="mt-2 text-left flex items-center justify-between group" type="button">
+<div class="flex flex-col">
+<span class="font-spec-numeral text-[15px] font-medium text-on-surface">10:00</span>
+<span class="font-label-mono text-[10px] text-on-surface-variant">CEST · Curbside</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px] group-hover:text-primary transition-colors">schedule</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Protocol & Archival Guidance Notes -->
+<div class="mt-6 pt-5 pb-2 bg-surface-container-low/50 px-4 rounded-[2px]">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">concierge</span>
+<span class="font-label-mono text-[10px] uppercase tracking-[0.16em] text-on-surface font-semibold">HALDEN Concierge Protocol</span>
+</div>
+<ul class="flex flex-col gap-2 font-body-sm text-[12px] text-on-surface-variant leading-relaxed">
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-primary text-[10px] mt-0.5">01</span>
+<span>A HALDEN custodian will await your arrival directly at Terminal 2 VIP curbside with authenticated vehicle keys.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-label-mono text-primary text-[10px] mt-0.5">02</span>
+<span>Pre-conditioned cabin climate and private GPS routes will be staged 30 minutes prior to transfer window.</span>
+</li>
+</ul>
+</div>
+</div>
+<script>
+  function toggleHubReturn() {
+    const toggleBtn = document.getElementById('hub-toggle');
+    const toggleKnob = document.getElementById('toggle-knob');
+    const drawer = document.getElementById('dropoff-drawer');
+    const isChecked = toggleBtn.getAttribute('aria-checked') === 'true';
+
+    if (isChecked) {
+      toggleBtn.setAttribute('aria-checked', 'false');
+      toggleBtn.classList.remove('bg-primary');
+      toggleBtn.classList.add('bg-outline-variant');
+      toggleKnob.classList.remove('translate-x-6');
+      toggleKnob.classList.add('translate-x-0');
+      toggleKnob.innerHTML = '<span class="material-symbols-outlined text-outline text-[12px]">remove</span>';
+      drawer.classList.remove('hidden');
+      drawer.classList.add('flex');
+    } else {
+      toggleBtn.setAttribute('aria-checked', 'true');
+      toggleBtn.classList.remove('bg-outline-variant');
+      toggleBtn.classList.add('bg-primary');
+      toggleKnob.classList.remove('translate-x-0');
+      toggleKnob.classList.add('translate-x-6');
+      toggleKnob.innerHTML = '<span class="material-symbols-outlined text-primary text-[12px]">check</span>';
+      drawer.classList.add('hidden');
+      drawer.classList.remove('flex');
+    }
+  }
+</script></main><aside class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.04)]"><div class="max-w-[390px] mx-auto h-20 px-margin-mobile flex items-center justify-between"><div class="flex flex-col"><span class="font-label-mono text-[10px] uppercase tracking-widest text-on-surface-variant">Total Est.</span><div class="flex items-baseline gap-1"><span class="font-spec-numeral text-[16px] font-bold text-on-surface">$4,350</span><span class="font-label-mono text-[10px] text-outline">USD</span></div></div><button class="h-12 px-6 bg-primary text-on-primary font-action text-action flex items-center justify-center gap-2 hover:bg-primary-container active:scale-[0.99] transition-all rounded-[2px]" type="button"><span>Continue</span><span class="font-label-mono text-xs">→</span></button></div></aside></body></html>

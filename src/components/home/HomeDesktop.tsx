@@ -45,12 +45,12 @@ export function HomeDesktop() {
           <Link href="/fleet" className="text-sm tracking-wider uppercase text-ivory/90 hover:text-ivory transition-colors">
             Fleet
           </Link>
-          <a href="#journeys" className="text-sm tracking-wider uppercase text-ivory/90 hover:text-ivory transition-colors">
+          <Link href="/journeys" className="text-sm tracking-wider uppercase text-ivory/90 hover:text-ivory transition-colors">
             Journeys
-          </a>
-          <a href="#about" className="text-sm tracking-wider uppercase text-ivory/90 hover:text-ivory transition-colors">
+          </Link>
+          <Link href="/about" className="text-sm tracking-wider uppercase text-ivory/90 hover:text-ivory transition-colors">
             About
-          </a>
+          </Link>
         </nav>
         <div className="flex items-center space-x-8">
           <Link
@@ -100,13 +100,13 @@ export function HomeDesktop() {
               >
                 Explore the fleet
               </Link>
-              <a
-                href="#journeys"
+              <Link
+                href="/journeys"
                 className="text-ivory font-sans text-sm tracking-wider hover:text-stone-bg transition-colors flex items-center group"
               >
                 Plan a journey{" "}
                 <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
-              </a>
+              </Link>
             </div>
           </div>
 

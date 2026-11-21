@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-background" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Manrope:wght@300;400;500;600;700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "inverse-on-surface": "#f0f1ed", "on-primary": "#ffffff", "on-secondary-fixed": "#121e14", "background": "#f8faf6", "tertiary-fixed": "#e4e2db", "on-secondary": "#ffffff", "on-secondary-fixed-variant": "#3c4a3d", "outline": "#737973", "surface-bright": "#f8faf6", "inverse-surface": "#2e312f", "tertiary-container": "#454540", "surface-container-low": "#f3f4f0", "surface-container-high": "#e7e9e5", "on-primary-container": "#a0b9a8", "on-primary-fixed": "#0a2015", "tertiary": "#2e2f2a", "on-tertiary": "#ffffff", "on-primary-fixed-variant": "#364c3f", "inverse-primary": "#b4cdbb", "on-tertiary-fixed": "#1b1c18", "surface-container-lowest": "#ffffff", "primary-container": "#344a3d", "surface-container-highest": "#e1e3df", "primary-fixed-dim": "#b4cdbb", "on-surface-variant": "#424844", "on-tertiary-container": "#b4b2ac", "surface": "#f8faf6", "on-surface": "#191c1a", "primary": "#1e3327", "error-container": "#ffdad6", "primary-fixed": "#cfe9d7", "on-error-container": "#93000a", "secondary-fixed": "#d7e7d5", "surface-variant": "#e1e3df", "on-error": "#ffffff", "on-tertiary-fixed-variant": "#474742", "error": "#ba1a1a", "on-secondary-container": "#59685a", "surface-dim": "#d9dad7", "on-background": "#191c1a", "tertiary-fixed-dim": "#c8c6c0", "surface-tint": "#4d6355", "secondary-fixed-dim": "#bbcbba", "outline-variant": "#c2c8c2", "surface-container": "#edeeeb", "secondary": "#546254", "secondary-container": "#d7e7d5" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "4rem", "space-lg": "2rem", "gutter-mobile": "1rem", "space-sm": "0.5rem", "margin-mobile": "1.5rem", "margin": "4rem", "space-md": "1rem", "gutter": "1.5rem", "space-xs": "0.25rem" }, fontFamily: { "headline-sm": ["Bodoni Moda"], "body-md": ["Manrope"], "headline-lg-mobile": ["Bodoni Moda"], "action": ["Manrope"], "display-mobile": ["Bodoni Moda"], "body-sm": ["Manrope"], "display": ["Bodoni Moda"], "headline-lg": ["Bodoni Moda"], "label-mono": ["Space Mono"], "body-lg": ["Manrope"], "headline-md": ["Bodoni Moda"], "spec-numeral": ["Space Mono"] }, fontSize: { "headline-sm": ["22px", { "lineHeight": "28px", "fontWeight": "400" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "action": ["13px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "display-mobile": ["38px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "display": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "label-mono": ["11px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "400" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "400" }], "spec-numeral": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-background text-on-surface antialiased flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-28 flex flex-col justify-between"><div class="h-14 px-margin-mobile flex items-center justify-between"><button aria-label="Close Reservation" class="w-11 h-11 -ml-2 flex items-center justify-center text-on-surface active:opacity-60 transition-opacity" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[20px]">close</span></button><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px] text-primary">lock</span><span class="font-label-mono text-label-mono uppercase tracking-[0.16em] text-on-surface">Secure Reservation</span></div><div class="flex items-center gap-2"><span class="font-spec-numeral text-spec-numeral text-on-surface-variant font-medium">02 / 06</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="w-full px-margin-mobile pb-2"><div class="grid grid-cols-6 gap-1 w-full"><div class="h-[2px] bg-primary"></div><div class="h-[2px] bg-primary"></div><div class="h-[2px] bg-outline-variant/50"></div><div class="h-[2px] bg-outline-variant/50"></div><div class="h-[2px] bg-outline-variant/50"></div><div class="h-[2px] bg-outline-variant/50"></div></div></div><div class="h-12 px-margin-mobile bg-surface-container-low/70 flex items-center justify-between"><div class="flex items-center gap-2.5 overflow-hidden"><div class="w-8 h-8 bg-surface-container-highest shrink-0 overflow-hidden flex items-center justify-center"><img alt="Vehicle Miniature" class="w-full h-full object-cover object-center" onerror="this.parentElement.innerHTML='&lt;span class=\'material-symbols-outlined text-primary text-[18px]\'&gt;directions_car&lt;/span&gt;'" src="https://lh3.googleusercontent.com/aida/ALJJyrDIN1axWqJAjksNHWJYgy50Qk3jf3nK4ou8WHDIRa6GSerDdyA8oaArSzBKVbWaYRZEkFVZGAEpq_hzuMdyD6UO2oe1e0PBxmKptlKg8i2KEmUDL4aO_0G01_Sf50nd02BSiPG5MOBe8CeWOQkH7qv-aaE4Mx6tBJ3UltMp8pXEOqgzKzXD6t-H03cEWupy-Q8VGonkcsfM4hnPijBxKupjctM1Cuq2vlcv8Mx8oiXR"/></div><span class="font-headline-sm text-body-md text-on-surface truncate">Range Rover Autobiography</span></div><button aria-label="Toggle Price Breakdown" class="flex items-center gap-1.5 h-11 pl-2 -mr-1 active:opacity-60 transition-opacity" type="button"><span class="font-spec-numeral text-spec-numeral text-primary font-semibold">$1,450<span class="text-[10px] text-on-surface-variant font-normal">/day</span></span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></button></div></div></header><main class="flex flex-col relative w-full max-w-[390px] mx-auto pt-28 pb-28 bg-surface min-h-screen px-margin-mobile"><div class="flex flex-col w-full pb-8">
+<!-- Calendar Modal Container styled as an Architectural Curatorial Sheet -->
+<div class="flex flex-col w-full bg-surface-container-lowest rounded-t-xl overflow-hidden shadow-xl -mx-margin-mobile px-margin-mobile pt-3">
+<!-- Grab Notch & Modal Header Bar -->
+<div class="flex flex-col items-center w-full pt-1 pb-4">
+<div class="w-10 h-1 bg-outline-variant/60 rounded-full mb-3"></div>
+<div class="flex items-center justify-between w-full">
+<button class="font-action text-action text-on-surface-variant hover:text-on-surface active:opacity-60 transition-opacity uppercase tracking-wider" type="button">
+          Cancel
+        </button>
+<span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-on-surface font-semibold">
+          Select Itinerary Dates
+        </span>
+<button class="font-action text-action text-primary font-bold hover:text-primary-container active:opacity-60 transition-opacity uppercase tracking-wider" type="button">
+          Apply
+        </button>
+</div>
+</div>
+<!-- Active Selection Summary Banner (Curatorial Metadata) -->
+<div class="w-full bg-surface-container-low p-4 rounded mb-5 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-[10px] uppercase tracking-[0.18em] text-on-surface-variant">Archival Window</span>
+<span class="font-spec-numeral text-spec-numeral font-bold text-primary">€390 <span class="font-normal text-[11px] text-on-surface-variant">/ day</span></span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-spec-numeral text-[18px] font-bold tracking-tight text-on-surface">12 JUN 2025</span>
+<span class="font-label-mono text-[13px] text-outline">→</span>
+<span class="font-spec-numeral text-[18px] font-bold tracking-tight text-on-surface">15 JUN 2025</span>
+</div>
+<div class="flex items-center gap-2 pt-1 border-t-0">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+<span class="font-label-mono text-[11px] uppercase tracking-wider text-secondary">3 Diurnal Cycles (72 Hours)</span>
+</div>
+</div>
+<!-- Sticky Days of Week Horizon -->
+<div class="sticky top-0 bg-surface-container-lowest z-10 grid grid-cols-7 gap-1 pb-3 text-center">
+<span class="font-label-mono text-[11px] text-outline font-semibold">M</span>
+<span class="font-label-mono text-[11px] text-outline font-semibold">T</span>
+<span class="font-label-mono text-[11px] text-outline font-semibold">W</span>
+<span class="font-label-mono text-[11px] text-outline font-semibold">T</span>
+<span class="font-label-mono text-[11px] text-outline font-semibold">F</span>
+<span class="font-label-mono text-[11px] text-outline font-semibold">S</span>
+<span class="font-label-mono text-[11px] text-outline font-semibold">S</span>
+</div>
+<!-- Vertically Scrolling Continuous Months Stream -->
+<div class="flex flex-col gap-8 w-full pb-4">
+<!-- MONTH 01: JUNE 2025 -->
+<div class="flex flex-col w-full">
+<div class="flex items-baseline justify-between mb-3">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">June 2025</h2>
+<span class="font-label-mono text-[10px] uppercase tracking-widest text-outline">Stockholm Depot</span>
+</div>
+<div class="grid grid-cols-7 gap-y-1 gap-x-0 w-full text-center">
+<!-- Leading Empty Days (June 1, 2025 is Sunday in standard EU M-S layout -> 6 blanks) -->
+<div class="h-10 flex items-center justify-center"></div>
+<div class="h-10 flex items-center justify-center"></div>
+<div class="h-10 flex items-center justify-center"></div>
+<div class="h-10 flex items-center justify-center"></div>
+<div class="h-10 flex items-center justify-center"></div>
+<div class="h-10 flex items-center justify-center"></div>
+<!-- Day 1 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">1</button>
+<!-- Days 2 - 8 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">2</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">3</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">4</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">5</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">6</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">7</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">8</button>
+<!-- Days 9 - 11 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">9</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">10</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">11</button>
+<!-- Day 12: Range Start (Check-In) -->
+<div class="h-10 w-full flex items-center justify-center relative bg-gradient-to-r from-transparent via-secondary-container to-secondary-container">
+<div class="w-9 h-9 rounded-full bg-primary text-on-primary font-spec-numeral text-spec-numeral font-bold flex items-center justify-center z-10 shadow-sm">
+              12
+            </div>
+</div>
+<!-- Day 13: In-Range -->
+<div class="h-10 w-full flex items-center justify-center bg-secondary-container">
+<span class="font-spec-numeral text-spec-numeral text-on-secondary-fixed font-semibold">13</span>
+</div>
+<!-- Day 14: In-Range -->
+<div class="h-10 w-full flex items-center justify-center bg-secondary-container">
+<span class="font-spec-numeral text-spec-numeral text-on-secondary-fixed font-semibold">14</span>
+</div>
+<!-- Day 15: Range End (Check-Out) -->
+<div class="h-10 w-full flex items-center justify-center relative bg-gradient-to-l from-transparent via-secondary-container to-secondary-container">
+<div class="w-9 h-9 rounded-full bg-primary text-on-primary font-spec-numeral text-spec-numeral font-bold flex items-center justify-center z-10 shadow-sm">
+              15
+            </div>
+</div>
+<!-- Days 16 - 22 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">16</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">17</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">18</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">19</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">20</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">21</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">22</button>
+<!-- Days 23 - 29 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">23</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">24</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">25</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">26</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">27</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">28</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">29</button>
+<!-- Day 30 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">30</button>
+</div>
+</div>
+<!-- MONTH 02: JULY 2025 (Seasonal High Tier Tag) -->
+<div class="flex flex-col w-full">
+<div class="flex items-baseline justify-between mb-3">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">July 2025</h2>
+<span class="px-1.5 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed font-label-mono text-[9px] uppercase tracking-wider rounded-[2px]">Midsummer Tier</span>
+</div>
+<span class="font-label-mono text-[10px] uppercase tracking-widest text-outline">Peak Season</span>
+</div>
+<div class="grid grid-cols-7 gap-y-1 gap-x-0 w-full text-center">
+<!-- July 1 is Tuesday -> 1 blank -->
+<div class="h-10 flex items-center justify-center"></div>
+<!-- July Days 1 - 6 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">1</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">2</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">3</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">4</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">5</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">6</button>
+<!-- July Days 7 - 13 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">7</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">8</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">9</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">10</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">11</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">12</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">13</button>
+<!-- July Days 14 - 20 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">14</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">15</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">16</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">17</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">18</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">19</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">20</button>
+<!-- July Days 21 - 27 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">21</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">22</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">23</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">24</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">25</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">26</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">27</button>
+<!-- July Days 28 - 31 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">28</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">29</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">30</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">31</button>
+</div>
+</div>
+<!-- MONTH 03: AUGUST 2025 -->
+<div class="flex flex-col w-full">
+<div class="flex items-baseline justify-between mb-3">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">August 2025</h2>
+<span class="font-label-mono text-[10px] uppercase tracking-widest text-outline">Open Reservation</span>
+</div>
+<div class="grid grid-cols-7 gap-y-1 gap-x-0 w-full text-center">
+<!-- August 1 is Friday -> 4 blanks -->
+<div class="h-10 flex items-center justify-center"></div>
+<div class="h-10 flex items-center justify-center"></div>
+<div class="h-10 flex items-center justify-center"></div>
+<div class="h-10 flex items-center justify-center"></div>
+<!-- Aug 1 - 3 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">1</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">2</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">3</button>
+<!-- Aug 4 - 10 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">4</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">5</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">6</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">7</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">8</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">9</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">10</button>
+<!-- Aug 11 - 17 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">11</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">12</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">13</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">14</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">15</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">16</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">17</button>
+<!-- Aug 18 - 24 -->
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">18</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">19</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">20</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">21</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">22</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">23</button>
+<button class="h-10 w-full flex items-center justify-center font-spec-numeral text-spec-numeral text-on-surface hover:bg-surface-container-high transition-colors rounded-sm" type="button">24</button>
+</div>
+</div>
+</div>
+<!-- Archival Legend & Policies Block -->
+<div class="w-full bg-surface-container-low p-4 rounded mb-5 flex flex-col gap-3">
+<div class="flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-2">
+<div class="w-3.5 h-3.5 bg-primary rounded-full"></div>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-on-surface">Selected Period</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3.5 h-3.5 bg-secondary-container rounded-sm"></div>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-on-surface">Spanned Journey</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3.5 h-3.5 bg-surface-container-high rounded-sm"></div>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-on-surface-variant">Available</span>
+</div>
+</div>
+<div class="flex items-start gap-2 pt-2 bg-surface-container-lowest/50 p-2.5 rounded">
+<span class="material-symbols-outlined text-[15px] text-primary shrink-0 mt-0.5">info</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">
+          Curatorial Minimum: A minimum cycle of 2 consecutive diurnal periods is maintained for Range Rover Autobiography fleet preservation.
+        </span>
+</div>
+</div>
+<!-- Floating Action Drawer for Modal Step Confirmation -->
+<div class="w-full pt-1 pb-4">
+<button class="w-full h-13 py-3.5 px-5 bg-primary text-on-primary font-action text-action flex items-center justify-between rounded-[2px] active:scale-[0.99] transition-transform" type="button">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>Confirm Dates</span>
+</div>
+<span class="font-spec-numeral text-[13px] font-semibold tracking-wide text-primary-fixed">
+          3 Days · €1,170.00
+        </span>
+</button>
+</div>
+</div>
+</div></main><aside class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.04)]"><div class="max-w-[390px] mx-auto h-20 px-margin-mobile flex items-center justify-between"><div class="flex flex-col"><span class="font-label-mono text-[10px] uppercase tracking-widest text-on-surface-variant">Total Est.</span><div class="flex items-baseline gap-1"><span class="font-spec-numeral text-[16px] font-bold text-on-surface">$4,350</span><span class="font-label-mono text-[10px] text-outline">USD</span></div></div><button class="h-12 px-6 bg-primary text-on-primary font-action text-action flex items-center justify-center gap-2 hover:bg-primary-container active:scale-[0.99] transition-all rounded-[2px]" type="button"><span>Continue</span><span class="font-label-mono text-xs">→</span></button></div></aside></body></html>

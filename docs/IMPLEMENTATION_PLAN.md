@@ -29,6 +29,22 @@ Source of truth: the Google Stitch project "Halden Luxury Car Rental", exported 
 | 23 | Booking — Confirmed (step 06) | `/book/[slug]/confirmed` |
 | 31 | Sign in | `/sign-in` |
 | 00–03, 06–11, 13–18, 25 | Standalone image assets | `public/images/stitch/` (reference) |
+| round 2 | Patron Circle: Account Overview (+ Empty State) / Mobile: Patron Account Overview | `/account` |
+| round 2 | Patron Circle: Account Settings / Mobile: Patron Settings | `/account/settings` |
+| round 2 | Reservation Detail (Confirmed, Cancelled) / Mobile: Reservation Detail | `/account/reservations/hld-0612-4821` |
+| round 2 | Reservation: Modify Itinerary (Overlay) | `…/hld-0612-4821/modify` |
+| round 2 | Reservation: Cancel Confirmation (Overlay) | `…/hld-0612-4821/cancel` |
+| round 2 | Request Access (Desktop) / Mobile: Request Access (A) | `/request-access` |
+| round 2 | Forgot Passcode & Recovery (Desktop) / Mobile: Forgot Passcode (B) | `/forgot-passcode` |
+| round 2 | Reset Passcode & Verification (Desktop) | `/reset-passcode` |
+| round 2 | Sign In: Error States & Security Lockout | `/sign-in/error` (after a failed sign-in) |
+| round 2 | About: The Standard (desktop + mobile) | `/about` |
+| round 2 | Curated Journeys Index (desktop + mobile) | `/journeys` |
+| round 2 | Journey Detail: The High Alpine Transversal (desktop + mobile) | `/journeys/high-alpine-transversal` |
+| round 2 | Mobile Booking: Trip, Hub Selector (Sheet), Calendar (Sheet), Extras, Details, Review (Active/Disabled), Confirmed | `/book/[slug]/*` (< md) |
+| round 2 | System States & Dialogs Sheet (S8) | `/states` |
+| round 2 | Staff Console: Operations Overview, Fleet Management, Vehicle Editor, Bookings, Booking Detail, Availability Planner, Customers, Customer Detail | `/staff`, `/staff/fleet`, `/staff/fleet/range-rover-autobiography`, `/staff/bookings`, `/staff/bookings/hld-0612-4821`, `/staff/availability`, `/staff/customers`, `/staff/customers/clara-von-bergmann` |
+| round 2 | Curbside Staff: Today, Handover Checklist, Booking Lookup | `/staff/curbside`, `/staff/curbside/handover`, `/staff/curbside/lookup` |
 
 ## Translation rules
 - Keep the exported markup and class names, converted to JSX. Tailwind v3 → v4 renames only

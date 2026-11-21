@@ -31,10 +31,10 @@ export function VehicleDesktop({ vehicle: v, similar }: { vehicle: Vehicle; simi
             <Link className="border-b border-[#171A18] pb-1" href={`/fleet?${query}`} aria-current="page">
               Fleet
             </Link>
-            <Link className="text-[#666B65] hover:text-[#171A18] transition-colors duration-150 pb-1" href="/#journeys">
+            <Link className="text-[#666B65] hover:text-[#171A18] transition-colors duration-150 pb-1" href="/journeys">
               Journeys
             </Link>
-            <Link className="text-[#666B65] hover:text-[#171A18] transition-colors duration-150 pb-1" href="/#about">
+            <Link className="text-[#666B65] hover:text-[#171A18] transition-colors duration-150 pb-1" href="/about">
               About
             </Link>
           </nav>
@@ -391,7 +391,7 @@ export function VehicleDesktop({ vehicle: v, similar }: { vehicle: Vehicle; simi
               title="Support"
               links={[
                 ["Concierge Desk", "tel:+41448002400"],
-                ["Alpine Insurance Terms", "/#about"],
+                ["Alpine Insurance Terms", "/about"],
                 ["Chauffeur Protocols", "/#standard"],
                 ["Direct Dispatch", "tel:+41448002400"],
               ]}
@@ -400,13 +400,13 @@ export function VehicleDesktop({ vehicle: v, similar }: { vehicle: Vehicle; simi
           <div className="pt-8 border-t border-[#262C29] flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#6B726C]">
             <div>© 2025 HALDEN MOBILITY GROUP AG. ALL RIGHTS RESERVED.</div>
             <div className="flex space-x-6 mt-4 sm:mt-0">
-              <Link className="hover:text-white transition" href="/#about">
+              <Link className="hover:text-white transition" href="/about">
                 Privacy Policy
               </Link>
-              <Link className="hover:text-white transition" href="/#about">
+              <Link className="hover:text-white transition" href="/about">
                 Terms of Exhibition
               </Link>
-              <Link className="hover:text-white transition" href="/#about">
+              <Link className="hover:text-white transition" href="/about">
                 Impressum
               </Link>
             </div>

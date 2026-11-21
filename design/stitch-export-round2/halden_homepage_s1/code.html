@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HALDEN — The Gallery</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#F5F3EE',
+            'stone-bg': '#EAE8E1',
+            ink: '#171A18',
+            'forest': '#344A3D',
+            'forest-hover': '#2a3b31',
+            sage: '#738273',
+            'border-stone': '#D8D6CE',
+            'text-muted': '#666B65',
+            'dark-bg': '#171B19',
+            'dark-panel': '#252A27',
+            'dark-border': '#2d3330'
+          },
+          fontFamily: {
+            serif: ['"Bodoni Moda"', 'serif'],
+            sans: ['Manrope', 'sans-serif'],
+            mono: ['"DM Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F5F3EE;
+      color: #171A18;
+      font-family: 'Manrope', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 0;
+    }
+    ::selection {
+      background: #344A3D;
+      color: #F5F3EE;
+    }
+  </style>
+</head>
+<body class="bg-ivory text-ink selection:bg-forest selection:text-ivory">
+
+  <!-- 1. HEADER (Transparent overlay on hero with ivory text) -->
+  <header class="absolute top-0 left-0 w-full z-50 px-8 lg:px-16 py-8 flex items-center justify-between border-b border-white/10 bg-gradient-to-b from-black/50 via-black/20 to-transparent">
+    <!-- Brand Wordmark -->
+    <a href="#" class="font-sans font-semibold text-xl tracking-[0.35em] text-ivory uppercase">
+      HALDEN
+    </a>
+
+    <!-- Center Navigation -->
+    <nav class="hidden md:flex items-center space-x-12">
+      <a href="#fleet" class="text-sm tracking-wider uppercase text-ivory/90 hover:text-ivory transition-colors">Fleet</a>
+      <a href="#journeys" class="text-sm tracking-wider uppercase text-ivory/90 hover:text-ivory transition-colors">Journeys</a>
+      <a href="#about" class="text-sm tracking-wider uppercase text-ivory/90 hover:text-ivory transition-colors">About</a>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="flex items-center space-x-8">
+      <a href="#" class="text-sm tracking-wider uppercase text-ivory/90 hover:text-ivory transition-colors hidden sm:inline-block">Sign in</a>
+      <a href="#booking" class="text-sm tracking-wider uppercase px-5 py-2.5 rounded-[2px] border border-ivory text-ivory hover:bg-ivory hover:text-ink transition-all">Book a car</a>
+    </div>
+  </header>
+
+  <!-- 2. HERO (Full screen height, 100vh) -->
+  <section class="relative w-full h-screen min-h-[750px] overflow-hidden flex flex-col justify-between">
+    <!-- Hero Background Image (silver Porsche in gallery space) -->
+    <img 
+      src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4cQ8tTzYoeb1VLf_TZQVfzPbbtwl91O3AvUbjn1RuTIbjMByIs06vjQe9Eh13EYW0KHQKFNf_26YBI7ZVYSnsfJFbaxNa6DvffaREoJFoqcL4hacuR7g_Kc6rLvytC8rIK9YSJ215fzkcw73zr6bL0X47Qrzu9OOUBiObe5guTmAS1tkF-13EL5EH9lfHndg8PiLFQMvLfMbFYhtuUWF7OVl82Xr90uulh87S_rs" 
+      alt="HALDEN Exhibit 01 — Porsche 911 Carrera in modernist gallery" 
+      class="absolute inset-0 w-full h-full object-cover object-center z-0"
+    />
+    
+    <!-- Subtle gradient overlay on left for typography readability -->
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/35 to-transparent z-10 w-full md:w-3/5 pointer-events-none"></div>
+
+    <!-- Empty top spacer for header clearance -->
+    <div class="h-28"></div>
+
+    <!-- Hero Left Editorial Content -->
+    <div class="relative z-20 px-8 lg:px-16 max-w-2xl my-auto">
+      <div class="font-mono text-xs tracking-[0.25em] text-ivory/80 uppercase mb-5">
+        EXHIBIT 01 — PORSCHE 911 CARRERA
+      </div>
+      <h1 class="font-serif text-5xl lg:text-[84px] leading-[1.05] text-ivory mb-6 font-normal tracking-tight">
+        Drive something<br>worth remembering.
+      </h1>
+      <p class="font-sans text-lg text-ivory/85 mb-10 max-w-lg font-light leading-relaxed">
+        A curated fleet of premium cars, ready in Europe’s best cities and airports.
+      </p>
+      
+      <div class="flex items-center space-x-6">
+        <a href="#fleet" class="bg-forest text-ivory px-8 py-3.5 rounded-[2px] font-sans text-sm tracking-wider uppercase font-medium hover:bg-forest-hover transition-colors">
+          Explore the fleet
+        </a>
+        <a href="#journeys" class="text-ivory font-sans text-sm tracking-wider hover:text-stone-bg transition-colors flex items-center group">
+          Plan a journey <span class="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Bottom Right Exhibit Placard -->
+    <div class="relative z-20 self-end px-8 lg:px-16 pb-12 w-full flex justify-end">
+      <div class="bg-ivory border border-border-stone p-5 w-80 shadow-sm rounded-[2px]">
+        <div class="flex items-baseline justify-between mb-2">
+          <span class="font-sans font-semibold text-sm text-ink tracking-tight">Porsche 911 Carrera</span>
+          <span class="font-mono text-[10px] text-sage uppercase tracking-wider">No. 01</span>
+        </div>
+        <div class="w-full h-px bg-border-stone mb-2.5"></div>
+        <div class="flex items-center justify-between font-mono text-xs text-text-muted">
+          <span>2+2 seats · PDK · 385 hp</span>
+        </div>
+        <div class="mt-3 pt-2 border-t border-border-stone/60 flex items-baseline justify-between">
+          <span class="font-mono text-[11px] uppercase tracking-wider text-text-muted">Day rate</span>
+          <span class="font-mono font-medium text-sm text-ink">€340 / day</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SEARCH BAR DIRECTLY BELOW HERO (Full content width, ~96px height) -->
+  <section id="booking" class="w-full bg-ivory border-b border-border-stone relative z-30">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-0 items-center bg-ivory border border-border-stone rounded-[2px] divide-y md:divide-y-0 md:divide-x divide-border-stone min-h-[90px]">
+        
+        <!-- Pick-up Location -->
+        <div class="px-6 py-4 flex flex-col justify-center">
+          <label class="font-mono text-[11px] text-text-muted uppercase tracking-wider mb-1">Pick-up location</label>
+          <div class="flex items-center justify-between">
+            <input type="text" value="Zurich Airport (ZRH)" class="bg-transparent font-sans text-sm font-medium text-ink focus:outline-none w-full cursor-pointer" readonly>
+            <span class="text-text-muted text-xs">▼</span>
+          </div>
+        </div>
+
+        <!-- Pick-up Date & Time -->
+        <div class="px-6 py-4 flex flex-col justify-center">
+          <label class="font-mono text-[11px] text-text-muted uppercase tracking-wider mb-1">Pick-up date and time</label>
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-sm text-ink">14 Oct, 09:30</span>
+            <span class="font-mono text-[11px] text-sage">CEST</span>
+          </div>
+        </div>
+
+        <!-- Return Date & Time -->
+        <div class="px-6 py-4 flex flex-col justify-center">
+          <label class="font-mono text-[11px] text-text-muted uppercase tracking-wider mb-1">Return date and time</label>
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-sm text-ink">18 Oct, 18:00</span>
+            <span class="font-mono text-[11px] text-sage">CEST</span>
+          </div>
+        </div>
+
+        <!-- CTA Action -->
+        <div class="p-3 flex items-center justify-center">
+          <button class="w-full h-full min-h-[58px] bg-forest text-ivory font-sans text-sm font-medium uppercase tracking-wider hover:bg-forest-hover transition-colors rounded-[2px] flex items-center justify-center">
+            Find a car
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. "THE COLLECTION" — ASYMMETRIC GALLERY WALL -->
+  <section id="fleet" class="max-w-7xl mx-auto px-6 lg:px-12 py-24 border-b border-border-stone">
+    <!-- Header of Section -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-border-stone">
+      <div>
+        <div class="font-mono text-xs tracking-[0.25em] text-sage uppercase mb-3">
+          01 / THE COLLECTION
+        </div>
+        <h2 class="font-serif text-4xl lg:text-5xl text-ink font-normal">
+          Chosen, not stocked.
+        </h2>
+      </div>
+      <!-- Category Links as subtle text -->
+      <div class="flex flex-wrap items-center gap-6 mt-6 md:mt-0 font-sans text-xs tracking-wider uppercase">
+        <button class="text-ink font-semibold border-b border-ink pb-0.5">All</button>
+        <button class="text-text-muted hover:text-ink transition-colors">SUVs</button>
+        <button class="text-text-muted hover:text-ink transition-colors">Sedans</button>
+        <button class="text-text-muted hover:text-ink transition-colors">Sports</button>
+        <button class="text-text-muted hover:text-ink transition-colors">Electric</button>
+        <button class="text-text-muted hover:text-ink transition-colors">Exotic</button>
+      </div>
+    </div>
+
+    <!-- Asymmetric Gallery Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left 2/3: Large featured studio exhibit image (Volvo XC90 on stone backdrop) -->
+      <div class="lg:col-span-8 flex flex-col">
+        <div class="relative bg-stone-bg border border-border-stone overflow-hidden aspect-[16/10]">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaPRnP2xwlsl7xduu73pUJPlwqhUphItKgJaw0ZzAmX5fldk0O0bj7C7Z8VdkYhX2lg8qH2Q-cy8Siunp5HTlsDpImQt2iA2tD8dXzUS4b2JkO-uFDlJfqoeHhH3QZ8OiVXxnvTUCyhGy4IeY43A7vrutV1xRfz5xGdli91fGG1a5PIDCExzuid60_cciMPsOeODmHfCfmm337hYowm3y2ITKDAUBU14JbBiwE6dc" 
+            alt="Exhibit 02 — Volvo XC90 Ultimate" 
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <!-- Exhibit Placard below -->
+        <div class="bg-ivory border-x border-b border-border-stone p-6">
+          <div class="flex items-baseline justify-between mb-2">
+            <div>
+              <span class="font-sans font-semibold text-lg text-ink">Volvo XC90 Ultimate B6 AWD</span>
+              <span class="font-sans text-xs text-text-muted ml-3">Pine Grey Metallic</span>
+            </div>
+            <span class="font-mono text-xs text-sage uppercase tracking-wider">Exhibit 02</span>
+          </div>
+          <div class="w-full h-px bg-border-stone mb-3"></div>
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <span class="font-mono text-xs text-text-muted">7 seats · Automatic · 300 hp · All-Wheel Drive</span>
+            <div class="flex items-baseline space-x-2">
+              <span class="font-mono text-xs text-text-muted uppercase">Rate</span>
+              <span class="font-mono font-medium text-base text-ink">€210 / day</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right 1/3: Two smaller stacked items with placards -->
+      <div class="lg:col-span-4 flex flex-col space-y-8">
+        
+        <!-- Stacked Card 1: BMW 5 Series Touring -->
+        <div class="flex flex-col border border-border-stone bg-ivory">
+          <div class="bg-stone-bg aspect-[16/9] overflow-hidden border-b border-border-stone relative">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4cQ8tTzYoeb1VLf_TZQVfzPbbtwl91O3AvUbjn1RuTIbjMByIs06vjQe9Eh13EYW0KHQKFNf_26YBI7ZVYSnsfJFbaxNa6DvffaREoJFoqcL4hacuR7g_Kc6rLvytC8rIK9YSJ215fzkcw73zr6bL0X47Qrzu9OOUBiObe5guTmAS1tkF-13EL5EH9lfHndg8PiLFQMvLfMbFYhtuUWF7OVl82Xr90uulh87S_rs" 
+              alt="Exhibit 03 — Porsche 911 Carrera GTS" 
+              class="w-full h-full object-cover object-right"
+            />
+            <span class="absolute top-3 right-3 font-mono text-[10px] bg-ivory/90 px-2 py-0.5 border border-border-stone">Sports</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-baseline justify-between mb-1.5">
+              <span class="font-sans font-semibold text-sm text-ink">Porsche 911 Carrera 4S</span>
+              <span class="font-mono text-[10px] text-sage uppercase">Exhibit 03</span>
+            </div>
+            <div class="w-full h-px bg-border-stone mb-2"></div>
+            <div class="font-mono text-xs text-text-muted mb-2">2+2 seats · PDK · 450 hp</div>
+            <div class="flex justify-between items-baseline pt-1">
+              <span class="font-mono text-[11px] text-text-muted uppercase">From</span>
+              <span class="font-mono font-medium text-xs text-ink">€390 / day</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stacked Card 2: Luxury Sedan preview -->
+        <div class="flex flex-col border border-border-stone bg-ivory">
+          <div class="bg-dark-bg aspect-[16/9] overflow-hidden border-b border-border-stone relative">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5xZIhsQF3fHpBE2KnZZLWqltUcRLTbChjPlDynKBYqwooXs4M1a9HIC4MfRjpUJZZrTF4GWh6gBIL_GM0S5L7_-u2jFB87JNj-kCzZgdF7Y_bBPav-uWvl34i8ui__cJsf4X8rMV8pvcDH52ma-395EPpUICwO8ttM4eNgmBguFyc6kWaR5MaJ6bWyKfD7Og7fxbztvxNeYFFhzAGimrVa7RnboWf65znDviIGK4" 
+              alt="Exhibit 04 — Mercedes-Benz S 500" 
+              class="w-full h-full object-cover"
+            />
+            <span class="absolute top-3 right-3 font-mono text-[10px] bg-ivory/90 px-2 py-0.5 border border-border-stone">Luxury</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-baseline justify-between mb-1.5">
+              <span class="font-sans font-semibold text-sm text-ink">Mercedes-Benz S 500 4MATIC</span>
+              <span class="font-mono text-[10px] text-sage uppercase">Exhibit 04</span>
+            </div>
+            <div class="w-full h-px bg-border-stone mb-2"></div>
+            <div class="font-mono text-xs text-text-muted mb-2">5 seats · 9G-TRONIC · 435 hp</div>
+            <div class="flex justify-between items-baseline pt-1">
+              <span class="font-mono text-[11px] text-text-muted uppercase">From</span>
+              <span class="font-mono font-medium text-xs text-ink">€310 / day</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom link to full catalog -->
+    <div class="mt-12 text-center">
+      <a href="#" class="inline-flex items-center font-mono text-xs uppercase tracking-widest text-ink hover:text-forest transition-colors py-2 border-b border-ink/40">
+        View the complete catalogue (24 models) →
+      </a>
+    </div>
+  </section>
+
+  <!-- 5. DARK SECTION (#171B19) — MERCEDES S-CLASS NIGHT ARRIVAL -->
+  <section class="bg-dark-bg text-ivory py-24 border-b border-dark-border">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <!-- Atmospheric Photo Banner -->
+      <div class="relative w-full aspect-[21/9] min-h-[380px] overflow-hidden rounded-[2px] border border-dark-border">
+        <img 
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5xZIhsQF3fHpBE2KnZZLWqltUcRLTbChjPlDynKBYqwooXs4M1a9HIC4MfRjpUJZZrTF4GWh6gBIL_GM0S5L7_-u2jFB87JNj-kCzZgdF7Y_bBPav-uWvl34i8ui__cJsf4X8rMV8pvcDH52ma-395EPpUICwO8ttM4eNgmBguFyc6kWaR5MaJ6bWyKfD7Og7fxbztvxNeYFFhzAGimrVa7RnboWf65znDviIGK4" 
+          alt="Mercedes-Benz S-Class arrival at boutique hotel at night" 
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/20 to-transparent"></div>
+        
+        <!-- Large Bodoni statement overlapping the bottom -->
+        <div class="absolute bottom-8 left-8 right-8">
+          <div class="font-mono text-xs text-sage uppercase tracking-[0.25em] mb-3">
+            02 / THE STANDARD
+          </div>
+          <h2 class="font-serif text-3xl md:text-5xl lg:text-6xl text-ivory font-normal leading-tight">
+            Arrive the way you meant to.
+          </h2>
+        </div>
+      </div>
+
+      <!-- Three short service lines below in 3 columns separated by 1px hairlines -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 mt-12 border-t border-b border-dark-border divide-y md:divide-y-0 md:divide-x divide-dark-border">
+        
+        <div class="p-8">
+          <div class="font-mono text-xs text-sage uppercase tracking-wider mb-2">01 — Logistical ease</div>
+          <h3 class="font-sans font-semibold text-base text-ivory mb-2">Ready where you land</h3>
+          <p class="font-sans text-sm text-text-muted leading-relaxed">
+            Curbside delivery at 18 European executive and private terminals. No queues, no rental desk transfers.
+          </p>
+        </div>
+
+        <div class="p-8">
+          <div class="font-mono text-xs text-sage uppercase tracking-wider mb-2">02 — Pure transparency</div>
+          <h3 class="font-sans font-semibold text-base text-ivory mb-2">One clear price</h3>
+          <p class="font-sans text-sm text-text-muted leading-relaxed">
+            Comprehensive insurance, border crossing clearance, and Swiss motorway vignettes included on delivery.
+          </p>
+        </div>
+
+        <div class="p-8">
+          <div class="font-mono text-xs text-sage uppercase tracking-wider mb-2">03 — Exhibition condition</div>
+          <h3 class="font-sans font-semibold text-base text-ivory mb-2">Kept to a gallery standard</h3>
+          <p class="font-sans text-sm text-text-muted leading-relaxed">
+            Every vehicle undergoes a 48-point acoustic, mechanical, and detailing inspection before departure.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. "JOURNEYS" — HORIZONTAL ROW OF THREE TALL PORTRAIT PHOTOS -->
+  <section id="journeys" class="max-w-7xl mx-auto px-6 lg:px-12 py-24 border-b border-border-stone">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-border-stone">
+      <div>
+        <div class="font-mono text-xs tracking-[0.25em] text-sage uppercase mb-3">
+          03 / CURATED ROUTES
+        </div>
+        <h2 class="font-serif text-4xl lg:text-5xl text-ink font-normal">
+          Designed for the open road.
+        </h2>
+      </div>
+      <p class="font-sans text-sm text-text-muted max-w-sm mt-4 md:mt-0 leading-relaxed">
+        Pre-configured routes curated by European road navigators, with GPS waypoints and boutique accommodation stops.
+      </p>
+    </div>
+
+    <!-- Three tall portrait photos with varying widths -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+      
+      <!-- Route 1: Alpine Pass (5 columns wide) -->
+      <div class="md:col-span-5 flex flex-col group cursor-pointer">
+        <div class="relative bg-stone-bg aspect-[3/4] overflow-hidden border border-border-stone mb-4">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4mF--LZ10QeGnUkrF1Sxa1wkf2MfDPL2lnbCUJOaoRuG3tJRzVY-vSQ-iVvin73p-PiDC0HvImmSeH6AateNvj0uBZcFkHVYplVRB7rf_jeEYW8uT3S7vJ9GinNmXHK6IOjiNmqm5cex0PXZvAAEnqiaSZASARyR-p7Y6GIJDmmADQF30cqDS3EyeRWHS_SarFOoJ5Vqj2T2UWqCyNew41HwRo6lN_7Dktljfn5U" 
+            alt="Furka & Susten Passes in the Swiss Alps" 
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div class="absolute top-4 left-4 bg-ivory/95 px-3 py-1 font-mono text-[10px] text-ink uppercase tracking-wider border border-border-stone">
+            Switzerland
+          </div>
+        </div>
+        <h3 class="font-serif text-2xl text-ink mb-1 group-hover:text-forest transition-colors">The High Alpine Transversal</h3>
+        <div class="font-mono text-xs text-text-muted mb-3">3 days · 640 km · 4 mountain passes</div>
+        <a href="#" class="font-sans text-xs uppercase tracking-wider text-ink border-b border-ink/40 w-fit pb-0.5 group-hover:border-forest transition-colors">
+          Explore route itinerary →
+        </a>
+      </div>
+
+      <!-- Route 2: Mediterranean Coast (4 columns wide) -->
+      <div class="md:col-span-4 flex flex-col group cursor-pointer">
+        <div class="relative bg-stone-bg aspect-[3/4] overflow-hidden border border-border-stone mb-4">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4cQ8tTzYoeb1VLf_TZQVfzPbbtwl91O3AvUbjn1RuTIbjMByIs06vjQe9Eh13EYW0KHQKFNf_26YBI7ZVYSnsfJFbaxNa6DvffaREoJFoqcL4hacuR7g_Kc6rLvytC8rIK9YSJ215fzkcw73zr6bL0X47Qrzu9OOUBiObe5guTmAS1tkF-13EL5EH9lfHndg8PiLFQMvLfMbFYhtuUWF7OVl82Xr90uulh87S_rs" 
+            alt="Côte d'Azur coastal corniche route" 
+            class="w-full h-full object-cover object-bottom transition-transform duration-700 group-hover:scale-105"
+          />
+          <div class="absolute top-4 left-4 bg-ivory/95 px-3 py-1 font-mono text-[10px] text-ink uppercase tracking-wider border border-border-stone">
+            France & Italy
+          </div>
+        </div>
+        <h3 class="font-serif text-2xl text-ink mb-1 group-hover:text-forest transition-colors">The Grand Corniche & Riviera</h3>
+        <div class="font-mono text-xs text-text-muted mb-3">4 days · 520 km · Nice to Portofino</div>
+        <a href="#" class="font-sans text-xs uppercase tracking-wider text-ink border-b border-ink/40 w-fit pb-0.5 group-hover:border-forest transition-colors">
+          Explore route itinerary →
+        </a>
+      </div>
+
+      <!-- Route 3: Austrian Heritage & Vienna (3 columns wide) -->
+      <div class="md:col-span-3 flex flex-col group cursor-pointer">
+        <div class="relative bg-stone-bg aspect-[3/4] overflow-hidden border border-border-stone mb-4">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaPRnP2xwlsl7xduu73pUJPlwqhUphItKgJaw0ZzAmX5fldk0O0bj7C7Z8VdkYhX2lg8qH2Q-cy8Siunp5HTlsDpImQt2iA2tD8dXzUS4b2JkO-uFDlJfqoeHhH3QZ8OiVXxnvTUCyhGy4IeY43A7vrutV1xRfz5xGdli91fGG1a5PIDCExzuid60_cciMPsOeODmHfCfmm337hYowm3y2ITKDAUBU14JbBiwE6dc" 
+            alt="Vienna to Wachau Valley route" 
+            class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          />
+          <div class="absolute top-4 left-4 bg-ivory/95 px-3 py-1 font-mono text-[10px] text-ink uppercase tracking-wider border border-border-stone">
+            Austria
+          </div>
+        </div>
+        <h3 class="font-serif text-2xl text-ink mb-1 group-hover:text-forest transition-colors">Wachau to Salzburg</h3>
+        <div class="font-mono text-xs text-text-muted mb-3">2 days · 380 km · Danube valley</div>
+        <a href="#" class="font-sans text-xs uppercase tracking-wider text-ink border-b border-ink/40 w-fit pb-0.5 group-hover:border-forest transition-colors">
+          Explore route itinerary →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. TESTIMONIAL ON STONE BACKGROUND -->
+  <section class="bg-stone-bg py-24 border-b border-border-stone">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <span class="font-mono text-xs text-sage uppercase tracking-[0.25em] block mb-8">
+        PATRON RECORD
+      </span>
+      <blockquote class="font-serif text-2xl md:text-4xl text-ink font-normal leading-relaxed mb-8 italic">
+        “The 911 was delivered to our hotel in Lucerne in immaculate, exhibition condition. No paperwork ordeal, no corporate counters — just the keys, a spotless machine, and the Gotthard Pass ahead of us.”
+      </blockquote>
+      <div class="font-mono text-xs text-text-muted uppercase tracking-widest mb-2">
+        JULIAN V. D. B. · ZURICH · PORSCHE 911 CARRERA (OCTOBER 2024)
+      </div>
+      <div class="font-mono text-[10px] text-sage/70 uppercase">
+        Placeholder testimonial
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FOOTER (#171B19) -->
+  <footer id="about" class="bg-dark-bg text-ivory pt-20 pb-12 border-t border-dark-border">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <!-- Top Row: Brand Statement and Newsletter -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-dark-border">
+        
+        <div class="lg:col-span-6">
+          <div class="font-sans font-semibold text-2xl tracking-[0.35em] text-ivory uppercase mb-6">
+            HALDEN
+          </div>
+          <p class="font-sans text-sm text-text-muted max-w-md leading-relaxed font-light">
+            European automobile atelier and rental gallery. Providing impeccably prepared vehicles for meaningful journeys across Switzerland, Germany, France, and Northern Italy.
+          </p>
+        </div>
+
+        <div class="lg:col-span-6 flex flex-col justify-end">
+          <span class="font-mono text-xs text-sage uppercase tracking-wider mb-3">The Dispatch</span>
+          <p class="font-sans text-xs text-text-muted mb-4">Quarterly seasonal route guides and new fleet additions.</p>
+          <form class="flex items-center max-w-md">
+            <input 
+              type="email" 
+              placeholder="Enter email address" 
+              class="bg-dark-panel border border-dark-border px-4 py-3 text-xs text-ivory placeholder-text-muted focus:outline-none focus:border-sage flex-grow rounded-l-[2px]"
+            />
+            <button 
+              type="submit" 
+              class="bg-forest text-ivory text-xs font-sans uppercase tracking-wider px-6 py-3 rounded-r-[2px] hover:bg-forest-hover transition-colors font-medium whitespace-nowrap"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Middle Row: Navigation Columns -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-b border-dark-border text-xs">
+        
+        <!-- Col 1 -->
+        <div>
+          <span class="font-mono text-[11px] text-sage uppercase tracking-widest block mb-4">Fleet</span>
+          <ul class="space-y-2.5 font-sans text-text-muted">
+            <li><a href="#" class="hover:text-ivory transition-colors">Sports Tier (911, M5)</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">SUVs & Overlanding</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Executive Sedans</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Pure Electric</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Heritage Reserve</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+          <span class="font-mono text-[11px] text-sage uppercase tracking-widest block mb-4">Locations</span>
+          <ul class="space-y-2.5 font-sans text-text-muted">
+            <li><a href="#" class="hover:text-ivory transition-colors">Zurich Flughafen (ZRH)</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Geneva Cointrin (GVA)</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Munich Airport (MUC)</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Milan Malpensa (MXP)</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Vienna Schwechat (VIE)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+          <span class="font-mono text-[11px] text-sage uppercase tracking-widest block mb-4">Company</span>
+          <ul class="space-y-2.5 font-sans text-text-muted">
+            <li><a href="#" class="hover:text-ivory transition-colors">The Gallery Manifesto</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Inspection Protocols</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Private Aviation Delivery</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Press & Editorial</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div>
+          <span class="font-mono text-[11px] text-sage uppercase tracking-widest block mb-4">Support & Legal</span>
+          <ul class="space-y-2.5 font-sans text-text-muted">
+            <li><a href="#" class="hover:text-ivory transition-colors">Concierge Desk (24/7)</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Insurance & Excess Terms</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Cross-border Protocols</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Privacy Notice</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Row: Copyright and Socials -->
+      <div class="flex flex-col md:flex-row items-center justify-between pt-8 text-[11px] font-mono text-text-muted">
+        <div>
+          © 2025 HALDEN AUTOMOBILE AG. ALL RIGHTS RESERVED.
+        </div>
+        <div class="flex items-center space-x-6 mt-4 md:mt-0">
+          <a href="#" class="hover:text-ivory transition-colors">INSTAGRAM</a>
+          <a href="#" class="hover:text-ivory transition-colors">SUBSTACK</a>
+          <a href="#" class="hover:text-ivory transition-colors">LINKEDIN</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

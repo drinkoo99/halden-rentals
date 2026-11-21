@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>HALDEN — Operations Console</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600&amp;family=Manrope:wght@400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-tint":"#4d6355","on-tertiary-fixed-variant":"#474742","on-error-container":"#93000a","on-tertiary-fixed":"#1b1c18","on-secondary-fixed":"#121e14","surface-bright":"#f8faf6","on-secondary-fixed-variant":"#3c4a3d","secondary":"#546254","on-primary-container":"#a0b9a8","inverse-on-surface":"#f0f1ed","on-tertiary":"#ffffff","on-surface":"#191c1a","primary-container":"#344a3d","error-container":"#ffdad6","secondary-fixed":"#d7e7d5","surface-container-low":"#f3f4f0","inverse-primary":"#b4cdbb","tertiary":"#2e2f2a","secondary-fixed-dim":"#bbcbba","surface-container":"#edeeeb","surface-variant":"#e1e3df","surface-container-lowest":"#ffffff","error":"#ba1a1a","secondary-container":"#d7e7d5","background":"#f8faf6","on-primary-fixed":"#0a2015","surface-container-highest":"#e1e3df","on-background":"#191c1a","outline":"#737973","tertiary-container":"#454540","inverse-surface":"#2e312f","on-surface-variant":"#424844","surface-container-high":"#e7e9e5","primary-fixed":"#cfe9d7","surface":"#f8faf6","on-secondary-container":"#59685a","primary-fixed-dim":"#b4cdbb","on-primary":"#ffffff","tertiary-fixed-dim":"#c8c6c0","on-primary-fixed-variant":"#364c3f","on-error":"#ffffff","on-secondary":"#ffffff","outline-variant":"#c2c8c2","surface-dim":"#d9dad7","on-tertiary-container":"#b4b2ac","primary":"#1e3327","tertiary-fixed":"#e4e2db"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","space-md":"1rem","space-xl":"4rem","margin":"4rem","margin-mobile":"1.5rem","gutter":"1.5rem","gutter-mobile":"1rem","space-lg":"2rem","space-sm":"0.5rem"},"fontFamily":{"headline-sm":["Bodoni Moda"],"action":["Manrope"],"headline-md":["Bodoni Moda"],"label-mono":["Space Mono"],"headline-lg":["Bodoni Moda"],"spec-numeral":["Space Mono"],"headline-lg-mobile":["Bodoni Moda"],"body-sm":["Manrope"],"display":["Bodoni Moda"],"body-md":["Manrope"],"body-lg":["Manrope"],"display-mobile":["Bodoni Moda"]},"fontSize":{"headline-sm":["22px",{"lineHeight":"28px","fontWeight":"400"}],"action":["13px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-md":["28px",{"lineHeight":"36px","fontWeight":"400"}],"label-mono":["11px",{"lineHeight":"16px","letterSpacing":"0.12em","fontWeight":"400"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.015em","fontWeight":"400"}],"spec-numeral":["14px",{"lineHeight":"20px","letterSpacing":"0.02em","fontWeight":"400"}],"headline-lg-mobile":["28px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"display":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"display-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-60 bg-on-tertiary-fixed text-inverse-on-surface z-50 flex flex-col border-r border-tertiary"><div class="h-14 px-6 flex items-center border-b border-tertiary"><span class="font-headline-sm text-headline-sm tracking-widest uppercase text-inverse-on-surface">HALDEN</span></div><div class="px-4 py-4 border-b border-tertiary"><label class="block font-label-mono text-label-mono uppercase text-on-tertiary-container mb-2">ACTIVE HUB</label><select class="w-full bg-tertiary text-on-tertiary font-label-mono text-label-mono uppercase px-3 py-2 rounded-none border border-tertiary-container focus:outline-none focus:border-primary-fixed"><option value="all">ALL HUBS</option><option value="muc">MUC — MUNICH</option><option value="zrh">ZRH — ZURICH</option><option value="gva">GVA — GENEVA</option><option value="mxp">MXP — MILAN</option><option value="vie">VIE — VIENNA</option></select></div><nav class="flex-1 py-4 flex flex-col gap-1" data-active-classes="bg-primary text-on-primary font-bold"><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" data-path="overview" href="#">OVERVIEW</a><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase bg-primary text-on-primary font-bold transition-colors" data-path="bookings" href="#">BOOKINGS</a><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" data-path="fleet" href="#">FLEET</a><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" data-path="availability" href="#">AVAILABILITY</a><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" data-path="customers" href="#">CUSTOMERS</a><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" data-path="pricing" href="#">PRICING</a><a class="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" data-path="settings" href="#">SETTINGS</a></nav><div class="px-6 py-4 border-t border-tertiary"><span class="font-label-mono text-label-mono uppercase text-on-tertiary-container">CONSOLE V2.4</span></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-14 bg-surface border-b border-outline-variant z-40 px-8 flex items-center justify-between"><div class="flex items-center w-96"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-3 py-1.5 rounded-none border border-outline-variant focus:outline-none focus:border-primary placeholder:text-on-surface-variant" placeholder="Search booking ref, plate, customer..." type="text"/></div></div><div class="flex items-center gap-6"><span class="font-label-mono text-label-mono uppercase text-on-surface-variant">THU 24 OCT 2024</span><button aria-label="Notifications" class="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute -top-0.5 -right-0.5 w-2 h-2 bg-error rounded-full"></span></button><div class="flex items-center gap-3 pl-4 border-l border-outline-variant"><span class="font-body-sm text-body-sm text-on-surface">M. Weber</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-14 w-full px-8 bg-surface"><div class="flex flex-col w-full pb-16">
+<!-- Top Archival Navigation & Breadcrumbs -->
+<div class="pt-6 pb-4 border-b border-[#D8D6CE] flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 font-label-mono text-[10px] tracking-[0.2em] uppercase text-on-surface-variant">
+<span>CONSOLE</span>
+<span>//</span>
+<span>LOGISTICS &amp; DISPATCH</span>
+<span>//</span>
+<span class="text-primary font-bold">AVAILABILITY CALENDAR</span>
+</div>
+<div class="flex items-baseline gap-4 flex-wrap">
+<h1 class="font-display text-headline-lg text-on-surface tracking-tight">Availability</h1>
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase bg-surface-container-high px-2.5 py-0.5 tracking-wider border border-[#D8D6CE]">
+          [34 ACTIVE CHASSIS // 28 DIURNAL TIMELINE]
+        </div>
+</div>
+</div>
+<!-- Quick KPIs & Legend in Archival Row -->
+<div class="flex items-center gap-6 flex-wrap">
+<div class="flex items-center gap-5 border-r border-[#D8D6CE] pr-6">
+<div>
+<span class="block font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">ALLOCATION RATE</span>
+<span class="font-spec-numeral text-headline-sm font-semibold text-primary">82.4% <span class="text-xs text-on-surface-variant font-normal">(28/34)</span></span>
+</div>
+<div>
+<span class="block font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">MAINTENANCE</span>
+<span class="font-spec-numeral text-headline-sm font-semibold text-on-surface">3 <span class="text-xs text-on-surface-variant font-normal">Units</span></span>
+</div>
+<div>
+<span class="block font-label-mono text-[10px] text-error uppercase tracking-widest">CONFLICTS</span>
+<span class="font-spec-numeral text-headline-sm font-bold text-error">1 <span class="text-xs text-error font-normal">Active</span></span>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex items-center gap-3 font-label-mono text-[10px] uppercase text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 bg-primary-container inline-block"></span>
+<span>Confirmed</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 border border-[#4d6355] inline-block bg-[repeating-linear-gradient(45deg,#cfe9d7,#cfe9d7_2px,#f3f4f0_2px,#f3f4f0_6px)]"></span>
+<span>Maintenance</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 border border-on-surface inline-block bg-surface"></span>
+<span>Tentative Hold</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 border border-error bg-error-container/40 inline-flex items-center justify-center text-error font-bold leading-none">!</span>
+<span class="text-error font-bold">Conflict</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Operational Control Toolbar -->
+<div class="py-3.5 bg-surface-container-low border-b border-[#D8D6CE] flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<!-- Hub Selector Pill -->
+<div class="flex items-center bg-surface border border-[#D8D6CE] px-3 py-1.5">
+<span class="font-label-mono text-[10px] uppercase text-on-surface-variant mr-2">HUB:</span>
+<select class="bg-transparent font-action text-action text-on-surface uppercase focus:outline-none cursor-pointer">
+<option selected="">ALL HUBS (5 REGIONS)</option>
+<option>MUC — MUNICH AIRPORT / VIP</option>
+<option>ZRH — ZURICH KLOTEN</option>
+<option>GVA — GENEVA COINTRIN</option>
+<option>MXP — MILAN MALPENSA</option>
+<option>VIE — VIENNA SCHWECHAT</option>
+</select>
+</div>
+<!-- Category Selector -->
+<div class="flex items-center bg-surface border border-[#D8D6CE] px-3 py-1.5">
+<span class="font-label-mono text-[10px] uppercase text-on-surface-variant mr-2">CLASS:</span>
+<select class="bg-transparent font-action text-action text-on-surface uppercase focus:outline-none cursor-pointer">
+<option selected="">ALL CATEGORIES</option>
+<option>HERITAGE / CLASSIC</option>
+<option>GRAND TOURING</option>
+<option>EXECUTIVE SALOON</option>
+<option>HIGH ALTITUDE SUV</option>
+<option>MOTORSPORT TOURING</option>
+</select>
+</div>
+<!-- Date Span Controls -->
+<div class="flex items-center bg-surface border border-[#D8D6CE]">
+<button class="px-2.5 py-1.5 border-r border-[#D8D6CE] hover:bg-surface-container transition-colors text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="px-3 py-1.5 font-label-mono text-[11px] uppercase tracking-wider text-primary border-r border-[#D8D6CE] hover:bg-surface-container transition-colors">
+          TODAY
+        </button>
+<div class="px-3.5 py-1.5 font-label-mono text-spec-numeral text-on-surface font-medium tracking-wide">
+          24 OCT 2024 — 20 NOV 2024 <span class="text-xs text-on-surface-variant uppercase font-normal">(4 WEEKS)</span>
+</div>
+<button class="px-2.5 py-1.5 border-l border-[#D8D6CE] hover:bg-surface-container transition-colors text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Zoom & Actions -->
+<div class="flex items-center gap-3">
+<div class="flex items-center border border-[#D8D6CE] bg-surface p-0.5">
+<button class="px-2.5 py-1 font-label-mono text-[10px] uppercase bg-primary text-on-primary font-bold">4 WEEKS (DIURNAL)</button>
+<button class="px-2.5 py-1 font-label-mono text-[10px] uppercase text-on-surface hover:bg-surface-container transition-colors">8 WEEKS</button>
+<button class="px-2.5 py-1 font-label-mono text-[10px] uppercase text-on-surface hover:bg-surface-container transition-colors">QUARTER</button>
+</div>
+<button class="px-3 py-1.5 border border-[#171A18] bg-surface hover:bg-surface-container font-action text-action text-on-surface uppercase tracking-wider flex items-center gap-1.5 transition-colors" id="btn-open-block-modal">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Block Dates</span>
+</button>
+<button class="px-3 py-1.5 border border-[#D8D6CE] bg-surface hover:bg-surface-container font-action text-action text-on-surface uppercase tracking-wider flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Manifest</span>
+</button>
+</div>
+</div>
+<!-- Interactive Timeline / Gantt Matrix Architecture -->
+<div class="relative w-full overflow-x-auto border border-[#D8D6CE] bg-surface mt-4 selection:bg-primary-fixed">
+<div class="min-w-[1340px] flex flex-col">
+<!-- Week Header Band -->
+<div class="flex border-b border-[#D8D6CE] bg-surface-container sticky top-0 z-30">
+<!-- Chassis Header Anchor -->
+<div class="w-[300px] shrink-0 p-2.5 border-r border-[#D8D6CE] flex items-center justify-between bg-surface-container-high">
+<span class="font-label-mono text-[10px] tracking-widest text-on-surface uppercase font-bold">CHASSIS &amp; SPECIFICATION (34)</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant cursor-pointer hover:text-on-surface">filter_list</span>
+</div>
+<!-- 4 Calendar Weeks -->
+<div class="flex-1 grid grid-cols-28 divide-x divide-[#D8D6CE]">
+<div class="col-span-4 px-2 py-1 bg-surface-container font-label-mono text-[10px] tracking-widest uppercase text-on-surface-variant font-semibold border-b border-[#D8D6CE]/60">
+            WEEK 43 // 24—27 OCT
+          </div>
+<div class="col-span-7 px-2 py-1 bg-surface-container font-label-mono text-[10px] tracking-widest uppercase text-on-surface-variant font-semibold border-b border-[#D8D6CE]/60">
+            WEEK 44 // 28 OCT—03 NOV
+          </div>
+<div class="col-span-7 px-2 py-1 bg-surface-container font-label-mono text-[10px] tracking-widest uppercase text-on-surface-variant font-semibold border-b border-[#D8D6CE]/60">
+            WEEK 45 // 04—10 NOV
+          </div>
+<div class="col-span-7 px-2 py-1 bg-surface-container font-label-mono text-[10px] tracking-widest uppercase text-on-surface-variant font-semibold border-b border-[#D8D6CE]/60">
+            WEEK 46 // 11—17 NOV
+          </div>
+<div class="col-span-3 px-2 py-1 bg-surface-container font-label-mono text-[10px] tracking-widest uppercase text-on-surface-variant font-semibold border-b border-[#D8D6CE]/60">
+            WEEK 47 // 18—20 NOV
+          </div>
+</div>
+</div>
+<!-- Diurnal Days Header (28 Columns) -->
+<div class="flex border-b border-[#D8D6CE] bg-surface-container-low text-center sticky top-[29px] z-30">
+<!-- Search filter inside chassis fixed panel -->
+<div class="w-[300px] shrink-0 px-2.5 py-1.5 border-r border-[#D8D6CE] flex items-center bg-surface">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant mr-1.5">search</span>
+<input class="w-full text-[11px] font-label-mono uppercase bg-transparent border-none focus:outline-none placeholder:text-outline text-on-surface" placeholder="Filter plate, ref, or vin..." type="text"/>
+</div>
+<!-- 28 Diurnal Column Labels -->
+<div class="flex-1 grid grid-cols-28 divide-x divide-[#D8D6CE] font-label-mono text-[10px]">
+<!-- Week 43 (Thu-Sun) -->
+<div class="py-1 bg-primary/10 font-bold text-primary flex flex-col justify-center relative">
+<span class="text-[9px] leading-tight">TH</span>
+<span class="text-xs">24</span>
+<span class="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-primary rounded-full"></span>
+</div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">FR</span><span class="text-xs">25</span></div>
+<div class="py-1 bg-[#ECEAE4] flex flex-col justify-center text-on-surface-variant font-medium"><span class="text-[9px] leading-tight">SA</span><span class="text-xs">26</span></div>
+<div class="py-1 bg-[#ECEAE4] flex flex-col justify-center text-on-surface-variant font-medium"><span class="text-[9px] leading-tight">SU</span><span class="text-xs">27</span></div>
+<!-- Week 44 -->
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">MO</span><span class="text-xs">28</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">TU</span><span class="text-xs">29</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">WE</span><span class="text-xs">30</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">TH</span><span class="text-xs">31</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">FR</span><span class="text-xs">01</span></div>
+<div class="py-1 bg-[#ECEAE4] flex flex-col justify-center text-on-surface-variant font-medium"><span class="text-[9px] leading-tight">SA</span><span class="text-xs">02</span></div>
+<div class="py-1 bg-[#ECEAE4] flex flex-col justify-center text-on-surface-variant font-medium"><span class="text-[9px] leading-tight">SU</span><span class="text-xs">03</span></div>
+<!-- Week 45 -->
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">MO</span><span class="text-xs">04</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">TU</span><span class="text-xs">05</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">WE</span><span class="text-xs">06</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">TH</span><span class="text-xs">07</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">FR</span><span class="text-xs">08</span></div>
+<div class="py-1 bg-[#ECEAE4] flex flex-col justify-center text-on-surface-variant font-medium"><span class="text-[9px] leading-tight">SA</span><span class="text-xs">09</span></div>
+<div class="py-1 bg-[#ECEAE4] flex flex-col justify-center text-on-surface-variant font-medium"><span class="text-[9px] leading-tight">SU</span><span class="text-xs">10</span></div>
+<!-- Week 46 -->
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">MO</span><span class="text-xs">11</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">TU</span><span class="text-xs">12</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">WE</span><span class="text-xs">13</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">TH</span><span class="text-xs">14</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">FR</span><span class="text-xs">15</span></div>
+<div class="py-1 bg-[#ECEAE4] flex flex-col justify-center text-on-surface-variant font-medium"><span class="text-[9px] leading-tight">SA</span><span class="text-xs">16</span></div>
+<div class="py-1 bg-[#ECEAE4] flex flex-col justify-center text-on-surface-variant font-medium"><span class="text-[9px] leading-tight">SU</span><span class="text-xs">17</span></div>
+<!-- Week 47 -->
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">MO</span><span class="text-xs">18</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">TU</span><span class="text-xs">19</span></div>
+<div class="py-1 flex flex-col justify-center"><span class="text-[9px] text-on-surface-variant leading-tight">WE</span><span class="text-xs">20</span></div>
+</div>
+</div>
+<!-- ROW 1: Range Rover Autobiography -->
+<div class="flex border-b border-[#D8D6CE] relative group bg-surface hover:bg-[#FAF9F5] transition-colors">
+<!-- Chassis Spec Card (Sticky Left) -->
+<div class="w-[300px] shrink-0 p-2.5 border-r border-[#D8D6CE] flex items-center gap-3 bg-surface z-20">
+<div class="w-14 h-10 border border-[#D8D6CE] shrink-0 overflow-hidden bg-surface-container">
+<img alt="Range Rover Autobiography" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrCJk71c3lhALT7V6koDdJykifdb2nYmi2MbUM7wf_XPtfkf9pclswHdi6jb5r34eSpO2qyXQ1UvnV3ir2dELIzFLy1fBaEb4a4N4A-Ux3TtdGKmBLwDoAsfcqAdniDpPhI8uz6BPwYdpWngk7jQJximJiUJEdtAd15YjYyTglTBZS_BAvz10-2-pm6stWaH2ze0nq7c6jmLmJ5-iqT94XOludDflwvA7A6Ii52g72fI"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-mono text-[9px] px-1 bg-surface-container-high text-on-surface font-semibold border border-[#D8D6CE]">MUC</span>
+<span class="font-action text-body-sm font-semibold text-on-surface truncate">Range Rover Autobio.</span>
+</div>
+<div class="flex items-center gap-2 font-label-mono text-[10px] text-on-surface-variant">
+<span>M-HL 4821</span>
+<span>•</span>
+<span class="uppercase">V8 530PS</span>
+</div>
+</div>
+</div>
+<!-- 28-Day Schedule Runway -->
+<div class="flex-1 grid grid-cols-28 divide-x divide-[#D8D6CE] relative min-h-[58px]">
+<!-- Base Day Cell Guides -->
+<div class="bg-primary/5"></div>
+<div></div>
+<div class="bg-[#ECEAE4]/60"></div>
+<div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div>
+<div class="bg-[#ECEAE4]/60"></div>
+<div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div>
+<div class="bg-[#ECEAE4]/60"></div>
+<div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div>
+<div class="bg-[#ECEAE4]/60"></div>
+<div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div>
+<!-- Absolute Timeline Blocks -->
+<!-- 1. Von Bergmann (Days 24-26 -> cols 1 to 3) -->
+<div class="absolute top-2 bottom-2 left-[0%] w-[10.71%] bg-primary-container text-on-primary px-2 py-1 flex items-center justify-between cursor-pointer border border-[#1e3327] z-10 hover:brightness-110 transition-all">
+<div class="truncate">
+<span class="font-action text-[11px] font-bold tracking-wider block truncate">VON BERGMANN</span>
+<span class="font-label-mono text-[9px] text-[#cfe9d7] block truncate">HLD-0612-4821</span>
+</div>
+<span class="material-symbols-outlined text-[13px] text-[#cfe9d7] shrink-0 ml-1">lock</span>
+</div>
+<!-- Floating Hover Detail Popover (Visible State Demonstration anchored to Von Bergmann) -->
+<div class="absolute -top-16 left-[5.5%] z-50 w-72 bg-surface-container-lowest border border-[#171A18] p-3 pointer-events-auto transition-all shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+<div class="flex items-center justify-between border-b border-[#D8D6CE] pb-1.5 mb-2">
+<span class="font-label-mono text-[9px] tracking-widest uppercase text-on-surface-variant">DOSSIER REF // HLD-0612</span>
+<span class="px-1 bg-primary text-on-primary font-label-mono text-[8px] uppercase tracking-wider">CONFIRMED</span>
+</div>
+<div class="space-y-1 text-on-surface">
+<div class="font-headline-sm text-sm font-bold text-on-surface">Clara von Bergmann <span class="font-label-mono text-[10px] text-on-surface-variant font-normal">(Tier II)</span></div>
+<div class="font-label-mono text-[10px] text-on-surface-variant">24 OCT 10:00 → 26 OCT 18:00 (3 DIURNAL)</div>
+<div class="font-label-mono text-[10px] text-on-surface-variant">MUNICH T2 VIP ↔ RETURN SAME</div>
+<div class="flex items-center justify-between pt-1 border-t border-[#D8D6CE] mt-2">
+<span class="font-spec-numeral text-xs font-semibold text-primary">€1,731.45 SECURED</span>
+<a class="font-action text-[11px] text-primary underline uppercase tracking-wider hover:text-on-surface" href="#">Open Dossier →</a>
+</div>
+</div>
+</div>
+<!-- 2. Hold: Sterling (Days 28-31 -> cols 5 to 8) -->
+<div class="absolute top-2 bottom-2 left-[14.28%] w-[14.28%] border border-[#171A18] bg-surface-container px-2 py-1 flex items-center justify-between cursor-pointer z-10 hover:bg-surface-container-high transition-colors">
+<div class="truncate">
+<span class="font-action text-[10px] font-bold text-on-surface uppercase tracking-wider block truncate">HOLD: STERLING</span>
+<span class="font-label-mono text-[9px] text-on-surface-variant block truncate">HLD-0922 // TENTATIVE</span>
+</div>
+<span class="font-label-mono text-[9px] text-on-surface-variant border border-[#D8D6CE] px-1 shrink-0">48H</span>
+</div>
+<!-- 3. Maintenance (Days 04-06 Nov -> cols 12 to 14) -->
+<div class="absolute top-2 bottom-2 left-[42.85%] w-[10.71%] border border-[#4d6355] bg-[repeating-linear-gradient(45deg,#cfe9d7,#cfe9d7_4px,#f3f4f0_4px,#f3f4f0_10px)] px-2 py-1 flex items-center z-10 cursor-pointer">
+<span class="font-label-mono text-[9px] font-bold text-on-secondary-fixed-variant truncate uppercase tracking-widest bg-surface/90 px-1 py-0.5 border border-[#D8D6CE]">48-PT ROUTINE SERVICE</span>
+</div>
+<!-- 4. Kaufmann (Days 09-15 Nov -> cols 17 to 23) -->
+<div class="absolute top-2 bottom-2 left-[60.71%] w-[25.00%] bg-primary-container text-on-primary px-2 py-1 flex items-center justify-between cursor-pointer border border-[#1e3327] z-10">
+<div class="truncate">
+<span class="font-action text-[11px] font-bold tracking-wider block truncate">KAUFMANN // EXECUTIVE LEASE</span>
+<span class="font-label-mono text-[9px] text-[#cfe9d7] block truncate">HLD-1044-8830 • SALZBURG TRANSIT</span>
+</div>
+<span class="font-spec-numeral text-[10px] text-primary-fixed shrink-0">7 DAYS</span>
+</div>
+</div>
+</div>
+<!-- ROW 2: Porsche 911 GT3 Touring -->
+<div class="flex border-b border-[#D8D6CE] relative group bg-surface hover:bg-[#FAF9F5] transition-colors">
+<!-- Chassis Left -->
+<div class="w-[300px] shrink-0 p-2.5 border-r border-[#D8D6CE] flex items-center gap-3 bg-surface z-20">
+<div class="w-14 h-10 border border-[#D8D6CE] shrink-0 overflow-hidden bg-surface-container">
+<img alt="Porsche 911 GT3" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrAQXQu2c7rxttrHQpjFZ-ylmcUWxF1nv0vFjD6fFnTOr9l3oZznBCXaiTl6nQ_-9OXgk3BPgaLAFeSo09JCHGjcG0biMdj7D5_O5G_gYxiDN50KIOHBiMfTqGONxoQnBKsZ8Iog4vpX241Sx74MdWXJVIEvDRhH7yfosrr38DCYNiiKnb08nqf_vF3HhTcCrrrvO94btUDxYo2l5ruXt5ffS1oU7T6guksDPCiPZDjt"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-mono text-[9px] px-1 bg-surface-container-high text-on-surface font-semibold border border-[#D8D6CE]">ZRH</span>
+<span class="font-action text-body-sm font-semibold text-on-surface truncate">911 GT3 Touring</span>
+</div>
+<div class="flex items-center gap-2 font-label-mono text-[10px] text-on-surface-variant">
+<span>ZH-91104</span>
+<span>•</span>
+<span class="uppercase">4.0L FLAT-6 510PS</span>
+</div>
+</div>
+</div>
+<!-- 28-Day Runway -->
+<div class="flex-1 grid grid-cols-28 divide-x divide-[#D8D6CE] relative min-h-[58px]">
+<div class="bg-primary/5"></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div>
+<!-- Lindqvist (Days 25-29 -> cols 2 to 6) -->
+<div class="absolute top-2 bottom-2 left-[3.57%] w-[17.85%] bg-primary-container text-on-primary px-2 py-1 flex items-center justify-between cursor-pointer border border-[#1e3327] z-10">
+<div class="truncate">
+<span class="font-action text-[11px] font-bold tracking-wider block truncate">LINDQVIST</span>
+<span class="font-label-mono text-[9px] text-[#cfe9d7] block truncate">HLD-0841-3920 // ALP-PASS ROUTE</span>
+</div>
+<span class="material-symbols-outlined text-[13px] text-[#cfe9d7]">speed</span>
+</div>
+<!-- Allocation Conflict Warning (Days 02-04 Nov -> cols 10 to 12) -->
+<div class="absolute top-2 bottom-2 left-[32.14%] w-[10.71%] border-2 border-error bg-error-container/80 text-on-error-container px-2 py-1 flex items-center justify-between cursor-pointer z-10 animate-pulse">
+<div class="truncate">
+<span class="font-action text-[10px] font-bold uppercase tracking-wider block truncate text-error">! CONFLICT DETECTED</span>
+<span class="font-label-mono text-[9px] text-error block truncate">2 PATRONS // ZRH HUB</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-error shrink-0">error</span>
+</div>
+</div>
+</div>
+<!-- ROW 3: Audi RS6 Avant -->
+<div class="flex border-b border-[#D8D6CE] relative group bg-surface hover:bg-[#FAF9F5] transition-colors">
+<div class="w-[300px] shrink-0 p-2.5 border-r border-[#D8D6CE] flex items-center gap-3 bg-surface z-20">
+<div class="w-14 h-10 border border-[#D8D6CE] shrink-0 overflow-hidden bg-surface-container">
+<img alt="Audi RS6 Avant" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrBa6kFaGgL2AcJ8fG01C0DjjpMPJk6woPk60jrO_HR6QJY9reODoXiyyUTTy8VPeeeOMoJCfn5kd6W6IPpih0dqGzNGEdNGCQN8xIE8YeuaWcpwruMEC12HOrc7jPX4AguQnb7kPLwrANPw4XZI5nBsbAqKUhSdUCWnupdlTKY3Afr2JXUVwOD30wRf3wlcDqbzTMb-v94MB94CguHGJoPAHu9jhbQqdO6EkQQqj3TI"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-mono text-[9px] px-1 bg-surface-container-high text-on-surface font-semibold border border-[#D8D6CE]">VIE</span>
+<span class="font-action text-body-sm font-semibold text-on-surface truncate">Audi RS6 Avant</span>
+</div>
+<div class="flex items-center gap-2 font-label-mono text-[10px] text-on-surface-variant">
+<span>W-8821H</span>
+<span>•</span>
+<span class="uppercase">V8 TWIN-TURBO 600PS</span>
+</div>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-28 divide-x divide-[#D8D6CE] relative min-h-[58px]">
+<div class="bg-primary/5"></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div>
+<!-- Inspection Brake Recall (Days 24-27 -> cols 1 to 4) -->
+<div class="absolute top-2 bottom-2 left-[0%] w-[14.28%] border border-[#4d6355] bg-[repeating-linear-gradient(45deg,#cfe9d7,#cfe9d7_4px,#f3f4f0_4px,#f3f4f0_10px)] px-2 py-1 flex items-center z-10 cursor-pointer">
+<span class="font-label-mono text-[9px] font-bold text-on-secondary-fixed-variant truncate uppercase tracking-widest bg-surface/90 px-1 border border-[#D8D6CE]">BRAKE PAD RECALL // VERIFIED</span>
+</div>
+<!-- Moreau (Days 29-05 Nov -> cols 6 to 13) -->
+<div class="absolute top-2 bottom-2 left-[17.85%] w-[25.00%] bg-primary-container text-on-primary px-2 py-1 flex items-center justify-between cursor-pointer border border-[#1e3327] z-10">
+<div class="truncate">
+<span class="font-action text-[11px] font-bold tracking-wider block truncate">MOREAU // AUTUMN DOLOMITES</span>
+<span class="font-label-mono text-[9px] text-[#cfe9d7] block truncate">HLD-0789-1142 • VIENNA DISPATCH</span>
+</div>
+<span class="font-label-mono text-[9px] text-primary-fixed shrink-0">€4,890</span>
+</div>
+</div>
+</div>
+<!-- ROW 4: Lexus LC 500 Coupe -->
+<div class="flex border-b border-[#D8D6CE] relative group bg-surface hover:bg-[#FAF9F5] transition-colors">
+<div class="w-[300px] shrink-0 p-2.5 border-r border-[#D8D6CE] flex items-center gap-3 bg-surface z-20">
+<div class="w-14 h-10 border border-[#D8D6CE] shrink-0 overflow-hidden bg-surface-container">
+<img alt="Lexus LC 500" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrAizIN_J1h_jExplL1fYg2MRe1Crqp1URazztBdSThtt0obbxMEtWnMhX3z2pghzMbn4RtbbWFxKceGbGd9OuiNwTJ5YvU5nVyukHStFsy5y2279EQ-GW1s_VDvJSNtDsWUA8Wf7LZUHU659I42kaYp5g7bwvLrdIk1qkO4eZXeUwmTvdiso976-Mf0xpxq4o3tu7n2Mtc47TCmFKGcH7a4Rtky93C2DRhLqkfbx5tF"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-mono text-[9px] px-1 bg-surface-container-high text-on-surface font-semibold border border-[#D8D6CE]">MXP</span>
+<span class="font-action text-body-sm font-semibold text-on-surface truncate">Lexus LC 500 Coupe</span>
+</div>
+<div class="flex items-center gap-2 font-label-mono text-[10px] text-on-surface-variant">
+<span>MI-77210</span>
+<span>•</span>
+<span class="uppercase">5.0L V8 NA 477PS</span>
+</div>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-28 divide-x divide-[#D8D6CE] relative min-h-[58px]">
+<div class="bg-primary/5"></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div>
+<!-- De Vries (Days 26-01 Nov -> cols 3 to 9) -->
+<div class="absolute top-2 bottom-2 left-[7.14%] w-[21.42%] bg-primary-container text-on-primary px-2 py-1 flex items-center justify-between cursor-pointer border border-[#1e3327] z-10">
+<div class="truncate">
+<span class="font-action text-[11px] font-bold tracking-wider block truncate">DE VRIES</span>
+<span class="font-label-mono text-[9px] text-[#cfe9d7] block truncate">HLD-0892-3100 // COMO RETREAT</span>
+</div>
+<span class="material-symbols-outlined text-[13px] text-[#cfe9d7]">key</span>
+</div>
+<!-- Hold: Casiraghi (Days 06-09 Nov -> cols 14 to 17) -->
+<div class="absolute top-2 bottom-2 left-[39.28%] w-[14.28%] border border-[#171A18] bg-surface-container px-2 py-1 flex items-center justify-between cursor-pointer z-10">
+<div class="truncate">
+<span class="font-action text-[10px] font-bold text-on-surface uppercase tracking-wider block truncate">HOLD: CASIRAGHI</span>
+<span class="font-label-mono text-[9px] text-on-surface-variant block truncate">HLD-1102 // TENTATIVE</span>
+</div>
+<span class="font-label-mono text-[9px] text-on-surface-variant">REQ</span>
+</div>
+</div>
+</div>
+<!-- ROW 5: Mercedes-Benz S 580 4MATIC -->
+<div class="flex border-b border-[#D8D6CE] relative group bg-surface hover:bg-[#FAF9F5] transition-colors">
+<div class="w-[300px] shrink-0 p-2.5 border-r border-[#D8D6CE] flex items-center gap-3 bg-surface z-20">
+<div class="w-14 h-10 border border-[#D8D6CE] shrink-0 overflow-hidden bg-surface-container">
+<img alt="Mercedes-Benz S 580" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrA-qoJRR8GvaSdR0gEFCnvtPza0D6kCyb6olS9QBTm2643kOmw0xaHLlfnJ_YCVeatYeNyXRV_EWZThwJqIfkvTHS8d6U8-sVLDz3Y-tLYNh6finxXh-upozAhvCsacc26Nt4YifcF7zeb14VdgdKh49rnkcbvoMzx6lwey63XwQHBl-DF5qLnYFEoWTFRFadBS81YyoJt5MNSJP-WlgVfBHVlfGjzldIn_uAeYzdNX"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-mono text-[9px] px-1 bg-surface-container-high text-on-surface font-semibold border border-[#D8D6CE]">GVA</span>
+<span class="font-action text-body-sm font-semibold text-on-surface truncate">Mercedes-Benz S 580</span>
+</div>
+<div class="flex items-center gap-2 font-label-mono text-[10px] text-on-surface-variant">
+<span>GE-40219</span>
+<span>•</span>
+<span class="uppercase">V8 BI-TURBO 503PS</span>
+</div>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-28 divide-x divide-[#D8D6CE] relative min-h-[58px]">
+<div class="bg-primary/5"></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div>
+<!-- Von Thurn (Days 24-28 -> cols 1 to 5) -->
+<div class="absolute top-2 bottom-2 left-[0%] w-[17.85%] bg-primary-container text-on-primary px-2 py-1 flex items-center justify-between cursor-pointer border border-[#1e3327] z-10">
+<div class="truncate">
+<span class="font-action text-[11px] font-bold tracking-wider block truncate">VON THURN</span>
+<span class="font-label-mono text-[9px] text-[#cfe9d7] block truncate">HLD-0551-6029 // DIPLOMATIC</span>
+</div>
+<span class="material-symbols-outlined text-[13px] text-[#cfe9d7]">verified_user</span>
+</div>
+<!-- Amann (Days 31-04 Nov -> cols 8 to 12) -->
+<div class="absolute top-2 bottom-2 left-[25.00%] w-[17.85%] bg-primary-container text-on-primary px-2 py-1 flex items-center justify-between cursor-pointer border border-[#1e3327] z-10">
+<div class="truncate">
+<span class="font-action text-[11px] font-bold tracking-wider block truncate">AMANN</span>
+<span class="font-label-mono text-[9px] text-[#cfe9d7] block truncate">HLD-0988-4412 // GVA-ZRH</span>
+</div>
+<span class="font-label-mono text-[9px] text-primary-fixed">1-WAY</span>
+</div>
+</div>
+</div>
+<!-- ROW 6: Land Cruiser 300 V8 -->
+<div class="flex border-b border-[#D8D6CE] relative group bg-surface hover:bg-[#FAF9F5] transition-colors">
+<div class="w-[300px] shrink-0 p-2.5 border-r border-[#D8D6CE] flex items-center gap-3 bg-surface z-20">
+<div class="w-14 h-10 border border-[#D8D6CE] shrink-0 overflow-hidden bg-surface-container">
+<img alt="Land Cruiser 300" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrBP1rCnebVctl31f9bG6RIYm8TPe6z4MEc9NW2ch-Q-h3ZjV93GEC6FgeNXR1PdtgvkZ3Zp7uUIrTKDh2j6b1xF8pcoXWJ7iWIIO-y8649D_ddvSjdDMAQsb_otPLhoKTIPvZ3YtPE42FPwKlTGZVvZxiFOJ1fCcaABfNWyW3CQ6o2slC4EXb81Jn7Co2Dkm2tRh9sd0SuuyxcbKhyHwPOyrUvWK5RFWVopVc_-QWQ"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-mono text-[9px] px-1 bg-surface-container-high text-on-surface font-semibold border border-[#D8D6CE]">MUC</span>
+<span class="font-action text-body-sm font-semibold text-on-surface truncate">Land Cruiser 300 V8</span>
+</div>
+<div class="flex items-center gap-2 font-label-mono text-[10px] text-on-surface-variant">
+<span>M-HL 7740</span>
+<span>•</span>
+<span class="uppercase">3.3L TWIN-TURBO 309PS</span>
+</div>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-28 divide-x divide-[#D8D6CE] relative min-h-[58px]">
+<div class="bg-primary/5"></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div>
+<!-- Schneider (Days 27-03 Nov -> cols 4 to 11) -->
+<div class="absolute top-2 bottom-2 left-[10.71%] w-[25.00%] bg-primary-container text-on-primary px-2 py-1 flex items-center justify-between cursor-pointer border border-[#1e3327] z-10">
+<div class="truncate">
+<span class="font-action text-[11px] font-bold tracking-wider block truncate">SCHNEIDER // GARMISCH LODGE</span>
+<span class="font-label-mono text-[9px] text-[#cfe9d7] block truncate">HLD-0711-9012</span>
+</div>
+<span class="material-symbols-outlined text-[13px] text-[#cfe9d7]">terrain</span>
+</div>
+<!-- Maintenance: Pre-Winter (Days 10-14 Nov -> cols 18 to 22) -->
+<div class="absolute top-2 bottom-2 left-[60.71%] w-[17.85%] border border-[#4d6355] bg-[repeating-linear-gradient(45deg,#cfe9d7,#cfe9d7_4px,#f3f4f0_4px,#f3f4f0_10px)] px-2 py-1 flex items-center z-10 cursor-pointer">
+<span class="font-label-mono text-[9px] font-bold text-on-secondary-fixed-variant truncate uppercase tracking-widest bg-surface/90 px-1 border border-[#D8D6CE]">PRE-WINTER CORROSION SEAL</span>
+</div>
+</div>
+</div>
+<!-- ROW 7: BMW 540i xDrive (With Active Selection + "Block Dates" Popover) -->
+<div class="flex border-b border-[#D8D6CE] relative group bg-surface hover:bg-[#FAF9F5] transition-colors">
+<div class="w-[300px] shrink-0 p-2.5 border-r border-[#D8D6CE] flex items-center gap-3 bg-surface z-20">
+<div class="w-14 h-10 border border-[#D8D6CE] shrink-0 overflow-hidden bg-surface-container">
+<img alt="BMW 540i xDrive" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrDKvCzvo71woD3UHNs1nC6FrxNA4D9ImbWU6XHwneqPDMnuk4SCxolg8PUjBkq5kKhrH3SNuo2GIhTwniq1tGBWgd9b-EOEYiL1jecVezBBdWtuKPuXaiOSwXB4szuaoC_N2feN1jwOqbqhEZtnHtVPYqPjXHbbd__COiDAJkzaDvWoc206qOsF-LGQnqWXAzmtfhHq8FWllz619OFSQ7fTpkVbdjHm4R6HfV07928M"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-mono text-[9px] px-1 bg-surface-container-high text-on-surface font-semibold border border-[#D8D6CE]">MUC</span>
+<span class="font-action text-body-sm font-semibold text-on-surface truncate">BMW 540i xDrive</span>
+</div>
+<div class="flex items-center gap-2 font-label-mono text-[10px] text-on-surface-variant">
+<span>M-HL 3390</span>
+<span>•</span>
+<span class="uppercase">3.0L TURBO 333PS</span>
+</div>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-28 divide-x divide-[#D8D6CE] relative min-h-[58px]">
+<div class="bg-primary/5"></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div>
+<!-- Highlighted Drag Selection Box across 26-29 Oct (cols 3 to 6) -->
+<div class="absolute inset-y-1 left-[7.14%] w-[14.28%] border-2 border-primary bg-primary-fixed/20 z-10 flex items-center justify-center pointer-events-none">
+<span class="font-label-mono text-[9px] uppercase tracking-wider text-primary font-bold bg-surface px-1 border border-primary">SELECTION (4 DAYS)</span>
+</div>
+<!-- ANCHORED 'BLOCK DATES' FORM POPOVER -->
+<div class="absolute top-12 left-[10%] z-50 w-96 bg-surface-container-lowest border-2 border-primary p-4 shadow-[0_12px_32px_rgba(0,0,0,0.12)]" id="block-dates-modal">
+<div class="flex items-center justify-between border-b border-[#D8D6CE] pb-2 mb-3">
+<div>
+<span class="font-label-mono text-[9px] text-primary uppercase font-bold tracking-widest block">DISPATCH INTERVENTION</span>
+<h4 class="font-action text-body-sm font-bold text-on-surface uppercase">Block Chassis // BMW 540i (M-HL 3390)</h4>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('block-dates-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="space-y-3">
+<div>
+<label class="block font-label-mono text-[10px] text-on-surface-variant uppercase mb-1">REASON CLASSIFICATION</label>
+<div class="grid grid-cols-3 gap-1.5 font-action text-[11px] uppercase">
+<label class="border border-[#171A18] bg-primary text-on-primary p-1.5 text-center cursor-pointer flex items-center justify-center gap-1 font-semibold">
+<input checked="" class="hidden" name="reason" type="radio"/> Maintenance
+                  </label>
+<label class="border border-[#D8D6CE] bg-surface p-1.5 text-center cursor-pointer hover:bg-surface-container text-on-surface flex items-center justify-center gap-1">
+<input class="hidden" name="reason" type="radio"/> Transfer Hub
+                  </label>
+<label class="border border-[#D8D6CE] bg-surface p-1.5 text-center cursor-pointer hover:bg-surface-container text-on-surface flex items-center justify-center gap-1">
+<input class="hidden" name="reason" type="radio"/> VIP Hold
+                  </label>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 font-label-mono text-[10px]">
+<div class="border border-[#D8D6CE] p-1.5 bg-surface-container-low">
+<span class="block text-on-surface-variant text-[9px]">DIURNAL PERIOD:</span>
+<span class="font-semibold text-on-surface">26 OCT → 29 OCT 2024</span>
+</div>
+<div class="border border-[#D8D6CE] p-1.5 bg-surface-container-low">
+<span class="block text-on-surface-variant text-[9px]">STATIONED HUB:</span>
+<span class="font-semibold text-on-surface">MUC — MUNICH</span>
+</div>
+</div>
+<div>
+<label class="block font-label-mono text-[10px] text-on-surface-variant uppercase mb-1">DISPATCH NOTES</label>
+<textarea class="w-full p-2 border border-[#D8D6CE] font-body-sm text-xs text-on-surface bg-surface focus:outline-none focus:border-primary resize-none placeholder:text-outline" placeholder="Enter reason for block..." rows="2">Scheduled transmission diagnostic &amp; sensor recalibration</textarea>
+</div>
+<div class="flex items-center justify-end gap-2 pt-2 border-t border-[#D8D6CE]">
+<button class="px-3 py-1.5 font-action text-xs text-on-surface uppercase tracking-wider hover:bg-surface-container" onclick="document.getElementById('block-dates-modal').classList.add('hidden')" type="button">
+                  Cancel
+                </button>
+<button class="px-4 py-1.5 font-action text-xs font-semibold bg-primary text-on-primary uppercase tracking-wider hover:bg-primary-container transition-colors" type="button">
+                  Save Block
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ROW 8: Porsche 911 Carrera 2.7 RS (Heritage) -->
+<div class="flex border-b border-[#D8D6CE] relative group bg-surface hover:bg-[#FAF9F5] transition-colors">
+<div class="w-[300px] shrink-0 p-2.5 border-r border-[#D8D6CE] flex items-center gap-3 bg-surface z-20">
+<div class="w-14 h-10 border border-[#D8D6CE] shrink-0 overflow-hidden bg-surface-container">
+<img alt="Porsche 911 Carrera RS" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrBTeH4GVRzzjPpZyWIEPSBftAIgthFoVPM4ZDVJX6FipQDsxpEYU1Pxxi8aYhWzI0B_35sun7aMQPLKXHmUxcwD5O3VDPGDoQbsfwnOAqsbHm6rQOUmVolk-VIf9r5nD99IU_I70hgZzLQpMycTPUAhfInZcQ3PJl4u7ficJWBBM82N_00hZBBIFyi3FFIstcBo57GBZZ68oKudu4-ARgdfY1W3Pb5VEcmsngpj48DV"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-mono text-[9px] px-1 bg-surface-container-high text-on-surface font-semibold border border-[#D8D6CE]">ZRH</span>
+<span class="font-action text-body-sm font-semibold text-on-surface truncate">911 Carrera 2.7 RS</span>
+</div>
+<div class="flex items-center gap-2 font-label-mono text-[10px] text-on-surface-variant">
+<span>ZH-1974</span>
+<span>•</span>
+<span class="uppercase">HERITAGE VAULT</span>
+</div>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-28 divide-x divide-[#D8D6CE] relative min-h-[58px]">
+<div class="bg-primary/5"></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div><div></div><div></div><div class="bg-[#ECEAE4]/60"></div><div class="bg-[#ECEAE4]/60"></div>
+<div></div><div></div><div></div>
+<!-- Stored in Exhibition Vault (Span 24 Oct to 12 Nov) -->
+<div class="absolute top-2 bottom-2 left-[0%] w-[67.85%] border border-[#737973] bg-surface-container-high/60 px-3 py-1 flex items-center justify-between z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">museum</span>
+<span class="font-label-mono text-[10px] uppercase tracking-widest text-on-surface font-semibold">HALDEN PAVILION // STATIC EXHIBITION // NON-DISPATCH</span>
+</div>
+<span class="font-label-mono text-[9px] text-on-surface-variant uppercase bg-surface px-1.5 py-0.5 border border-[#D8D6CE]">SECURED ASSET</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Operational Diagnostics & Fallback States Tray -->
+<div class="mt-8 border border-[#D8D6CE] bg-surface-container-low p-4">
+<div class="flex items-center justify-between pb-3 border-b border-[#D8D6CE] mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">tune</span>
+<span class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface font-bold">STATE REFERENCE PANELS // SYSTEM PREVIEWS</span>
+</div>
+<span class="font-label-mono text-[10px] text-on-surface-variant">STAGING TELEMETRY V2.4</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<!-- 1. Empty-Hub State Preview -->
+<div class="border border-[#D8D6CE] bg-surface p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-mono text-[9px] text-on-surface-variant uppercase tracking-widest">STATE: FILTER ZERO-MATCH</span>
+<span class="font-label-mono text-[9px] px-1.5 py-0.5 bg-surface-container text-on-surface-variant">CPH HUB</span>
+</div>
+<h4 class="font-headline-sm text-base text-on-surface font-medium mb-1">No Chassis Stationed in Hub</h4>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+            No chassis currently stationed in Copenhagen (CPH) for this diurnal period. Transfer an unassigned unit from Munich (MUC) or adjust regional search criteria.
+          </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#D8D6CE] flex items-center justify-between">
+<button class="font-action text-xs text-primary font-bold uppercase tracking-wider hover:underline flex items-center gap-1">
+<span>Initiate Hub Relay Dispatch</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+<span class="font-label-mono text-[10px] text-outline">CODE // 0-CPH-NULL</span>
+</div>
+</div>
+<!-- 2. Loading State Shimmer Preview -->
+<div class="border border-[#D8D6CE] bg-surface p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-mono text-[9px] text-primary uppercase tracking-widest font-bold">STATE: NETWORK SYNCHRONIZATION</span>
+<span class="font-label-mono text-[9px] text-primary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-ping"></span>
+              SYNCING CANTONAL TELEMETRY...
+            </span>
+</div>
+<!-- Shimmer Grid Mock -->
+<div class="space-y-2 mt-3 animate-pulse">
+<div class="h-3 bg-surface-container-highest w-full"></div>
+<div class="h-3 bg-surface-container-high w-5/6"></div>
+<div class="h-3 bg-surface-container w-4/6"></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#D8D6CE] flex items-center justify-between font-label-mono text-[10px] text-on-surface-variant">
+<span>LATENCY: 14MS</span>
+<span>GATEWAY: ZRH-CENTRAL-01</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Micro-interaction handlers for modal toggle
+    const openBlockBtn = document.getElementById('btn-open-block-modal');
+    const blockModal = document.getElementById('block-dates-modal');
+    if (openBlockBtn && blockModal) {
+      openBlockBtn.addEventListener('click', () => {
+        blockModal.classList.toggle('hidden');
+      });
+    }
+  </script>
+</div></main></div></body></html>

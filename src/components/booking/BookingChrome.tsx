@@ -101,7 +101,7 @@ export function BookingSummary() {
   return (
     <aside
       aria-label="Reservation dossier"
-      className="lg:col-span-4 lg:sticky lg:top-36 bg-surface-container-low border border-outline-variant p-6 rounded-none space-y-6"
+      className="hidden md:block lg:col-span-4 lg:sticky lg:top-36 bg-surface-container-low border border-outline-variant p-6 rounded-none space-y-6"
     >
       <div className="flex items-center justify-between pb-3 border-b border-outline-variant">
         <span className="font-label-mono text-label-mono uppercase tracking-widest text-outline">RESERVATION DOSSIER</span>

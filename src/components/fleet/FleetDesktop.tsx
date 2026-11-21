@@ -68,10 +68,10 @@ export function FleetDesktop() {
             <Link href="/fleet" aria-current="page" className="text-forest font-semibold tracking-wide border-b-2 border-forest pb-1 -mb-[1px]">
               Fleet
             </Link>
-            <Link href="/#journeys" className="text-muted hover:text-ink transition-colors tracking-wide">
+            <Link href="/journeys" className="text-muted hover:text-ink transition-colors tracking-wide">
               Journeys
             </Link>
-            <Link href="/#about" className="text-muted hover:text-ink transition-colors tracking-wide">
+            <Link href="/about" className="text-muted hover:text-ink transition-colors tracking-wide">
               About
             </Link>
           </nav>
@@ -648,8 +648,8 @@ export function FleetFooter() {
               <li><a href="tel:+41448002400" className={a}>Concierge Desk (24/7)</a></li>
               <li><Link href="/#standard" className={a}>Hotel &amp; Villa Curbside Delivery</Link></li>
               <li><Link href="/#standard" className={a}>Cross-border Protocols &amp; Vignettes</Link></li>
-              <li><Link href="/#about" className={a}>Insurance &amp; Excess Terms</Link></li>
-              <li><Link href="/#about" className={a}>Privacy Notice</Link></li>
+              <li><Link href="/about" className={a}>Insurance &amp; Excess Terms</Link></li>
+              <li><Link href="/about" className={a}>Privacy Notice</Link></li>
             </ul>
           </div>
         </div>

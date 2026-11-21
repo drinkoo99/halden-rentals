@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -38,6 +38,7 @@ function safeNext(v: string | null) {
  */
 export function SignInScreen() {
   const params = useSearchParams();
+  const router = useRouter();
   const next = safeNext(params.get("next"));
   const [mode, setMode] = useState<"signin" | "register">("signin");
   const [show, setShow] = useState(false);
@@ -54,14 +55,15 @@ export function SignInScreen() {
   });
 
   function onSubmit() {
-    setNotice(
-      mode === "signin"
-        ? "Patron accounts open with the next HALDEN release. Nothing was sent — you can continue as a guest in the meantime."
-        : "Thank you. Patron registration opens with the next HALDEN release; your details were not stored.",
-    );
+    // No patron accounts exist yet (backend phase), so every sign-in is honestly an invalid credential:
+    // show the Stitch error-state screen ("Sign In: Error States & Security Lockout").
+    if (mode === "signin") return router.push("/sign-in/error");
+    setNotice("Thank you. Patron registration opens with the next HALDEN release; your details were not stored.");
   }
 
   const switchMode = (m: "signin" | "register") => {
+    // Registration has its own Stitch screen ("Request Access")
+    if (m === "register") return router.push("/request-access");
     setMode(m);
     setNotice(null);
     clearErrors();
@@ -216,13 +218,9 @@ export function SignInScreen() {
                   error={errors.passcode?.message}
                   aside={
                     mode === "signin" ? (
-                      <button
-                        type="button"
-                        onClick={() => setNotice("Passcode recovery opens with patron accounts. For urgent help, call the concierge desk on +41 44 800 2400.")}
-                        className="font-action text-[12px] text-secondary hover:text-primary transition-colors underline underline-offset-4"
-                      >
+                      <Link href="/forgot-passcode" className="font-action text-[12px] text-secondary hover:text-primary transition-colors underline underline-offset-4">
                         Forgot passcode?
-                      </button>
+                      </Link>
                     ) : (
                       <span className="font-label-mono text-label-mono text-[10px] text-outline">12+ CHARS · LETTER · NUMBER</span>
                     )

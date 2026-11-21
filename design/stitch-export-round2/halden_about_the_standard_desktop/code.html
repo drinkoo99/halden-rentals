@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Manrope:wght@300;400;500;600;700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed": "#1b1c18", "on-tertiary": "#ffffff", "primary": "#1e3327", "on-secondary-fixed-variant": "#3c4a3d", "inverse-primary": "#b4cdbb", "primary-fixed-dim": "#b4cdbb", "tertiary": "#2e2f2a", "on-error-container": "#93000a", "on-error": "#ffffff", "surface-dim": "#d9dad7", "surface-container-low": "#f3f4f0", "secondary-container": "#d7e7d5", "on-tertiary-container": "#b4b2ac", "on-surface-variant": "#424844", "on-primary-fixed": "#0a2015", "on-surface": "#191c1a", "surface-tint": "#4d6355", "on-primary-container": "#a0b9a8", "inverse-on-surface": "#f0f1ed", "tertiary-container": "#454540", "background": "#f8faf6", "secondary": "#546254", "surface-container-high": "#e7e9e5", "on-secondary": "#ffffff", "surface-container": "#edeeeb", "on-tertiary-fixed-variant": "#474742", "on-primary": "#ffffff", "on-primary-fixed-variant": "#364c3f", "error-container": "#ffdad6", "inverse-surface": "#2e312f", "surface-container-highest": "#e1e3df", "surface-bright": "#f8faf6", "on-secondary-fixed": "#121e14", "tertiary-fixed-dim": "#c8c6c0", "on-background": "#191c1a", "secondary-fixed": "#d7e7d5", "on-secondary-container": "#59685a", "primary-fixed": "#cfe9d7", "outline-variant": "#c2c8c2", "surface-container-lowest": "#ffffff", "primary-container": "#344a3d", "surface-variant": "#e1e3df", "outline": "#737973", "surface": "#f8faf6", "secondary-fixed-dim": "#bbcbba", "error": "#ba1a1a", "tertiary-fixed": "#e4e2db" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "4rem", "margin": "4rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter-mobile": "1rem", "gutter": "1.5rem", "margin-mobile": "1.5rem", "space-md": "1rem", "space-lg": "2rem" }, "fontFamily": { "body-lg": [ "Manrope" ], "headline-sm": [ "Bodoni Moda" ], "body-md": [ "Manrope" ], "headline-md": [ "Bodoni Moda" ], "headline-lg": [ "Bodoni Moda" ], "body-sm": [ "Manrope" ], "action": [ "Manrope" ], "display": [ "Bodoni Moda" ], "label-mono": [ "Space Mono" ], "display-mobile": [ "Bodoni Moda" ], "headline-lg-mobile": [ "Bodoni Moda" ], "spec-numeral": [ "Space Mono" ] }, "fontSize": { "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ], "headline-sm": [ "22px", { "lineHeight": "28px", "fontWeight": "400" } ], "body-md": [ "15px", { "lineHeight": "24px", "fontWeight": "400" } ], "headline-md": [ "28px", { "lineHeight": "36px", "fontWeight": "400" } ], "headline-lg": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "400" } ], "body-sm": [ "13px", { "lineHeight": "20px", "fontWeight": "400" } ], "action": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "display": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "label-mono": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "400" } ], "display-mobile": [ "38px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "spec-numeral": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-margin flex items-center justify-between"><div class="flex items-center gap-space-md"><img alt="HALDEN Atelier Concierge Curatorial Directorate Portrait" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIbZMBhgGDlfiuczHXicvyJ6Hc6MQGKvMULAstF0RShYRwjvqRRxbF0SRwpyKtOtzIqhIqnzqODLbRyDzPCIujm-y4WNoTdvuQ0Atw7S6snJM-LbWXOiPFDXL0JFT10NJ4bZ-FPJWevy3TexVp83I8iqBf41Me-Lu2m2rywRoC5zfWc5wWUZ22tciEzFDwJRRAe_4n5mCLNXHbyEvC5XcmIWBDmUV9huFwBe8N3rI"/><a class="font-headline-sm text-headline-sm tracking-[0.2em] text-on-surface uppercase select-none" data-path="fleet" href="#">HALDEN</a><span class="font-label-mono text-label-mono text-secondary uppercase tracking-[0.2em] hidden lg:inline-block pl-space-xs">ATELIER № 01</span></div><nav class="flex items-center gap-space-lg" data-active-classes="bg-primary-container text-on-primary-container font-action text-action uppercase tracking-[0.16em] px-space-md py-space-sm rounded-[2px] transition-all"><a class="font-action text-action uppercase tracking-[0.16em] text-on-surface-variant hover:text-on-surface transition-colors" data-path="fleet" href="#">FLEET</a><a class="font-action text-action uppercase tracking-[0.16em] text-on-surface-variant hover:text-on-surface transition-colors" data-path="journeys" href="#">JOURNEYS</a><a aria-current="page" class="bg-primary-container text-on-primary-container font-action text-action uppercase tracking-[0.16em] px-space-md py-space-sm rounded-[2px] transition-all" data-path="about" href="#">ABOUT</a></nav><div class="flex items-center gap-space-md"><a class="font-label-mono text-label-mono uppercase tracking-[0.14em] text-on-surface-variant hover:text-on-surface transition-colors hidden sm:inline-block" data-path="patron-login" href="#">PATRON LOGIN</a><div class="flex items-center gap-space-sm pl-space-xs"><span class="font-body-sm text-body-sm text-secondary hidden xl:inline-block">Clara V.</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full">
+<!-- SECTION 1: MANIFESTO HERO -->
+<section class="w-full px-margin pt-space-md pb-space-xl">
+<div class="flex flex-col space-y-space-md mb-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm border-b border-[#D8D6CE] pb-space-sm">
+<span class="font-label-mono text-label-mono tracking-[0.2em] text-secondary uppercase">
+          HALDEN STANDARD // CURATORIAL CHARTER — EST. 1928
+        </span>
+<span class="font-label-mono text-label-mono tracking-[0.15em] text-on-surface-variant uppercase">
+          DOSSIER ARCHIVE № AT-01 · GENEVA · ZURICH · MUNICH · MILAN · ST. MORITZ
+        </span>
+</div>
+<div class="grid grid-cols-12 gap-gutter items-end pt-space-xs">
+<div class="col-span-12 lg:col-span-8">
+<h1 class="font-display text-display text-on-surface leading-[1.08] tracking-[-0.02em]">
+            A rental house built like a gallery.
+          </h1>
+</div>
+<div class="col-span-12 lg:col-span-4 lg:pb-space-xs">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed font-light">
+            We acquire, preserve, and dispatch Europe's most significant automotive machinery not as depreciating fleet stock, but as mechanical sculpture calibrated for transcontinental passage.
+          </p>
+</div>
+</div>
+</div>
+<!-- Quiet Architectural Photograph Container (16:9) -->
+<div class="relative w-full aspect-[16/9] overflow-hidden bg-surface-container-high border border-[#D8D6CE]">
+<img alt="HALDEN Curatorial Atelier Interior Gallery" class="w-full h-full object-cover grayscale-[15%] contrast-[105%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHgkcoC5kYgt-A8hw2IPgwWVli2TVAhtNNcYwRCR1MUrISiUu_GBrda2JgsFJKK3QLe4TItqx6Pm_6IMAizvuA2J9mP5WH2b5DU4wXTzlKWnQlOSqlwCQaJGAUMrQX-YrmEX6X8VYsJmCvb5KjYXHxhJMFkaUCH1UKJy-2tyR8yLz3o9sVyD0mLwYOokImHgjCxA9tlePu44XUAS8JPfDJjnO9MHQQ8_kFD3nRdrE"/>
+<div class="absolute bottom-0 left-0 right-0 p-space-md bg-gradient-to-t from-[#171B19]/80 via-[#171B19]/30 to-transparent flex justify-between items-end text-surface">
+<div class="space-y-space-xs">
+<span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-[#EAE8E1]/70 block">EXHIBIT ARCHIVE // ROTUNDA A</span>
+<span class="font-body-sm text-body-sm tracking-wide text-[#EAE8E1]">Atelier № 01 · Primary Climate Vault · 20.5°C Stabilized</span>
+</div>
+<div class="font-label-mono text-label-mono uppercase tracking-[0.16em] text-[#EAE8E1]/80 hidden md:block">
+          LAT 47.3769° N · LON 8.5417° E
+        </div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: THREE PRINCIPLES -->
+<section class="w-full px-margin pb-space-xl">
+<div class="border-t border-[#D8D6CE] pt-space-lg">
+<div class="flex items-center justify-between mb-space-lg">
+<span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-secondary">
+          THE STANDARD OPERATING CANON
+        </span>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">
+          03 PILLARS // LEDGER REF. HLD-CANON
+        </span>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Principle 01 -->
+<div class="col-span-12 lg:col-span-4 flex flex-col justify-between p-space-lg bg-surface-container-low border border-[#D8D6CE] min-h-[380px]">
+<div>
+<div class="flex items-center justify-between border-b border-[#D8D6CE] pb-space-sm mb-space-md">
+<span class="font-label-mono text-label-mono tracking-[0.18em] text-primary font-medium">01 // SELECTION PROTOCOL</span>
+<span class="font-label-mono text-label-mono text-secondary">CANON A</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-space-md">
+              Chosen, not stocked.
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              HALDEN maintains zero commuter appliances or volume-production placeholders. Every chassis in the ledger is hand-commissioned with specific engineering provenance, naturally aspirated or twin-turbocharged mechanical architectures, and bespoke interior specifications.
+            </p>
+</div>
+<div class="pt-space-md mt-space-md border-t border-[#D8D6CE]/60 flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-[0.12em]">CURATORIAL RATIO</span>
+<span class="font-spec-numeral text-spec-numeral text-on-surface font-semibold">1:28 CANDIDATE RIGOR</span>
+</div>
+</div>
+<!-- Principle 02 -->
+<div class="col-span-12 lg:col-span-4 flex flex-col justify-between p-space-lg bg-surface-container-low border border-[#D8D6CE] min-h-[380px]">
+<div>
+<div class="flex items-center justify-between border-b border-[#D8D6CE] pb-space-sm mb-space-md">
+<span class="font-label-mono text-label-mono tracking-[0.18em] text-primary font-medium">02 // CURBSIDE LOGISTICS</span>
+<span class="font-label-mono text-label-mono text-secondary">CANON B</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-space-md">
+              Ready where you land.
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Vehicles are pre-positioned, climate-stabilized at 20.5°C, and inspected 30 minutes prior to arrival at private aviation FBOs and VIP airport pavilions. No rental counters, no queues, no paperwork at the gate.
+            </p>
+</div>
+<div class="pt-space-md mt-space-md border-t border-[#D8D6CE]/60 flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-[0.12em]">TOUCHDOWN DISPATCH</span>
+<span class="font-spec-numeral text-spec-numeral text-on-surface font-semibold">T - 30 MIN APEX AUDIT</span>
+</div>
+</div>
+<!-- Principle 03 -->
+<div class="col-span-12 lg:col-span-4 flex flex-col justify-between p-space-lg bg-surface-container-low border border-[#D8D6CE] min-h-[380px]">
+<div>
+<div class="flex items-center justify-between border-b border-[#D8D6CE] pb-space-sm mb-space-md">
+<span class="font-label-mono text-label-mono tracking-[0.18em] text-primary font-medium">03 // FISCAL CLARITY</span>
+<span class="font-label-mono text-label-mono text-secondary">CANON C</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-space-md">
+              One clear price.
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              The daily archival privilege includes comprehensive custodial zero-excess indemnity, cross-border Alpine vignettes, telemetry transponders, and seasonal tyre allocations. Zero hidden counter fees, zero surcharge traps.
+            </p>
+</div>
+<div class="pt-space-md mt-space-md border-t border-[#D8D6CE]/60 flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-[0.12em]">DEDUCTIBLE LIABILITY</span>
+<span class="font-spec-numeral text-spec-numeral text-on-surface font-semibold">CHF 0.00 ZERO-EXCESS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: THE 48-POINT INSPECTION (Dark Room #171B19) -->
+<section class="w-full bg-[#171B19] text-[#f8faf6] py-space-xl">
+<div class="w-full px-margin">
+<!-- Header -->
+<div class="grid grid-cols-12 gap-gutter mb-space-xl border-b border-[#2D3330] pb-space-lg">
+<div class="col-span-12 lg:col-span-7">
+<span class="font-label-mono text-label-mono uppercase tracking-[0.22em] text-[#9EAAA0] block mb-space-xs">
+            PROTOCOL 48 // MECHANICAL AUDIT &amp; PROTOCOL
+          </span>
+<h2 class="font-headline-lg text-headline-lg text-[#f8faf6] tracking-[-0.015em]">
+            The 48-Point Archival Inspection
+          </h2>
+</div>
+<div class="col-span-12 lg:col-span-5 flex flex-col justify-end">
+<p class="font-body-md text-body-md text-[#9EAAA0] font-light leading-relaxed">
+            Between every patron stewardship, each machine undergoes an exhaustive 4-tier diagnostic ledger performed by our factory-credentialed master custodians.
+          </p>
+</div>
+</div>
+<!-- 4x4 Grid of Representative Checks -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-lg">
+<!-- Pillar 1: Acoustic & Engine -->
+<div class="flex flex-col space-y-space-sm">
+<div class="bg-[#252A27] p-space-sm border border-[#2D3330] flex items-center justify-between">
+<span class="font-label-mono text-label-mono tracking-[0.16em] text-[#EAE8E1] uppercase">01 / ACOUSTIC &amp; ENGINE</span>
+<span class="w-1.5 h-1.5 bg-[#4d6355]"></span>
+</div>
+<div class="space-y-[1px] bg-[#2D3330]">
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[ACO-01]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Valve Timing &amp; Harmonic Resonance Verified</p>
+</div>
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[ACO-02]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Exhaust Actuation Decibel Calibrated</p>
+</div>
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[ENG-03]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Fluid Thermal Equilibrium Checked</p>
+</div>
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[ENG-04]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Turbo Wastegate Boost Metric Nominal</p>
+</div>
+</div>
+</div>
+<!-- Pillar 2: Mechanical & Chassis -->
+<div class="flex flex-col space-y-space-sm">
+<div class="bg-[#252A27] p-space-sm border border-[#2D3330] flex items-center justify-between">
+<span class="font-label-mono text-label-mono tracking-[0.16em] text-[#EAE8E1] uppercase">02 / MECHANICAL &amp; CHASSIS</span>
+<span class="w-1.5 h-1.5 bg-[#4d6355]"></span>
+</div>
+<div class="space-y-[1px] bg-[#2D3330]">
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[MEC-01]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Air Suspension Articulation Audited</p>
+</div>
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[MEC-02]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Brake Pad Friction Depth &gt;8.5mm</p>
+</div>
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[MEC-03]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Differential Lock Engagement Tested</p>
+</div>
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[MEC-04]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Dynamic Wheel Geometry Aligned</p>
+</div>
+</div>
+</div>
+<!-- Pillar 3: Detailing & Surfaces -->
+<div class="flex flex-col space-y-space-sm">
+<div class="bg-[#252A27] p-space-sm border border-[#2D3330] flex items-center justify-between">
+<span class="font-label-mono text-label-mono tracking-[0.16em] text-[#EAE8E1] uppercase">03 / DETAILING &amp; SURFACES</span>
+<span class="w-1.5 h-1.5 bg-[#4d6355]"></span>
+</div>
+<div class="space-y-[1px] bg-[#2D3330]">
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[DET-01]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Full Leather Conditioned (Matte Tactile)</p>
+</div>
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[DET-02]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Paintwork Micro-Decontaminated</p>
+</div>
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[DET-03]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Glazing Acoustic Seal De-smudged</p>
+</div>
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[DET-04]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Underbody Aerodynamic Tray Inspected</p>
+</div>
+</div>
+</div>
+<!-- Pillar 4: Telematics & Documentation -->
+<div class="flex flex-col space-y-space-sm">
+<div class="bg-[#252A27] p-space-sm border border-[#2D3330] flex items-center justify-between">
+<span class="font-label-mono text-label-mono tracking-[0.16em] text-[#EAE8E1] uppercase">04 / TELEMATICS &amp; LOGS</span>
+<span class="w-1.5 h-1.5 bg-[#4d6355]"></span>
+</div>
+<div class="space-y-[1px] bg-[#2D3330]">
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[DOC-01]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Swiss &amp; EU Vignettes Validated</p>
+</div>
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[DOC-02]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Satellite GPS Waypoints Pre-cached</p>
+</div>
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[DOC-03]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Electronic Key Fob Crypt-Rotated</p>
+</div>
+<div class="bg-[#1C211F] p-space-sm flex flex-col justify-between h-24 hover:bg-[#252A27] transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-[#9EAAA0]">[DOC-04]</span>
+<span class="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">PASSED</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#f8faf6] font-light leading-snug">Physical Transit Log Stamp Issued</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Inspection Seal Footing -->
+<div class="border-t border-[#2D3330] pt-space-md flex flex-col md:flex-row items-start md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 bg-[#4d6355] inline-block"></span>
+<span class="font-label-mono text-label-mono tracking-[0.18em] text-[#EAE8E1] uppercase">
+            AUDIT STANDARD: DIN EN ISO 9001 COMPLIANT · CUSTODIAL LEDGER SIGNED
+          </span>
+</div>
+<span class="font-label-mono text-label-mono text-[#9EAAA0] uppercase tracking-[0.14em]">
+          SIGNATURE AUTHORITY // M. OBERHOLZER, CHIEF CUSTODIAN
+        </span>
+</div>
+</div>
+</section>
+<!-- SECTION 4: HUBS LEDGER & CARTOGRAPHY -->
+<section class="w-full px-margin py-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between border-b border-[#D8D6CE] pb-space-sm mb-space-lg gap-space-xs">
+<div>
+<span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-secondary block mb-space-xs">
+          ARCHIVAL STATIONS // CONTINENTAL REACH
+        </span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">
+          Five Alpine &amp; Gateway Hubs
+        </h2>
+</div>
+<div class="font-label-mono text-label-mono text-secondary uppercase tracking-[0.14em]">
+        CORRIDOR PROTOCOL: CENTRAL EUROPEAN ARCH
+      </div>
+</div>
+<div class="grid grid-cols-12 gap-gutter items-start">
+<!-- Hairline Table -->
+<div class="col-span-12 xl:col-span-8 overflow-x-auto">
+<table class="w-full border-collapse border border-[#D8D6CE] text-left">
+<thead>
+<tr class="bg-surface-container-high border-b border-[#D8D6CE]">
+<th class="p-space-sm font-label-mono text-label-mono text-secondary uppercase tracking-[0.15em] w-16">HUB</th>
+<th class="p-space-sm font-label-mono text-label-mono text-secondary uppercase tracking-[0.15em]">CITY &amp; NATION</th>
+<th class="p-space-sm font-label-mono text-label-mono text-secondary uppercase tracking-[0.15em]">STAGING BAY</th>
+<th class="p-space-sm font-label-mono text-label-mono text-secondary uppercase tracking-[0.15em]">WINDOW</th>
+<th class="p-space-sm font-label-mono text-label-mono text-secondary uppercase tracking-[0.15em]">DESK</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#D8D6CE] font-body-sm text-body-sm text-on-surface">
+<!-- Row 1: ZRH -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-space-sm font-label-mono text-label-mono font-bold text-primary">ZRH</td>
+<td class="p-space-sm font-medium">Zurich, Switzerland</td>
+<td class="p-space-sm text-on-surface-variant font-light">Kloten VIP Private Aviation Terminal · Bay 02</td>
+<td class="p-space-sm font-spec-numeral text-spec-numeral">24/7 <span class="text-secondary font-light text-[11px]">(30m notice)</span></td>
+<td class="p-space-sm font-spec-numeral text-spec-numeral">+41 44 800 2401</td>
+</tr>
+<!-- Row 2: MUC -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-space-sm font-label-mono text-label-mono font-bold text-primary">MUC</td>
+<td class="p-space-sm font-medium">Munich, Germany</td>
+<td class="p-space-sm text-on-surface-variant font-light">Terminal 2 VIP Curbside Pavilion · Bay 04</td>
+<td class="p-space-sm font-spec-numeral text-spec-numeral">06:00 – 23:00 CEST</td>
+<td class="p-space-sm font-spec-numeral text-spec-numeral">+49 89 975 8200</td>
+</tr>
+<!-- Row 3: MXP -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-space-sm font-label-mono text-label-mono font-bold text-primary">MXP</td>
+<td class="p-space-sm font-medium">Milan, Italy</td>
+<td class="p-space-sm text-on-surface-variant font-light">Malpensa Executive Staging Vault · Bay 01</td>
+<td class="p-space-sm font-spec-numeral text-spec-numeral">07:00 – 22:00 CEST</td>
+<td class="p-space-sm font-spec-numeral text-spec-numeral">+39 02 748 6200</td>
+</tr>
+<!-- Row 4: SMV -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-space-sm font-label-mono text-label-mono font-bold text-primary">SMV</td>
+<td class="p-space-sm font-medium">St. Moritz, Switzerland</td>
+<td class="p-space-sm text-on-surface-variant font-light">Samedan Alpine Hangar · Seasonal Hub</td>
+<td class="p-space-sm font-spec-numeral text-spec-numeral">08:00 – 20:00 CEST</td>
+<td class="p-space-sm font-spec-numeral text-spec-numeral">+41 81 851 0200</td>
+</tr>
+<!-- Row 5: CPH -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-space-sm font-label-mono text-label-mono font-bold text-primary">CPH</td>
+<td class="p-space-sm font-medium">Copenhagen, Denmark</td>
+<td class="p-space-sm text-on-surface-variant font-light">Kastrup VIP Curbside Terminal 3 · Bay 07</td>
+<td class="p-space-sm font-spec-numeral text-spec-numeral">06:00 – 23:00 CEST</td>
+<td class="p-space-sm font-spec-numeral text-spec-numeral">+45 32 31 3200</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Minimalist Monochrome Vector Cartography -->
+<div class="col-span-12 xl:col-span-4 bg-surface-container-low p-space-md border border-[#D8D6CE] flex flex-col justify-between h-full min-h-[295px]">
+<div>
+<div class="flex items-center justify-between border-b border-[#D8D6CE] pb-space-xs mb-space-sm">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-[0.16em]">CARTOGRAPHIC TOPOLOGY</span>
+<span class="font-label-mono text-label-mono text-primary font-medium">PASS 47° N</span>
+</div>
+<!-- Network Diagram SVG -->
+<div class="w-full flex items-center justify-center py-space-xs">
+<svg class="w-full h-auto text-primary" viewbox="0 0 340 200">
+<!-- Route hairpins -->
+<path d="M 170 30 L 170 85 L 150 135 L 185 140 L 140 180" fill="none" stroke="#737973" stroke-dasharray="3 3" stroke-width="1"></path>
+<path d="M 170 85 L 185 140" fill="none" stroke="#1e3327" stroke-width="1.5"></path>
+<path d="M 150 135 L 140 180" fill="none" stroke="#1e3327" stroke-width="1.5"></path>
+<path d="M 150 135 L 185 140" fill="none" stroke="#1e3327" stroke-width="1.5"></path>
+<!-- CPH Hub (North) -->
+<rect fill="#1e3327" height="8" width="8" x="166" y="26"></rect>
+<text fill="#191c1a" font-family="Space Mono" font-size="9" letter-spacing="0.1em" x="180" y="33">CPH // COPENHAGEN</text>
+<!-- MUC Hub -->
+<rect fill="#1e3327" height="8" width="8" x="166" y="81"></rect>
+<text fill="#191c1a" font-family="Space Mono" font-size="9" letter-spacing="0.1em" x="180" y="88">MUC // MUNICH</text>
+<!-- ZRH Hub (West Alpine) -->
+<rect fill="#1e3327" height="8" width="8" x="146" y="131"></rect>
+<text fill="#191c1a" font-family="Space Mono" font-size="9" letter-spacing="0.1em" x="70" y="138">ZRH // ZURICH</text>
+<!-- SMV Hub (Alpine Pass) -->
+<rect fill="#344a3d" height="8" width="8" x="181" y="136"></rect>
+<text fill="#191c1a" font-family="Space Mono" font-size="9" letter-spacing="0.1em" x="195" y="143">SMV // ST. MORITZ</text>
+<!-- MXP Hub (South) -->
+<rect fill="#1e3327" height="8" width="8" x="136" y="176"></rect>
+<text fill="#191c1a" font-family="Space Mono" font-size="9" letter-spacing="0.1em" x="150" y="183">MXP // MILAN</text>
+</svg>
+</div>
+</div>
+<div class="border-t border-[#D8D6CE] pt-space-xs flex justify-between items-center text-[#737973]">
+<span class="font-label-mono text-label-mono tracking-[0.1em]">EN ROUTE TIME: ZRH ⇄ SMV: 2H 14M</span>
+<span class="font-label-mono text-label-mono">TRANSIT ACTIVE</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: CONCIERGE TEAM -->
+<section class="w-full px-margin pb-space-xl">
+<div class="border-t border-[#D8D6CE] pt-space-lg mb-space-lg">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-secondary">
+          CUSTODIAL STEWARDSHIP
+        </span>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">
+          PERMANENT ATELIER COUNCIL
+        </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">
+        The Atelier Concierge Desk
+      </h2>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Curator 1: Julian von Berg -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-low border border-[#D8D6CE] flex flex-col">
+<div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container-high">
+<img alt="Julian von Berg, Director of Curatorial Logistics" class="w-full h-full object-cover filter contrast-[104%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIbZMBhgGDlfiuczHXicvyJ6Hc6MQGKvMULAstF0RShYRwjvqRRxbF0SRwpyKtOtzIqhIqnzqODLbRyDzPCIujm-y4WNoTdvuQ0Atw7S6snJM-LbWXOiPFDXL0JFT10NJ4bZ-FPJWevy3TexVp83I8iqBf41Me-Lu2m2rywRoC5zfWc5wWUZ22tciEzFDwJRRAe_4n5mCLNXHbyEvC5XcmIWBDmUV9huFwBe8N3rI"/>
+<div class="absolute top-space-sm left-space-sm bg-surface/90 px-space-xs py-[2px] border border-[#D8D6CE]">
+<span class="font-label-mono text-[10px] text-on-surface uppercase tracking-[0.15em]">STATION: ZURICH</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col justify-between flex-grow">
+<div>
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-[0.16em] block mb-space-xs">DIRECTOR // LOGISTICS &amp; PROVENANCE</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Julian von Berg</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light leading-relaxed mb-space-sm">
+              Former FIA historic preservation registrar with fifteen years calibrating rare GT lineages across Swiss mountain corridors.
+            </p>
+</div>
+<div class="pt-space-xs border-t border-[#D8D6CE] flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-primary font-medium tracking-wide">DIRECT DESK: EXT 01</span>
+<span class="font-label-mono text-[10px] text-secondary uppercase">TRANSMISSION READY</span>
+</div>
+</div>
+</div>
+<!-- Curator 2: Elena Rostova -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-low border border-[#D8D6CE] flex flex-col">
+<div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container-high">
+<img alt="Elena Rostova, Transcontinental Fleet Liaison" class="w-full h-full object-cover filter contrast-[104%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8h5S4fmkpMX_MPS9FNwjyuLxprWnXl0ymhnHOBWvalBs4W68qrpqnb-0nTmd0G2EeRBmwjPcHquI3VBhRIlhbfT7irmwlu7TrZ5WZ75acsXvn5oy7exeEq-Fh9HdGfbm9jRDc-0og-Ic9OCfhzAkV6Ix4B28i-XCk3LAMIEjLh9NKLxNW3Lcyw-5zfQUu2tf6ry-G3AbFk9d6ZnLYmNUh7ePmzSDj3VOu93ncLMA"/>
+<div class="absolute top-space-sm left-space-sm bg-surface/90 px-space-xs py-[2px] border border-[#D8D6CE]">
+<span class="font-label-mono text-[10px] text-on-surface uppercase tracking-[0.15em]">STATION: MILAN / GENEVA</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col justify-between flex-grow">
+<div>
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-[0.16em] block mb-space-xs">FLEET LIAISON // CLIENT PROTOCOL</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Elena Rostova</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light leading-relaxed mb-space-sm">
+              Coordinates private aviation staging and cross-border customs exemptions for patron transits between Munich and Como.
+            </p>
+</div>
+<div class="pt-space-xs border-t border-[#D8D6CE] flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-primary font-medium tracking-wide">DIRECT DESK: EXT 04</span>
+<span class="font-label-mono text-[10px] text-secondary uppercase">TRANSMISSION READY</span>
+</div>
+</div>
+</div>
+<!-- Curator 3: Marc Oberholzer -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-low border border-[#D8D6CE] flex flex-col">
+<div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container-high">
+<img alt="Marc Oberholzer, Master Technical Custodian" class="w-full h-full object-cover filter contrast-[104%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqIt4a_ngaPtlVs4uXiNV59lt06XGAfNGDjjd_TKBQwWeC8KIS2bhaAkUcRekxbC7FGYAV-ixdSNDvIjKjVRqUHOKXtePmvUaFbyQfeLDo1UMnHNpu4lxTcnb-bU--Of7OjsZdfna_Ce7CHV_wo6YSxg-pXjJCS5_Auh-f8zavi3xfZnFa6Y6Y-dsSxRGps3Gt3kVpHaoDQ9KMOvPn2E1MuHcWTp5f8ypVJXeHOa4"/>
+<div class="absolute top-space-sm left-space-sm bg-surface/90 px-space-xs py-[2px] border border-[#D8D6CE]">
+<span class="font-label-mono text-[10px] text-on-surface uppercase tracking-[0.15em]">STATION: MUNICH WORKSHOP</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col justify-between flex-grow">
+<div>
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-[0.16em] block mb-space-xs">MASTER CUSTODIAN // MECHANICAL ENGR</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Marc Oberholzer</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light leading-relaxed mb-space-sm">
+              Factory-credentialed powertrain specialist directing the 48-point diagnostic ledger and telemetry calibration for all chassis.
+            </p>
+</div>
+<div class="pt-space-xs border-t border-[#D8D6CE] flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-primary font-medium tracking-wide">DIRECT DESK: EXT 09</span>
+<span class="font-label-mono text-[10px] text-secondary uppercase">INSPECTION ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: CONTACT BAND & ENQUIRY FORM -->
+<section class="w-full px-margin pb-space-xl">
+<div class="bg-surface-container-low border border-[#D8D6CE] p-space-lg lg:p-space-xl">
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Direct Telephony & Encrypted Dispatch Details -->
+<div class="col-span-12 lg:col-span-5 flex flex-col justify-between pr-0 lg:pr-space-md">
+<div class="space-y-space-md">
+<div>
+<span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-secondary block mb-space-xs">
+                PATRON TRANSMISSION CHANNEL
+              </span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-space-sm">
+                Initiate Archival Access.
+              </h2>
+<p class="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">
+                Direct dialogue with an assigned custodian. Handover details, bespoke route planning through alpine passes, or chassis reservation specifications are confirmed securely.
+              </p>
+</div>
+<div class="space-y-space-sm pt-space-sm border-t border-[#D8D6CE]">
+<div>
+<span class="font-label-mono text-label-mono uppercase tracking-[0.15em] text-secondary block">SWISS ARCHIVE TELEPHONY</span>
+<a class="font-spec-numeral text-headline-sm text-primary font-medium hover:text-on-surface transition-colors" href="tel:+41448002400">+41 44 800 2400</a>
+</div>
+<div>
+<span class="font-label-mono text-label-mono uppercase tracking-[0.15em] text-secondary block">ENCRYPTED ATELIER DISPATCH</span>
+<a class="font-label-mono text-body-md text-primary font-medium underline underline-offset-4 hover:text-on-surface transition-colors" href="mailto:concierge@halden-archive.ch">concierge@halden-archive.ch</a>
+</div>
+<div>
+<span class="font-label-mono text-label-mono uppercase tracking-[0.15em] text-secondary block">SECURE TELEMETRY NETWORK</span>
+<span class="font-label-mono text-body-sm text-on-surface-variant font-light">PGP KEY: 0x9B84E3F78D32C012 · 4096R</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md mt-space-md border-t border-[#D8D6CE] hidden lg:block">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-[0.16em] block">
+              RESPONSE TIME COMMITMENT: ≤ 30 MINUTES
+            </span>
+</div>
+</div>
+<!-- Interactive Enquiry Form & Confirmation State -->
+<div class="col-span-12 lg:col-span-7">
+<div class="bg-surface border border-[#D8D6CE] p-space-md lg:p-space-lg relative" id="enquiry-card">
+<form class="space-y-space-md" id="halden-form" onsubmit="event.preventDefault(); document.getElementById('halden-form').classList.add('hidden'); document.getElementById('confirmation-box').classList.remove('hidden');">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="space-y-space-xs">
+<label class="font-label-mono text-label-mono uppercase tracking-[0.15em] text-on-surface block" for="patron-name">
+                    PATRON FULL NAME *
+                  </label>
+<input class="w-full bg-surface px-space-sm py-space-sm border border-[#D8D6CE] font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container rounded-[2px]" id="patron-name" placeholder="e.g. Baron C. von Bern" required="" type="text"/>
+</div>
+<div class="space-y-space-xs">
+<label class="font-label-mono text-label-mono uppercase tracking-[0.15em] text-on-surface block" for="patron-email">
+                    PATRON EMAIL / DISPATCH *
+                  </label>
+<input class="w-full bg-surface px-space-sm py-space-sm border border-[#D8D6CE] font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container rounded-[2px]" id="patron-email" placeholder="patron@domain.ch" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-space-xs">
+<label class="font-label-mono text-label-mono uppercase tracking-[0.15em] text-on-surface block" for="chassis-interest">
+                  MACHINE OR EXPEDITION OF INTEREST
+                </label>
+<select class="w-full bg-surface px-space-sm py-space-sm border border-[#D8D6CE] font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container rounded-[2px]" id="chassis-interest">
+<option value="chassis-general">General Archival Custodianship Inquiries</option>
+<option value="alpine-gt">Alpine Grand Tour // St. Gotthard &amp; Bernina Passage</option>
+<option value="chassis-gt3">Chassis Ref. 992 GT3 Touring // Munich Archive</option>
+<option value="chassis-dbs">Chassis Ref. Aston Martin DBS Superleggera // Zurich Vault</option>
+<option value="chassis-roma">Chassis Ref. Ferrari Roma // Milan Staging Bay</option>
+<option value="curbside-fbo">Direct FBO Jet Runway Staging Protocol</option>
+</select>
+</div>
+<div class="space-y-space-xs">
+<label class="font-label-mono text-label-mono uppercase tracking-[0.15em] text-on-surface block" for="curatorial-message">
+                  CURATORIAL MESSAGE &amp; PREFERRED ITINERARY
+                </label>
+<textarea class="w-full bg-surface px-space-sm py-space-sm border border-[#D8D6CE] font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container rounded-[2px] resize-none" id="curatorial-message" placeholder="Specify desired staging bay, landing times, or trans-Alpine routing parameters..." rows="3"></textarea>
+</div>
+<div class="pt-space-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<input checked="" class="w-4 h-4 rounded-none accent-primary border border-on-surface" id="nda-agree" required="" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-secondary select-none" for="nda-agree">
+                    Under Swiss Archival Discretion Protocol.
+                  </label>
+</div>
+<button class="bg-primary-container hover:bg-primary text-on-primary font-action text-action uppercase tracking-[0.16em] px-space-lg py-space-sm rounded-[2px] transition-colors flex items-center gap-space-xs self-stretch sm:self-auto justify-center" type="submit">
+<span>Transmit Enquiry</span>
+<span class="font-spec-numeral">→</span>
+</button>
+</div>
+</form>
+<!-- Inline Success Confirmation State (Hidden initially, triggered on submit or previewable) -->
+<div class="hidden p-space-md border border-primary bg-secondary-container/20 flex flex-col justify-between space-y-space-md" id="confirmation-box">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">verified</span>
+<div>
+<span class="font-label-mono text-label-mono tracking-[0.18em] text-primary uppercase block">
+                    LEDGER CONFIRMATION // ENTRY RECORDED
+                  </span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">
+                    Enquiry Transmitted to Atelier Ledger
+                  </h4>
+<p class="font-body-md text-body-md text-on-surface-variant font-light mt-space-xs">
+                    Reference <strong class="font-spec-numeral text-on-surface">HLD-ENQ-9042</strong>. A concierge custodian from Zurich will contact your secure channel within 30 minutes.
+                  </p>
+</div>
+</div>
+<div class="border-t border-[#D8D6CE] pt-space-sm flex justify-between items-center">
+<span class="font-label-mono text-label-mono text-secondary uppercase">DISPATCH TIME: IMMEDIATE</span>
+<button class="font-label-mono text-label-mono text-primary underline uppercase tracking-wider hover:text-on-surface" onclick="document.getElementById('confirmation-box').classList.add('hidden'); document.getElementById('halden-form').classList.remove('hidden');" type="button">
+                  TRANSMIT ADDITIONAL DOSSIER
+                </button>
+</div>
+</div>
+<!-- Preview Toggle Badge for Reviewers -->
+<div class="mt-space-md pt-space-xs border-t border-[#D8D6CE]/40 flex justify-between items-center text-[10px] text-secondary font-label-mono">
+<span>TEST BED PROTOCOL</span>
+<button class="hover:underline text-on-surface-variant" onclick="document.getElementById('confirmation-box').classList.toggle('hidden'); document.getElementById('halden-form').classList.toggle('hidden');" type="button">
+                [Toggle Active / Confirmation State]
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-[#171B19] text-[#EAE8E1] pt-space-xl pb-space-lg"><div class="w-full px-margin"><div class="grid grid-cols-12 gap-gutter mb-space-xl"><div class="col-span-12 lg:col-span-5 flex flex-col justify-between pr-space-lg"><div class="space-y-space-md"><span class="font-headline-md text-headline-md tracking-[0.15em] text-[#EAE8E1] uppercase block">HALDEN</span><p class="font-body-md text-body-md text-[#B4B2AC] max-w-md font-light">An architectural archive of rare vehicular kinetic sculpture. Halden curates peerless performance machinery preserved in pristine mechanical provenance for deliberated road journeys.</p></div><div class="pt-space-lg"><span class="font-label-mono text-label-mono text-[#8C908A] uppercase tracking-[0.18em] block">EXHIBITION ARCHIVE • GENEVA • MUNICH • ZURICH</span></div></div><div class="col-span-12 md:col-span-4 lg:col-span-2 space-y-space-md"><span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-[#8C908A] block">EXHIBITION</span><ul class="space-y-space-sm font-body-sm text-body-sm text-[#B4B2AC]"><li><a class="hover:text-[#EAE8E1] transition-colors" data-path="fleet" href="#">Permanent Collection</a></li><li><a class="hover:text-[#EAE8E1] transition-colors" data-path="monographs" href="#">Archival Monographs</a></li><li><a class="hover:text-[#EAE8E1] transition-colors" data-path="curatorial-notes" href="#">Curatorial Notes</a></li><li><a class="hover:text-[#EAE8E1] transition-colors" data-path="provenance-log" href="#">Provenance Registries</a></li><li><a class="hover:text-[#EAE8E1] transition-colors" data-path="atelier-services" href="#">Atelier Transport</a></li></ul></div><div class="col-span-12 md:col-span-4 lg:col-span-2 space-y-space-md"><span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-[#8C908A] block">REGISTRY</span><ul class="space-y-space-sm font-body-sm text-body-sm text-[#B4B2AC]"><li><a class="hover:text-[#EAE8E1] transition-colors" data-path="patron-portal" href="#">Patron Chambers</a></li><li><a class="hover:text-[#EAE8E1] transition-colors" data-path="journeys" href="#">Alpine Expeditions</a></li><li><a class="hover:text-[#EAE8E1] transition-colors" data-path="consignment" href="#">Atelier Consignment</a></li><li><a class="hover:text-[#EAE8E1] transition-colors" data-path="membership" href="#">Custodianship Charter</a></li><li><a class="hover:text-[#EAE8E1] transition-colors" data-path="verification" href="#">Chassis Verification</a></li></ul></div><div class="col-span-12 md:col-span-4 lg:col-span-3 space-y-space-md"><span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-[#8C908A] block">ARCHIVAL DISCLAIMER</span><p class="font-body-sm text-body-sm text-[#8C908A] leading-relaxed font-light">Exhibition vehicles are maintained within museum conservation parameters. Reservation entails private custodianship transfer subject to atelier verification, bespoke mechanical briefing, and Swiss road preservation protocols.</p></div></div><div class="pt-space-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-space-md"><span class="font-label-mono text-label-mono text-[#8C908A] uppercase tracking-[0.16em]">© 2025 HALDEN ARCHIVES AG. ALL PROVENANCES RESERVED.</span><div class="flex items-center gap-space-lg"><a class="font-label-mono text-label-mono text-[#8C908A] hover:text-[#EAE8E1] uppercase tracking-[0.14em] transition-colors" data-path="legal-charter" href="#">LEGAL CHARTER</a><a class="font-label-mono text-label-mono text-[#8C908A] hover:text-[#EAE8E1] uppercase tracking-[0.14em] transition-colors" data-path="preservation-standards" href="#">CONSERVATION PROTOCOLS</a><a class="font-label-mono text-label-mono text-[#8C908A] hover:text-[#EAE8E1] uppercase tracking-[0.14em] transition-colors" data-path="curatorial-board" href="#">CURATORIAL BOARD</a></div></div></div></footer></body></html>

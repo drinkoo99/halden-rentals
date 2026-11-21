@@ -1,47 +1,94 @@
-# HALDEN — Design coverage audit (Stitch)
+# HALDEN — Design coverage audit
 
-Status after implementing every exported Stitch screen (20 Nov 2026).
+Audit date: 21 Nov 2026. **Update:** all 17 prompts were generated in Stitch and the 42 resulting screens are now implemented (see README, "Round 2 notes"). Basis: every screen exported from the Stitch project "Halden Luxury Car Rental"
+(`design/stitch-export/`), the Stitch conversation history visible in the project, DESIGN.md ("The Gallery"),
+and the implemented application. Prompts to close the gaps are in `docs/STITCH_PROMPTS.md`.
 
-## Designed in Stitch and implemented
+## 1. What exists
 
-| Stitch prompt | Screens | Status |
+| Area | Stitch screens | Desktop | Mobile | Built |
+|---|---|---|---|---|
+| Homepage | 04, 28 | ✅ | ✅ | ✅ |
+| Navigation menu | 27 | — | ✅ | ✅ |
+| Fleet discovery + filters | 12, 26, 29 | ✅ | ✅ | ✅ |
+| Vehicle detail | 19, 30 | ✅ | ✅ | ✅ |
+| Booking: trip, extras, details, review, confirmed | 20–24 | ✅ | ❌ | ✅ (desktop layout stacks on mobile) |
+| Sign in | 31 | ✅ | ❌ | ✅ (responsive fallback) |
+| Image assets | 00–03, 06–11, 13–18, 25 | | | ✅ |
+
+## 2. Gap analysis by area
+
+Legend — **Need**: *Design* = needs a Stitch reference · *Derive* = can be built from existing patterns without a
+new design · *Later* = not needed for MVP.
+
+### Customer account
+| Item | Need | Notes |
 |---|---|---|
-| S1 Desktop homepage | 04 | Built (`/`, ≥ md) |
-| S2 Desktop fleet discovery | 12 | Built (`/fleet`, ≥ lg) |
-| S3 Desktop vehicle detail | 19 | Built (`/fleet/[slug]`, ≥ md) |
-| S4 Desktop booking | 20 Trip · 21 Extras · 22 Details · 24 Review · 23 Confirmed | Built (`/book/[slug]/…`) |
-| S5 Mobile | 28 Home · 26 Fleet · 29 Filters · 30 Detail · 27 Menu | Built (< md / < lg) |
-| S6a Sign in | 31 | Built (`/sign-in`) |
+| Account overview (upcoming trip, past trips, saved cars) | **Design** | Destination of "View my bookings", "Patron Circle", avatar menu. Core MVP screen. |
+| Reservation detail (status timeline, documents, handover info) | **Design** | Most-visited page after booking. |
+| Modify reservation (dates/extras/location) | **Design** | Price-difference presentation and availability feedback need a reference. |
+| Cancel reservation (policy, refund/fee, confirmation) | **Design** | High-stakes dialog; must be honest and calm. |
+| Saved cars / favourites page | **Design** (in overview prompt) | Hearts already work locally; needs a home. |
+| Profile, driving licence, contact, notifications, security, delete account | **Design** | One settings screen with sections + validation states. |
+| Payment methods / receipts | Later | No payments in MVP; receipts can live in reservation detail. |
+| Mobile versions of the above | **Design** | Tab-based account on phones. |
 
-## Missing for a complete MVP
+### Authentication
+| Item | Need | Notes |
+|---|---|---|
+| Register / request access | **Design** | Today: sign-in layout + name field. |
+| Forgot password → email sent | **Design** (states sheet) | |
+| Reset password (new passcode, strength) | **Design** (states sheet) | |
+| Email verification (sent / success / expired link) | **Design** (states sheet) | |
+| Auth errors (wrong credentials, locked, rate-limited) | **Design** (states sheet) | |
+| Mobile sign-in / register | **Design** (same prompt, mobile variant) | |
 
-Ordered by how much the current product needs them.
+### Booking
+| Item | Need | Notes |
+|---|---|---|
+| Mobile booking flow (5 steps) | **Design** | Highest-traffic gap; desktop sidebars don't translate to phones. |
+| Unavailable / conflict state (car taken while booking) | **Design** (states prompt) | |
+| Booking session expired / server error on confirm | **Design** (states prompt) | |
+| Guest → account conversion after confirmation | Derive | Banner on confirmation, reuse sign-in tokens. |
 
-| # | Screen / state | Why it matters | Currently |
-|---|---|---|---|
-| 1 | **Customer dashboard** — upcoming & past reservations, booking detail, cancel / modify | Destination of "View my bookings" and "Patron Circle"; core to a rental product | Not designed; confirmation links to the fleet instead |
-| 2 | **Mobile booking flow** (trip calendar, extras, details, review, confirmation) | Most rentals start on phones; desktop layouts are only responsive fallbacks today | Desktop layout stacks on mobile |
-| 3 | **Registration + passcode recovery** | "Request Access" / "Forgot passcode?" | Same sign-in layout with a name field |
-| 4 | **Favourites / saved exhibits page** | Hearts already work (local) but there's nowhere to see the list | Not designed |
-| 5 | **Journeys index + journey detail** (route, map, suggested cars) | Homepage "Curated routes" cards and "Plan a journey" CTAs | Link to filtered fleet |
-| 6 | **About / The Standard** | Footer & menu links (manifesto, inspection protocol, delivery) | Anchor to homepage sections |
-| 7 | **Admin dashboard** — fleet, availability calendar, bookings, customers | Needed once MongoDB + auth exist | Not designed |
-| 8 | **States**: fleet empty state, booking unavailable / conflict, form-level server error, 404, loading skeletons, offline | Every real workflow hits these | Built from tokens, not reviewed in Stitch |
-| 9 | **Dialogs**: itinerary editor (fleet "Edit"), photo lightbox, mobile itinerary sheet ("Where and when?") | Present in the UI but undesigned | Built from tokens |
-| 10 | **Legal pages**: Terms, Privacy, Imprint, cookie notice | Required before any public launch in the EU | Not present |
-| 11 | **Mobile sign-in** | Sign-in is responsive but was only designed desktop-first | Responsive fallback |
-| 12 | **Tablet (768–1023 px) review** | Desktop compositions start at 768 px; worth one Stitch pass at 834 px | Works, not art-directed |
+### Content
+| Item | Need | Notes |
+|---|---|---|
+| Journeys index + journey detail | **Design** | Homepage "Curated routes" and menu link point nowhere real. |
+| About / The Standard | **Design** | Menu + footer links. |
+| Locations (hub pages) | Later | Can be a section of About for MVP. |
+| Terms, Privacy, Imprint, cookie notice | Derive | Long-form text in the existing editorial typography; cookie banner in states prompt. |
 
-## Recommendation
+### Admin (staff)
+| Item | Need | Notes |
+|---|---|---|
+| Overview (today's handovers/returns, utilisation, alerts) | **Design** | |
+| Fleet list + add/edit vehicle (photos, specs, pricing, status) | **Design** | |
+| Bookings list + booking detail (status changes, notes, audit log) | **Design** | |
+| Availability calendar (cars × days, blocks, maintenance) | **Design** | Hardest admin UI; must have a reference. |
+| Customers list + customer detail (licence check, history) | **Design** | |
+| Pricing/extras/locations settings | Derive | Tables/forms reuse the admin patterns. |
+| Staff roles & permissions | Later | |
+| Admin on tablet/phone (on-the-go handover view) | **Design** | Concierge staff work curbside on phones. |
 
-Yes — more Stitch work is needed for a genuine MVP. Suggested order of prompts:
+### Cross-cutting states
+| Item | Need |
+|---|---|
+| Loading skeletons (fleet grid, detail, account) | **Design** (states sheet) |
+| Empty states (no results, no trips, no saved cars, no bookings in admin) | **Design** (states sheet) |
+| Errors (404 exists; 500, offline, permission denied) | **Design** (states sheet) |
+| Toasts / inline success, form validation patterns | **Design** (states sheet) |
+| Tablet 768–1023 px art direction | Later (current compositions work) |
 
-1. Customer dashboard + booking detail/cancel (desktop and mobile in one prompt, reuse the booking "dossier" components).
-2. Mobile booking flow (5 screens) — highest user impact.
-3. Journeys index + journey detail, About/The Standard.
-4. Registration, passcode recovery, favourites page.
-5. Admin dashboard (overview, fleet table, availability calendar, booking detail) — after the backend schema is agreed.
-6. A "states & dialogs" sheet: empty/error/unavailable states, itinerary editor, lightbox, cookie banner.
+## 3. Recommendation
 
-Each prompt should restate the DESIGN.md system (palette, Bodoni Moda / Manrope / Space Mono, 0–2 px radii, hairlines,
-no shadows) and attach a screenshot of an existing screen so Stitch keeps the same language.
+More Stitch work **is** needed for a credible full-stack MVP — 17 prompts (`docs/STITCH_PROMPTS.md`), generated in three tiers:
+
+1. **Customer MVP (generate first):** account overview, reservation detail, modify/cancel, settings, mobile booking
+   (2), auth completion, mobile account.
+2. **Content & system:** journeys, about, states & dialogs sheet.
+3. **Admin (generate when the backend schema is agreed):** overview, fleet + vehicle editor, bookings + detail,
+   availability calendar, customers, mobile admin.
+
+Not recommended for Stitch: legal pages, pricing/extras settings, staff roles, payment-method management — they are
+either plain content or straightforward reuse of patterns the new admin screens will establish.
