@@ -74,9 +74,19 @@ npm test           # Vitest unit tests
 
 ## Quality checks (Phase 1)
 
-Results and method are in `docs/QA.md`: responsive sweep (37 routes × 5 widths), accessibility (axe-core, WCAG 2.1
-AA, 33 routes × 2 widths), SEO, Lighthouse and browser checks. Small grey labels were darkened slightly from the Stitch
-values to reach 4.5:1 contrast; nothing else about the design was changed for these checks.
+Results and method are in `docs/QA.md`. In short:
+
+| Check | Result |
+|---|---|
+| Responsive (37 routes × 390/768/1280/1440/1920 px) | 185 / 185 pass — no sideways scroll, broken images or console errors |
+| Accessibility (axe-core, WCAG 2.1 AA, 33 routes × 2 widths) | 0 critical / moderate / minor; 32 decorative contrast exceptions |
+| Lighthouse desktop | 94–99 performance, 100 accessibility on public pages, 100 SEO on public pages |
+| Lighthouse mobile (median of 3) | 67–86 performance — limited by framework JavaScript under 4× CPU throttling |
+| Browsers | Chrome 157, Edge 157, Firefox 159, WebKit 27.2: 28/28 page checks and 9/9 interactions each |
+
+Small grey labels were darkened slightly from the Stitch values to reach 4.5:1 contrast; nothing else about the design
+was changed for these checks. The Material Symbols icon font is requested as a subset of the icons in use
+(`src/lib/icons.ts`) — add new icon names there (a unit test checks it).
 
 Set `NEXT_PUBLIC_SITE_URL` in production so canonical URLs, social previews and the sitemap use the real domain.
 

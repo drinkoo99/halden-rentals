@@ -100,36 +100,79 @@ compiled to `#737973`). Theme token lines must not carry trailing comments.
 ## 4. Performance (Phase 1, task 11) — 21 Nov 2026
 
 **How:** Lighthouse 12.2.1 via `npx` (npm cache only, no project dependency), headless Chrome, against the production
-build on `localhost:3000`. Mobile = Lighthouse default (Moto G-class device, slow 4G, 4× CPU throttling);
-desktop = `--preset=desktop`. Scores are performance / accessibility / best practices / SEO.
+build on `localhost:3000`. Mobile = Lighthouse default (simulated slow 4G, 4× CPU throttling); desktop =
+`--preset=desktop`. Scores are performance / accessibility / best practices / SEO.
+
+**Measurement noise:** on this 6 GB, 4-core laptop a single mobile run can swing by 10+ points depending on what else
+the machine is doing (one sign-in run scored 59 with a Lighthouse CPU benchmark of 1,125; repeats scored 76–77 at
+~1,700). Final mobile figures are therefore the **median of 3 runs**, and each run's benchmark index was recorded;
+runs taken while the benchmark was depressed were repeated.
 
 ### Fixes
 
-- **Lazy LCP images:** the largest above-the-fold image on 13 round-2 screens (journeys, about, account, reservation,
-  auth art, curbside) and the first row of fleet cards was `loading="lazy"`, so it only started downloading after
-  layout. It is now `eager` + `fetchpriority="high"` — measured LCP element on each screen, not guessed.
-- **Booking layout shift:** on desktop the booking UI (client-only, it reads `sessionStorage`) replaced a shorter
-  skeleton and pushed the footer down: CLS 0.80 on the trip step. The booking main area now has a full-viewport
-  minimum height; measured CLS is 0 on all booking steps.
+1. **Lazy LCP images** — the largest above-the-fold image on 13 round-2 screens (journeys, about, account,
+   reservation, auth art, curbside) and the first row of fleet cards loaded `lazy`. Now `eager` +
+   `fetchpriority="high"` (the LCP element was measured on each screen, not guessed).
+2. **Booking layout shift** — on desktop the client-only booking UI replaced a shorter skeleton and pushed the footer
+   down (CLS 0.80–0.90). The booking main area now has a full-viewport minimum height: CLS 0.
+3. **Icon font** — the Material Symbols stylesheet loaded the *entire* icon set: a 4.0 MB font, ~87 % of every page's
+   transfer size. It now requests only the 132 icons the app uses (`icon_names=`), with the same axes, so every
+   filled/weight variant looks the same: **134 KB (−97 %)**. Page weight on home/fleet: **4.6 MB → 0.8 MB (−82 %)**;
+   the icon font finishes ~400 ms earlier. `src/lib/icons.ts` holds the list; `icons.test.ts` fails if an icon used in
+   the source is missing from it. Verified in the browser: 673 visible icons on 37 routes × 2 widths, none broken.
 
-### Results
+### Final scores (after all three fixes)
 
-| Page | Before (mobile) | After (mobile) | Before (desktop) | After (desktop) |
+| Page | Mobile (median of 3) | Mobile before | Desktop | Desktop before |
 | --- | --- | --- | --- | --- |
-| Home | 84 / 100 / 100 / 100 | see note | 99 / 100 / 100 / 100 | 98 / 100 / 100 / 100 |
-| Fleet | 61 / 100 / 100 / 100 (LCP 23.9 s) | 70 / 100 / 100 / 100 (LCP 4.9 s) | 97 / 96 / 100 / 100 | 97 / 100 / 100 / 100 |
-| Vehicle | 73 / 100 / 100 / 100 | 72 / 100 / 100 / 100 | 98 / 96 / 100 / 100 | 98 / 100 / 100 / 100 |
-| Journeys | 72 / 100 / 100 / 100 (LCP 25.0 s) | 85 / 100 / 100 / 100 (LCP 4.2 s) | 99 / 100 / 100 / 100 | 98 / 100 / 100 / 100 |
-| About | 73 / 100 / 100 / 100 (LCP 24.7 s) | 85 / 100 / 100 / 100 (LCP 4.2 s) | 97 / 100 / 100 / 100 | 99 / 100 / 100 / 100 |
-| Booking trip | 85 / 100 / 100 / 66* | not re-run | 75 / 96 / 100 / 66* (CLS 0.90) | not re-run (CLS measured 0) |
-| Sign in | 77 / 100 / 100 / 66* | not re-run | 99 / 100 / 100 / 66* | not re-run |
-| Account | 71 / 100 / 96 / 66* (LCP 24.1 s) | not re-run | 99 / 100 / 100 / 66* | not re-run |
+| Home | 84 / 100 / 100 / 100 | 84 | 99 / 100 / 100 / 100 | 99 |
+| Fleet | 71 / 100 / 100 / 100 | 61 | 96 / 100 / 100 / 100 | 97 |
+| Vehicle | 67 / 100 / 100 / 100 | 73 | 97 / 100 / 100 / 100 | 98 |
+| Journeys | 83 / 100 / 100 / 100 | 72 | 95 / 100 / 100 / 100 | 99 |
+| About | 77 / 100 / 100 / 100 | 73 | 99 / 100 / 100 / 100 | 97 |
+| Booking trip | 86 / 100 / 100 / 66* | 85 | 94 / 96† / 100 / 66* | 75 |
+| Sign in | 71 / 100 / 100 / 66* | 77 | 98 / 100 / 100 / 66* | 99 |
+| Account | 77 / 100 / 96‡ / 66* | 71 | 96 / 100 / 100 / 66* | 99 |
 
-\* SEO 66 = the page is intentionally `noindex`.
+"Before" = the Phase 1 baseline, single run. \* SEO 66 = intentionally `noindex`. † decorative calendar dates
+(see Accessibility). ‡ "legible font sizes": the Stitch 9–11 px mono labels.
 
-**Note / limits (honest):** the "after" run was stopped by the machine running out of memory (6 GB) part-way through,
-so booking, sign-in and account were not re-measured, and the home-mobile "after" figure (64, LCP 24.3 s,
-TBT 400 ms vs 60 ms before) was taken while memory was exhausted and is not trusted — nothing on the home page changed.
-Lighthouse's simulated throttling on this machine also varies run to run by several points. **Desktop meets the 90+
-target on every page; mobile does not yet** (70–85). The remaining mobile cost is JavaScript (TBT 400+ ms on fleet and
-vehicle: client-side filtering, gallery, favourites) and image weight under slow-4G simulation.
+**Reading the table honestly**
+
+- **Desktop meets the 90+ target on every page** (94–99).
+- **Mobile does not reach 90** (67–86). Biggest gains: fleet +10, journeys +11, account +6, booking-trip desktop +19.
+- Several mobile scores ended 3–6 points *below* an intermediate run taken before the icon-font fix (e.g. account 84,
+  about 85, vehicle 73). This is a property of Lighthouse's *simulated* throttling, not a slowdown: the old 4 MB font
+  finished after the page's observed LCP, so the simulation left it out of the LCP estimate; the 134 KB font now
+  finishes before it, so the simulation adds its slow-4G download time (~0.4–0.6 s) to LCP. In the actual browser the
+  font arrives ~400 ms *sooner*, observed LCP/FCP are unchanged (e.g. vehicle 997 → 1,063 ms, 597 → 613 ms, within
+  noise) and every page is ~3.8 MB lighter — the change is kept.
+- **What still costs mobile time:** script evaluation of ~1.1 s under 4× throttling, mostly the React / Next.js
+  runtime (~570 ms in the framework chunk on every page) plus hydrating both the desktop and the mobile Stitch
+  compositions that each page renders. Fleet's own code is ~60 ms. Rendering only one composition per device would be
+  an architectural change and was out of scope for Phase 1.
+
+## 5. Browser compatibility (Phase 1, task 13) — 21 Nov 2026
+
+**How:** one Playwright script (library from npm's cache; no project dependency) run unchanged in each browser,
+against the production build.
+
+- **Page checks** — 14 key routes (home, fleet, vehicle, journeys, about, terms, booking trip, sign-in, request access,
+  account, reservation, staff, curbside, 404) at **1440 × 900 and 390 × 844**: expected status, no JS / console
+  errors, no horizontal overflow, icon font loaded with no missing glyphs, no broken images.
+- **Interactions** — cookie banner (shows, "Accept necessary only" stores the choice, preferences reopen from the
+  footer and close with Escape); fleet category filter updates the URL and count; vehicle lightbox opens / closes
+  with Escape; booking trip → extras; sign-in validation; phone menu; phone fleet filter sheet; staff console frame on
+  a phone (note shown, frame scrolls, page does not).
+
+| Browser | Engine / version | Pages | Interactions |
+| --- | --- | --- | --- |
+| Google Chrome (installed) | Chromium 157 | 28 / 28 | 9 / 9 |
+| Microsoft Edge (installed) | Chromium 157 | 28 / 28 | 9 / 9 |
+| Firefox (Playwright build) | Gecko 159 | 28 / 28 | 9 / 9 |
+| WebKit (Playwright build) | WebKit 27.2 — Safari's engine | 28 / 28 | 9 / 9 |
+
+**Limits:** Firefox and WebKit are Playwright's builds (installed into Playwright's user cache, 354 MB and 177 MB), not
+retail Firefox / Safari. WebKit on Windows approximates Safari's engine but not Safari itself; real iOS / macOS Safari
+(including iOS safe-area and toolbar behaviour) was not tested and should be checked on a device before launch. All
+runs were headless.
