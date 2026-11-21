@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { StaffConsoleFrame } from "@/components/staff/StaffConsoleFrame";
 import { StaffVehicleEditor } from "@/components/staff/StaffVehicleEditor";
 
-export const metadata: Metadata = { title: "Edit vehicle — HALDEN Operations", robots: { index: false } };
+export const metadata: Metadata = { title: { absolute: "Edit vehicle — HALDEN Operations" }, robots: { index: false } };
 
 /** Stitch "Staff Console: Vehicle Editor". Staff console with demo data until the backend phase. */
 export default function Page() {

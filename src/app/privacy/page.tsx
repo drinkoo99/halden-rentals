@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
+import { publicMeta } from "@/lib/seo";
 import Link from "next/link";
 import { LegalPage } from "@/components/legal/LegalPage";
 
-export const metadata: Metadata = {
-  title: "Privacy",
-  description: "How the HALDEN concept prototype handles personal data (placeholder privacy notice).",
-};
+export const metadata: Metadata = publicMeta({ title: "Privacy", description: "How the HALDEN concept prototype handles personal data (placeholder privacy notice).", path: "/privacy" });
 
 /**
  * Privacy notice — placeholder content. The storage it describes is what the prototype really does:

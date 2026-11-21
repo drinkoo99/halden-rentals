@@ -5,6 +5,7 @@ import { VehicleSkeleton } from "@/components/states/Skeletons";
 import { VehicleDesktop } from "@/components/vehicle/VehicleDesktop";
 import { VehicleMobile } from "@/components/vehicle/VehicleMobile";
 import { getVehicle, similarVehicles, vehicles } from "@/data/vehicles";
+import { publicMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
   return vehicles.map((v) => ({ slug: v.slug }));
@@ -14,11 +15,12 @@ export async function generateMetadata({ params }: PageProps<"/fleet/[slug]">): 
   const { slug } = await params;
   const v = getVehicle(slug);
   if (!v) return { title: "Vehicle not found" };
-  return {
+  return publicMeta({
     title: `${v.name} — €${v.pricePerDay} / day`,
     description: `${v.headline} ${v.specLine}. Curbside delivery across HALDEN’s European hubs.`,
-    openGraph: { images: [{ url: v.image, alt: v.imageAlt }] },
-  };
+    path: `/fleet/${v.slug}`,
+    image: { url: v.image, alt: v.imageAlt },
+  });
 }
 
 /** Vehicle detail. Desktop = Stitch screen 19, mobile = screen 30. */

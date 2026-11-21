@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
+import { publicMeta } from "@/lib/seo";
 import { Suspense } from "react";
 import { FleetDesktop } from "@/components/fleet/FleetDesktop";
 import { FleetMobile } from "@/components/fleet/FleetMobile";
 import { FleetSkeleton } from "@/components/states/Skeletons";
 
-export const metadata: Metadata = {
-  title: "The Collection — Fleet Discovery",
-  description: "Browse HALDEN’s curated fleet of premium cars by category, brand, price, seats and powertrain.",
-};
+export const metadata: Metadata = publicMeta({ title: "The Collection — Fleet Discovery", description: "Browse HALDEN’s curated fleet of premium cars by category, brand, price, seats and powertrain.", path: "/fleet" });
 
 /**
  * Fleet discovery. Desktop = Stitch screen 12, mobile = screen 26 (+ filter sheet 29).

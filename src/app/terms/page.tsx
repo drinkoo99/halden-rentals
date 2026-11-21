@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
+import { publicMeta } from "@/lib/seo";
 import Link from "next/link";
 import { LegalPage } from "@/components/legal/LegalPage";
 import { MIN_DRIVER_AGE } from "@/lib/booking/driverSchema";
 import { formatEuroCents, SECURITY_DEPOSIT, VAT_RATE } from "@/lib/pricing";
 
-export const metadata: Metadata = {
-  title: "Rental terms",
-  description: "Placeholder rental terms for the HALDEN concept prototype.",
-};
+export const metadata: Metadata = publicMeta({ title: "Rental terms", description: "Placeholder rental terms for the HALDEN concept prototype.", path: "/terms" });
 
 /** Rental terms — placeholder content in the editorial legal layout (no Stitch screen). */
 export default function TermsPage() {

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
+import { publicMeta } from "@/lib/seo";
 import { LegalPage } from "@/components/legal/LegalPage";
 
-export const metadata: Metadata = {
-  title: "Imprint",
-  description: "Imprint for the HALDEN concept prototype (placeholder).",
-};
+export const metadata: Metadata = publicMeta({ title: "Imprint", description: "Imprint for the HALDEN concept prototype (placeholder).", path: "/imprint" });
 
 /** Imprint — every company detail is a placeholder until a real operator exists. */
 export default function ImprintPage() {
