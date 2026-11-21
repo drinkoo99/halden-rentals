@@ -891,10 +891,10 @@ export function StaffAvailability() {
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-label-mono text-[9px] text-on-surface-variant uppercase tracking-widest">STATE: FILTER ZERO-MATCH</span>
-                      <span className="font-label-mono text-[9px] px-1.5 py-0.5 bg-surface-container text-on-surface-variant">CPH HUB</span>
+                      <span className="font-label-mono text-[9px] px-1.5 py-0.5 bg-surface-container text-on-surface-variant">VIE HUB</span>
                     </div>
                     <h4 className="font-headline-sm text-base text-on-surface font-medium mb-1">No Chassis Stationed in Hub</h4>
-                    <p className="font-body-sm text-xs text-on-surface-variant leading-relaxed">No chassis currently stationed in Copenhagen (CPH) for this diurnal period. Transfer an unassigned unit from Munich (MUC) or adjust regional search criteria.</p>
+                    <p className="font-body-sm text-xs text-on-surface-variant leading-relaxed">No chassis currently stationed in Vienna (VIE) for this diurnal period. Transfer an unassigned unit from Munich (MUC) or adjust regional search criteria.</p>
                   </div>
                   <div className="mt-4 pt-3 border-t border-[#D8D6CE] flex items-center justify-between">
                     <button className="font-action text-xs text-primary font-bold uppercase tracking-wider hover:underline flex items-center gap-1">
@@ -902,7 +902,7 @@ export function StaffAvailability() {
                       {" "}
                       <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
                     </button>
-                    <span className="font-label-mono text-[10px] text-outline">{"CODE // 0-CPH-NULL"}</span>
+                    <span className="font-label-mono text-[10px] text-outline">{"CODE // 0-VIE-NULL"}</span>
                   </div>
                 </div>
                 {/* 2. Loading State Shimmer Preview */}

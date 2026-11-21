@@ -213,7 +213,7 @@ export function JourneyDetailMobile() {
               <div className="bg-surface-container-low p-4 flex flex-col">
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-label-mono text-[10px] tracking-widest uppercase text-secondary">{"CHASSIS 01 // PURIST"}</span>
-                  <span className="font-spec-numeral text-spec-numeral text-primary font-bold">CHF 1,450 / DAY</span>
+                  <span className="font-spec-numeral text-spec-numeral text-primary font-bold">€440 / DAY</span>
                 </div>
                 <div className="w-full aspect-[16/10] bg-surface-container overflow-hidden mb-3"><Photo src={media.porscheGt3Studio} alt="Porsche 911 GT3 Touring in obsidian black" className="w-full h-full object-cover" sizes="(max-width: 767px) 100vw, 30vw" /></div>
                 <h3 className="font-headline-sm text-headline-sm text-on-surface">Porsche 911 GT3 Touring</h3>
@@ -238,7 +238,7 @@ export function JourneyDetailMobile() {
               <div className="bg-surface-container-low p-4 flex flex-col">
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-label-mono text-[10px] tracking-widest uppercase text-secondary">{"CHASSIS 02 // SANCTUARY"}</span>
-                  <span className="font-spec-numeral text-spec-numeral text-primary font-bold">CHF 1,200 / DAY</span>
+                  <span className="font-spec-numeral text-spec-numeral text-primary font-bold">€390 / DAY</span>
                 </div>
                 <div className="w-full aspect-[16/10] bg-surface-container overflow-hidden mb-3"><Photo src={media.rangeRoverStudio} alt="Range Rover Autobiography in silver stone" className="w-full h-full object-cover" sizes="(max-width: 767px) 100vw, 30vw" /></div>
                 <h3 className="font-headline-sm text-headline-sm text-on-surface">Range Rover Autobiography</h3>
@@ -263,7 +263,7 @@ export function JourneyDetailMobile() {
               <div className="bg-surface-container-low p-4 flex flex-col">
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-label-mono text-[10px] tracking-widest uppercase text-secondary">{"CHASSIS 03 // SCULPTURAL"}</span>
-                  <span className="font-spec-numeral text-spec-numeral text-primary font-bold">CHF 980 / DAY</span>
+                  <span className="font-spec-numeral text-spec-numeral text-primary font-bold">€375 / DAY</span>
                 </div>
                 <div className="w-full aspect-[16/10] bg-surface-container overflow-hidden mb-3"><Photo src={media.lexusLakeComo} alt="Lexus LC 500 in champagne metallic" className="w-full h-full object-cover" sizes="(max-width: 767px) 100vw, 29vw" /></div>
                 <h3 className="font-headline-sm text-headline-sm text-on-surface">Lexus LC 500 Coupe</h3>

@@ -184,7 +184,7 @@ export function StaffCustomers() {
                     <th className="py-3 px-4 font-normal border-r border-outline-variant w-[22%]">Contact Details</th>
                     <th className="py-3 px-4 font-normal border-r border-outline-variant w-[18%]">{"Accreditation & Status"}</th>
                     <th className="py-3 px-4 font-normal border-r border-outline-variant w-[12%] text-center">Expeditions</th>
-                    <th className="py-3 px-4 font-normal border-r border-outline-variant w-[10%] text-right">LTV (EUR/CHF)</th>
+                    <th className="py-3 px-4 font-normal border-r border-outline-variant w-[10%] text-right">LTV (EUR)</th>
                     <th className="py-3 px-4 font-normal border-r border-outline-variant w-[10%]">Last / Next Date</th>
                     <th className="py-3 px-4 font-normal text-right w-[4%]">Actions</th>
                   </tr>
@@ -220,7 +220,7 @@ export function StaffCustomers() {
                     <td className="py-3.5 px-4 border-r border-outline-variant text-right">
                       <span className="font-spec-numeral text-spec-numeral text-on-surface font-medium">€6,925.80</span>
                       {" "}
-                      <div className="font-label-mono text-[10px] text-outline mt-0.5">CHF 6,710.00</div>
+                      <div className="font-label-mono text-[10px] text-outline mt-0.5">€6,710.00</div>
                     </td>
                     <td className="py-3.5 px-4 border-r border-outline-variant">
                       <div className="font-spec-numeral text-spec-numeral text-primary font-medium">12 Jun 2025</div>
@@ -263,7 +263,7 @@ export function StaffCustomers() {
                     <td className="py-3.5 px-4 border-r border-outline-variant text-right">
                       <span className="font-spec-numeral text-spec-numeral text-on-surface font-medium">€1,840.00</span>
                       {" "}
-                      <div className="font-label-mono text-[10px] text-outline mt-0.5">CHF 1,780.00</div>
+                      <div className="font-label-mono text-[10px] text-outline mt-0.5">€1,780.00</div>
                     </td>
                     <td className="py-3.5 px-4 border-r border-outline-variant">
                       <div className="font-spec-numeral text-spec-numeral text-on-surface font-medium">14 Jun 2025</div>
@@ -309,7 +309,7 @@ export function StaffCustomers() {
                     <td className="py-3.5 px-4 border-r border-outline-variant text-right">
                       <span className="font-spec-numeral text-spec-numeral text-on-surface font-medium">€14,350.00</span>
                       {" "}
-                      <div className="font-label-mono text-[10px] text-outline mt-0.5">CHF 13,910.00</div>
+                      <div className="font-label-mono text-[10px] text-outline mt-0.5">€13,910.00</div>
                     </td>
                     <td className="py-3.5 px-4 border-r border-outline-variant">
                       <div className="font-spec-numeral text-spec-numeral text-primary font-medium">15 Jun 2025</div>
@@ -352,7 +352,7 @@ export function StaffCustomers() {
                     <td className="py-3.5 px-4 border-r border-outline-variant text-right">
                       <span className="font-spec-numeral text-spec-numeral text-outline font-medium">€0.00</span>
                       {" "}
-                      <div className="font-label-mono text-[10px] text-outline mt-0.5">CHF 0.00</div>
+                      <div className="font-label-mono text-[10px] text-outline mt-0.5">€0.00</div>
                     </td>
                     <td className="py-3.5 px-4 border-r border-outline-variant">
                       <div className="font-spec-numeral text-spec-numeral text-outline">None</div>
@@ -395,7 +395,7 @@ export function StaffCustomers() {
                     <td className="py-3.5 px-4 border-r border-outline-variant text-right">
                       <span className="font-spec-numeral text-spec-numeral text-on-surface font-medium">€5,210.00</span>
                       {" "}
-                      <div className="font-label-mono text-[10px] text-outline mt-0.5">CHF 5,060.00</div>
+                      <div className="font-label-mono text-[10px] text-outline mt-0.5">€5,060.00</div>
                     </td>
                     <td className="py-3.5 px-4 border-r border-outline-variant">
                       <div className="font-spec-numeral text-spec-numeral text-primary font-medium">18 Jun 2025</div>
@@ -438,7 +438,7 @@ export function StaffCustomers() {
                     <td className="py-3.5 px-4 border-r border-outline-variant text-right">
                       <span className="font-spec-numeral text-spec-numeral text-on-surface font-medium">€3,120.00</span>
                       {" "}
-                      <div className="font-label-mono text-[10px] text-outline mt-0.5">CHF 3,025.00</div>
+                      <div className="font-label-mono text-[10px] text-outline mt-0.5">€3,025.00</div>
                     </td>
                     <td className="py-3.5 px-4 border-r border-outline-variant">
                       <div className="font-spec-numeral text-spec-numeral text-on-surface">20 Oct 2024</div>
@@ -481,7 +481,7 @@ export function StaffCustomers() {
                     <td className="py-3.5 px-4 border-r border-outline-variant text-right">
                       <span className="font-spec-numeral text-spec-numeral text-on-surface font-medium">€8,900.00</span>
                       {" "}
-                      <div className="font-label-mono text-[10px] text-outline mt-0.5">CHF 8,635.00</div>
+                      <div className="font-label-mono text-[10px] text-outline mt-0.5">€8,635.00</div>
                     </td>
                     <td className="py-3.5 px-4 border-r border-outline-variant">
                       <div className="font-spec-numeral text-spec-numeral text-on-surface">04 Sep 2024</div>

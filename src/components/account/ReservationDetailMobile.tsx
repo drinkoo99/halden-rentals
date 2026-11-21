@@ -217,11 +217,11 @@ export function ReservationDetailMobile() {
                   <span className="font-spec-numeral text-on-surface">€285.00</span>
                 </div>
                 <div className="flex items-center justify-between pt-2 border-t border-outline-variant font-medium">
-                  <span className="font-label-mono text-label-mono uppercase text-on-surface">Total Paid (VAT incl.)</span>
+                  <span className="font-label-mono text-label-mono uppercase text-on-surface">Total due at handover (VAT incl.)</span>
                   <span className="font-spec-numeral text-[16px] text-primary">€1,731.45</span>
                 </div>
                 <div className="pt-2 flex items-center justify-between">
-                  <span className="font-label-mono text-[10px] text-on-surface-variant uppercase">SETTLED VIA VISA •••• 4291</span>
+                  <span className="font-label-mono text-[10px] text-on-surface-variant uppercase">DUE AT HANDOVER · NOTHING CHARGED ONLINE</span>
                   <button className="font-label-mono text-[10px] uppercase text-primary underline tracking-wider flex items-center gap-1 hover:text-on-surface">
                     <span>TAX INVOICE PDF</span>
                     {" "}

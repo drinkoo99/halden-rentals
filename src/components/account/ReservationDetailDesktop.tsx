@@ -300,7 +300,7 @@ export function ReservationDetailDesktop() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-space-md">
                       <div className="space-y-1">
                         <div className="font-label-mono text-label-mono uppercase text-on-surface font-bold">WHAT TO BRING</div>
-                        <p className="font-body-sm text-body-sm text-on-surface-variant">Physical national driving licence and the physical Visa card used during booking settlement. Both must match Patron Clara Von Bergmann.</p>
+                        <p className="font-body-sm text-body-sm text-on-surface-variant">Physical national driving licence and a payment card for the handover pre-authorisation. Both must match Patron Clara von Bergmann.</p>
                       </div>
                       <div className="space-y-1">
                         <div className="font-label-mono text-label-mono uppercase text-on-surface font-bold">VALET SALUTATION</div>
@@ -344,11 +344,10 @@ export function ReservationDetailDesktop() {
                         <span className="material-symbols-outlined text-[14px]">check_circle</span>
                         {" "}PRE-PAID RECORD
                       </span>
-                      <span className="font-label-mono text-[11px] text-on-surface-variant uppercase">SETTLED</span>
+                      <span className="font-label-mono text-[11px] text-on-surface-variant uppercase">DUE AT HANDOVER</span>
                     </div>
                     <div className="font-body-sm text-body-sm text-on-surface">
-                      Settled via Visa ending{" "}
-                      <span className="font-spec-numeral font-semibold">4291</span>
+                      Due at the curbside handover · nothing charged online
                     </div>
                     <div className="flex items-center justify-between pt-1 border-t border-outline-variant text-[12px]">
                       <span className="text-on-surface-variant uppercase font-label-mono">Due at handover</span>

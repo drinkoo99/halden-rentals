@@ -427,7 +427,7 @@ export function StaffFleet() {
               </div>
               <div className="w-full bg-surface-container-low border border-outline-variant p-8 md:p-12 flex flex-col items-center text-center">
                 <div className="w-12 h-12 bg-surface flex items-center justify-center border border-outline-variant mb-4"><span className="material-symbols-outlined text-outline text-[24px]">filter_alt_off</span></div>
-                <div className="font-label-mono text-label-mono uppercase tracking-widest text-[#C98A2C] mb-2">{"ACTIVE QUERY: HUB: COPENHAGEN (CPH) // STATUS: IN SERVICE"}</div>
+                <div className="font-label-mono text-label-mono uppercase tracking-widest text-[#C98A2C] mb-2">{"ACTIVE QUERY: HUB: VIENNA (VIE) // STATUS: IN SERVICE"}</div>
                 <h2 className="font-headline-md text-headline-md text-on-surface max-w-xl mb-3">No matching chassis records found in current ledger query.</h2>
                 <p className="font-body-md text-body-md text-on-surface-variant max-w-md mb-6">No vehicles within the Scandinavia logistics zone currently match diagnostic custody states. Adjust station filters or clear active criteria.</p>
                 <button className="px-5 py-2.5 bg-surface text-on-surface border border-outline hover:border-primary font-action text-action uppercase tracking-wider transition-colors inline-flex items-center gap-2">

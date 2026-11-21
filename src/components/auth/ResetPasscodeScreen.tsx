@@ -52,7 +52,7 @@ export function ResetPasscodeScreen() {
                   </div>
                   <div>
                     <span className="font-label-mono text-label-mono text-on-surface-variant uppercase block">DAILY PRIVILEGE</span>
-                    <span className="font-spec-numeral text-spec-numeral text-primary font-medium">CHF 1,840</span>
+                    <span className="font-spec-numeral text-spec-numeral text-primary font-medium">€340 / DAY</span>
                   </div>
                 </div>
                 <div className="pt-3 border-t border-surface-container-highest flex items-center justify-between">

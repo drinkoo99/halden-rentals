@@ -284,7 +284,7 @@ export function JourneyDetailDesktop() {
                   <div className="p-space-md border-b border-outline-variant flex justify-between items-baseline bg-surface-container-low">
                     <span className="font-label-mono text-label-mono uppercase text-outline">CATALOGUE № 09</span>
                     <span className="font-spec-numeral text-spec-numeral text-primary font-semibold">
-                      €540{" "}
+                      €440{" "}
                       <span className="text-xs text-outline font-normal">/ DAY</span>
                     </span>
                   </div>
@@ -311,7 +311,7 @@ export function JourneyDetailDesktop() {
                 {/* Placard 2: Range Rover Autobiography */}
                 <article className="flex flex-col bg-surface border border-outline-variant hover:border-primary transition-colors group">
                   <div className="p-space-md border-b border-outline-variant flex justify-between items-baseline bg-surface-container-low">
-                    <span className="font-label-mono text-label-mono uppercase text-outline">CATALOGUE № 14</span>
+                    <span className="font-label-mono text-label-mono uppercase text-outline">CATALOGUE № 08</span>
                     <span className="font-spec-numeral text-spec-numeral text-primary font-semibold">
                       €390{" "}
                       <span className="text-xs text-outline font-normal">/ DAY</span>
@@ -340,9 +340,9 @@ export function JourneyDetailDesktop() {
                 {/* Placard 3: Lexus LC 500 */}
                 <article className="flex flex-col bg-surface border border-outline-variant hover:border-primary transition-colors group">
                   <div className="p-space-md border-b border-outline-variant flex justify-between items-baseline bg-surface-container-low">
-                    <span className="font-label-mono text-label-mono uppercase text-outline">CATALOGUE № 22</span>
+                    <span className="font-label-mono text-label-mono uppercase text-outline">CATALOGUE № 05</span>
                     <span className="font-spec-numeral text-spec-numeral text-primary font-semibold">
-                      €380{" "}
+                      €375{" "}
                       <span className="text-xs text-outline font-normal">/ DAY</span>
                     </span>
                   </div>

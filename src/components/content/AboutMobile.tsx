@@ -184,12 +184,12 @@ export function AboutMobile() {
                 {/* MXP */}
                 <circle cx="140" cy="115" fill="#546254" r="3.5" />
                 <text fill="#424844" fontFamily="Space Mono" fontSize="8" x="148" y="125">MXP</text>
-                {/* SMV */}
+                {/* GVA */}
                 <circle cx="250" cy="85" fill="#546254" r="3.5" />
-                <text fill="#424844" fontFamily="Space Mono" fontSize="8" x="258" y="90">SMV [ENGADIN]</text>
-                {/* CPH */}
+                <text fill="#424844" fontFamily="Space Mono" fontSize="8" x="258" y="90">GVA [GENEVA]</text>
+                {/* VIE */}
                 <circle cx="90" cy="85" fill="#546254" r="3.5" />
-                <text fill="#424844" fontFamily="Space Mono" fontSize="8" x="55" y="88">CPH</text>
+                <text fill="#424844" fontFamily="Space Mono" fontSize="8" x="55" y="88">VIE</text>
               </svg>
               <div className="flex items-center justify-between pt-2">
                 <span className="font-label-mono text-[9px] text-secondary tracking-widest">ALPINE-NORDIC VECTOR GRID</span>
@@ -232,28 +232,28 @@ export function AboutMobile() {
                 </div>
                 <a aria-label="Call Milan Hub" className="h-11 px-3 bg-surface-container flex items-center justify-center text-primary active:bg-primary active:text-on-primary transition-colors text-action font-action" href="tel:+39027486200"><span className="material-symbols-outlined text-[18px]">call</span></a>
               </div>
-              {/* SMV */}
+              {/* GVA */}
               <div className="p-3 bg-surface-container-low flex items-center justify-between">
                 <div className="flex flex-col">
                   <div className="flex items-center gap-2">
-                    <span className="font-label-mono text-spec-numeral text-primary font-bold">SMV</span>
-                    <span className="font-body-md text-body-md font-medium text-on-surface">St. Moritz</span>
-                    <span className="text-[10px] bg-tertiary-fixed text-on-tertiary-fixed px-1 font-label-mono">SEASON</span>
+                    <span className="font-label-mono text-spec-numeral text-primary font-bold">GVA</span>
+                    <span className="font-body-md text-body-md font-medium text-on-surface">Geneva</span>
+                    
                   </div>
-                  <span className="font-label-mono text-[10px] text-on-surface-variant mt-0.5">Samedan Hangar · Private Ramp Delivery</span>
+                  <span className="font-label-mono text-[10px] text-on-surface-variant mt-0.5">Private Aviation Terminal · 06:00–23:30</span>
                 </div>
-                <a aria-label="Call St Moritz Hub" className="h-11 px-3 bg-surface-container flex items-center justify-center text-primary active:bg-primary active:text-on-primary transition-colors text-action font-action" href="tel:+41818510200"><span className="material-symbols-outlined text-[18px]">call</span></a>
+                <a aria-label="Call St Moritz Hub" className="h-11 px-3 bg-surface-container flex items-center justify-center text-primary active:bg-primary active:text-on-primary transition-colors text-action font-action" href="tel:+41227178200"><span className="material-symbols-outlined text-[18px]">call</span></a>
               </div>
-              {/* CPH */}
+              {/* VIE */}
               <div className="p-3 bg-surface-container-low flex items-center justify-between">
                 <div className="flex flex-col">
                   <div className="flex items-center gap-2">
-                    <span className="font-label-mono text-spec-numeral text-primary font-bold">CPH</span>
-                    <span className="font-body-md text-body-md font-medium text-on-surface">Copenhagen</span>
+                    <span className="font-label-mono text-spec-numeral text-primary font-bold">VIE</span>
+                    <span className="font-body-md text-body-md font-medium text-on-surface">Vienna</span>
                   </div>
-                  <span className="font-label-mono text-[10px] text-on-surface-variant mt-0.5">Kastrup Bay 07 · 06:00–23:00</span>
+                  <span className="font-label-mono text-[10px] text-on-surface-variant mt-0.5">Executive Terminal · 06:00–23:30</span>
                 </div>
-                <a aria-label="Call Copenhagen Hub" className="h-11 px-3 bg-surface-container flex items-center justify-center text-primary active:bg-primary active:text-on-primary transition-colors text-action font-action" href="tel:+4532313200"><span className="material-symbols-outlined text-[18px]">call</span></a>
+                <a aria-label="Call Vienna Hub" className="h-11 px-3 bg-surface-container flex items-center justify-center text-primary active:bg-primary active:text-on-primary transition-colors text-action font-action" href="tel:+43170078200"><span className="material-symbols-outlined text-[18px]">call</span></a>
               </div>
             </div>
           </section>
@@ -385,7 +385,7 @@ export function AboutMobile() {
               <span>·</span>
               <span>MILAN</span>
               <span>·</span>
-              <span>ST. MORITZ</span>
+              <span>VIENNA</span>
             </div>
           </footer>
         </div>

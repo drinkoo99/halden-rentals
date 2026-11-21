@@ -61,9 +61,7 @@ export function ReservationCancelledDesktop() {
                   </div>
                   <h2 className="font-headline-md text-headline-md text-on-surface">Reservation Cancelled</h2>
                   <p className="font-body-md text-body-md text-on-surface-variant">
-                    Cancelled on 2 June 2025 · Full refund of{" "}
-                    <strong className="text-on-surface font-semibold">€1,731.45</strong>
-                    {" "}issued to original payment method (Visa ending in 4291). Funds typically settle within 3–5 business days according to your banking institution.
+                    Cancelled on 2 June 2025 · Nothing was charged online: the{" "}<strong className="text-on-surface font-semibold">€1,731.45</strong> total was due at the curbside handover, so no refund is needed and no cancellation fee applies.
                   </p>
                 </div>
                 <div className="shrink-0 flex flex-col md:items-end justify-between self-stretch pt-1">
@@ -227,21 +225,21 @@ export function ReservationCancelledDesktop() {
                         <tr className="text-on-surface">
                           <td className="py-3 px-3 whitespace-nowrap font-spec-numeral text-[13px]">12 May 2025</td>
                           <td className="py-3 px-3">
-                            <div className="font-body-md text-[13px] text-on-surface">Initial Reservation Charge</div>
+                            <div className="font-body-md text-[13px] text-on-surface">Reservation confirmed</div>
                             <div className="text-[10px] text-on-surface-variant">TX-AUTH-9941028-MUC</div>
                           </td>
-                          <td className="py-3 px-3 whitespace-nowrap text-on-surface-variant">Visa •••• 4291</td>
-                          <td className="py-3 px-3 whitespace-nowrap"><span className="inline-block px-2 py-0.5 bg-surface-container text-on-surface text-[10px] tracking-widest uppercase">SETTLED</span></td>
+                          <td className="py-3 px-3 whitespace-nowrap text-on-surface-variant">Pay at handover</td>
+                          <td className="py-3 px-3 whitespace-nowrap"><span className="inline-block px-2 py-0.5 bg-surface-container text-on-surface text-[10px] tracking-widest uppercase">RESERVED</span></td>
                           <td className="py-3 px-3 text-right font-spec-numeral text-spec-numeral font-semibold whitespace-nowrap">€1,731.45</td>
                         </tr>
                         <tr className="text-on-surface bg-surface-container-low/50">
                           <td className="py-3 px-3 whitespace-nowrap font-spec-numeral text-[13px] text-error">02 Jun 2025</td>
                           <td className="py-3 px-3">
-                            <div className="font-body-md text-[13px] text-on-surface">{"Full Reversal & Refund"}</div>
+                            <div className="font-body-md text-[13px] text-on-surface">Reservation cancelled</div>
                             <div className="text-[10px] text-on-surface-variant">ARN-749204819028401</div>
                           </td>
-                          <td className="py-3 px-3 whitespace-nowrap text-on-surface-variant">Visa •••• 4291</td>
-                          <td className="py-3 px-3 whitespace-nowrap"><span className="inline-block px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] tracking-widest uppercase font-medium">PROCESSED</span></td>
+                          <td className="py-3 px-3 whitespace-nowrap text-on-surface-variant">—</td>
+                          <td className="py-3 px-3 whitespace-nowrap"><span className="inline-block px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] tracking-widest uppercase font-medium">RELEASED</span></td>
                           <td className="py-3 px-3 text-right font-spec-numeral text-spec-numeral font-semibold text-error whitespace-nowrap">−€1,731.45</td>
                         </tr>
                       </tbody>
@@ -260,7 +258,7 @@ export function ReservationCancelledDesktop() {
                 <div className="bg-surface-container p-space-md lg:p-space-lg space-y-space-md relative">
                   <div>
                     <div className="font-label-mono text-label-mono uppercase tracking-[0.18em] text-on-surface-variant mb-1">FINANCIAL STATEMENT</div>
-                    <h3 className="font-headline-sm text-headline-sm text-on-surface">{"Financial Summary & Refund Record"}</h3>
+                    <h3 className="font-headline-sm text-headline-sm text-on-surface">Financial Summary</h3>
                   </div>
                   {/* Breakdown Ledger */}
                   <div className="space-y-space-xs font-label-mono text-body-sm pt-space-xs">
@@ -277,13 +275,13 @@ export function ReservationCancelledDesktop() {
                       <span className="font-spec-numeral text-spec-numeral text-on-surface-variant">€330.00</span>
                     </div>
                     <div className="flex justify-between items-center py-1 text-error font-medium">
-                      <span>Refund Amount</span>
+                      <span>Released on cancellation</span>
                       <span className="font-spec-numeral text-spec-numeral">−€1,731.45</span>
                     </div>
                     {/* Total Bar */}
                     <div className="pt-space-sm mt-space-sm bg-surface-container-high p-space-sm flex justify-between items-center">
                       <div className="space-y-0.5">
-                        <span className="font-label-mono text-[10px] uppercase tracking-widest text-on-surface-variant">FINAL AMOUNT PAID</span>
+                        <span className="font-label-mono text-[10px] uppercase tracking-widest text-on-surface-variant">AMOUNT DUE</span>
                         <div className="font-display text-headline-sm text-on-surface">€0.00</div>
                       </div>
                       <span className="px-2 py-1 bg-surface-container-lowest font-label-mono text-[10px] text-secondary tracking-widest uppercase">RECONCILED</span>
@@ -292,12 +290,12 @@ export function ReservationCancelledDesktop() {
                   {/* Refund Details Box */}
                   <div className="space-y-space-xs pt-space-xs font-label-mono text-[11px] text-on-surface-variant">
                     <div className="flex items-center justify-between">
-                      <span className="uppercase tracking-wider">Refund Reference:</span>
+                      <span className="uppercase tracking-wider">Cancellation Reference:</span>
                       <span className="font-spec-numeral text-on-surface select-all">RFND-MUC-94021</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="uppercase tracking-wider">Method:</span>
-                      <span className="text-on-surface">Visa ending 4291</span>
+                      <span className="text-on-surface">No charge taken</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="uppercase tracking-wider">Ledger Auth:</span>
@@ -319,7 +317,7 @@ export function ReservationCancelledDesktop() {
                       {" "}
                       <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                     </Link>
-                    <p className="text-center font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">MUNICH • ZURICH • MILAN • COPENHAGEN</p>
+                    <p className="text-center font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">MUNICH • ZURICH • GENEVA • MILAN • VIENNA</p>
                   </div>
                 </div>
                 {/* Concierge / Patron Support Slate */}

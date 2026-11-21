@@ -235,7 +235,7 @@ export function StaffBookingDetail() {
                         <span className="material-symbols-outlined text-[18px] text-primary mt-0.5">verified_user</span>
                         <div>
                           <span className="font-medium text-on-surface block">Zero-Excess Comprehensive Indemnity</span>
-                          <span className="text-on-surface-variant text-[12px]">{"CHF 0.00 deductible waiver · Glass & Underbody Alpine coverage"}</span>
+                          <span className="text-on-surface-variant text-[12px]">{"€0.00 deductible waiver · Glass & Underbody Alpine coverage"}</span>
                         </div>
                       </div>
                       {" "}
@@ -306,7 +306,7 @@ export function StaffBookingDetail() {
                     <div className="border-t-2 border-on-surface pt-3 flex justify-between items-baseline">
                       <div>
                         <span className="font-headline-sm text-headline-sm text-on-surface block leading-none">Total Tariff Cleared</span>
-                        <span className="font-label-mono text-label-mono uppercase text-primary font-bold">PAID / SETTLED VIA AMEX CENTURION</span>
+                        <span className="font-label-mono text-label-mono uppercase text-primary font-bold">PAID / SETTLED VIA PAY AT HANDOVER</span>
                       </div>
                       <span className="font-spec-numeral text-[24px] text-on-surface font-bold">€1,731.45</span>
                     </div>

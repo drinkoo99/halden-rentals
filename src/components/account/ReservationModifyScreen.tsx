@@ -129,7 +129,7 @@ export function ReservationModifyScreen() {
                   <div className="font-label-mono text-label-mono uppercase tracking-[0.15em] text-secondary mb-space-sm">REGISTERED CUSTODIAN</div>
                   <div className="font-action text-action text-on-surface uppercase">Clara Von Halden</div>
                   <div className="font-label-mono text-label-mono text-outline mt-1">PATRON NO. 802 · TIER II MONOLITH</div>
-                  <div className="mt-space-md pt-space-sm border-t border-outline-variant text-body-sm text-on-surface-variant">Settlement Method: Visa Executive Platinum •••• 4291</div>
+                  <div className="mt-space-md pt-space-sm border-t border-outline-variant text-body-sm text-on-surface-variant">Settlement: at the curbside handover</div>
                 </div>
               </div>
             </div>
@@ -412,7 +412,7 @@ export function ReservationModifyScreen() {
                       <span className="font-spec-numeral text-[16px] text-[#344A3D] font-bold">+€390.00 DUE</span>
                     </div>
                   </div>
-                  <div className="pt-2 border-t border-[#D8D6CE]/60"><p className="font-body-sm text-[11px] text-[#59685a] leading-relaxed">Includes statutory 19% VAT (€338.72) and all custodial insurance. Difference settled via pre-registered Visa ending 4291 upon confirmation.</p></div>
+                  <div className="pt-2 border-t border-[#D8D6CE]/60"><p className="font-body-sm text-[11px] text-[#59685a] leading-relaxed">Includes statutory 19% VAT (€338.72) and all custodial insurance. The difference is due at the curbside handover; nothing is charged online.</p></div>
                 </div>
               </div>
             </div>
@@ -420,7 +420,7 @@ export function ReservationModifyScreen() {
             <div className="p-6 border-t border-[#D8D6CE] bg-[#F5F3EE] shrink-0 flex items-center justify-between gap-4">
               <Link className="font-action text-[13px] uppercase tracking-[0.1em] text-[#424844] hover:text-[#171A18] transition-colors py-3 px-2" href="/account/reservations/hld-0612-4821">Discard changes</Link>
               <button className="h-[52px] px-7 bg-[#344A3D] hover:bg-[#1e3327] text-[#F5F3EE] font-action text-[13px] font-semibold uppercase tracking-[0.14em] rounded-[2px] transition-colors flex items-center gap-2 group shadow-none" disabled={saving} onClick={confirmChanges} type="button">
-                <span>{saving ? "Confirming custody…" : "Confirm changes (Pay +€390.00)"}</span>
+                <span>{saving ? "Confirming custody…" : "Confirm changes (+€390.00)"}</span>
                 {" "}
                 <span className="text-[16px] transition-transform group-hover:translate-x-1">→</span>
               </button>

@@ -35,7 +35,7 @@ export function ReservationCancelScreen() {
               </div>
               <div className="flex items-center gap-space-sm">
                 <span className="font-label-mono text-label-mono uppercase text-on-surface-variant">ALLOCATION STATUS:</span>
-                <span className="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-label-mono text-label-mono uppercase font-semibold">{"CONFIRMED // PRE-PAID"}</span>
+                <span className="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-label-mono text-label-mono uppercase font-semibold">{"CONFIRMED // PAY AT HANDOVER"}</span>
               </div>
             </div>
             {/* Background Dossier Split Screen */}
@@ -114,7 +114,7 @@ export function ReservationCancelScreen() {
                     <span className="font-spec-numeral text-spec-numeral text-on-surface">€141.45</span>
                   </div>
                   <div className="pt-2 border-t border-outline flex justify-between items-baseline">
-                    <span className="font-action text-action uppercase tracking-widest text-on-surface">Total Pre-Paid (Settled)</span>
+                    <span className="font-action text-action uppercase tracking-widest text-on-surface">Total due at handover</span>
                     <span className="font-headline-sm text-headline-sm text-on-surface">€1,731.45</span>
                   </div>
                 </div>
@@ -186,7 +186,7 @@ export function ReservationCancelScreen() {
                 </div>
                 <div className="space-y-1.5 text-[12px] font-spec-numeral text-[#424844]">
                   <div className="flex justify-between">
-                    <span className="font-body-sm">Total Pre-Paid (Invoice #802-98)</span>
+                    <span className="font-body-sm">Total due at handover (Invoice #802-98)</span>
                     <span className="text-[#171A18]">€1,731.45</span>
                   </div>
                   <div className="flex justify-between">
@@ -199,9 +199,7 @@ export function ReservationCancelScreen() {
                   </div>
                 </div>
                 <p className="font-label-mono text-[10px] text-[#546254] mt-2.5 pt-2 border-t border-[#D8D6CE]/60 leading-normal">
-                  Full refund will automatically credit to{" "}
-                  <strong>Visa ending in 4291</strong>
-                  . Bank settlement cycle: 3–5 business days.
+                  Nothing has been charged online — the total is due at the curbside handover — so there is nothing to refund and no fee applies.
                 </p>
               </div>
               {/* SECTION 03: FEEDBACK SELECTION & MEMO */}
@@ -249,10 +247,10 @@ export function ReservationCancelScreen() {
               <div className="flex items-center gap-2">
                 <span className="font-action text-[13px] uppercase tracking-wider text-[#F5F3EE] font-semibold">Reservation cancelled</span>
                 <span className="w-1 h-1 rounded-full bg-[#738273]" />
-                <span className="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">REFUND DISPATCHED</span>
+                <span className="font-label-mono text-[10px] text-[#A0B9A8] uppercase tracking-wider">NO CHARGE</span>
               </div>
               <p className="font-label-mono text-[11px] text-[#BBCEBE] mt-1 leading-snug">
-                €1,731.45 issued to Visa ending in 4291. Dossier{" "}
+                No charge was taken. Dossier{" "}
                 <span className="text-[#F5F3EE]">HLD-0612-4821</span>
                 {" "}is now archived.
               </p>

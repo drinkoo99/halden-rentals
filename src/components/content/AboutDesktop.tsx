@@ -20,7 +20,7 @@ export function AboutDesktop() {
             <div className="flex flex-col space-y-space-md mb-space-lg">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-space-sm border-b border-[#D8D6CE] pb-space-sm">
                 <span className="font-label-mono text-label-mono tracking-[0.2em] text-secondary uppercase">{"HALDEN STANDARD // CURATORIAL CHARTER — EST. 1928"}</span>
-                <span className="font-label-mono text-label-mono tracking-[0.15em] text-on-surface-variant uppercase">DOSSIER ARCHIVE № AT-01 · GENEVA · ZURICH · MUNICH · MILAN · ST. MORITZ</span>
+                <span className="font-label-mono text-label-mono tracking-[0.15em] text-on-surface-variant uppercase">DOSSIER ARCHIVE № AT-01 · ZURICH · MUNICH · GENEVA · MILAN · VIENNA</span>
               </div>
               <div className="grid grid-cols-12 gap-gutter items-end pt-space-xs">
                 <div className="col-span-12 lg:col-span-8"><h1 className="font-display text-display text-on-surface leading-[1.08] tracking-[-0.02em]">A rental house built like a gallery.</h1></div>
@@ -89,7 +89,7 @@ export function AboutDesktop() {
                   </div>
                   <div className="pt-space-md mt-space-md border-t border-[#D8D6CE]/60 flex items-center justify-between">
                     <span className="font-label-mono text-label-mono text-secondary uppercase tracking-[0.12em]">DEDUCTIBLE LIABILITY</span>
-                    <span className="font-spec-numeral text-spec-numeral text-on-surface font-semibold">CHF 0.00 ZERO-EXCESS</span>
+                    <span className="font-spec-numeral text-spec-numeral text-on-surface font-semibold">€0.00 ZERO-EXCESS</span>
                   </div>
                 </div>
               </div>
@@ -317,21 +317,21 @@ export function AboutDesktop() {
                       <td className="p-space-sm font-spec-numeral text-spec-numeral">07:00 – 22:00 CEST</td>
                       <td className="p-space-sm font-spec-numeral text-spec-numeral">+39 02 748 6200</td>
                     </tr>
-                    {/* Row 4: SMV */}
+                    {/* Row 4: GVA */}
                     <tr className="hover:bg-surface-container-low transition-colors">
-                      <td className="p-space-sm font-label-mono text-label-mono font-bold text-primary">SMV</td>
-                      <td className="p-space-sm font-medium">St. Moritz, Switzerland</td>
-                      <td className="p-space-sm text-on-surface-variant font-light">Samedan Alpine Hangar · Seasonal Hub</td>
-                      <td className="p-space-sm font-spec-numeral text-spec-numeral">08:00 – 20:00 CEST</td>
-                      <td className="p-space-sm font-spec-numeral text-spec-numeral">+41 81 851 0200</td>
+                      <td className="p-space-sm font-label-mono text-label-mono font-bold text-primary">GVA</td>
+                      <td className="p-space-sm font-medium">Geneva, Switzerland</td>
+                      <td className="p-space-sm text-on-surface-variant font-light">Private Aviation Terminal</td>
+                      <td className="p-space-sm font-spec-numeral text-spec-numeral">06:00 – 23:30 CET</td>
+                      <td className="p-space-sm font-spec-numeral text-spec-numeral">+41 22 717 8200</td>
                     </tr>
-                    {/* Row 5: CPH */}
+                    {/* Row 5: VIE */}
                     <tr className="hover:bg-surface-container-low transition-colors">
-                      <td className="p-space-sm font-label-mono text-label-mono font-bold text-primary">CPH</td>
-                      <td className="p-space-sm font-medium">Copenhagen, Denmark</td>
-                      <td className="p-space-sm text-on-surface-variant font-light">Kastrup VIP Curbside Terminal 3 · Bay 07</td>
+                      <td className="p-space-sm font-label-mono text-label-mono font-bold text-primary">VIE</td>
+                      <td className="p-space-sm font-medium">Vienna, Austria</td>
+                      <td className="p-space-sm text-on-surface-variant font-light">Executive Terminal</td>
                       <td className="p-space-sm font-spec-numeral text-spec-numeral">06:00 – 23:00 CEST</td>
-                      <td className="p-space-sm font-spec-numeral text-spec-numeral">+45 32 31 3200</td>
+                      <td className="p-space-sm font-spec-numeral text-spec-numeral">+43 1 7007 8200</td>
                     </tr>
                   </tbody>
                 </table>
@@ -351,18 +351,18 @@ export function AboutDesktop() {
                       <path d="M 170 85 L 185 140" fill="none" stroke="#1e3327" strokeWidth="1.5" />
                       <path d="M 150 135 L 140 180" fill="none" stroke="#1e3327" strokeWidth="1.5" />
                       <path d="M 150 135 L 185 140" fill="none" stroke="#1e3327" strokeWidth="1.5" />
-                      {/* CPH Hub (North) */}
+                      {/* VIE Hub */}
                       <rect fill="#1e3327" height="8" width="8" x="166" y="26" />
-                      <text fill="#191c1a" fontFamily="Space Mono" fontSize="9" letterSpacing="0.1em" x="180" y="33">{"CPH // COPENHAGEN"}</text>
+                      <text fill="#191c1a" fontFamily="Space Mono" fontSize="9" letterSpacing="0.1em" x="180" y="33">{"VIE // VIENNA"}</text>
                       {/* MUC Hub */}
                       <rect fill="#1e3327" height="8" width="8" x="166" y="81" />
                       <text fill="#191c1a" fontFamily="Space Mono" fontSize="9" letterSpacing="0.1em" x="180" y="88">{"MUC // MUNICH"}</text>
                       {/* ZRH Hub (West Alpine) */}
                       <rect fill="#1e3327" height="8" width="8" x="146" y="131" />
                       <text fill="#191c1a" fontFamily="Space Mono" fontSize="9" letterSpacing="0.1em" x="70" y="138">{"ZRH // ZURICH"}</text>
-                      {/* SMV Hub (Alpine Pass) */}
+                      {/* GVA Hub */}
                       <rect fill="#344a3d" height="8" width="8" x="181" y="136" />
-                      <text fill="#191c1a" fontFamily="Space Mono" fontSize="9" letterSpacing="0.1em" x="195" y="143">{"SMV // ST. MORITZ"}</text>
+                      <text fill="#191c1a" fontFamily="Space Mono" fontSize="9" letterSpacing="0.1em" x="195" y="143">{"GVA // GENEVA"}</text>
                       {/* MXP Hub (South) */}
                       <rect fill="#1e3327" height="8" width="8" x="136" y="176" />
                       <text fill="#191c1a" fontFamily="Space Mono" fontSize="9" letterSpacing="0.1em" x="150" y="183">{"MXP // MILAN"}</text>
@@ -370,7 +370,7 @@ export function AboutDesktop() {
                   </div>
                 </div>
                 <div className="border-t border-[#D8D6CE] pt-space-xs flex justify-between items-center text-[#737973]">
-                  <span className="font-label-mono text-label-mono tracking-[0.1em]">EN ROUTE TIME: ZRH ⇄ SMV: 2H 14M</span>
+                  <span className="font-label-mono text-label-mono tracking-[0.1em]">EN ROUTE TIME: ZRH ⇄ GVA: 2H 50M</span>
                   <span className="font-label-mono text-label-mono">TRANSIT ACTIVE</span>
                 </div>
               </div>
@@ -494,8 +494,8 @@ export function AboutDesktop() {
                           <option value="chassis-general">General Archival Custodianship Inquiries</option>
                           <option value="alpine-gt">{"Alpine Grand Tour // St. Gotthard & Bernina Passage"}</option>
                           <option value="chassis-gt3">{"Chassis Ref. 992 GT3 Touring // Munich Archive"}</option>
-                          <option value="chassis-dbs">{"Chassis Ref. Aston Martin DBS Superleggera // Zurich Vault"}</option>
-                          <option value="chassis-roma">{"Chassis Ref. Ferrari Roma // Milan Staging Bay"}</option>
+                          <option value="chassis-dbs">{"Chassis Ref. Range Rover Autobiography // Munich"}</option>
+                          <option value="chassis-roma">{"Chassis Ref. Lexus LC 500 // Milan Malpensa"}</option>
                           <option value="curbside-fbo">Direct FBO Jet Runway Staging Protocol</option>
                         </select>
                       </div>

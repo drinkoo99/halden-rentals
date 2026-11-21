@@ -479,7 +479,7 @@ export function StaffBookings() {
               {/* Total Range Status */}
               <div className="flex items-center gap-6">
                 <span className="font-label-mono text-label-mono text-on-surface-variant tracking-wider uppercase">SHOWING 1–6 OF 18 ACTIVE UPCOMING RESERVATIONS</span>
-                <span className="font-label-mono text-[11px] text-on-surface-variant/80 tracking-tight">(All fiscal figures in EUR / CHF Cantonal Exchange synchronized: 1 EUR = 0.9412 CHF)</span>
+                <span className="font-label-mono text-[11px] text-on-surface-variant/80 tracking-tight">(All fiscal figures in EUR)</span>
               </div>
               {/* Archival Pagination Bar */}
               <div className="flex items-center gap-1 font-label-mono text-label-mono select-none">
