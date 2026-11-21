@@ -222,7 +222,7 @@ export function MobileReviewStep() {
                   {agreed && <span className="material-symbols-outlined text-on-primary text-[16px] font-bold">check</span>}
                 </span>
                 <span className="font-body-sm text-[12px] leading-relaxed text-on-surface">
-                  I agree to the <span className="underline underline-offset-2 text-primary font-medium">HALDEN Custodial Charter</span>, Curatorial Driving Terms, and
+                  I agree to the <Link className="underline underline-offset-2 text-primary font-medium" href="/terms">HALDEN Custodial Charter</Link>, Curatorial Driving Terms, and
                   the 48-Hour Zero-Excess Cancellation Protocol.
                 </span>
               </label>

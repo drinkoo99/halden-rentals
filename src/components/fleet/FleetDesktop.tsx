@@ -648,8 +648,8 @@ export function FleetFooter() {
               <li><a href="tel:+41448002400" className={a}>Concierge Desk (24/7)</a></li>
               <li><Link href="/#standard" className={a}>Hotel &amp; Villa Curbside Delivery</Link></li>
               <li><Link href="/#standard" className={a}>Cross-border Protocols &amp; Vignettes</Link></li>
-              <li><Link href="/about" className={a}>Insurance &amp; Excess Terms</Link></li>
-              <li><Link href="/about" className={a}>Privacy Notice</Link></li>
+              <li><Link href="/terms#liability" className={a}>Insurance &amp; Excess Terms</Link></li>
+              <li><Link href="/privacy" className={a}>Privacy Notice</Link></li>
             </ul>
           </div>
         </div>

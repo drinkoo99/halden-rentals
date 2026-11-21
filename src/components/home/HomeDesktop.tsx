@@ -409,9 +409,9 @@ export function HomeDesktop() {
               title="Support & Legal"
               links={[
                 { label: "Concierge Desk (24/7)", href: "tel:+41448002400" },
-                { label: "Insurance & Excess Terms", href: "#about" },
-                { label: "Cross-border Protocols", href: "#about" },
-                { label: "Privacy Notice", href: "#about" },
+                { label: "Insurance & Excess Terms", href: "/terms#liability" },
+                { label: "Cross-border Protocols", href: "/terms#prices" },
+                { label: "Privacy Notice", href: "/privacy" },
               ]}
             />
           </div>

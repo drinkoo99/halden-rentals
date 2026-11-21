@@ -391,7 +391,7 @@ export function VehicleDesktop({ vehicle: v, similar }: { vehicle: Vehicle; simi
               title="Support"
               links={[
                 ["Concierge Desk", "tel:+41448002400"],
-                ["Alpine Insurance Terms", "/about"],
+                ["Alpine Insurance Terms", "/terms#liability"],
                 ["Chauffeur Protocols", "/#standard"],
                 ["Direct Dispatch", "tel:+41448002400"],
               ]}
@@ -400,13 +400,13 @@ export function VehicleDesktop({ vehicle: v, similar }: { vehicle: Vehicle; simi
           <div className="pt-8 border-t border-[#262C29] flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#6B726C]">
             <div>© 2025 HALDEN MOBILITY GROUP AG. ALL RIGHTS RESERVED.</div>
             <div className="flex space-x-6 mt-4 sm:mt-0">
-              <Link className="hover:text-white transition" href="/about">
+              <Link className="hover:text-white transition" href="/privacy">
                 Privacy Policy
               </Link>
-              <Link className="hover:text-white transition" href="/about">
+              <Link className="hover:text-white transition" href="/terms">
                 Terms of Exhibition
               </Link>
-              <Link className="hover:text-white transition" href="/about">
+              <Link className="hover:text-white transition" href="/imprint">
                 Impressum
               </Link>
             </div>

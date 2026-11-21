@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/journeys`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE}/journeys/high-alpine-transversal`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE}/about`, changeFrequency: "monthly", priority: 0.6 },
+    ...["terms", "privacy", "imprint"].map((p) => ({ url: `${SITE}/${p}`, changeFrequency: "yearly" as const, priority: 0.2 })),
     ...vehicles.map((v) => ({ url: `${SITE}/fleet/${v.slug}`, changeFrequency: "weekly" as const, priority: 0.8 })),
   ];
 }

@@ -155,11 +155,11 @@ export function RequestAccessDesktop() {
                       {" "}
                       <span className="font-body-sm text-xs text-on-surface-variant group-hover:text-on-surface transition-colors leading-relaxed select-none">
                         I agree to the{" "}
-                        <Link className="underline hover:text-primary" href="/about">HALDEN Custodial Charter</Link>
+                        <Link className="underline hover:text-primary" href="/terms">HALDEN Custodial Charter</Link>
                         ,{" "}
-                        <Link className="underline hover:text-primary" href="/about">Curatorial Driving Terms</Link>
+                        <Link className="underline hover:text-primary" href="/terms#drivers">Curatorial Driving Terms</Link>
                         , and{" "}
-                        <Link className="underline hover:text-primary" href="/about">Patron Data Protocols</Link>
+                        <Link className="underline hover:text-primary" href="/privacy">Patron Data Protocols</Link>
                         .
                       </span>
                     </label>
@@ -218,9 +218,9 @@ export function RequestAccessDesktop() {
                   <div className="flex flex-wrap gap-x-4 gap-y-1 font-label-mono text-[10px] tracking-widest uppercase">
                     <span>HALDEN AG</span>
                     <span>·</span>
-                    <Link className="hover:text-primary transition-colors" href="/about">CHAMBER CHARTER</Link>
+                    <Link className="hover:text-primary transition-colors" href="/terms">CHAMBER CHARTER</Link>
                     <span>·</span>
-                    <Link className="hover:text-primary transition-colors" href="/about">DATA PROTOCOL</Link>
+                    <Link className="hover:text-primary transition-colors" href="/privacy">DATA PROTOCOL</Link>
                     <span>·</span>
                     <Link className="hover:text-primary transition-colors" href="/about#contact">PRIVATE CONCIERGE</Link>
                   </div>
