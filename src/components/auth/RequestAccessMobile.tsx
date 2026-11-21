@@ -14,7 +14,7 @@ export function RequestAccessMobile() {
         <div className="flex flex-col w-full text-on-surface">
           {/* Architectural Hero Band (200px) */}
           <div className="relative w-full h-[200px] overflow-hidden bg-surface-container-highest">
-            <Photo src={media.porscheVintageGallery} alt="Editorial architectural photograph of vintage silver Porsche 911 in gallery showroom" className="w-full h-full object-cover object-center" sizes="100vw" />
+            <Photo src={media.porscheVintageGallery} priority alt="Editorial architectural photograph of vintage silver Porsche 911 in gallery showroom" className="w-full h-full object-cover object-center" sizes="100vw" />
             <div className="absolute inset-0 bg-linear-to-t from-primary/80 via-primary/30 to-black/50" />
             {/* Top Bar inside Hero */}
             <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-on-primary">

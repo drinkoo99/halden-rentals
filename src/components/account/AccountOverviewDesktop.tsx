@@ -49,7 +49,7 @@ export function AccountOverviewDesktop() {
                   </div>
                   <div className="border border-outline-variant bg-surface grid grid-cols-1 xl:grid-cols-12">
                     {/* Left: 16:9 Studio Photo */}
-                    <div className="xl:col-span-7 border-b xl:border-b-0 xl:border-r border-outline-variant bg-surface-container-low"><Photo src={media.rangeRoverCinematicStudio} alt="Range Rover Autobiography" className="w-full h-full aspect-video object-cover block" sizes="(max-width: 767px) 100vw, 24vw" /></div>
+                    <div className="xl:col-span-7 border-b xl:border-b-0 xl:border-r border-outline-variant bg-surface-container-low"><Photo src={media.rangeRoverCinematicStudio} priority alt="Range Rover Autobiography" className="w-full h-full aspect-video object-cover block" sizes="(max-width: 767px) 100vw, 24vw" /></div>
                     {/* Right: Reservation Details */}
                     <div className="xl:col-span-5 p-space-lg flex flex-col justify-between gap-space-lg">
                       <div className="flex flex-col gap-space-md">
@@ -106,7 +106,7 @@ export function AccountOverviewDesktop() {
                         <tr className="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
                           <td className="py-space-md pr-space-md">
                             <div className="flex items-center gap-space-md">
-                              <Photo src={media.porscheGt3Editorial} alt="Porsche 911 GT3 Touring" className="w-20 h-12 object-cover shrink-0 bg-surface-container" sizes="(max-width: 767px) 100vw, 13vw" />
+                              <Photo src={media.porscheGt3Editorial} alt="" className="w-20 h-12 object-cover shrink-0 bg-surface-container" sizes="(max-width: 767px) 100vw, 13vw" />
                               <span className="font-body-md text-body-md text-on-surface font-medium">Porsche 911 GT3 Touring</span>
                             </div>
                           </td>
@@ -125,7 +125,7 @@ export function AccountOverviewDesktop() {
                         <tr className="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
                           <td className="py-space-md pr-space-md">
                             <div className="flex items-center gap-space-md">
-                              <Photo src={media.mercedesS500Studio} alt="Mercedes-Benz S 500 4MATIC" className="w-20 h-12 object-cover shrink-0 bg-surface-container" sizes="(max-width: 767px) 100vw, 10vw" />
+                              <Photo src={media.mercedesS500Studio} alt="" className="w-20 h-12 object-cover shrink-0 bg-surface-container" sizes="(max-width: 767px) 100vw, 10vw" />
                               <span className="font-body-md text-body-md text-on-surface font-medium">Mercedes-Benz S 500 4MATIC</span>
                             </div>
                           </td>
@@ -144,7 +144,7 @@ export function AccountOverviewDesktop() {
                         <tr className="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
                           <td className="py-space-md pr-space-md">
                             <div className="flex items-center gap-space-md">
-                              <Photo src={media.bmw530eStudio} alt="BMW 530e xDrive" className="w-20 h-12 object-cover shrink-0 bg-surface-container" sizes="(max-width: 767px) 100vw, 6vw" />
+                              <Photo src={media.bmw530eStudio} alt="" className="w-20 h-12 object-cover shrink-0 bg-surface-container" sizes="(max-width: 767px) 100vw, 6vw" />
                               <span className="font-body-md text-body-md text-on-surface font-medium">BMW 530e xDrive</span>
                             </div>
                           </td>

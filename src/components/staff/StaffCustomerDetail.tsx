@@ -227,7 +227,7 @@ export function StaffCustomerDetail() {
                           <span>{"APPROVE ACCREDITATION & CLEAR FOR EXPEDITIONS"}</span>
                         </button>
                         <div className="flex items-center gap-2">
-                          <select className="bg-surface text-on-surface font-body-sm text-body-sm px-3 py-2.5 focus:outline-hidden focus:ring-0" defaultValue="">
+                          <select aria-label="Rejection ground" className="bg-surface text-on-surface font-body-sm text-body-sm px-3 py-2.5 focus:outline-hidden focus:ring-0" defaultValue="">
                             <option disabled value="">Select rejection ground...</option>
                             <option value="blurry">Blurry Document</option>
                             <option value="expired">Expired Card</option>

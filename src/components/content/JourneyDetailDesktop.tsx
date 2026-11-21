@@ -14,7 +14,7 @@ export function JourneyDetailDesktop() {
           {/* Hero Section (Bleeds subtly under fixed header) */}
           <section className="relative w-full overflow-hidden bg-inverse-surface -mt-20 pt-20">
             <div className="relative w-full h-[65vh] min-h-[520px] max-h-[720px] overflow-hidden">
-              <Photo src={media.journeyHighAlpineHero} alt="The High Alpine Transversal mountain pass road in the Swiss Alps" className="w-full h-full object-cover object-center scale-[1.02] transform transition-transform duration-1000 ease-out" sizes="100vw" />
+              <Photo src={media.journeyHighAlpineHero} priority alt="The High Alpine Transversal mountain pass road in the Swiss Alps" className="w-full h-full object-cover object-center scale-[1.02] transform transition-transform duration-1000 ease-out" sizes="100vw" />
               {/* Editorial subtle tonal gradient for contrast */}
               <div className="absolute inset-0 bg-linear-to-t from-inverse-surface via-inverse-surface/40 to-transparent" />
               <div className="absolute inset-0 bg-linear-to-r from-inverse-surface/80 via-transparent to-transparent" />
@@ -384,7 +384,7 @@ export function JourneyDetailDesktop() {
                     {" "}Download Digital Route Dossier (PDF / GPX)
                   </button>
                 </div>
-                <div className="pt-space-md font-label-mono text-label-mono text-[#737973] uppercase tracking-widest">{"EXPEDITION CODE: 01-CH-ALP // DIRECT DESK DISPATCH AVAILABLE 08:00 - 20:00 CET"}</div>
+                <div className="pt-space-md font-label-mono text-label-mono text-[#929692] uppercase tracking-widest">{"EXPEDITION CODE: 01-CH-ALP // DIRECT DESK DISPATCH AVAILABLE 08:00 - 20:00 CET"}</div>
               </div>
             </div>
           </section>

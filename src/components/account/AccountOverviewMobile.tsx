@@ -76,7 +76,7 @@ export function AccountOverviewMobile({ empty = false }: { empty?: boolean }) {
               </div>
               {/* Vehicle Stage */}
               <div className="relative w-full aspect-[4/3] bg-surface-container">
-                <Photo src={media.accountRangeRover} className="w-full h-full object-cover" data-alt="Editorial studio portrait of a silver Range Rover Autobiography parked in an architectural concrete pavilion with gentle overhead diffused softbox lighting and neutral stone flooring, catalog aesthetic" sizes="100vw" alt="" />
+                <Photo src={media.accountRangeRover} priority className="w-full h-full object-cover" data-alt="Editorial studio portrait of a silver Range Rover Autobiography parked in an architectural concrete pavilion with gentle overhead diffused softbox lighting and neutral stone flooring, catalog aesthetic" sizes="100vw" alt="" />
                 <div className="absolute top-3 left-3 bg-surface/90 px-2 py-1 font-label-mono text-[9px] uppercase tracking-widest text-on-surface">STAGE 01 • MUNICH</div>
               </div>
               {/* Information & Specs Ledger */}

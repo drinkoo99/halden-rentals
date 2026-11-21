@@ -6,11 +6,11 @@ import { media } from "@/data/media";
 export function StaffFleet() {
   return (
     <div className="bg-surface font-body-md text-on-surface">
-      <aside className="fixed left-0 top-0 h-full w-60 bg-on-tertiary-fixed text-inverse-on-surface z-50 flex flex-col border-r border-tertiary">
+      <aside aria-label="Console navigation" className="fixed left-0 top-0 h-full w-60 bg-on-tertiary-fixed text-inverse-on-surface z-50 flex flex-col border-r border-tertiary">
         <div className="h-14 px-6 flex items-center border-b border-tertiary"><span className="font-headline-sm text-headline-sm tracking-widest uppercase text-inverse-on-surface">HALDEN</span></div>
         <div className="px-4 py-4 border-b border-tertiary">
           <label className="block font-label-mono text-label-mono uppercase text-on-tertiary-container mb-2">ACTIVE HUB</label>
-          <select className="w-full bg-tertiary text-on-tertiary font-label-mono text-label-mono uppercase px-3 py-2 rounded-none border border-tertiary-container focus:outline-hidden focus:border-primary-fixed">
+          <select aria-label="Active hub" className="w-full bg-tertiary text-on-tertiary font-label-mono text-label-mono uppercase px-3 py-2 rounded-none border border-tertiary-container focus:outline-hidden focus:border-primary-fixed">
             <option value="all">ALL HUBS</option>
             <option value="muc">MUC — MUNICH</option>
             <option value="zrh">ZRH — ZURICH</option>
@@ -78,7 +78,7 @@ export function StaffFleet() {
                 </div>
                 <div className="bg-surface-container-low px-5 py-3 flex flex-col">
                   <span className="font-label-mono text-label-mono text-on-surface-variant uppercase">SCHEDULED SRV</span>
-                  <span className="font-spec-numeral text-spec-numeral text-[#C98A2C] font-bold mt-1">04 CHASSIS</span>
+                  <span className="font-spec-numeral text-spec-numeral text-[#956621] font-bold mt-1">04 CHASSIS</span>
                 </div>
               </div>
             </section>
@@ -119,7 +119,7 @@ export function StaffFleet() {
                 <span className="text-on-surface-variant uppercase mr-1">CRITERIA:</span>
                 {/* Hub Dropdown Filter */}
                 <div className="relative inline-block">
-                  <select className="appearance-none bg-surface-container-low text-on-surface border border-outline-variant pl-3 pr-8 py-1.5 rounded-none font-label-mono text-label-mono uppercase focus:outline-hidden focus:border-primary cursor-pointer">
+                  <select aria-label="Filter by hub" className="appearance-none bg-surface-container-low text-on-surface border border-outline-variant pl-3 pr-8 py-1.5 rounded-none font-label-mono text-label-mono uppercase focus:outline-hidden focus:border-primary cursor-pointer">
                     <option>Hub: All Hubs (5)</option>
                     <option>Hub: MUC — Munich</option>
                     <option>Hub: ZRH — Zurich</option>
@@ -131,7 +131,7 @@ export function StaffFleet() {
                 </div>
                 {/* Category Filter */}
                 <div className="relative inline-block">
-                  <select className="appearance-none bg-surface-container-low text-on-surface border border-outline-variant pl-3 pr-8 py-1.5 rounded-none font-label-mono text-label-mono uppercase focus:outline-hidden focus:border-primary cursor-pointer">
+                  <select aria-label="Filter by category" className="appearance-none bg-surface-container-low text-on-surface border border-outline-variant pl-3 pr-8 py-1.5 rounded-none font-label-mono text-label-mono uppercase focus:outline-hidden focus:border-primary cursor-pointer">
                     <option>Category: All Categories</option>
                     <option>Category: Grand Tourer</option>
                     <option>Category: All-Terrain SUV</option>
@@ -142,7 +142,7 @@ export function StaffFleet() {
                 </div>
                 {/* Status Filter */}
                 <div className="relative inline-block">
-                  <select className="appearance-none bg-primary text-on-primary border border-primary pl-3 pr-8 py-1.5 rounded-none font-label-mono text-label-mono uppercase focus:outline-hidden cursor-pointer">
+                  <select aria-label="Filter by status" className="appearance-none bg-primary text-on-primary border border-primary pl-3 pr-8 py-1.5 rounded-none font-label-mono text-label-mono uppercase focus:outline-hidden cursor-pointer">
                     <option>Status: All Statuses (Active)</option>
                     <option>Status: Available</option>
                     <option>Status: On Rent</option>
@@ -153,7 +153,7 @@ export function StaffFleet() {
                 </div>
                 {/* Brand Filter */}
                 <div className="relative inline-block">
-                  <select className="appearance-none bg-surface-container-low text-on-surface border border-outline-variant pl-3 pr-8 py-1.5 rounded-none font-label-mono text-label-mono uppercase focus:outline-hidden focus:border-primary cursor-pointer">
+                  <select aria-label="Filter by brand" className="appearance-none bg-surface-container-low text-on-surface border border-outline-variant pl-3 pr-8 py-1.5 rounded-none font-label-mono text-label-mono uppercase focus:outline-hidden focus:border-primary cursor-pointer">
                     <option>Brand: All Marques</option>
                     <option>Brand: Porsche</option>
                     <option>Brand: Land Rover</option>
@@ -277,7 +277,7 @@ export function StaffFleet() {
                     <td className="py-4 px-4"><span className="font-label-mono text-label-mono px-2 py-0.5 bg-surface-container border border-outline-variant text-on-surface">VIE</span></td>
                     <td className="py-4 px-4 text-on-surface-variant">Grand Tourer</td>
                     <td className="py-4 px-4">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#F9F5EC] border border-[#C98A2C] text-[#C98A2C] font-label-mono text-[10px] uppercase tracking-wider">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#F9F5EC] border border-[#C98A2C] text-[#956621] font-label-mono text-[10px] uppercase tracking-wider">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C98A2C]" />
                         {" "}IN SERVICE
                       </span>
@@ -285,7 +285,7 @@ export function StaffFleet() {
                     <td className="py-4 px-4 text-right font-spec-numeral text-spec-numeral text-on-surface font-bold">€420</td>
                     <td className="py-4 px-4">
                       <div className="flex flex-col">
-                        <span className="font-body-sm text-body-sm text-[#C98A2C]">Hold until 14 Oct</span>
+                        <span className="font-body-sm text-body-sm text-[#956621]">Hold until 14 Oct</span>
                         <span className="font-label-mono text-[10px] text-on-surface-variant uppercase">48-pt diagnostic check</span>
                       </div>
                     </td>
@@ -372,7 +372,7 @@ export function StaffFleet() {
                     <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
                   </tr>
                   {/* Row 6: BMW 540i xDrive (Using Image 119 - Retired) */}
-                  <tr className="bg-surface-container-low/40 hover:bg-surface-container-low transition-colors opacity-75 group">
+                  <tr className="bg-surface-container-low/40 hover:bg-surface-container-low transition-colors opacity-90 group">
                     <td className="py-4 px-3 text-center"><input aria-label="Select exhibit 06" className="w-3.5 h-3.5 accent-primary rounded-none border border-on-surface cursor-pointer" type="checkbox" /></td>
                     <td className="py-4 px-4 font-spec-numeral text-spec-numeral text-on-surface-variant"># 06</td>
                     <td className="py-4 px-4">
@@ -427,7 +427,7 @@ export function StaffFleet() {
               </div>
               <div className="w-full bg-surface-container-low border border-outline-variant p-8 md:p-12 flex flex-col items-center text-center">
                 <div className="w-12 h-12 bg-surface flex items-center justify-center border border-outline-variant mb-4"><span className="material-symbols-outlined text-outline text-[24px]">filter_alt_off</span></div>
-                <div className="font-label-mono text-label-mono uppercase tracking-widest text-[#C98A2C] mb-2">{"ACTIVE QUERY: HUB: VIENNA (VIE) // STATUS: IN SERVICE"}</div>
+                <div className="font-label-mono text-label-mono uppercase tracking-widest text-[#956621] mb-2">{"ACTIVE QUERY: HUB: VIENNA (VIE) // STATUS: IN SERVICE"}</div>
                 <h2 className="font-headline-md text-headline-md text-on-surface max-w-xl mb-3">No matching chassis records found in current ledger query.</h2>
                 <p className="font-body-md text-body-md text-on-surface-variant max-w-md mb-6">No vehicles within the Scandinavia logistics zone currently match diagnostic custody states. Adjust station filters or clear active criteria.</p>
                 <button className="px-5 py-2.5 bg-surface text-on-surface border border-outline hover:border-primary font-action text-action uppercase tracking-wider transition-colors inline-flex items-center gap-2" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
@@ -452,7 +452,7 @@ export function StaffFleet() {
                 <div className="flex items-center gap-3 flex-wrap">
                   {/* Status Changer */}
                   <div className="relative">
-                    <select className="appearance-none bg-tertiary-container text-on-tertiary text-action font-action uppercase pl-3 pr-8 py-2 border border-tertiary cursor-pointer focus:outline-hidden focus:border-primary-fixed">
+                    <select aria-label="Change status of selected vehicles" className="appearance-none bg-tertiary-container text-on-tertiary text-action font-action uppercase pl-3 pr-8 py-2 border border-tertiary cursor-pointer focus:outline-hidden focus:border-primary-fixed">
                       <option>Change Status</option>
                       <option>Mark: Available</option>
                       <option>Mark: In Service</option>
@@ -462,7 +462,7 @@ export function StaffFleet() {
                   </div>
                   {/* Relocation / Hub Transfer */}
                   <div className="relative">
-                    <select className="appearance-none bg-tertiary-container text-on-tertiary text-action font-action uppercase pl-3 pr-8 py-2 border border-tertiary cursor-pointer focus:outline-hidden focus:border-primary-fixed">
+                    <select aria-label="Transfer to station" className="appearance-none bg-tertiary-container text-on-tertiary text-action font-action uppercase pl-3 pr-8 py-2 border border-tertiary cursor-pointer focus:outline-hidden focus:border-primary-fixed">
                       <option>Transfer Station</option>
                       <option>Relocate → ZRH (Zurich)</option>
                       <option>Relocate → MUC (Munich)</option>

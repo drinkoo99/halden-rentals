@@ -277,7 +277,7 @@ export function TripStep() {
                 <span>Sa</span>
                 <span>Su</span>
               </div>
-              <div role="grid" aria-label={`${MONTHS[m]} ${y}`} className="grid grid-cols-7 gap-y-1 font-spec-numeral text-spec-numeral text-center">
+              <div role="group" aria-label={`${MONTHS[m]} ${y}`} className="grid grid-cols-7 gap-y-1 font-spec-numeral text-spec-numeral text-center">
                 {monthGrid(y, m).map((d) => {
                   const inMonth = d.getMonth() === m;
                   const day = ymd(d);

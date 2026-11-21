@@ -264,7 +264,7 @@ export function HomeDesktop() {
         </section>
 
         {/* 5. DARK SECTION — MERCEDES S-CLASS NIGHT ARRIVAL */}
-        <section id="standard" className="bg-dark-bg text-ivory py-24 border-b border-dark-border">
+        <section id="standard" className="on-dark bg-dark-bg text-ivory py-24 border-b border-dark-border">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="relative w-full aspect-[21/9] min-h-[380px] overflow-hidden rounded-[2px] border border-dark-border">
               <Image
@@ -367,13 +367,13 @@ export function HomeDesktop() {
             <div className="font-mono text-xs text-text-muted uppercase tracking-widest mb-2">
               JULIAN V. D. B. · ZURICH · PORSCHE 911 CARRERA (OCTOBER 2024)
             </div>
-            <div className="font-mono text-[10px] text-sage/70 uppercase">Placeholder testimonial</div>
+            <div className="font-mono text-[10px] text-secondary uppercase">Placeholder testimonial</div>
           </div>
         </section>
       </main>
 
       {/* 8. FOOTER */}
-      <footer id="about" className="bg-dark-bg text-ivory pt-20 pb-12 border-t border-dark-border">
+      <footer id="about" className="on-dark bg-dark-bg text-ivory pt-20 pb-12 border-t border-dark-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-dark-border">
             <div className="lg:col-span-6">

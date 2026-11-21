@@ -29,7 +29,7 @@ export function AboutDesktop() {
             </div>
             {/* Quiet Architectural Photograph Container (16:9) */}
             <div className="relative w-full aspect-[16/9] overflow-hidden bg-surface-container-high border border-[#D8D6CE]">
-              <Photo src={media.aboutAtelierInterior} alt="HALDEN Curatorial Atelier Interior Gallery" className="w-full h-full object-cover grayscale-[15%] contrast-[105%]" sizes="100vw" />
+              <Photo src={media.aboutAtelierInterior} priority alt="HALDEN Curatorial Atelier Interior Gallery" className="w-full h-full object-cover grayscale-[15%] contrast-[105%]" sizes="100vw" />
               <div className="absolute bottom-0 left-0 right-0 p-space-md bg-linear-to-t from-[#171B19]/80 via-[#171B19]/30 to-transparent flex justify-between items-end text-surface">
                 <div className="space-y-space-xs">
                   <span className="font-label-mono text-label-mono uppercase tracking-[0.2em] text-[#EAE8E1]/70 block">{"EXHIBIT ARCHIVE // ROTUNDA A"}</span>
@@ -369,7 +369,7 @@ export function AboutDesktop() {
                     </svg>
                   </div>
                 </div>
-                <div className="border-t border-[#D8D6CE] pt-space-xs flex justify-between items-center text-[#737973]">
+                <div className="border-t border-[#D8D6CE] pt-space-xs flex justify-between items-center text-[#616661]">
                   <span className="font-label-mono text-label-mono tracking-[0.1em]">EN ROUTE TIME: ZRH ⇄ GVA: 2H 50M</span>
                   <span className="font-label-mono text-label-mono">TRANSIT ACTIVE</span>
                 </div>

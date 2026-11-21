@@ -25,7 +25,7 @@ export function ReservationCancelScreen() {
       <main className="w-full pt-20 min-h-screen bg-surface">
         <div className="flex flex-col w-full relative">
           {/* DIMMED BACKGROUND: FULL RESERVATION DETAIL DOSSIER (HLD-0612-4821) */}
-          <div className="w-full min-h-screen px-margin-mobile lg:px-margin py-space-lg select-none opacity-40 pointer-events-none filter blur-[0.6px]">
+          <div aria-hidden inert className="w-full min-h-screen px-margin-mobile lg:px-margin py-space-lg select-none opacity-40 pointer-events-none filter blur-[0.6px]">
             {/* Dossier Overline Meta */}
             <div className="flex flex-wrap items-baseline justify-between border-b border-outline-variant pb-space-sm mb-space-lg">
               <div className="flex items-center gap-space-md">
@@ -43,7 +43,7 @@ export function ReservationCancelScreen() {
               {/* Left Column: Visual Stage & Custodial Spec (7 Cols) */}
               <div className="lg:col-span-7 flex flex-col gap-space-md">
                 <div className="relative w-full aspect-[16/10] bg-surface-container overflow-hidden">
-                  <Photo src={media.reservationCancelRangeRover} className="w-full h-full object-cover" data-alt="Photorealistic studio capture of a sleek contemporary silver Range Rover Autobiography SUV resting in an architectural stone pavilion with muted warm limestone walls, soft overhead skylight illumination, and subtle floor reflections, evoking high luxury car curation." sizes="(max-width: 767px) 100vw, 54vw" alt="" />
+                  <Photo src={media.reservationCancelRangeRover} priority className="w-full h-full object-cover" data-alt="Photorealistic studio capture of a sleek contemporary silver Range Rover Autobiography SUV resting in an architectural stone pavilion with muted warm limestone walls, soft overhead skylight illumination, and subtle floor reflections, evoking high luxury car curation." sizes="(max-width: 767px) 100vw, 54vw" alt="" />
                   <div className="absolute top-4 left-4 bg-inverse-surface/85 text-inverse-on-surface px-3 py-1 font-label-mono text-label-mono uppercase tracking-widest">PLATE: M-HL 4821</div>
                 </div>
                 {/* Vehicle Index Placard */}
@@ -163,7 +163,7 @@ export function ReservationCancelScreen() {
                     <div className="col-span-2 bg-[#D8D6CE]" />
                   </div>
                   {/* Timeline Scale Labels */}
-                  <div className="flex justify-between font-label-mono text-[9px] uppercase text-[#737973] pt-0.5">
+                  <div className="flex justify-between font-label-mono text-[9px] uppercase text-[#616661] pt-0.5">
                     <span className="text-[#344A3D] font-bold">TODAY (JUNE 04)</span>
                     <span>JUNE 10 (48H LIMIT)</span>
                     <span>HANDOVER (JUNE 12)</span>

@@ -23,7 +23,7 @@ export function SignInLockoutScreen() {
             <section className="lg:col-span-6 relative flex flex-col justify-between bg-surface-container-low h-[200px] lg:h-auto p-6 lg:p-14 border-b lg:border-b-0 lg:border-r border-outline-variant/40 overflow-hidden">
               {/* Background Ambient Photo */}
               <div className="absolute inset-0 z-0">
-                <Photo src={media.porscheGalleryPortrait} alt="Architectural gallery with silver Porsche 911 in raking morning light" className="w-full h-full object-cover filter contrast-[1.03] saturate-[0.92]" sizes="(max-width: 767px) 100vw, 50vw" />
+                <Photo src={media.porscheGalleryPortrait} priority alt="Architectural gallery with silver Porsche 911 in raking morning light" className="w-full h-full object-cover filter contrast-[1.03] saturate-[0.92]" sizes="(max-width: 767px) 100vw, 50vw" />
                 {/* Editorial Vignette & Warm Tint Overlays */}
                 <div className="absolute inset-0 bg-primary/20 mix-blend-multiply" />
                 <div className="absolute inset-0 bg-linear-to-t from-inverse-surface via-inverse-surface/40 to-transparent opacity-90" />
@@ -45,7 +45,7 @@ export function SignInLockoutScreen() {
                     <span className="font-label-mono text-label-mono text-secondary">RESTRICTED DISPOSITION</span>
                   </div>
                   <div className="py-5">
-                    <h2 className="font-headline-md text-headline-md tracking-tight text-primary">The Carrara Minimalist Pavilion</h2>
+                    <p className="font-headline-md text-headline-md tracking-tight text-primary">The Carrara Minimalist Pavilion</p>
                     <p className="font-body-sm text-body-sm text-on-surface-variant mt-2 max-w-md leading-relaxed">Curated architectural storage allocation for tier-one patrons. Monitored thermal equilibrium and biometric archival access protocol.</p>
                   </div>
                   {/* Spec Matrix */}
@@ -94,7 +94,7 @@ export function SignInLockoutScreen() {
                 <div className="relative bg-[#FDF2F2] border-l-[3px] border-[#B94A48] p-4 sm:p-5 flex items-start gap-3.5 transition-all">
                   <span className="material-symbols-outlined text-[#B94A48] text-xl shrink-0 mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>warning</span>
                   <div className="space-y-1">
-                    <h3 className="font-label-mono text-label-mono text-[#B94A48] font-bold tracking-wider uppercase">{"AUTHENTICATION ERROR // INVALID CREDENTIALS"}</h3>
+                    <h2 className="font-label-mono text-label-mono text-[#B94A48] font-bold tracking-wider uppercase">{"AUTHENTICATION ERROR // INVALID CREDENTIALS"}</h2>
                     <p className="font-body-sm text-body-sm text-on-surface leading-snug">The patron identifier or security passcode provided does not match our archival ledger. Please verify your credentials or reset your passcode.</p>
                   </div>
                 </div>
@@ -140,27 +140,27 @@ export function SignInLockoutScreen() {
                 <form className="space-y-5 pt-1">
                   {/* Patron Identifier Field (Filled) */}
                   <div className="space-y-1.5">
-                    <label className="flex justify-between items-center font-label-mono text-label-mono text-on-surface-variant tracking-wider uppercase">
+                    <label htmlFor="lockout-1" className="flex justify-between items-center font-label-mono text-label-mono text-on-surface-variant tracking-wider uppercase">
                       <span>PATRON IDENTIFIER</span>
                       {" "}
                       <span className="text-outline text-[10px]">VERIFIED FORMAT</span>
                     </label>
                     <div className="relative">
-                      <input className="w-full bg-surface-container-low text-on-surface font-body-md text-body-md px-3.5 py-3 border border-outline-variant/80 focus:outline-hidden cursor-not-allowed opacity-90 select-none" readOnly type="text" defaultValue="patron@halden-circle.com" />
+                      <input id="lockout-1" className="w-full bg-surface-container-low text-on-surface font-body-md text-body-md px-3.5 py-3 border border-outline-variant/80 focus:outline-hidden cursor-not-allowed opacity-90 select-none" readOnly type="text" defaultValue="patron@halden-circle.com" />
                       <span className="absolute right-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-secondary text-lg">check</span>
                     </div>
                   </div>
                   {/* Security Passcode Field (Error State) */}
                   <div className="space-y-1.5">
                     <div className="flex justify-between items-center">
-                      <label className="font-label-mono text-label-mono text-[#B94A48] tracking-wider uppercase font-semibold flex items-center gap-1.5">
+                      <label htmlFor="lockout-2" className="font-label-mono text-label-mono text-[#B94A48] tracking-wider uppercase font-semibold flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#B94A48]" />
                         {" "}{"SECURITY PASSCODE • REQUIRED // FAILED ATTEMPT 4 OF 5"}
                       </label>
                       <Link className="font-label-mono text-[10px] text-secondary hover:text-primary uppercase tracking-wider underline" href="/forgot-passcode">Forgot passcode?</Link>
                     </div>
                     <div className="relative">
-                      <input className="w-full bg-[#FDF2F2] text-on-surface font-spec-numeral text-spec-numeral px-3.5 py-3 border border-[#B94A48] focus:outline-hidden transition-colors" disabled type="password" defaultValue="••••••••••••••••" />
+                      <input id="lockout-2" className="w-full bg-[#FDF2F2] text-on-surface font-spec-numeral text-spec-numeral px-3.5 py-3 border border-[#B94A48] focus:outline-hidden transition-colors" disabled type="password" defaultValue="••••••••••••••••" />
                       <span className="absolute right-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-[#B94A48] text-lg">error</span>
                     </div>
                     <p className="font-label-mono text-[10px] text-[#B94A48] uppercase tracking-wider">INCORRECT CRYPTOGRAPHIC KEY — 1 ATTEMPT REMAINING BEFORE CIPHER IS PURGED</p>

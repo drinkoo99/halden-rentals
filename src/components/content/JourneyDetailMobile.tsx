@@ -30,7 +30,7 @@ export function JourneyDetailMobile() {
           {/* Hero Exhibition Stage */}
           <div className="px-margin-mobile">
             <div className="relative w-full aspect-[16/10] bg-surface-container overflow-hidden">
-              <Photo src={media.journeyHighAlpineHero} alt="The High Alpine Transversal winding through Swiss mountain passes" className="w-full h-full object-cover" sizes="100vw" />
+              <Photo src={media.journeyHighAlpineHero} priority alt="The High Alpine Transversal winding through Swiss mountain passes" className="w-full h-full object-cover" sizes="100vw" />
               <div className="absolute bottom-3 left-3 bg-surface/90 backdrop-blur-sm px-2.5 py-1"><p className="font-label-mono text-[10px] tracking-widest uppercase text-on-surface">{"Route Plate 46°33'N 8°25'E"}</p></div>
             </div>
             {/* Title & Premise */}

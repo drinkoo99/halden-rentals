@@ -53,41 +53,41 @@ export function AccountSettingsMobile() {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1.5">
                     <div className="flex justify-between items-center">
-                      <label className="font-label-mono text-[10px] uppercase text-on-surface-variant tracking-wider">Forename</label>
+                      <label htmlFor="m-settings-1" className="font-label-mono text-[10px] uppercase text-on-surface-variant tracking-wider">Forename</label>
                       <span className="font-label-mono text-[9px] text-outline uppercase">PASSPORT ID</span>
                     </div>
-                    <div className="h-[52px] bg-surface-container-lowest px-3 flex items-center rounded-[2px] shadow-sm"><input className="w-full bg-transparent font-body-md text-on-surface focus:outline-hidden" type="text" defaultValue="Clara" /></div>
+                    <div className="h-[52px] bg-surface-container-lowest px-3 flex items-center rounded-[2px] shadow-sm"><input id="m-settings-1" className="w-full bg-transparent font-body-md text-on-surface focus:outline-hidden" type="text" defaultValue="Clara" /></div>
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <div className="flex justify-between items-center">
-                      <label className="font-label-mono text-[10px] uppercase text-on-surface-variant tracking-wider">Surname</label>
+                      <label htmlFor="m-settings-2" className="font-label-mono text-[10px] uppercase text-on-surface-variant tracking-wider">Surname</label>
                       <span className="font-label-mono text-[9px] text-outline uppercase">PASSPORT ID</span>
                     </div>
-                    <div className="h-[52px] bg-surface-container-lowest px-3 flex items-center rounded-[2px] shadow-sm"><input className="w-full bg-transparent font-body-md text-on-surface focus:outline-hidden" type="text" defaultValue="von Bergmann" /></div>
+                    <div className="h-[52px] bg-surface-container-lowest px-3 flex items-center rounded-[2px] shadow-sm"><input id="m-settings-2" className="w-full bg-transparent font-body-md text-on-surface focus:outline-hidden" type="text" defaultValue="von Bergmann" /></div>
                   </div>
                 </div>
                 {/* Custodial Email */}
                 <div className="flex flex-col gap-1.5">
                   <div className="flex justify-between items-center">
-                    <label className="font-label-mono text-[10px] uppercase text-on-surface-variant tracking-wider">Custodial Email</label>
+                    <label htmlFor="m-settings-3" className="font-label-mono text-[10px] uppercase text-on-surface-variant tracking-wider">Custodial Email</label>
                     <span className="font-label-mono text-[9px] text-primary flex items-center gap-1 font-semibold uppercase tracking-wider">
                       <span className="w-1.5 h-1.5 bg-primary" />
                       {" "}VERIFIED
                     </span>
                   </div>
                   <div className="h-[52px] bg-surface-container-lowest px-3 flex items-center rounded-[2px] shadow-sm justify-between">
-                    <input className="w-full bg-transparent font-body-md text-on-surface focus:outline-hidden" type="email" defaultValue="clara.bergmann@atelier-v.ch" />
+                    <input id="m-settings-3" className="w-full bg-transparent font-body-md text-on-surface focus:outline-hidden" type="email" defaultValue="clara.bergmann@atelier-v.ch" />
                     <span className="material-symbols-outlined text-primary text-[18px]">verified</span>
                   </div>
                 </div>
                 {/* Mobile Phone Error State Demo */}
                 <div className="flex flex-col gap-1.5">
                   <div className="flex justify-between items-center">
-                    <label className="font-label-mono text-[10px] uppercase text-error tracking-wider font-semibold">Mobile Telephone</label>
+                    <label htmlFor="m-settings-4" className="font-label-mono text-[10px] uppercase text-error tracking-wider font-semibold">Mobile Telephone</label>
                     <span className="font-label-mono text-[9px] text-error font-bold uppercase tracking-wider">{"REQUIRED // INVALID FORMAT"}</span>
                   </div>
                   <div className="h-[52px] bg-error-container/20 px-3 flex items-center rounded-[2px] shadow-sm justify-between">
-                    <input className="w-full bg-transparent font-spec-numeral text-error font-medium focus:outline-hidden" type="tel" defaultValue="089 / 41-T2" />
+                    <input id="m-settings-4" className="w-full bg-transparent font-spec-numeral text-error font-medium focus:outline-hidden" type="tel" defaultValue="089 / 41-T2" />
                     <span className="material-symbols-outlined text-error text-[18px]">error</span>
                   </div>
                   <p className="font-body-sm text-[12px] text-error leading-tight mt-0.5">Please enter a valid Swiss or EU mobile telephone number (+41 / +49).</p>

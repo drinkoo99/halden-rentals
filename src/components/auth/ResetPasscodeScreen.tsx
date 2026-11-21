@@ -21,7 +21,7 @@ export function ResetPasscodeScreen() {
             <aside className="lg:col-span-6 relative bg-surface-container-low flex flex-col justify-between h-[200px] lg:h-auto p-6 lg:p-16 overflow-hidden">
               {/* Ambient Image Canvas */}
               <div className="absolute inset-0 z-0">
-                <Photo src={media.porscheGalleryPortrait} alt="Architectural gallery exhibition" className="w-full h-full object-cover object-center filter grayscale-[15%] contrast-[1.03]" sizes="(max-width: 767px) 100vw, 50vw" />
+                <Photo src={media.porscheGalleryPortrait} priority alt="Architectural gallery exhibition" className="w-full h-full object-cover object-center filter grayscale-[15%] contrast-[1.03]" sizes="(max-width: 767px) 100vw, 50vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-inverse-surface/85 via-inverse-surface/25 to-surface-container-low/40 mix-blend-multiply" />
               </div>
               {/* Top Exhibition Registry Marker */}
@@ -70,7 +70,7 @@ export function ResetPasscodeScreen() {
               </div>
             </aside>
             {/* RIGHT STAGE: 50% Ivory Credential Terminal */}
-            <main className="lg:col-span-6 bg-surface flex flex-col justify-between p-6 sm:p-10 lg:p-16">
+            <section aria-label="Reset passcode" className="lg:col-span-6 bg-surface flex flex-col justify-between p-6 sm:p-10 lg:p-16">
               {/* Top Action & Navigation Header */}
               <header className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 gap-4">
                 <div className="flex items-center gap-2"><span className="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">{"PATRON TERMINAL / CREDENTIAL VERIFICATION // 0.84"}</span></div>
@@ -196,7 +196,7 @@ export function ResetPasscodeScreen() {
                   <span className="font-label-mono text-label-mono text-on-surface-variant">ST. GALLEN</span>
                 </div>
               </footer>
-            </main>
+            </section>
           </div>
         </div>
       </main>

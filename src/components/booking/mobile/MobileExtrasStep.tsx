@@ -16,7 +16,7 @@ export function MobileExtrasStep() {
   return (
     <div className="md:hidden bg-background text-on-surface antialiased flex flex-col min-h-screen">
       <MobileBookingHeader step={3} subtitle="Curated Provisions" />
-      <main className="flex flex-col relative w-full max-w-[430px] mx-auto pt-28 pb-28 bg-surface min-h-screen px-margin-mobile">
+      <div className="flex flex-col relative w-full max-w-[430px] mx-auto pt-28 pb-28 bg-surface min-h-screen px-margin-mobile">
         <div className="flex flex-col w-full">
           <div className="relative w-full aspect-[16/10] bg-surface-container-high overflow-hidden mt-2 mb-6">
             <Photo src={v.mobileImage ?? v.image} alt={v.imageAlt} className="w-full h-full object-cover object-center" sizes="100vw" />
@@ -131,7 +131,7 @@ export function MobileExtrasStep() {
             </p>
           </div>
         </div>
-      </main>
+      </div>
       <MobileBookingBar label="Continue" onAction={() => router.push(`/book/${v.slug}/details`)} />
     </div>
   );

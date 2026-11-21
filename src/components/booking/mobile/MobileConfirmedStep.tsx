@@ -24,14 +24,14 @@ export function MobileConfirmedStep() {
     return (
       <div className="md:hidden bg-background text-on-surface min-h-screen">
         <MobileBookingHeader step={6} subtitle="Confirmation" />
-        <main className="pt-36 px-gutter-mobile flex flex-col gap-4">
+        <div className="pt-36 px-gutter-mobile flex flex-col gap-4">
           <span className="font-label-mono text-label-mono uppercase tracking-[0.16em] text-on-surface-variant">STEP 06 / 06</span>
           <h1 className="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">No confirmed reservation yet.</h1>
           <p className="font-body-sm text-body-sm text-on-surface-variant">Review your dossier and confirm the reservation to receive your reference.</p>
           <Link className="h-12 bg-primary text-on-primary font-action text-action flex items-center justify-center tracking-wider" href={`/book/${v.slug}/review`}>
             GO TO REVIEW
           </Link>
-        </main>
+        </div>
       </div>
     );
   }
@@ -53,7 +53,7 @@ export function MobileConfirmedStep() {
   return (
     <div className="md:hidden bg-background text-on-surface antialiased flex flex-col min-h-screen">
       <MobileBookingHeader step={6} subtitle="Confirmation Receipt" />
-      <main className="flex flex-col relative w-full pt-28 bg-surface min-h-screen">
+      <div className="flex flex-col relative w-full pt-28 bg-surface min-h-screen">
         <div className="flex flex-col w-full pb-safe">
           <div className="px-gutter-mobile pt-space-lg flex flex-col items-center text-center">
             <div className="relative w-14 h-14 bg-secondary-container rounded-full flex items-center justify-center mb-space-md">
@@ -187,7 +187,7 @@ export function MobileConfirmedStep() {
             <span className="font-label-mono text-[9px] uppercase tracking-[0.16em] text-on-surface-variant">HALDEN · {pickup.city.toUpperCase()} · CONCEPT PROTOTYPE</span>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

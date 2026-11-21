@@ -66,7 +66,7 @@ export function ReservationDetailMobile({ cancelled = false }: { cancelled?: boo
               </div>
               {/* Studio Photograph */}
               <div className="relative w-full aspect-[16/10] overflow-hidden bg-surface-container-highest">
-                <Photo src={media.rangeRoverRearCourtyard} alt="Silver Range Rover Autobiography in an architectural concrete gallery hall" className="w-full h-full object-cover" sizes="100vw" />
+                <Photo src={media.rangeRoverRearCourtyard} priority alt="Silver Range Rover Autobiography in an architectural concrete gallery hall" className="w-full h-full object-cover" sizes="100vw" />
                 <div className="absolute bottom-2 right-2 bg-surface/90 backdrop-blur-sm px-2 py-0.5 border border-outline-variant"><span className="font-label-mono text-[9px] uppercase tracking-widest text-on-surface">PLATE · M-HL 4821</span></div>
               </div>
               {/* Quick Metrics Strip */}
@@ -118,7 +118,7 @@ export function ReservationDetailMobile({ cancelled = false }: { cancelled?: boo
                 </div>
               </div>
               {/* Step 03: Future */}
-              <div className="relative flex items-start group opacity-75">
+              <div className="relative flex items-start group opacity-80">
                 <div className="absolute -left-6 top-1 w-3.5 h-3.5 bg-surface border border-outline-variant flex items-center justify-center"><div className="w-1 h-1 bg-outline-variant" /></div>
                 <div className="flex flex-col min-w-0 pl-1">
                   <span className="font-label-mono text-[11px] text-on-surface font-medium uppercase tracking-wider">03 Curbside Handover</span>
@@ -126,7 +126,7 @@ export function ReservationDetailMobile({ cancelled = false }: { cancelled?: boo
                 </div>
               </div>
               {/* Step 04: Future */}
-              <div className="relative flex items-start group opacity-60">
+              <div className="relative flex items-start group opacity-80">
                 <div className="absolute -left-6 top-1 w-3.5 h-3.5 bg-surface border border-outline-variant flex items-center justify-center"><div className="w-1 h-1 bg-outline-variant" /></div>
                 <div className="flex flex-col min-w-0 pl-1">
                   <span className="font-label-mono text-[11px] text-on-surface font-medium uppercase tracking-wider">04 Consignment Return</span>

@@ -43,9 +43,9 @@
   --color-ink: #171A18;
   --color-forest: #344A3D;
   --color-forest-hover: #2a3b31;
-  --color-sage: #738273;
+  --color-sage: #5e6a5e;
   --color-border-stone: #D8D6CE;
-  --color-text-muted: #666B65;
+  --color-text-muted: #616660;
   --color-dark-bg: #171B19;
   --color-dark-panel: #252A27;
   --color-dark-border: #2d3330;
@@ -60,7 +60,7 @@
   --color-surface-dark: #171B19;
   --color-surface-card: #252A27;
   --color-forest-accent: #344A3D;
-  --color-muted: #666B65;
+  --color-muted: #616660;
   --color-dark: #171B19;
   --color-darkpanel: #252A27;
   --color-error-container: #ffdad6;
@@ -98,7 +98,7 @@
   --color-tertiary-fixed-dim: #c8c6c0;
   --color-background: #f8faf6;
   --color-on-primary-fixed-variant: #364c3f;
-  --color-outline: #737973;
+  --color-outline: #616661;
   --color-secondary: #546254;
   --color-secondary-fixed-dim: #bbcbba;
   --color-on-tertiary-container: #b4b2ac;
@@ -316,6 +316,15 @@
   --color-surface-dim: #eae8e1;
   --font-mono: var(--font-space-mono), "Space Mono", monospace;
   --font-sans: var(--font-manrope), "Manrope", sans-serif;
+}
+
+/* Dark sections (footer bands, cookie bar): the muted greys and sage are tuned for light backgrounds,
+   so dark sections use lighter shades that still reach WCAG AA (4.5:1) on #171B19 and #252A27. */
+.on-dark {
+  --color-text-muted: #8e928d;
+  --color-muted: #8e928d;
+  --color-sage: #879487;
+  --color-outline: #929692;
 }
 
 /* Controls whose feature arrives with the backend (Phase 2): visibly marked, not clickable.

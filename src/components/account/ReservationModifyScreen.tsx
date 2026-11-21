@@ -42,7 +42,7 @@ export function ReservationModifyScreen() {
                 {/* Exhibit Stage */}
                 <div className="bg-surface-container-low border border-outline-variant p-space-sm">
                   <div className="relative w-full aspect-[16/10] overflow-hidden bg-surface-container">
-                    <Photo src={media.reservationModifyRangeRover} className="w-full h-full object-cover" data-alt="Studio architectural photograph of a sleek silver Range Rover Autobiography luxury SUV on warm limestone surface in front of a minimalist brutalist concrete wall, soft ambient gallery lighting, 8k resolution, elegant catalogue aesthetic." sizes="(max-width: 767px) 100vw, 61vw" alt="" />
+                    <Photo src={media.reservationModifyRangeRover} priority className="w-full h-full object-cover" data-alt="Studio architectural photograph of a sleek silver Range Rover Autobiography luxury SUV on warm limestone surface in front of a minimalist brutalist concrete wall, soft ambient gallery lighting, 8k resolution, elegant catalogue aesthetic." sizes="(max-width: 767px) 100vw, 61vw" alt="" />
                     <div className="absolute top-4 left-4 bg-surface/90 backdrop-blur-sm px-3 py-1 border border-outline-variant"><span className="font-label-mono text-label-mono uppercase tracking-widest text-on-surface">EXHIBIT № 08 · AUTOBIOGRAPHY</span></div>
                     <div className="absolute bottom-4 right-4 bg-primary text-on-primary px-3 py-1 font-label-mono text-label-mono uppercase">STATUS: CONFIRMED</div>
                   </div>
@@ -158,7 +158,7 @@ export function ReservationModifyScreen() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="font-label-mono text-[11px] uppercase tracking-[0.16em] text-[#344A3D] font-bold">{"01 // ITINERARY DATES"}</span>
-                  <span className="font-label-mono text-[10px] uppercase text-[#737973] tracking-widest">2025 SUMMER ARCHIVE</span>
+                  <span className="font-label-mono text-[10px] uppercase text-[#616661] tracking-widest">2025 SUMMER ARCHIVE</span>
                 </div>
                 {/* 2-Month Dual Calendar Container */}
                 <div className="bg-[#EAE8E1] border border-[#D8D6CE] p-4">
@@ -166,7 +166,7 @@ export function ReservationModifyScreen() {
                     {/* JUNE 2025 */}
                     <div>
                       <div className="font-display text-[14px] text-[#171A18] text-center uppercase tracking-widest mb-3 font-semibold">JUNE 2025</div>
-                      <div className="grid grid-cols-7 text-center font-label-mono text-[10px] text-[#737973] mb-1.5 pb-1 border-b border-[#D8D6CE]">
+                      <div className="grid grid-cols-7 text-center font-label-mono text-[10px] text-[#616661] mb-1.5 pb-1 border-b border-[#D8D6CE]">
                         <span>M</span>
                         <span>T</span>
                         <span>W</span>
@@ -224,7 +224,7 @@ export function ReservationModifyScreen() {
                     {/* JULY 2025 */}
                     <div>
                       <div className="font-display text-[14px] text-[#171A18] text-center uppercase tracking-widest mb-3 font-semibold">JULY 2025</div>
-                      <div className="grid grid-cols-7 text-center font-label-mono text-[10px] text-[#737973] mb-1.5 pb-1 border-b border-[#D8D6CE]">
+                      <div className="grid grid-cols-7 text-center font-label-mono text-[10px] text-[#616661] mb-1.5 pb-1 border-b border-[#D8D6CE]">
                         <span>M</span>
                         <span>T</span>
                         <span>W</span>
@@ -286,26 +286,26 @@ export function ReservationModifyScreen() {
                 <span className="font-label-mono text-[11px] uppercase tracking-[0.16em] text-[#344A3D] font-bold block">{"02 // TIME PROTOCOL"}</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="font-label-mono text-[10px] uppercase text-[#737973] block tracking-wider">HANDOVER TIME</label>
+                    <label htmlFor="modify-1" className="font-label-mono text-[10px] uppercase text-[#616661] block tracking-wider">HANDOVER TIME</label>
                     <div className="relative">
-                      <select className="w-full bg-[#F5F3EE] border border-[#D8D6CE] text-[#171A18] font-spec-numeral text-[13px] py-2.5 px-3 pr-8 appearance-none focus:outline-hidden focus:border-[#344A3D] rounded-none" defaultValue="10:00 CEST (Curbside VIP Bay 04)">
+                      <select id="modify-1" className="w-full bg-[#F5F3EE] border border-[#D8D6CE] text-[#171A18] font-spec-numeral text-[13px] py-2.5 px-3 pr-8 appearance-none focus:outline-hidden focus:border-[#344A3D] rounded-none" defaultValue="10:00 CEST (Curbside VIP Bay 04)">
                         <option>10:00 CEST (Curbside VIP Bay 04)</option>
                         <option>11:00 CEST (Curbside VIP Bay 04)</option>
                         <option>12:00 CEST (Curbside VIP Bay 04)</option>
                       </select>
-                      <span className="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-[18px] text-[#737973]">expand_more</span>
+                      <span className="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-[18px] text-[#616661]">expand_more</span>
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <label className="font-label-mono text-[10px] uppercase text-[#737973] block tracking-wider">RETURN TIME</label>
+                    <label htmlFor="modify-2" className="font-label-mono text-[10px] uppercase text-[#616661] block tracking-wider">RETURN TIME</label>
                     <div className="relative">
-                      <select className="w-full bg-[#F5F3EE] border border-[#D8D6CE] text-[#171A18] font-spec-numeral text-[13px] py-2.5 px-3 pr-8 appearance-none focus:outline-hidden focus:border-[#344A3D] rounded-none" defaultValue="14:00 CEST (Curbside VIP Bay 04)">
+                      <select id="modify-2" className="w-full bg-[#F5F3EE] border border-[#D8D6CE] text-[#171A18] font-spec-numeral text-[13px] py-2.5 px-3 pr-8 appearance-none focus:outline-hidden focus:border-[#344A3D] rounded-none" defaultValue="14:00 CEST (Curbside VIP Bay 04)">
                         <option>14:00 CEST (Curbside VIP Bay 04)</option>
                         <option>15:00 CEST (Curbside VIP Bay 04)</option>
                         <option>16:00 CEST (Curbside VIP Bay 04)</option>
                         <option>18:00 CEST (Curbside VIP Bay 04)</option>
                       </select>
-                      <span className="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-[18px] text-[#737973]">expand_more</span>
+                      <span className="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-[18px] text-[#616661]">expand_more</span>
                     </div>
                   </div>
                 </div>
@@ -326,7 +326,7 @@ export function ReservationModifyScreen() {
               <div className="pt-6 space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="font-label-mono text-[11px] uppercase tracking-[0.16em] text-[#344A3D] font-bold">{"04 // PROVISIONS & WAIVERS"}</span>
-                  <span className="font-label-mono text-[10px] uppercase text-[#737973]">4 DIURNAL CYCLES</span>
+                  <span className="font-label-mono text-[10px] uppercase text-[#616661]">4 DIURNAL CYCLES</span>
                 </div>
                 <div className="divide-y divide-[#D8D6CE] border border-[#D8D6CE] bg-[#F5F3EE]">
                   {/* Provision 1 (Active) */}
@@ -335,7 +335,7 @@ export function ReservationModifyScreen() {
                       <input defaultChecked className="w-4 h-4 rounded-none border border-[#171A18] accent-[#344A3D] cursor-pointer" id="opt-waiver" type="checkbox" />
                       <div>
                         <label className="font-body-sm font-semibold text-[#171A18] text-[13px] block cursor-pointer" htmlFor="opt-waiver">Comprehensive Zero-Excess Waiver</label>
-                        <div className="font-label-mono text-[11px] text-[#737973]">€45.00 / day · Complete loss and glass shield</div>
+                        <div className="font-label-mono text-[11px] text-[#616661]">€45.00 / day · Complete loss and glass shield</div>
                       </div>
                     </div>
                     <div className="text-right">
@@ -349,7 +349,7 @@ export function ReservationModifyScreen() {
                       <input defaultChecked className="w-4 h-4 rounded-none border border-[#171A18] accent-[#344A3D] cursor-pointer" id="opt-driver" type="checkbox" />
                       <div>
                         <label className="font-body-sm font-semibold text-[#171A18] text-[13px] block cursor-pointer" htmlFor="opt-driver">Designated Secondary Driver</label>
-                        <div className="font-label-mono text-[11px] text-[#737973]">€30.00 / day · Endorsed driver license check</div>
+                        <div className="font-label-mono text-[11px] text-[#616661]">€30.00 / day · Endorsed driver license check</div>
                       </div>
                     </div>
                     <div className="text-right">
@@ -363,7 +363,7 @@ export function ReservationModifyScreen() {
                       <input defaultChecked className="w-4 h-4 rounded-none border border-[#171A18] accent-[#344A3D] cursor-pointer" id="opt-child-seat" type="checkbox" />
                       <div>
                         <label className="font-body-sm font-semibold text-[#171A18] text-[13px] block cursor-pointer" htmlFor="opt-child-seat">Bespoke ISOFIX Child Seat</label>
-                        <div className="font-label-mono text-[11px] text-[#737973]">€20.00 / day · Bespoke tailored leatherette</div>
+                        <div className="font-label-mono text-[11px] text-[#616661]">€20.00 / day · Bespoke tailored leatherette</div>
                       </div>
                     </div>
                     <div className="text-right">
@@ -377,12 +377,12 @@ export function ReservationModifyScreen() {
                       <input className="w-4 h-4 rounded-none border border-[#171A18] accent-[#344A3D] cursor-pointer" id="opt-luggage-box" type="checkbox" />
                       <div>
                         <label className="font-body-sm text-[#424844] text-[13px] block cursor-pointer" htmlFor="opt-luggage-box">Alpine Luggage Telemetry Box (Rimowa Edition)</label>
-                        <div className="font-label-mono text-[11px] text-[#737973]">€35.00 / day · Aerodynamic roof fitment</div>
+                        <div className="font-label-mono text-[11px] text-[#616661]">€35.00 / day · Aerodynamic roof fitment</div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="font-spec-numeral text-[13px] text-[#737973]">€0.00</span>
-                      <span className="block font-label-mono text-[9px] text-[#737973] uppercase">INACTIVE</span>
+                      <span className="font-spec-numeral text-[13px] text-[#616661]">€0.00</span>
+                      <span className="block font-label-mono text-[9px] text-[#616661] uppercase">INACTIVE</span>
                     </div>
                   </div>
                 </div>
@@ -397,7 +397,7 @@ export function ReservationModifyScreen() {
               {/* Section 06: Price Difference & Variance Ledger */}
               <div className="pt-6 pb-2">
                 <div className="bg-[#EAE8E1] border border-[#D8D6CE] p-4 space-y-3">
-                  <div className="font-label-mono text-[11px] uppercase tracking-[0.16em] text-[#737973] pb-2 border-b border-[#D8D6CE]">VARIANCE LEDGER · MODIFICATION BREAKDOWN</div>
+                  <div className="font-label-mono text-[11px] uppercase tracking-[0.16em] text-[#616661] pb-2 border-b border-[#D8D6CE]">VARIANCE LEDGER · MODIFICATION BREAKDOWN</div>
                   <div className="space-y-1.5 font-label-mono text-[12px] text-[#424844]">
                     <div className="flex justify-between">
                       <span>ORIGINAL TOTAL (3 DAYS):</span>

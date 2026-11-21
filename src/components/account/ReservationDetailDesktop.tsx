@@ -95,16 +95,16 @@ export function ReservationDetailDesktop() {
                     <div className="hidden md:block flex-1 h-[1px] bg-outline-variant" />
                   </div>
                   <div>
-                    <div className="font-label-mono text-label-mono uppercase text-on-surface-variant/60 tracking-wider">04 HANDED OVER</div>
-                    <div className="font-body-sm text-[11px] text-on-surface-variant/60">Expected 12 Jun</div>
+                    <div className="font-label-mono text-label-mono uppercase text-on-surface-variant tracking-wider">04 HANDED OVER</div>
+                    <div className="font-body-sm text-[11px] text-on-surface-variant">Expected 12 Jun</div>
                   </div>
                 </div>
                 {/* Milestone 05 */}
                 <div className="relative flex flex-col gap-2">
                   <div className="flex items-center gap-2"><span className="w-5 h-5 rounded-none border border-outline-variant bg-surface flex items-center justify-center text-outline-variant"><span className="w-1.5 h-1.5 bg-outline-variant" /></span></div>
                   <div>
-                    <div className="font-label-mono text-label-mono uppercase text-on-surface-variant/60 tracking-wider">05 RETURNED</div>
-                    <div className="font-body-sm text-[11px] text-on-surface-variant/60">Scheduled 15 Jun</div>
+                    <div className="font-label-mono text-label-mono uppercase text-on-surface-variant tracking-wider">05 RETURNED</div>
+                    <div className="font-body-sm text-[11px] text-on-surface-variant">Scheduled 15 Jun</div>
                   </div>
                 </div>
               </div>
@@ -123,7 +123,7 @@ export function ReservationDetailDesktop() {
                   </div>
                   {/* Exhibit Artwork Framing */}
                   <div className="relative bg-surface-container border border-outline-variant overflow-hidden">
-                    <Photo src={media.reservationRangeRover} className="w-full aspect-[16/9] object-cover block" data-alt="Editorial studio portrait of a silver metallic Range Rover Autobiography parked in a brutalist warm concrete gallery pavilion, sharp directional sunlight casting architectural shadows, clean reflections, museum catalog framing, high-end automotive photography." sizes="(max-width: 767px) 100vw, 62vw" alt="" />
+                    <Photo src={media.reservationRangeRover} priority className="w-full aspect-[16/9] object-cover block" data-alt="Editorial studio portrait of a silver metallic Range Rover Autobiography parked in a brutalist warm concrete gallery pavilion, sharp directional sunlight casting architectural shadows, clean reflections, museum catalog framing, high-end automotive photography." sizes="(max-width: 767px) 100vw, 62vw" alt="" />
                     <div className="absolute bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-sm p-space-sm flex items-center justify-between border-t border-outline-variant">
                       <span className="font-label-mono text-label-mono uppercase text-on-surface">PLATE REGISTRATION: M-HA 8492</span>
                       <span className="font-label-mono text-label-mono uppercase text-on-surface-variant">COLOR: CHARENTS GREY SATIN FINISH</span>
@@ -289,7 +289,7 @@ export function ReservationDetailDesktop() {
                     <div className="flex items-start justify-between flex-wrap gap-space-sm">
                       <div>
                         <span className="font-label-mono text-label-mono uppercase tracking-widest text-primary font-bold">MEETING POINT</span>
-                        <h3 className="font-headline-sm text-headline-sm text-on-surface mt-1">Curbside VIP Bay 04 • Terminal 2 Post-Customs</h3>
+                        <h2 className="font-headline-sm text-headline-sm text-on-surface mt-1">Curbside VIP Bay 04 • Terminal 2 Post-Customs</h2>
                       </div>
                       <div className="text-right">
                         <div className="font-label-mono text-label-mono uppercase text-on-surface-variant">CONCIERGE LIAISON</div>
@@ -373,7 +373,7 @@ export function ReservationDetailDesktop() {
                   </div>
                 </div>
                 {/* Archival Code Stamp */}
-                <div className="px-space-sm py-2 flex items-center justify-between text-on-surface-variant/50 font-label-mono text-[10px]">
+                <div className="px-space-sm py-2 flex items-center justify-between text-outline font-label-mono text-[10px]">
                   <span>{"RECORD AUTH // 802-HLD-0612"}</span>
                   <span>SHA-256 VERIFIED</span>
                 </div>

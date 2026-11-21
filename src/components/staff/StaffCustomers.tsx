@@ -29,7 +29,7 @@ export function StaffCustomers() {
         </div>
         <div className="p-6 flex flex-col gap-1">
           <div className="font-label-mono text-[10px] text-on-tertiary-container tracking-widest uppercase">CONSOLE V2.4</div>
-          <div className="font-label-mono text-[9px] text-outline tracking-wider uppercase">{"ARCHIVE RUNNER // SECURE"}</div>
+          <div className="font-label-mono text-[9px] text-[#9a9e9a] tracking-wider uppercase">{"ARCHIVE RUNNER // SECURE"}</div>
         </div>
       </aside>
       <div className="pl-60">

@@ -387,7 +387,7 @@ export function FleetDesktop() {
               <>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-12">
                   {shown.slice(0, 3).map((v) => (
-                    <CatalogueCard key={v.slug} v={v} tripQuery={tripQuery} />
+                    <CatalogueCard key={v.slug} v={v} tripQuery={tripQuery} eager />
                   ))}
                 </div>
                 {shown.length > 3 && (
@@ -550,7 +550,7 @@ function SimpleCheck({ label, checked, onChange }: { label: string; checked: boo
   );
 }
 
-function CatalogueCard({ v, tripQuery }: { v: Vehicle; tripQuery: string }) {
+function CatalogueCard({ v, tripQuery, eager = false }: { v: Vehicle; tripQuery: string; eager?: boolean }) {
   const { isFavourite, toggle } = useFavourites();
   const saved = isFavourite(v.slug);
   return (
@@ -562,6 +562,8 @@ function CatalogueCard({ v, tripQuery }: { v: Vehicle; tripQuery: string }) {
             alt={v.imageAlt}
             fill
             sizes="(min-width: 1440px) 340px, (min-width: 1280px) 26vw, 45vw"
+            loading={eager ? "eager" : "lazy"}
+            fetchPriority={eager ? "high" : undefined}
             className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
           />
         </Link>
@@ -594,7 +596,7 @@ function CatalogueCard({ v, tripQuery }: { v: Vehicle; tripQuery: string }) {
             </span>
           </div>
         </div>
-        <h3 className="text-base font-semibold text-ink tracking-tight font-sans">{v.model}</h3>
+        <h2 className="text-base font-semibold text-ink tracking-tight font-sans">{v.model}</h2>
         <div className="w-full h-[1px] bg-stone-dim my-2.5" />
         <div className="flex items-baseline justify-between">
           <span className="font-mono text-xs text-muted">{v.specLine}</span>
@@ -612,7 +614,7 @@ export function FleetFooter() {
   const col = "space-y-2 text-xs text-[#8A9089]";
   const a = "hover:text-ivory transition-colors";
   return (
-    <footer className="w-full bg-dark text-stone-dim border-t border-[#252A27] mt-auto">
+    <footer className="on-dark w-full bg-dark text-stone-dim border-t border-[#252A27] mt-auto">
       <div className="max-w-[1440px] mx-auto px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[#252A27]">
           <div className="md:col-span-4 space-y-4">
@@ -654,7 +656,7 @@ export function FleetFooter() {
             </ul>
           </div>
         </div>
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#666B65] font-mono">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-muted font-mono">
           <p>© 2025 HALDEN AUTOMOBILE AG. ALL RIGHTS RESERVED.</p>
           <div className="flex space-x-6 mt-4 sm:mt-0">
             

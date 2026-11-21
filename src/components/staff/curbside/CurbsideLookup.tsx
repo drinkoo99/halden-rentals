@@ -37,6 +37,7 @@ export function CurbsideLookup() {
         </div>
       </header>
       <main className="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface">
+        <h1 className="sr-only">Curbside — reservation lookup</h1>
         <div className="flex flex-col w-full">
           {/* Staff Operational Header / Mode Pill */}
           <section className="px-4 pt-4 pb-3 flex items-center justify-between border-b border-[#D8D6CE]">
@@ -106,7 +107,7 @@ export function CurbsideLookup() {
               </div>
               {/* Vehicle Stage Portrait */}
               <div className="relative w-full aspect-[16/10] bg-[#171B19] overflow-hidden border border-[#D8D6CE]">
-                <Photo src={media.curbsideRangeRoverLookup} className="w-full h-full object-cover object-center" data-alt="Editorial gallery photograph of a Range Rover Autobiography parked in a sculptural warm stone architectural atrium. Architectural museum lighting illuminates the sleek silver metallic paint and crisp character lines. The backdrop is muted warm beige plaster, high-end catalog aesthetic." sizes="363px" alt="" />
+                <Photo src={media.curbsideRangeRoverLookup} priority className="w-full h-full object-cover object-center" data-alt="Editorial gallery photograph of a Range Rover Autobiography parked in a sculptural warm stone architectural atrium. Architectural museum lighting illuminates the sleek silver metallic paint and crisp character lines. The backdrop is muted warm beige plaster, high-end catalog aesthetic." sizes="363px" alt="" />
                 <div className="absolute bottom-0 left-0 right-0 bg-[#171B19]/85 backdrop-blur-sm px-3 py-2 flex items-center justify-between text-on-primary border-t border-[#323834]">
                   <div className="flex items-center gap-2">
                     <span className="font-label-mono text-[10px] tracking-wider text-surface-container-highest uppercase">CURBSIDE STAGING</span>

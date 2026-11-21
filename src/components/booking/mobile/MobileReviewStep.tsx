@@ -64,7 +64,7 @@ export function MobileReviewStep() {
   return (
     <div className="md:hidden bg-background text-on-surface antialiased flex flex-col min-h-screen">
       <MobileBookingHeader step={5} subtitle="Final Dossier" />
-      <main className="flex flex-col relative w-full pt-28 bg-surface min-h-screen">
+      <div className="flex flex-col relative w-full pt-28 bg-surface min-h-screen">
         <div className="flex flex-col px-gutter-mobile pt-space-md pb-36">
           <div className="flex flex-col pb-space-md">
             <span className="font-label-mono text-label-mono uppercase tracking-[0.14em] text-on-surface-variant mb-1">{"STEP 05 // FINAL DOSSIER VERIFICATION"}</span>
@@ -234,7 +234,7 @@ export function MobileReviewStep() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
       <MobileBookingBar
         caption={agreed ? "Total Commitment" : "Total Due at Handover"}
         label="Confirm reservation"

@@ -253,7 +253,7 @@ export function AccountSettingsDesktop() {
                         </div>
                         <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden rounded-[2px]" id="new-pass" type="password" defaultValue="vB-Munich_2025!" />
                         {/* Password Strength Meter: 4 Segments */}
-                        <div aria-label="Passcode Strength: 4 out of 4" className="grid grid-cols-4 gap-1 pt-1">
+                        <div role="img" aria-label="Passcode Strength: 4 out of 4" className="grid grid-cols-4 gap-1 pt-1">
                           <div className="h-1 bg-primary" />
                           <div className="h-1 bg-primary" />
                           <div className="h-1 bg-primary" />

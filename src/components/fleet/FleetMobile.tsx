@@ -58,7 +58,7 @@ export function FleetMobile() {
         </header>
 
         {/* Reservation Detail Strip */}
-        <section className="w-full bg-surface-container-high px-margin-mobile py-3.5 flex items-center justify-between">
+        <section aria-label="Your trip" className="w-full bg-surface-container-high px-margin-mobile py-3.5 flex items-center justify-between">
           <div className="flex items-center gap-2 min-w-0">
             <Icon name="flight_land" className="text-[16px] text-secondary shrink-0" />
             <p className="font-label-mono text-label-mono uppercase tracking-wider text-on-surface-variant truncate">
@@ -76,7 +76,7 @@ export function FleetMobile() {
         </section>
 
         {/* Title Section */}
-        <section className="px-margin-mobile pt-8 pb-6 flex flex-col gap-2 bg-surface">
+        <section aria-label="Collection" className="px-margin-mobile pt-8 pb-6 flex flex-col gap-2 bg-surface">
           <span className="font-label-mono text-label-mono tracking-widest uppercase text-secondary">THE COLLECTION</span>
           <h1 className="font-headline-lg-mobile text-headline-lg-mobile text-on-surface leading-tight">
             {results.length} {results.length === 1 ? "car" : "cars"} for your dates.
@@ -84,7 +84,7 @@ export function FleetMobile() {
         </section>
 
         {/* Sticky Filter & Sort Controller */}
-        <div className="sticky top-0 z-20 w-full bg-surface">
+        <div role="region" aria-label="Filter and sort" className="sticky top-0 z-20 w-full bg-surface">
           <div className="h-[52px] px-margin-mobile flex items-center justify-between bg-surface-container-lowest shadow-sm">
             <button
               type="button"
@@ -155,7 +155,7 @@ export function FleetMobile() {
           )}
           {shown.map((v, i) => (
             <Fragment key={v.slug}>
-              <MobileCard v={v} tripQuery={tripQuery} />
+              <MobileCard v={v} tripQuery={tripQuery} eager={i === 0} />
               {i === 2 && (
                 <section className="w-full bg-inverse-surface text-inverse-on-surface my-4 py-8">
                   <div className="px-margin-mobile flex flex-col gap-5">
@@ -218,7 +218,7 @@ export function FleetMobile() {
               <Icon name="south" className="text-[18px]" />
             </button>
           )}
-          <p className="font-label-mono text-[10px] tracking-widest uppercase text-secondary/60 text-center pt-2">
+          <p className="font-label-mono text-[10px] tracking-widest uppercase text-secondary text-center pt-2">
             HALDEN AUTOMOTIVE ARCHIVE · {itinerary.location.city.toUpperCase()}
           </p>
         </footer>
@@ -248,14 +248,14 @@ export function FleetMobile() {
   );
 }
 
-function MobileCard({ v, tripQuery }: { v: Vehicle; tripQuery: string }) {
+function MobileCard({ v, tripQuery, eager = false }: { v: Vehicle; tripQuery: string; eager?: boolean }) {
   const { isFavourite, toggle } = useFavourites();
   const saved = isFavourite(v.slug);
   return (
     <article className="flex flex-col w-full px-margin-mobile">
       <div className="relative w-full aspect-[3/2] bg-surface-container overflow-hidden">
         <Link href={`/fleet/${v.slug}?${tripQuery}`} aria-label={`${v.brand} ${v.model}`} className="absolute inset-0">
-          <Image src={v.mobileImage ?? v.image} alt={v.imageAlt} fill sizes="100vw" className="w-full h-full object-cover" />
+          <Image src={v.mobileImage ?? v.image} alt={v.imageAlt} fill sizes="100vw" loading={eager ? "eager" : "lazy"} fetchPriority={eager ? "high" : undefined} className="w-full h-full object-cover" />
         </Link>
         <button
           type="button"

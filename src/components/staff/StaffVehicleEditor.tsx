@@ -6,11 +6,11 @@ import { media } from "@/data/media";
 export function StaffVehicleEditor() {
   return (
     <div className="bg-surface font-body-md text-on-surface">
-      <aside className="fixed left-0 top-0 h-full w-60 bg-on-tertiary-fixed text-inverse-on-surface z-50 flex flex-col border-r border-tertiary">
+      <aside aria-label="Console navigation" className="fixed left-0 top-0 h-full w-60 bg-on-tertiary-fixed text-inverse-on-surface z-50 flex flex-col border-r border-tertiary">
         <div className="h-14 px-6 flex items-center border-b border-tertiary"><span className="font-headline-sm text-headline-sm tracking-widest uppercase text-inverse-on-surface">HALDEN</span></div>
         <div className="px-4 py-4 border-b border-tertiary">
           <label className="block font-label-mono text-label-mono uppercase text-on-tertiary-container mb-2">ACTIVE HUB</label>
-          <select className="w-full bg-tertiary text-on-tertiary font-label-mono text-label-mono uppercase px-3 py-2 rounded-none border border-tertiary-container focus:outline-hidden focus:border-primary-fixed">
+          <select aria-label="Active hub" className="w-full bg-tertiary text-on-tertiary font-label-mono text-label-mono uppercase px-3 py-2 rounded-none border border-tertiary-container focus:outline-hidden focus:border-primary-fixed">
             <option value="all">ALL HUBS</option>
             <option value="muc">MUC — MUNICH</option>
             <option value="zrh">ZRH — ZURICH</option>
@@ -240,7 +240,7 @@ export function StaffVehicleEditor() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-1.5">
                       <label className="font-label-mono text-label-mono uppercase text-on-surface">Assigned Home Staging Hub</label>
-                      <select className="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-3 py-2.5 rounded-none focus:outline-hidden" defaultValue="MUC — Munich Franz Josef Strauss Airport (VIP Terminal 2 Pavilion)">
+                      <select aria-label="Filter by hub" className="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-3 py-2.5 rounded-none focus:outline-hidden" defaultValue="MUC — Munich Franz Josef Strauss Airport (VIP Terminal 2 Pavilion)">
                         <option>MUC — Munich Franz Josef Strauss Airport (VIP Terminal 2 Pavilion)</option>
                         <option>ZRH — Zurich Airport Kloten (Private Aviation Center)</option>
                         <option>GVA — Geneva Cointrin (VIP Terminal Annex)</option>
@@ -249,7 +249,7 @@ export function StaffVehicleEditor() {
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label className="font-label-mono text-label-mono uppercase text-on-surface">Current Physical Custody Status</label>
-                      <select className="w-full bg-surface-container-lowest text-primary font-label-mono text-label-mono font-bold uppercase px-3 py-2.5 rounded-none focus:outline-hidden" defaultValue="ON RENT — DISPATCHED UNDER CONTRACT">
+                      <select aria-label="Custody status" className="w-full bg-surface-container-lowest text-primary font-label-mono text-label-mono font-bold uppercase px-3 py-2.5 rounded-none focus:outline-hidden" defaultValue="ON RENT — DISPATCHED UNDER CONTRACT">
                         <option>ON RENT — DISPATCHED UNDER CONTRACT</option>
                         <option>AVAILABLE — STAGED AT TERMINAL</option>
                         <option>{"IN SERVICE — ALPINE DETAILING & INSPECTION"}</option>

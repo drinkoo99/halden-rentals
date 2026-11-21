@@ -49,7 +49,7 @@ export function MobileDetailsStep() {
   return (
     <div className="md:hidden bg-background text-on-surface antialiased flex flex-col min-h-screen">
       <MobileBookingHeader step={4} subtitle="Identity & Verification" />
-      <main className="flex flex-col relative w-full pt-28 bg-surface min-h-screen">
+      <div className="flex flex-col relative w-full pt-28 bg-surface min-h-screen">
         <div className="flex flex-col w-full pb-32">
           <section className="px-gutter-mobile pt-6 pb-5 flex flex-col gap-2 bg-surface">
             <div className="flex items-center gap-2">
@@ -169,7 +169,7 @@ export function MobileDetailsStep() {
             </button>
           </form>
         </div>
-      </main>
+      </div>
       <MobileBookingBar caption="Estimated Valuation" label="Continue to review" onAction={() => void submit()} />
       {sheet && (
         <MobileSheet title="Licence Jurisdiction" kicker="Archive Register" onClose={() => setSheet(false)} labelledBy="m-licence-sheet-title">

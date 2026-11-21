@@ -44,7 +44,7 @@ export function AboutMobile() {
             </div>
             {/* Architectural Photograph (16:9) */}
             <div className="w-full aspect-[16/9] overflow-hidden bg-surface-container-high mb-space-md relative">
-              <Photo src={media.aboutAtelierInterior} alt="Architectural gallery at Halden Atelier" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" sizes="100vw" />
+              <Photo src={media.aboutAtelierInterior} priority alt="Architectural gallery at Halden Atelier" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" sizes="100vw" />
               <div className="absolute bottom-2 left-2 bg-primary/80 backdrop-blur-sm px-2 py-0.5 text-on-primary font-label-mono text-[9px] tracking-[0.15em] uppercase">ZURICH APERTURE 01</div>
             </div>
             <h1 className="font-headline-md text-headline-md text-primary tracking-tight mb-space-sm leading-[1.15]">A rental house built like a gallery.</h1>

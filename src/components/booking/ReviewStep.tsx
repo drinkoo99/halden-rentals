@@ -275,7 +275,7 @@ export function ReviewStep() {
           <div className="p-4 bg-surface-container-highest border-l-4 border-primary flex items-start gap-4">
             <Icon name="info" className="text-primary text-[24px]" />
             <div className="space-y-1">
-              <h4 className="font-action text-action uppercase tracking-wider text-on-surface">Concept Demonstration · No Immediate Charge</h4>
+              <h3 className="font-action text-action uppercase tracking-wider text-on-surface">Concept Demonstration · No Immediate Charge</h3>
               <p className="font-body-sm text-body-sm text-on-surface-variant">
                 No card details are collected online. Your card is presented and the pre-authorization security hold is executed in presence
                 of the patron at handover.
@@ -287,7 +287,7 @@ export function ReviewStep() {
               <span className="font-label-mono text-label-mono text-outline uppercase tracking-wider">SECURE PRE-REGISTRATION (VISA / MASTERCARD / AMEX)</span>
               <span className="font-label-mono text-label-mono uppercase text-[10px] text-outline">PRESENTED AT HANDOVER</span>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 opacity-70">
+            <div aria-hidden className="grid grid-cols-1 md:grid-cols-12 gap-4 opacity-70">
               <div className="md:col-span-7 space-y-1">
                 <span className="font-label-mono text-label-mono text-on-surface uppercase block text-[10px]">CARD NUMBER</span>
                 <div className="w-full bg-surface-container-lowest border border-outline-variant px-4 py-3 font-spec-numeral text-spec-numeral text-outline">

@@ -120,7 +120,7 @@ export function BookingSummary() {
         </div>
         <div>
           <div className="flex items-baseline justify-between">
-            <h3 className="font-headline-sm text-headline-sm text-on-surface">{v.model}</h3>
+            <h2 className="font-headline-sm text-headline-sm text-on-surface">{v.model}</h2>
             <Link
               className="font-label-mono text-label-mono uppercase text-primary underline underline-offset-4 hover:text-primary-container"
               href={`/fleet?loc=${state.loc}&from=${state.from}&to=${state.to}`}

@@ -61,7 +61,7 @@ export function JourneysIndexMobile() {
             <article hidden={!show(0)} className="bg-surface-container-low flex flex-col group overflow-hidden">
               {/* 16:9 Architectural Stage Photo */}
               <div className="relative w-full aspect-[16/9] overflow-hidden bg-surface-dim">
-                <Photo src={media.journeyHighAlpineHero} alt="High Alpine Transversal Pass at Dawn" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" sizes="100vw" />
+                <Photo src={media.journeyHighAlpineHero} priority alt="High Alpine Transversal Pass at Dawn" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" sizes="100vw" />
                 <div className="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-2.5 py-1 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 bg-primary" />
                   <span className="font-label-mono text-label-mono text-on-surface tracking-widest uppercase">FEATURED ITINERARY</span>

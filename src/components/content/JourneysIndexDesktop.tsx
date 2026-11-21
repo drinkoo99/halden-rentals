@@ -119,7 +119,7 @@ export function JourneysIndexDesktop() {
             <div className="relative w-full bg-surface-container-high overflow-hidden">
               {/* 21:9 Aspect Ratio Hero Banner */}
               <div className="w-full aspect-[21/9] min-h-[380px] relative bg-inverse-surface">
-                <Photo src={media.journeyHighAlpineHero} alt="The High Alpine Transversal Switzerland mountain pass road" className="w-full h-full object-cover" sizes="100vw" />
+                <Photo src={media.journeyHighAlpineHero} priority alt="The High Alpine Transversal Switzerland mountain pass road" className="w-full h-full object-cover" sizes="100vw" />
                 <div className="absolute inset-0 bg-linear-to-t md:bg-linear-to-r from-inverse-surface/90 via-inverse-surface/60 to-transparent" />
                 {/* Live Elevation Sparkline overlay inside image (archival aesthetic) */}
                 <div className="absolute top-space-md right-space-md hidden sm:flex flex-col items-end gap-1 bg-inverse-surface/80 p-space-sm backdrop-blur-sm">

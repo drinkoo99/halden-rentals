@@ -27,7 +27,7 @@ export default function BookingLayout({ params, children }: LayoutProps<"/book/[
     <div className="bg-surface font-body-md text-on-surface antialiased min-h-screen">
       <Suspense
         fallback={
-          <main className="w-full md:pt-[112px] bg-surface">
+          <main className="w-full md:pt-[112px] md:min-h-screen bg-surface">
             <div className="md:max-w-7xl md:mx-auto md:px-6 lg:px-8 md:py-10">
               <BookingSkeleton />
             </div>
@@ -52,7 +52,7 @@ async function Shell({ params, children }: { params: LayoutProps<"/book/[slug]">
       <div className="hidden md:block">
         <BookingHeader slug={vehicle.slug} />
       </div>
-      <main className="w-full md:pt-[112px] print:pt-0 bg-surface">
+      <main className="w-full md:pt-[112px] md:min-h-screen print:pt-0 print:min-h-0 bg-surface">
         <div className="md:max-w-7xl md:mx-auto md:px-6 lg:px-8 md:py-10">
           <BookingProvider vehicle={vehicle} fallback={<BookingSkeleton />}>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

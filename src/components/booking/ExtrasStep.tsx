@@ -77,9 +77,9 @@ export function ExtrasStep() {
                     <span className={`font-label-mono text-label-mono ${e.included ? "text-primary uppercase font-semibold" : "text-outline"}`}>{e.tier}</span>
                   </div>
                   <div className="flex items-center gap-3 flex-wrap">
-                    <h3 id={`extra-${e.id}`} className="font-headline-sm text-headline-sm text-on-surface">
+                    <h2 id={`extra-${e.id}`} className="font-headline-sm text-headline-sm text-on-surface">
                       {e.title}
-                    </h3>
+                    </h2>
                     {e.included && (
                       <span className="px-2 py-0.5 bg-primary-fixed text-on-primary-fixed font-label-mono text-label-mono uppercase tracking-wider font-semibold">
                         INCLUDED

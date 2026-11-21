@@ -42,7 +42,7 @@ export function MobileTripStep() {
   return (
     <div className="md:hidden bg-background text-on-surface antialiased flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container">
       <MobileBookingHeader step={2} subtitle="Transit & Allocation" />
-      <main className="flex flex-col relative w-full max-w-[430px] mx-auto pt-28 pb-28 bg-surface min-h-screen px-margin-mobile">
+      <div className="flex flex-col relative w-full max-w-[430px] mx-auto pt-28 pb-28 bg-surface min-h-screen px-margin-mobile">
         <div className="flex flex-col w-full pb-8">
           <div className="pt-4 pb-6">
             <div className="flex items-center justify-between mb-2">
@@ -150,7 +150,7 @@ export function MobileTripStep() {
             </ul>
           </div>
         </div>
-      </main>
+      </div>
       <MobileBookingBar label="Continue" onAction={next} />
 
       {(sheet === "pickup" || sheet === "return") && (

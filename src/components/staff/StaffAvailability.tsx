@@ -10,11 +10,11 @@ export function StaffAvailability() {
   const [blocking, setBlocking] = useState(true);
   return (
     <div className="bg-surface font-body-md text-on-surface">
-      <aside className="fixed left-0 top-0 h-full w-60 bg-on-tertiary-fixed text-inverse-on-surface z-50 flex flex-col border-r border-tertiary">
+      <aside aria-label="Console navigation" className="fixed left-0 top-0 h-full w-60 bg-on-tertiary-fixed text-inverse-on-surface z-50 flex flex-col border-r border-tertiary">
         <div className="h-14 px-6 flex items-center border-b border-tertiary"><span className="font-headline-sm text-headline-sm tracking-widest uppercase text-inverse-on-surface">HALDEN</span></div>
         <div className="px-4 py-4 border-b border-tertiary">
           <label className="block font-label-mono text-label-mono uppercase text-on-tertiary-container mb-2">ACTIVE HUB</label>
-          <select className="w-full bg-tertiary text-on-tertiary font-label-mono text-label-mono uppercase px-3 py-2 rounded-none border border-tertiary-container focus:outline-hidden focus:border-primary-fixed">
+          <select aria-label="Active hub" className="w-full bg-tertiary text-on-tertiary font-label-mono text-label-mono uppercase px-3 py-2 rounded-none border border-tertiary-container focus:outline-hidden focus:border-primary-fixed">
             <option value="all">ALL HUBS</option>
             <option value="muc">MUC — MUNICH</option>
             <option value="zrh">ZRH — ZURICH</option>
@@ -123,7 +123,7 @@ export function StaffAvailability() {
                 {/* Hub Selector Pill */}
                 <div className="flex items-center bg-surface border border-[#D8D6CE] px-3 py-1.5">
                   <span className="font-label-mono text-[10px] uppercase text-on-surface-variant mr-2">HUB:</span>
-                  <select className="bg-transparent font-action text-action text-on-surface uppercase focus:outline-hidden cursor-pointer" defaultValue="ALL HUBS (5 REGIONS)">
+                  <select aria-label="Filter by hub" className="bg-transparent font-action text-action text-on-surface uppercase focus:outline-hidden cursor-pointer" defaultValue="ALL HUBS (5 REGIONS)">
                     <option>ALL HUBS (5 REGIONS)</option>
                     <option>MUC — MUNICH AIRPORT / VIP</option>
                     <option>ZRH — ZURICH KLOTEN</option>
@@ -135,7 +135,7 @@ export function StaffAvailability() {
                 {/* Category Selector */}
                 <div className="flex items-center bg-surface border border-[#D8D6CE] px-3 py-1.5">
                   <span className="font-label-mono text-[10px] uppercase text-on-surface-variant mr-2">CLASS:</span>
-                  <select className="bg-transparent font-action text-action text-on-surface uppercase focus:outline-hidden cursor-pointer" defaultValue="ALL CATEGORIES">
+                  <select aria-label="Filter by class" className="bg-transparent font-action text-action text-on-surface uppercase focus:outline-hidden cursor-pointer" defaultValue="ALL CATEGORIES">
                     <option>ALL CATEGORIES</option>
                     <option>HERITAGE / CLASSIC</option>
                     <option>GRAND TOURING</option>
@@ -775,7 +775,7 @@ export function StaffAvailability() {
                       <div className="flex items-center justify-between border-b border-[#D8D6CE] pb-2 mb-3">
                         <div>
                           <span className="font-label-mono text-[9px] text-primary uppercase font-bold tracking-widest block">DISPATCH INTERVENTION</span>
-                          <h4 className="font-action text-body-sm font-bold text-on-surface uppercase">{"Block Chassis // BMW 540i (M-HL 3390)"}</h4>
+                          <h2 className="font-action text-body-sm font-bold text-on-surface uppercase">{"Block Chassis // BMW 540i (M-HL 3390)"}</h2>
                         </div>
                         <button aria-label="Close" className="text-on-surface-variant hover:text-on-surface" onClick={() => setBlocking(false)} type="button"><span className="material-symbols-outlined text-[18px]">close</span></button>
                       </div>
@@ -893,7 +893,7 @@ export function StaffAvailability() {
                       <span className="font-label-mono text-[9px] text-on-surface-variant uppercase tracking-widest">STATE: FILTER ZERO-MATCH</span>
                       <span className="font-label-mono text-[9px] px-1.5 py-0.5 bg-surface-container text-on-surface-variant">VIE HUB</span>
                     </div>
-                    <h4 className="font-headline-sm text-base text-on-surface font-medium mb-1">No Chassis Stationed in Hub</h4>
+                    <h2 className="font-headline-sm text-base text-on-surface font-medium mb-1">No Chassis Stationed in Hub</h2>
                     <p className="font-body-sm text-xs text-on-surface-variant leading-relaxed">No chassis currently stationed in Vienna (VIE) for this diurnal period. Transfer an unassigned unit from Munich (MUC) or adjust regional search criteria.</p>
                   </div>
                   <div className="mt-4 pt-3 border-t border-[#D8D6CE] flex items-center justify-between">

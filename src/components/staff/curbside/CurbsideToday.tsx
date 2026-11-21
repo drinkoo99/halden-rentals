@@ -36,6 +36,7 @@ export function CurbsideToday() {
         </div>
       </header>
       <main className="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface">
+        <h1 className="sr-only">Curbside — today’s handovers</h1>
         <div className="flex flex-col w-full text-on-surface">
           {/* Operational Hub Context Strip */}
           <section className="bg-surface-container-low px-4 py-3 border-b border-[#D8D6CE]">
@@ -98,7 +99,7 @@ export function CurbsideToday() {
               </div>
               {/* Studio Stage Vehicle Thumbnail */}
               <div className="relative w-full aspect-[16/10] bg-surface-container-high overflow-hidden border-b border-[#D8D6CE]">
-                <Photo src={media.curbsideRangeRoverToday} className="w-full h-full object-cover object-center" data-alt="Editorial catalog photography of a silver Range Rover Autobiography in a warm architectural studio, warm plaster textured backdrop, monolithic soft museum gallery lighting, precision showroom perspective, neutral limestone tones." sizes="100vw" alt="" />
+                <Photo src={media.curbsideRangeRoverToday} priority className="w-full h-full object-cover object-center" data-alt="Editorial catalog photography of a silver Range Rover Autobiography in a warm architectural studio, warm plaster textured backdrop, monolithic soft museum gallery lighting, precision showroom perspective, neutral limestone tones." sizes="100vw" alt="" />
                 <div className="absolute top-2.5 left-2.5 bg-[#171B19]/80 backdrop-blur-sm text-surface-bright font-label-mono text-[10px] px-2 py-0.5 rounded-sm tracking-widest uppercase">CURBSIDE DOCK · BAY 04</div>
               </div>
               {/* Manifest & Client Technical Matrix */}
@@ -207,7 +208,7 @@ export function CurbsideToday() {
                     <span className="font-label-mono text-spec-numeral font-bold text-on-surface">14:00 CEST</span>
                     <span className="font-label-mono text-[10px] text-on-surface-variant uppercase">· BAY 05</span>
                   </div>
-                  <span className="font-label-mono text-[9px] uppercase px-2 py-0.5 rounded-sm bg-[#B94A48]/15 text-[#B94A48] font-bold tracking-wider flex items-center gap-1">
+                  <span className="font-label-mono text-[9px] uppercase px-2 py-0.5 rounded-sm bg-[#B94A48]/15 text-[#A3403E] font-bold tracking-wider flex items-center gap-1">
                     <span className="material-symbols-outlined text-[12px]">warning</span>
                     {" "}PRE-AUTH PENDING
                   </span>
