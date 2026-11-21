@@ -4,9 +4,11 @@ Phase 2 adds a backend to the existing Next.js app: a **modular monolith** (no s
 MongoDB Atlas through the official driver and Zod for validation. The architecture and the milestone plan
 were approved before implementation; this file documents what exists so far.
 
-**Status: M1 — Foundation.** Infrastructure only: environment validation, the database client, API
-conventions, a health endpoint, collection-setup tooling and tests. No collections, authentication, bookings
-or pricing yet, and no page reads from the database — the frontend behaves exactly as in Phase 1.
+**Status: M2 — Database catalogue (in progress).** M1 provides environment validation, the database
+client, API conventions, a health endpoint and collection-setup tooling. M2 adds the catalogue
+(`locations`, `vehicleModels`, `extras`): schemas, demo seed mapping, collection validators and indexes so
+far; seeding and the catalogue API follow. No authentication, bookings or pricing yet, and no page reads
+from the database — the frontend behaves exactly as in Phase 1.
 
 ## Setup
 
@@ -56,7 +58,7 @@ src/server/                 server-only code (never imported by Client Component
   http/handler.ts           route() wrapper and json() helper for Route Handlers
   log.ts                    structured JSON logging with redaction
 src/app/api/v1/…            Route Handlers (thin: parse → service → respond)
-scripts/db-setup.mjs        applies the collection registry to a database
+scripts/db-setup.ts         applies the collection registry to a database (run with tsx)
 ```
 
 Modules that import `server-only` fail the build if a Client Component imports them, so database code
@@ -107,18 +109,36 @@ Only a coarse reason is returned; hosts and driver messages stay out of the resp
 
 ## Database setup
 
-Collections are declared in `src/server/db/collections.ts` (`COLLECTIONS`: name, indexes, optional
-`$jsonSchema` validator) by the milestone that introduces them. **M1 registers none.** They are applied
-by a script, never at request time:
+Collections are declared in `src/server/db/collections.ts` (`COLLECTIONS`: name, named indexes,
+optional `$jsonSchema` validator) by the milestone that introduces them — M2 registers the catalogue
+collections (`locations`, `vehicleModels`, `extras`). They are applied by a script, never at request time:
 
 ```bash
-npm run db:setup                      # dry run: prints the target (no credentials) and the planned changes
-npm run db:setup -- --apply           # apply to MONGODB_URI / MONGODB_DB
-npm run db:setup -- --apply --allow-production   # needed when MONGODB_DB contains "prod" or VERCEL_ENV=production
+npm run db:setup                                        # dry run: read-only, prints the target (no credentials) and planned changes
+npm run db:setup -- --apply --confirm-db=<database>     # apply; --confirm-db must equal MONGODB_DB exactly
+npm run db:setup -- --apply --confirm-db=<db> --allow-production   # also needed when the target looks like production
 ```
 
-The script reads `.env.local` if present and imports the TypeScript registry directly (Node 24 type
-stripping). Setup is idempotent: existing collections are kept and existing indexes are left as they are.
+The script runs with `tsx` and reads `.env.local` if present. Setup is diff-based and idempotent: it
+creates missing collections and indexes and re-applies a validator only when it differs; conflicting
+indexes stop the whole run, nothing is ever dropped, and unregistered collections or indexes are reported
+and left alone. `halden_test*` databases are reserved for integration tests and refused by the script.
+
+**Permissions.** Routine setup — creating the catalogue collections with their validators, creating
+missing indexes, and every later run that finds nothing to change — works with a least-privileged
+database user that has `readWrite` on the target database. *Changing an existing validator* uses the
+`collMod` command, which `readWrite` does not grant. When a validator changes, setup reports
+`update-validator` and fails with an "Unauthorized" hint under such a user; apply that change separately
+with explicitly authorised, temporarily elevated permissions. Do not widen the application user's role to
+make it pass.
+
+**If setup fails partway.** Changes are applied in order (collections, validators, then indexes) and are
+not rolled back, so a failure — e.g. a lost connection, a missing privilege, or existing duplicates under
+a new unique index — can leave part of the plan applied. Fix the underlying cause and run the same command
+again: setup is diff-based, plans only what is still missing, and never drops anything, so it converges.
+A dry run first shows what remains.
+
+_(Full M2 database documentation follows at the end of P2.)_
 
 ## Tests
 
