@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { FleetDesktop } from "@/components/fleet/FleetDesktop";
 import { FleetMobile } from "@/components/fleet/FleetMobile";
+import { FleetSkeleton } from "@/components/states/Skeletons";
 
 export const metadata: Metadata = {
   title: "The Collection — Fleet Discovery",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
  */
 export default function FleetPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-ivory" aria-busy="true" />}>
+    <Suspense fallback={<FleetSkeleton />}>
       <FleetMobile />
       <FleetDesktop />
     </Suspense>

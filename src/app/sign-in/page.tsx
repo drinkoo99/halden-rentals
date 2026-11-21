@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 /** Stitch screen 31. Reads ?next= (return target), so it renders inside Suspense. */
 export default function SignInPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-surface" aria-busy="true" />}>
+    <Suspense fallback={<div className="min-h-screen bg-surface" role="status" aria-label="Loading sign in" />}>
       <SignInScreen />
     </Suspense>
   );
