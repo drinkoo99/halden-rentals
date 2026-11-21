@@ -48,7 +48,7 @@ export function StaffBookingDetail() {
           </div>
           <div className="flex items-center gap-6">
             <span className="font-label-mono text-label-mono uppercase text-on-surface-variant">THU 24 OCT 2024</span>
-            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
               <span className="material-symbols-outlined text-[20px]">notifications</span>
               <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-error rounded-full" />
             </button>
@@ -94,12 +94,12 @@ export function StaffBookingDetail() {
                 </div>
                 {/* Action Suite */}
                 <div className="flex items-center flex-wrap gap-2.5">
-                  <button className="inline-flex items-center gap-2 px-4 py-2.5 border border-on-surface text-on-surface hover:bg-surface-container transition-colors font-action text-action uppercase tracking-wider" type="button">
+                  <button className="inline-flex items-center gap-2 px-4 py-2.5 border border-on-surface text-on-surface hover:bg-surface-container transition-colors font-action text-action uppercase tracking-wider" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="material-symbols-outlined text-[16px]">download</span>
                     {" "}
                     <span>Manifest PDF</span>
                   </button>
-                  <button className="inline-flex items-center gap-2 px-4 py-2.5 border border-on-surface text-on-surface hover:bg-surface-container transition-colors font-action text-action uppercase tracking-wider" type="button">
+                  <button className="inline-flex items-center gap-2 px-4 py-2.5 border border-on-surface text-on-surface hover:bg-surface-container transition-colors font-action text-action uppercase tracking-wider" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="material-symbols-outlined text-[16px]">print</span>
                     {" "}
                     <span>Handover Dossier</span>
@@ -151,7 +151,7 @@ export function StaffBookingDetail() {
                             <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
                             {" "}{"VALIDATED // KBA CONFIRMED"}
                           </span>
-                          <button className="font-label-mono text-label-mono uppercase text-on-surface-variant underline hover:text-primary" type="button">[ Re-verify ]</button>
+                          <button className="font-label-mono text-label-mono uppercase text-on-surface-variant underline hover:text-primary" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">[ Re-verify ]</button>
                         </div>
                       </div>
                       <div className="mt-4 pt-3 border-t border-outline-variant font-body-sm text-body-sm text-on-surface-variant">
@@ -543,7 +543,7 @@ export function StaffBookingDetail() {
                     </div>
                     <div className="pt-2 flex items-center justify-between">
                       <span className="font-label-mono text-label-mono text-[#B94A48] uppercase font-bold">{"100% ESCROW & TARIFF REFUND APPLIES"}</span>
-                      <button className="px-4 py-2 border border-[#B94A48] text-[#B94A48] hover:bg-[#B94A48] hover:text-white transition-colors font-action text-action uppercase tracking-wider" type="button">Cancel Booking Dossier</button>
+                      <button className="px-4 py-2 border border-[#B94A48] text-[#B94A48] hover:bg-[#B94A48] hover:text-white transition-colors font-action text-action uppercase tracking-wider" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Cancel Booking Dossier</button>
                     </div>
                   </div>
                 </div>

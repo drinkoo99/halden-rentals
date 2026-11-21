@@ -45,11 +45,11 @@ export function ReservationDetailDesktop() {
               <div className="flex flex-wrap items-center gap-space-md">
                 <Link className="border border-on-surface text-on-surface hover:bg-surface-container font-action text-action uppercase tracking-[0.08em] px-5 py-2.5 rounded-[2px] transition-colors" href="/account/reservations/hld-0612-4821/modify">Modify reservation</Link>
                 <Link className="text-error hover:underline font-action text-action uppercase tracking-[0.08em] px-2 py-2.5 transition-colors" href="/account/reservations/hld-0612-4821/cancel">Cancel</Link>
-                <a className="inline-flex items-center gap-1.5 text-on-surface hover:text-primary font-action text-action uppercase tracking-[0.08em] py-2.5 border-b border-on-surface/40 hover:border-primary transition-colors" href="#">
+                <span className="inline-flex items-center gap-1.5 text-on-surface hover:text-primary font-action text-action uppercase tracking-[0.08em] py-2.5 border-b border-on-surface/40 hover:border-primary transition-colors" data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                   <span>Download dossier PDF</span>
                   {" "}
                   <span className="material-symbols-outlined text-[16px]">arrow_downward</span>
-                </a>
+                </span>
               </div>
             </div>
             {/* Status Milestone Timeline */}

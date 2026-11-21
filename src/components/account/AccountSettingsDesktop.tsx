@@ -172,7 +172,7 @@ export function AccountSettingsDesktop() {
                               <span className="font-spec-numeral text-body-sm text-on-surface-variant">2.4 MB · Cryptographic Hash OK</span>
                             </div>
                           </div>
-                          <div className="flex justify-end pt-space-xs border-t border-outline-variant"><button className="font-action text-action uppercase text-on-surface hover:text-primary transition-colors" type="button">Replace Document</button></div>
+                          <div className="flex justify-end pt-space-xs border-t border-outline-variant"><button className="font-action text-action uppercase text-on-surface hover:text-primary transition-colors" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Replace Document</button></div>
                         </div>
                         {/* Rear Scan: Dropzone */}
                         <div className="border border-dashed border-outline-variant bg-surface-container-low hover:bg-surface-container p-space-md flex flex-col items-center justify-center text-center cursor-pointer transition-colors h-36">
@@ -292,7 +292,7 @@ export function AccountSettingsDesktop() {
                               <p className="font-label-mono text-label-mono text-on-surface-variant mt-0.5">LAST ACTIVE: YESTERDAY 21:14 · IP: 178.197.230.12</p>
                             </div>
                           </div>
-                          <button className="font-action text-action uppercase text-on-surface-variant hover:text-error transition-colors self-start md:self-auto" type="button">Sign out</button>
+                          <button className="font-action text-action uppercase text-on-surface-variant hover:text-error transition-colors self-start md:self-auto" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Sign out</button>
                         </div>
                         {/* Session 3 */}
                         <div className="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
@@ -303,7 +303,7 @@ export function AccountSettingsDesktop() {
                               <p className="font-label-mono text-label-mono text-on-surface-variant mt-0.5">LAST ACTIVE: 28 MAY 2025 · IP: 93.42.180.77</p>
                             </div>
                           </div>
-                          <button className="font-action text-action uppercase text-on-surface-variant hover:text-error transition-colors self-start md:self-auto" type="button">Sign out</button>
+                          <button className="font-action text-action uppercase text-on-surface-variant hover:text-error transition-colors self-start md:self-auto" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Sign out</button>
                         </div>
                       </div>
                     </div>
@@ -319,7 +319,7 @@ export function AccountSettingsDesktop() {
                         <span className="font-headline-sm text-headline-sm text-on-surface block">Decommission Patron Dossier</span>
                         <p className="font-body-md text-body-md text-on-surface-variant">Permanently purge your patron history, release verified driving credentials, and forfeit accrued Patron Circle reservation priority. This irreversible action revokes physical pavilion access tokens.</p>
                       </div>
-                      <button className="font-action text-action uppercase text-error hover:bg-error-container hover:text-on-error-container px-space-md py-space-sm border border-error transition-colors shrink-0 rounded-[2px] text-center" type="button">Delete account / Void membership</button>
+                      <button className="font-action text-action uppercase text-error hover:bg-error-container hover:text-on-error-container px-space-md py-space-sm border border-error transition-colors shrink-0 rounded-[2px] text-center" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Delete account / Void membership</button>
                     </div>
                   </fieldset>
                 </form>

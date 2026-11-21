@@ -40,7 +40,7 @@ export function StaffVehicleEditor() {
           </div>
           <div className="flex items-center gap-6">
             <span className="font-label-mono text-label-mono uppercase text-on-surface-variant">THU 24 OCT 2024</span>
-            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
               <span className="material-symbols-outlined text-[20px]">notifications</span>
               <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-error rounded-full" />
             </button>
@@ -69,11 +69,11 @@ export function StaffVehicleEditor() {
                   {" "}
                   <span className="material-symbols-outlined text-[14px]">north_east</span>
                 </Link>
-                <a className="inline-flex items-center gap-1.5 font-label-mono text-label-mono uppercase text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+                <span className="inline-flex items-center gap-1.5 font-label-mono text-label-mono uppercase text-on-surface-variant hover:text-on-surface transition-colors" data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                   <span className="material-symbols-outlined text-[14px]">history</span>
                   {" "}
                   <span>AUDIT TRAIL</span>
-                </a>
+                </span>
               </div>
             </div>
             {/* Primary Worksurface Grid (68% Form, 32% Live Dossier Placard) */}
@@ -449,7 +449,7 @@ export function StaffVehicleEditor() {
                     <span className="font-label-mono text-[10px] tracking-wider uppercase text-error">CHIEF CURATOR PRIVILEGE REQUIRED</span>
                   </div>
                   <p className="font-body-sm text-body-sm">Archiving or retiring this chassis permanently removes it from Munich VIP active dispatch, voids forthcoming reservation inquiries, and freezes its telemetry audit records. This action cannot be reversed without executive console clearance.</p>
-                  <div className="flex justify-end pt-2"><button className="px-5 py-2.5 bg-error text-on-error font-action text-action uppercase tracking-wider hover:opacity-90 transition-opacity" type="button">Retire Vehicle (Archive Chassis)</button></div>
+                  <div className="flex justify-end pt-2"><button className="px-5 py-2.5 bg-error text-on-error font-action text-action uppercase tracking-wider hover:opacity-90 transition-opacity" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Retire Vehicle (Archive Chassis)</button></div>
                 </div>
               </div>
               {/* RIGHT: Live Dossier Placard & Custody Overview (4 of 12 cols = 33.3%, Sticky) */}
@@ -531,21 +531,21 @@ export function StaffVehicleEditor() {
                   <div className="p-4 bg-surface-container-low flex flex-col gap-2">
                     <span className="font-label-mono text-[10px] uppercase tracking-wider text-on-surface-variant font-semibold">RAPID PROTOCOLS</span>
                     <div className="flex flex-col gap-1">
-                      <a className="px-3 py-2 bg-surface-container-lowest hover:bg-surface-container-high transition-colors flex items-center justify-between font-label-mono text-[11px] uppercase text-on-surface" href="#">
+                      <span className="px-3 py-2 bg-surface-container-lowest hover:bg-surface-container-high transition-colors flex items-center justify-between font-label-mono text-[11px] uppercase text-on-surface" data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                         <span>DOWNLOAD CHASSIS PDF DOSSIER</span>
                         {" "}
                         <span className="material-symbols-outlined text-[16px]">file_download</span>
-                      </a>
-                      <a className="px-3 py-2 bg-surface-container-lowest hover:bg-surface-container-high transition-colors flex items-center justify-between font-label-mono text-[11px] uppercase text-on-surface" href="#">
+                      </span>
+                      <span className="px-3 py-2 bg-surface-container-lowest hover:bg-surface-container-high transition-colors flex items-center justify-between font-label-mono text-[11px] uppercase text-on-surface" data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                         <span>TRIGGER KEY FOB IMMOBILIZER TEST</span>
                         {" "}
                         <span className="material-symbols-outlined text-[16px]">key</span>
-                      </a>
-                      <a className="px-3 py-2 bg-surface-container-lowest hover:bg-surface-container-high transition-colors flex items-center justify-between font-label-mono text-[11px] uppercase text-on-surface" href="#">
+                      </span>
+                      <span className="px-3 py-2 bg-surface-container-lowest hover:bg-surface-container-high transition-colors flex items-center justify-between font-label-mono text-[11px] uppercase text-on-surface" data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                         <span>GENERATE QR PICKUP RECEIPT</span>
                         {" "}
                         <span className="material-symbols-outlined text-[16px]">qr_code_2</span>
-                      </a>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -559,8 +559,8 @@ export function StaffVehicleEditor() {
                 <span className="hidden md:inline font-body-sm text-body-sm text-on-surface-variant pl-2">— Security deposit escrow validation warning requires resolution before commit.</span>
               </div>
               <div className="flex items-center gap-4">
-                <button className="px-5 py-2.5 bg-surface-container-lowest text-on-surface font-action text-action uppercase tracking-wider hover:bg-surface-container transition-colors" type="button">Discard Changes</button>
-                <button className="px-7 py-2.5 bg-primary text-on-primary font-action text-action uppercase tracking-wider hover:opacity-95 transition-opacity" type="button">Save Vehicle Dossier</button>
+                <button className="px-5 py-2.5 bg-surface-container-lowest text-on-surface font-action text-action uppercase tracking-wider hover:bg-surface-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Discard Changes</button>
+                <button className="px-7 py-2.5 bg-primary text-on-primary font-action text-action uppercase tracking-wider hover:opacity-95 transition-opacity" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Save Vehicle Dossier</button>
               </div>
             </div>
           </div>

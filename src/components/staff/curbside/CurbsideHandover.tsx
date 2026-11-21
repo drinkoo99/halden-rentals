@@ -27,8 +27,8 @@ export function CurbsideHandover() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <button aria-label="Sync Status" className="w-11 h-11 flex items-center justify-center text-surface-container-highest active:bg-white/5 transition-colors"><span className="material-symbols-outlined text-[20px]">sync</span></button>
-            <button aria-label="Notifications" className="relative w-11 h-11 flex items-center justify-center text-surface-container-highest active:bg-white/5 transition-colors">
+            <button aria-label="Sync Status" className="w-11 h-11 flex items-center justify-center text-surface-container-highest active:bg-white/5 transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true"><span className="material-symbols-outlined text-[20px]">sync</span></button>
+            <button aria-label="Notifications" className="relative w-11 h-11 flex items-center justify-center text-surface-container-highest active:bg-white/5 transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
               <span className="material-symbols-outlined text-[20px]">notifications</span>
               <span className="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-error rounded-full" />
             </button>
@@ -80,7 +80,7 @@ export function CurbsideHandover() {
                     <p className="font-label-mono text-[10px] tracking-wider text-on-surface-variant uppercase">DE KBA Verified · B074R881920</p>
                   </div>
                 </div>
-                <button className="font-label-mono text-[10px] tracking-wider text-on-surface-variant hover:text-on-surface uppercase py-1 px-2 bg-surface-container-low min-h-[32px] flex items-center">RE-SCAN</button>
+                <button className="font-label-mono text-[10px] tracking-wider text-on-surface-variant hover:text-on-surface uppercase py-1 px-2 bg-surface-container-low min-h-[32px] flex items-center" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">RE-SCAN</button>
               </div>
               <div className="flex items-center gap-3 bg-surface-container-low p-2">
                 <Photo src={media.handoverLicenceScan} alt="Driver Licence Scan" className="w-16 h-10 object-cover bg-surface-dim" data-alt="Macro official EU European Union driving licence plastic smart card resting flat on neutral warm sand stone background, holograms and watermark micro-etching visible, authentic German driver credentials issued to Clara von Bergmann, studio lighting." sizes="64px" />
@@ -162,7 +162,7 @@ export function CurbsideHandover() {
                   <span className="font-spec-numeral text-[8px] text-on-surface-variant">09:42:04</span>
                 </div>
                 {/* Add Slot */}
-                <button className="flex flex-col items-center justify-center bg-surface-container-high hover:bg-surface-container-highest transition-colors min-h-[90px] p-2 text-center group">
+                <button className="flex flex-col items-center justify-center bg-surface-container-high hover:bg-surface-container-highest transition-colors min-h-[90px] p-2 text-center group" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                   <span className="material-symbols-outlined text-[24px] text-on-surface-variant group-hover:text-on-surface mb-1">add_a_photo</span>
                   {" "}
                   <span className="font-label-mono text-[8px] uppercase tracking-wider text-on-surface leading-tight">REAR / RIGHT QUADRANT</span>
@@ -184,7 +184,7 @@ export function CurbsideHandover() {
               <div className="bg-surface-container-low p-3 mb-2.5">
                 <div className="flex justify-between items-center text-label-mono text-[10px] text-on-surface-variant mb-2">
                   <span>SIGNATURE CANVAS</span>
-                  <button className="underline hover:text-on-surface uppercase">Clear</button>
+                  <button className="underline hover:text-on-surface uppercase" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Clear</button>
                 </div>
                 {/* Stylized Signature Pad with simulated signature trace */}
                 <div className="bg-surface-container-lowest h-20 w-full flex items-center justify-center relative overflow-hidden px-4">

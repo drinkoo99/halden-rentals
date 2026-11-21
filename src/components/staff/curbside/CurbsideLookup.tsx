@@ -27,8 +27,8 @@ export function CurbsideLookup() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <button aria-label="Sync Status" className="w-11 h-11 flex items-center justify-center text-surface-container-highest active:bg-white/5 transition-colors"><span className="material-symbols-outlined text-[20px]">sync</span></button>
-            <button aria-label="Notifications" className="relative w-11 h-11 flex items-center justify-center text-surface-container-highest active:bg-white/5 transition-colors">
+            <button aria-label="Sync Status" className="w-11 h-11 flex items-center justify-center text-surface-container-highest active:bg-white/5 transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true"><span className="material-symbols-outlined text-[20px]">sync</span></button>
+            <button aria-label="Notifications" className="relative w-11 h-11 flex items-center justify-center text-surface-container-highest active:bg-white/5 transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
               <span className="material-symbols-outlined text-[20px]">notifications</span>
               <span className="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-error rounded-full" />
             </button>
@@ -71,7 +71,7 @@ export function CurbsideLookup() {
             <div className="flex flex-col gap-1.5">
               <div className="flex items-center justify-between">
                 <span className="font-label-mono text-[10px] uppercase tracking-widest text-secondary">RECENT DISPATCH QUERIES</span>
-                <button className="font-label-mono text-[10px] tracking-wider text-outline hover:text-on-surface uppercase underline" type="button">PURGE</button>
+                <button className="font-label-mono text-[10px] tracking-wider text-outline hover:text-on-surface uppercase underline" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">PURGE</button>
               </div>
               <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
                 <button className="query-chip shrink-0 px-2.5 py-1.5 bg-surface-container-high border border-[#D8D6CE] font-label-mono text-[11px] text-on-surface hover:bg-surface-container-highest transition-colors active:scale-[0.98]" onClick={() => setQuery("HLD-0612-4821")} type="button">HLD-0612-4821</button>
@@ -169,7 +169,7 @@ export function CurbsideLookup() {
                     {" "}
                     <span>CALL PATRON</span>
                   </a>
-                  <button className="h-11 bg-transparent border border-[#171A18] text-on-surface font-label-mono text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-surface-container-highest transition-colors active:bg-surface-dim" type="button">
+                  <button className="h-11 bg-transparent border border-[#171A18] text-on-surface font-label-mono text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-surface-container-highest transition-colors active:bg-surface-dim" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="material-symbols-outlined text-[16px]">open_in_new</span>
                     {" "}
                     <span>FULL DOSSIER</span>
@@ -218,7 +218,7 @@ export function CurbsideLookup() {
                   <h4 className="font-body-md text-body-md font-semibold text-on-surface truncate">911 GT3 Touring Package</h4>
                   <span className="font-label-mono text-[10px] text-outline block">Pre-flight Cleansed · Ready for Rapid Reallocation</span>
                 </div>
-                <button className="px-2.5 py-1.5 bg-surface-container-highest border border-[#D8D6CE] font-label-mono text-[10px] text-on-surface uppercase tracking-wider hover:bg-surface-dim transition-colors shrink-0" type="button">SWAP</button>
+                <button className="px-2.5 py-1.5 bg-surface-container-highest border border-[#D8D6CE] font-label-mono text-[10px] text-on-surface uppercase tracking-wider hover:bg-surface-dim transition-colors shrink-0" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">SWAP</button>
               </div>
             </div>
           </section>

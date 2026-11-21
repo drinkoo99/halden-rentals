@@ -270,17 +270,11 @@ export function MobileMenu({
               </div>
               <div className="flex items-center justify-between pt-3 border-t border-tertiary-container/30">
                 <div className="flex items-center gap-4">
-                  <a className="font-label-mono text-label-mono text-surface-container-high hover:text-surface-container-lowest transition-colors py-2" href="#">
-                    Instagram
-                  </a>
+                  
                   <span className="text-tertiary-fixed-dim font-label-mono text-[10px]">·</span>
-                  <a className="font-label-mono text-label-mono text-surface-container-high hover:text-surface-container-lowest transition-colors py-2" href="#">
-                    Substack
-                  </a>
+                  
                   <span className="text-tertiary-fixed-dim font-label-mono text-[10px]">·</span>
-                  <a className="font-label-mono text-label-mono text-surface-container-high hover:text-surface-container-lowest transition-colors py-2" href="#">
-                    LinkedIn
-                  </a>
+                  
                 </div>
                 <span className="font-label-mono text-label-mono text-on-tertiary-container">© 2025</span>
               </div>

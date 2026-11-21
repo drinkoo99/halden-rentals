@@ -295,11 +295,11 @@ export function JourneyDetailMobile() {
               {/* Primary Action */}
               <Link className="w-full min-h-[48px] bg-primary-fixed text-on-primary-fixed font-action text-action uppercase tracking-widest flex items-center justify-center hover:bg-surface-tint hover:text-on-primary transition-colors mb-4" href="/about#contact">Plan this journey</Link>
               {/* Secondary GPX Download Action */}
-              <a className="min-h-[44px] inline-flex items-center gap-2 text-tertiary-fixed font-label-mono text-label-mono uppercase tracking-widest hover:text-on-tertiary transition-colors" href="#">
+              <span className="min-h-[44px] inline-flex items-center gap-2 text-tertiary-fixed font-label-mono text-label-mono uppercase tracking-widest hover:text-on-tertiary transition-colors" data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                 <span className="material-symbols-outlined text-[16px]">file_download</span>
                 {" "}
                 <span>{"Download Telemetry & GPX Track"}</span>
-              </a>
+              </span>
               <div className="mt-6 pt-5 w-full flex items-center justify-between text-on-tertiary-container">
                 <span className="font-label-mono text-[9px] tracking-widest uppercase">PASS STATUS: OPEN</span>
                 <span className="font-label-mono text-[9px] tracking-widest uppercase">{"HALDEN ARCHIVE // 2025"}</span>

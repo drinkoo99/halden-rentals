@@ -379,7 +379,7 @@ export function JourneyDetailDesktop() {
                 {/* CTA Trigger Cluster */}
                 <div className="pt-space-md flex flex-col sm:flex-row items-center justify-center gap-space-md">
                   <Link className="w-full sm:w-auto px-8 py-4 bg-primary text-on-primary font-action text-action uppercase tracking-widest hover:bg-primary-container transition-colors border border-primary-container" href="/about#contact">Inquire with Curator Desk</Link>
-                  <button className="w-full sm:w-auto px-8 py-4 bg-transparent text-[#F8FAF6] border border-[#737973] hover:border-[#F8FAF6] hover:bg-[#F8FAF6]/5 font-action text-action uppercase tracking-widest transition-colors flex items-center justify-center gap-2">
+                  <button className="w-full sm:w-auto px-8 py-4 bg-transparent text-[#F8FAF6] border border-[#737973] hover:border-[#F8FAF6] hover:bg-[#F8FAF6]/5 font-action text-action uppercase tracking-widest transition-colors flex items-center justify-center gap-2" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="material-symbols-outlined text-[16px]">file_download</span>
                     {" "}Download Digital Route Dossier (PDF / GPX)
                   </button>

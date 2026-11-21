@@ -26,8 +26,8 @@ export function CurbsideToday() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <button aria-label="Sync Status" className="w-11 h-11 flex items-center justify-center text-surface-container-highest active:bg-white/5 transition-colors"><span className="material-symbols-outlined text-[20px]">sync</span></button>
-            <button aria-label="Notifications" className="relative w-11 h-11 flex items-center justify-center text-surface-container-highest active:bg-white/5 transition-colors">
+            <button aria-label="Sync Status" className="w-11 h-11 flex items-center justify-center text-surface-container-highest active:bg-white/5 transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true"><span className="material-symbols-outlined text-[20px]">sync</span></button>
+            <button aria-label="Notifications" className="relative w-11 h-11 flex items-center justify-center text-surface-container-highest active:bg-white/5 transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
               <span className="material-symbols-outlined text-[20px]">notifications</span>
               <span className="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-error rounded-full" />
             </button>
@@ -40,7 +40,7 @@ export function CurbsideToday() {
           {/* Operational Hub Context Strip */}
           <section className="bg-surface-container-low px-4 py-3 border-b border-[#D8D6CE]">
             <div className="flex items-center justify-between">
-              <button aria-label="Switch Operations Hub" className="flex items-center gap-1.5 text-left group active:opacity-75 transition-opacity">
+              <button aria-label="Switch Operations Hub" className="flex items-center gap-1.5 text-left group active:opacity-75 transition-opacity" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                 <span className="font-label-mono text-label-mono text-primary font-bold uppercase tracking-wider">HUB: MUNICH (MUC VIP T2)</span>
                 {" "}
                 <span className="material-symbols-outlined text-[16px] text-primary transition-transform group-hover:translate-y-0.5">expand_more</span>
@@ -160,7 +160,7 @@ export function CurbsideToday() {
                     <h3 className="font-headline-sm text-[16px] text-on-surface leading-snug truncate mt-0.5 font-normal">Porsche 911 GT3 Touring</h3>
                     <p className="font-label-mono text-[10px] text-on-surface-variant truncate uppercase mt-0.5">Henrik Lindqvist · Tier I</p>
                   </div>
-                  <button className="w-full mt-2 py-1.5 px-2 bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-action text-[11px] uppercase tracking-wider rounded-sm text-center font-semibold transition-colors flex items-center justify-center gap-1">
+                  <button className="w-full mt-2 py-1.5 px-2 bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-action text-[11px] uppercase tracking-wider rounded-sm text-center font-semibold transition-colors flex items-center justify-center gap-1" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="material-symbols-outlined text-[14px]">checklist</span>
                     {" "}
                     <span>VIEW STAGING CHECKLIST</span>
@@ -191,7 +191,7 @@ export function CurbsideToday() {
                     <h3 className="font-headline-sm text-[16px] text-on-surface leading-snug truncate mt-0.5 font-normal">Mercedes-Benz S 580</h3>
                     <p className="font-label-mono text-[10px] text-on-surface-variant truncate uppercase mt-0.5">Dr. Isabella Moreau · Founder</p>
                   </div>
-                  <button className="w-full mt-2 py-1.5 px-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-action text-[11px] uppercase tracking-wider rounded-sm text-center font-medium transition-colors flex items-center justify-center gap-1">
+                  <button className="w-full mt-2 py-1.5 px-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-action text-[11px] uppercase tracking-wider rounded-sm text-center font-medium transition-colors flex items-center justify-center gap-1" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="material-symbols-outlined text-[14px]">visibility</span>
                     {" "}
                     <span>REVIEW DOSSIER</span>
@@ -220,14 +220,14 @@ export function CurbsideToday() {
                       <span className="font-bold text-on-surface">MI-77210</span>
                     </p>
                   </div>
-                  <button className="font-label-mono text-[11px] text-[#B94A48] font-bold underline underline-offset-2 hover:opacity-80 active:opacity-60 transition-opacity">RE-TRIGGER SMS →</button>
+                  <button className="font-label-mono text-[11px] text-[#B94A48] font-bold underline underline-offset-2 hover:opacity-80 active:opacity-60 transition-opacity" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">RE-TRIGGER SMS →</button>
                 </div>
               </div>
             </article>
           </div>
           {/* Operational Footer Link & Telemetry Refresh */}
           <div className="px-4 py-4 mt-auto mb-2 border-t border-[#D8D6CE] flex flex-col items-center gap-1.5 text-center">
-            <button className="font-label-mono text-action text-primary flex items-center gap-1.5 hover:underline tracking-widest uppercase active:opacity-75 transition-opacity">
+            <button className="font-label-mono text-action text-primary flex items-center gap-1.5 hover:underline tracking-widest uppercase active:opacity-75 transition-opacity" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
               <span className="material-symbols-outlined text-[16px]">sync</span>
               {" "}
               <span>REFRESH DISPATCH TELEMETRY</span>

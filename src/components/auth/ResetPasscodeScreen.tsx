@@ -1,9 +1,17 @@
+"use client";
+
+import { useEffect } from "react";
+import { useCountdown } from "@/lib/useCountdown";
 import Link from "next/link";
 import { Photo } from "@/components/ui/Photo";
 import { media } from "@/data/media";
 
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_reset_passcode_verification_desktop/code.html */
 export function ResetPasscodeScreen() {
+  // the Stitch design shows the code as just sent, so the resend countdown starts at 0:30
+  const resend = useCountdown(30);
+  const { start } = resend;
+  useEffect(() => start(), [start]);
   return (
     <div className="bg-surface font-body-md text-on-surface antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container">
       <main className="w-full min-h-screen bg-surface flex flex-col justify-between">
@@ -143,10 +151,10 @@ export function ResetPasscodeScreen() {
                   {/* Action row: Resend timer */}
                   <div className="flex items-center justify-between pb-6 mb-6 border-b border-surface-container-highest">
                     <span className="font-body-sm text-body-sm text-on-surface-variant">Did not receive code?</span>
-                    <button className="font-label-mono text-label-mono text-on-surface hover:text-primary transition-colors flex items-center gap-2">
+                    <button className="font-label-mono text-label-mono text-on-surface hover:text-primary transition-colors flex items-center gap-2 disabled:text-outline disabled:hover:text-outline" disabled={resend.left > 0} onClick={start} type="button">
                       <span className="material-symbols-outlined text-sm">schedule</span>
                       {" "}
-                      <span>RESEND DISPATCH (0:30)</span>
+                      <span>{resend.left > 0 ? `RESEND DISPATCH (${resend.label})` : "RESEND DISPATCH"}</span>
                     </button>
                   </div>
                   {/* Callout for link expired state (Refined stone warning notice) */}
@@ -165,7 +173,7 @@ export function ResetPasscodeScreen() {
                     </div>
                   </div>
                   {/* Primary CTA Button */}
-                  <button className="w-full bg-primary text-on-primary font-action text-action py-4 hover:bg-primary-container transition-colors flex items-center justify-center gap-3">
+                  <button className="w-full bg-primary text-on-primary font-action text-action py-4 hover:bg-primary-container transition-colors flex items-center justify-center gap-3" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span>{"VERIFY & ENTER PATRON VAULT"}</span>
                     {" "}
                     <span className="material-symbols-outlined text-sm">arrow_forward</span>

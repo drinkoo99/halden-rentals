@@ -317,3 +317,18 @@
   --font-mono: var(--font-space-mono), "Space Mono", monospace;
   --font-sans: var(--font-manrope), "Manrope", sans-serif;
 }
+
+/* Controls whose feature arrives with the backend (Phase 2): visibly marked, not clickable.
+   Customer-facing ones also get a visible "Planned" label; the staff console uses a page banner instead. */
+[data-planned] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+[data-planned]:not([data-planned="quiet"])::after {
+  content: " · Planned";
+  font-family: var(--font-label-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}

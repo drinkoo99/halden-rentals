@@ -119,7 +119,7 @@ export function AccountOverviewDesktop() {
                               {" "}COMPLETED
                             </span>
                           </td>
-                          <td className="py-space-md pl-space-md text-right whitespace-nowrap"><button className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" type="button">Receipt</button></td>
+                          <td className="py-space-md pl-space-md text-right whitespace-nowrap"><button className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Receipt</button></td>
                         </tr>
                         {/* Row 2 */}
                         <tr className="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
@@ -138,7 +138,7 @@ export function AccountOverviewDesktop() {
                               {" "}COMPLETED
                             </span>
                           </td>
-                          <td className="py-space-md pl-space-md text-right whitespace-nowrap"><button className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" type="button">Receipt</button></td>
+                          <td className="py-space-md pl-space-md text-right whitespace-nowrap"><button className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Receipt</button></td>
                         </tr>
                         {/* Row 3 */}
                         <tr className="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
@@ -157,7 +157,7 @@ export function AccountOverviewDesktop() {
                               {" "}CANCELLED
                             </span>
                           </td>
-                          <td className="py-space-md pl-space-md text-right whitespace-nowrap"><button className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" type="button">Receipt</button></td>
+                          <td className="py-space-md pl-space-md text-right whitespace-nowrap"><button className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Receipt</button></td>
                         </tr>
                       </tbody>
                     </table>

@@ -40,7 +40,7 @@ export function StaffFleet() {
           </div>
           <div className="flex items-center gap-6">
             <span className="font-label-mono text-label-mono uppercase text-on-surface-variant">THU 24 OCT 2024</span>
-            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
               <span className="material-symbols-outlined text-[20px]">notifications</span>
               <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-error rounded-full" />
             </button>
@@ -95,19 +95,19 @@ export function StaffFleet() {
                 <div className="flex items-center gap-3 self-end lg:self-auto">
                   {/* View Switcher */}
                   <div className="flex border border-outline-variant p-0.5 bg-surface-container-low">
-                    <button className="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-on-primary font-label-mono text-label-mono uppercase transition-colors" title="Table View">
+                    <button className="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-on-primary font-label-mono text-label-mono uppercase transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                       <span className="material-symbols-outlined text-[16px]">view_list</span>
                       {" "}
                       <span>Ledger</span>
                     </button>
-                    <button className="flex items-center gap-1.5 px-3 py-1.5 text-on-surface-variant hover:text-on-surface font-label-mono text-label-mono uppercase transition-colors" title="Gallery Grid">
+                    <button className="flex items-center gap-1.5 px-3 py-1.5 text-on-surface-variant hover:text-on-surface font-label-mono text-label-mono uppercase transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                       <span className="material-symbols-outlined text-[16px]">grid_view</span>
                       {" "}
                       <span>Gallery</span>
                     </button>
                   </div>
                   {/* Add Vehicle Primary Button */}
-                  <button className="flex items-center gap-2 px-5 py-2.5 bg-primary-container text-surface-bright hover:bg-primary font-action text-action uppercase tracking-wider transition-colors duration-150">
+                  <button className="flex items-center gap-2 px-5 py-2.5 bg-primary-container text-surface-bright hover:bg-primary font-action text-action uppercase tracking-wider transition-colors duration-150" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="material-symbols-outlined text-[18px]">add</span>
                     {" "}
                     <span>+ Add Vehicle</span>
@@ -164,7 +164,7 @@ export function StaffFleet() {
                   </select>
                   <span className="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">expand_more</span>
                 </div>
-                <button className="text-on-surface-variant hover:text-on-surface underline underline-offset-4 ml-auto text-label-mono uppercase transition-colors">Reset Ledger</button>
+                <button className="text-on-surface-variant hover:text-on-surface underline underline-offset-4 ml-auto text-label-mono uppercase transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Reset Ledger</button>
               </div>
             </section>
             {/* Fleet Master Table (Architectural Ledger) */}
@@ -221,7 +221,7 @@ export function StaffFleet() {
                         <span className="font-label-mono text-[11px] text-on-surface-variant">85%</span>
                       </div>
                     </td>
-                    <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
+                    <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
                   </tr>
                   {/* Row 2: Range Rover Autobiography (Checked) */}
                   <tr className="bg-surface-container-lowest hover:bg-surface-container-low transition-colors group">
@@ -258,7 +258,7 @@ export function StaffFleet() {
                         <span className="font-label-mono text-[11px] text-on-surface-variant">92%</span>
                       </div>
                     </td>
-                    <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
+                    <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
                   </tr>
                   {/* Row 3: Audi RS6 Avant */}
                   <tr className="bg-surface hover:bg-surface-container-low transition-colors group">
@@ -295,7 +295,7 @@ export function StaffFleet() {
                         <span className="font-label-mono text-[11px] text-on-surface-variant">40%</span>
                       </div>
                     </td>
-                    <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
+                    <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
                   </tr>
                   {/* Row 4: Lexus LC 500 */}
                   <tr className="bg-surface hover:bg-surface-container-low transition-colors group">
@@ -332,7 +332,7 @@ export function StaffFleet() {
                         <span className="font-label-mono text-[11px] text-on-surface-variant">68%</span>
                       </div>
                     </td>
-                    <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
+                    <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
                   </tr>
                   {/* Row 5: Mercedes-Benz S 580 (Using Image 113) */}
                   <tr className="bg-surface hover:bg-surface-container-low transition-colors group">
@@ -369,7 +369,7 @@ export function StaffFleet() {
                         <span className="font-label-mono text-[11px] text-on-surface-variant">78%</span>
                       </div>
                     </td>
-                    <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
+                    <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
                   </tr>
                   {/* Row 6: BMW 540i xDrive (Using Image 119 - Retired) */}
                   <tr className="bg-surface-container-low/40 hover:bg-surface-container-low transition-colors opacity-75 group">
@@ -401,7 +401,7 @@ export function StaffFleet() {
                         <span className="font-label-mono text-[11px] text-on-surface-variant">0%</span>
                       </div>
                     </td>
-                    <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
+                    <td className="py-4 px-3 text-center"><button className="w-7 h-7 inline-flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true"><span className="material-symbols-outlined text-[18px]">more_vert</span></button></td>
                   </tr>
                 </tbody>
               </table>
@@ -411,12 +411,12 @@ export function StaffFleet() {
               <div className="font-label-mono text-label-mono text-on-surface-variant uppercase">SHOWING 1–6 OF 42 CHASSIS SPECIFICATIONS</div>
               <div className="flex items-center gap-1 font-label-mono text-label-mono">
                 <button className="px-3 py-1 text-on-surface-variant hover:text-on-surface border border-outline-variant bg-surface-container-low transition-colors disabled:opacity-40" disabled>PREV</button>
-                <button className="px-3 py-1 bg-primary text-on-primary border border-primary">1</button>
-                <button className="px-3 py-1 text-on-surface hover:bg-surface-container-low border border-outline-variant bg-surface transition-colors">2</button>
-                <button className="px-3 py-1 text-on-surface hover:bg-surface-container-low border border-outline-variant bg-surface transition-colors">3</button>
+                <button className="px-3 py-1 bg-primary text-on-primary border border-primary" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">1</button>
+                <button className="px-3 py-1 text-on-surface hover:bg-surface-container-low border border-outline-variant bg-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">2</button>
+                <button className="px-3 py-1 text-on-surface hover:bg-surface-container-low border border-outline-variant bg-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">3</button>
                 <span className="px-2 text-on-surface-variant">...</span>
-                <button className="px-3 py-1 text-on-surface hover:bg-surface-container-low border border-outline-variant bg-surface transition-colors">7</button>
-                <button className="px-3 py-1 text-on-surface hover:bg-surface-container-low border border-outline-variant bg-surface-container-low transition-colors">NEXT</button>
+                <button className="px-3 py-1 text-on-surface hover:bg-surface-container-low border border-outline-variant bg-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">7</button>
+                <button className="px-3 py-1 text-on-surface hover:bg-surface-container-low border border-outline-variant bg-surface-container-low transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">NEXT</button>
               </div>
             </section>
             {/* Curatorial Filtering Empty State Demonstration Matrix (Secondary Context) */}
@@ -430,7 +430,7 @@ export function StaffFleet() {
                 <div className="font-label-mono text-label-mono uppercase tracking-widest text-[#C98A2C] mb-2">{"ACTIVE QUERY: HUB: VIENNA (VIE) // STATUS: IN SERVICE"}</div>
                 <h2 className="font-headline-md text-headline-md text-on-surface max-w-xl mb-3">No matching chassis records found in current ledger query.</h2>
                 <p className="font-body-md text-body-md text-on-surface-variant max-w-md mb-6">No vehicles within the Scandinavia logistics zone currently match diagnostic custody states. Adjust station filters or clear active criteria.</p>
-                <button className="px-5 py-2.5 bg-surface text-on-surface border border-outline hover:border-primary font-action text-action uppercase tracking-wider transition-colors inline-flex items-center gap-2">
+                <button className="px-5 py-2.5 bg-surface text-on-surface border border-outline hover:border-primary font-action text-action uppercase tracking-wider transition-colors inline-flex items-center gap-2" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                   <span className="material-symbols-outlined text-[16px]">restart_alt</span>
                   {" "}
                   <span>Clear Filters</span>
@@ -472,14 +472,14 @@ export function StaffFleet() {
                     <span className="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[16px] text-tertiary-fixed-dim">local_shipping</span>
                   </div>
                   {/* Export Telemetry */}
-                  <button className="px-4 py-2 border border-tertiary-container hover:bg-tertiary-container text-on-tertiary font-action text-action uppercase tracking-wider flex items-center gap-2 transition-colors">
+                  <button className="px-4 py-2 border border-tertiary-container hover:bg-tertiary-container text-on-tertiary font-action text-action uppercase tracking-wider flex items-center gap-2 transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="material-symbols-outlined text-[16px]">download</span>
                     {" "}
                     <span>Export Manifest</span>
                   </button>
                   <div className="h-6 w-px bg-tertiary-container mx-1" />
                   {/* Deselect Button */}
-                  <button className="text-tertiary-fixed-dim hover:text-on-tertiary font-label-mono text-label-mono uppercase tracking-wider underline underline-offset-4 transition-colors">Deselect All</button>
+                  <button className="text-tertiary-fixed-dim hover:text-on-tertiary font-label-mono text-label-mono uppercase tracking-wider underline underline-offset-4 transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Deselect All</button>
                 </div>
               </div>
             </aside>

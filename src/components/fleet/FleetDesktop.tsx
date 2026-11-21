@@ -657,9 +657,9 @@ export function FleetFooter() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#666B65] font-mono">
           <p>© 2025 HALDEN AUTOMOBILE AG. ALL RIGHTS RESERVED.</p>
           <div className="flex space-x-6 mt-4 sm:mt-0">
-            <a href="#" className="hover:text-ivory transition-colors">INSTAGRAM</a>
-            <a href="#" className="hover:text-ivory transition-colors">SUBSTACK</a>
-            <a href="#" className="hover:text-ivory transition-colors">LINKEDIN</a>
+            
+            
+            
           </div>
         </div>
       </div>

@@ -40,7 +40,7 @@ export function StaffBookings() {
           </div>
           <div className="flex items-center gap-6">
             <span className="font-label-mono text-label-mono uppercase text-on-surface-variant">THU 24 OCT 2024</span>
-            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
               <span className="material-symbols-outlined text-[20px]">notifications</span>
               <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-error rounded-full" />
             </button>
@@ -59,12 +59,12 @@ export function StaffBookings() {
                 <span className="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest px-2.5 py-1 bg-surface-container rounded-none">{"[142 ARCHIVE DOSSIERS // 18 ACTIVE CYCLES]"}</span>
               </div>
               <div className="flex items-center gap-3">
-                <button className="group flex items-center gap-2 px-4 py-2 bg-surface-container-low hover:bg-surface-container text-on-surface font-action text-action uppercase transition-colors rounded-none" type="button">
+                <button className="group flex items-center gap-2 px-4 py-2 bg-surface-container-low hover:bg-surface-container text-on-surface font-action text-action uppercase transition-colors rounded-none" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                   <span className="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-on-surface">download</span>
                   {" "}
                   <span>Export CSV Manifest</span>
                 </button>
-                <button className="flex items-center gap-2 px-5 py-2.5 bg-primary text-on-primary hover:bg-primary-container font-action text-action uppercase transition-colors rounded-none" type="button">
+                <button className="flex items-center gap-2 px-5 py-2.5 bg-primary text-on-primary hover:bg-primary-container font-action text-action uppercase transition-colors rounded-none" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                   <span className="material-symbols-outlined text-[17px]">add</span>
                   {" "}
                   <span>New Reservation Dossier</span>
@@ -73,24 +73,24 @@ export function StaffBookings() {
             </div>
             {/* Segmented Tab Navigation */}
             <div className="w-full flex items-center gap-1 bg-surface-container-low p-1 mb-6">
-              <button className="relative flex items-center gap-2 px-5 py-2.5 bg-surface text-primary font-label-mono text-label-mono font-bold uppercase transition-all">
+              <button className="relative flex items-center gap-2 px-5 py-2.5 bg-surface text-primary font-label-mono text-label-mono font-bold uppercase transition-all" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                 <span>UPCOMING</span>
                 {" "}
                 <span className="px-1.5 py-0.2 bg-primary-fixed text-on-primary-fixed text-[10px] leading-tight font-spec-numeral">18</span>
                 {" "}
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
               </button>
-              <button className="flex items-center gap-2 px-5 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-mono text-label-mono uppercase transition-colors">
+              <button className="flex items-center gap-2 px-5 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-mono text-label-mono uppercase transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                 <span>ON THE ROAD</span>
                 {" "}
                 <span className="px-1.5 py-0.2 bg-surface-container-high text-on-surface-variant text-[10px] leading-tight font-spec-numeral">31</span>
               </button>
-              <button className="flex items-center gap-2 px-5 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-mono text-label-mono uppercase transition-colors">
+              <button className="flex items-center gap-2 px-5 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-mono text-label-mono uppercase transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                 <span>COMPLETED</span>
                 {" "}
                 <span className="px-1.5 py-0.2 bg-surface-container-high text-on-surface-variant text-[10px] leading-tight font-spec-numeral">84</span>
               </button>
-              <button className="flex items-center gap-2 px-5 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-mono text-label-mono uppercase transition-colors">
+              <button className="flex items-center gap-2 px-5 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-mono text-label-mono uppercase transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                 <span>CANCELLED</span>
                 {" "}
                 <span className="px-1.5 py-0.2 bg-surface-container-high text-on-surface-variant text-[10px] leading-tight font-spec-numeral">09</span>
@@ -112,7 +112,7 @@ export function StaffBookings() {
               <div className="flex items-center gap-2">
                 {/* Hub Selector */}
                 <div className="relative">
-                  <button className="flex items-center gap-2 px-3 py-2 bg-surface hover:bg-surface-container text-on-surface font-label-mono text-label-mono uppercase transition-colors">
+                  <button className="flex items-center gap-2 px-3 py-2 bg-surface hover:bg-surface-container text-on-surface font-label-mono text-label-mono uppercase transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="text-on-surface-variant">HUB:</span>
                     {" "}
                     <span className="font-bold">ALL HUBS (5)</span>
@@ -122,7 +122,7 @@ export function StaffBookings() {
                 </div>
                 {/* Date Range */}
                 <div className="relative">
-                  <button className="flex items-center gap-2 px-3 py-2 bg-surface hover:bg-surface-container text-on-surface font-label-mono text-label-mono uppercase transition-colors">
+                  <button className="flex items-center gap-2 px-3 py-2 bg-surface hover:bg-surface-container text-on-surface font-label-mono text-label-mono uppercase transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="text-on-surface-variant">RANGE:</span>
                     {" "}
                     <span className="font-bold">NEXT 14 DAYS</span>
@@ -132,7 +132,7 @@ export function StaffBookings() {
                 </div>
                 {/* Status Filter */}
                 <div className="relative">
-                  <button className="flex items-center gap-2 px-3 py-2 bg-surface hover:bg-surface-container text-on-surface font-label-mono text-label-mono uppercase transition-colors">
+                  <button className="flex items-center gap-2 px-3 py-2 bg-surface hover:bg-surface-container text-on-surface font-label-mono text-label-mono uppercase transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="text-on-surface-variant">STATUS:</span>
                     {" "}
                     <span className="font-bold">ALL ACTIVE</span>
@@ -142,7 +142,7 @@ export function StaffBookings() {
                 </div>
                 {/* Vehicle Category */}
                 <div className="relative">
-                  <button className="flex items-center gap-2 px-3 py-2 bg-surface hover:bg-surface-container text-on-surface font-label-mono text-label-mono uppercase transition-colors">
+                  <button className="flex items-center gap-2 px-3 py-2 bg-surface hover:bg-surface-container text-on-surface font-label-mono text-label-mono uppercase transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="text-on-surface-variant">CLASS:</span>
                     {" "}
                     <span className="font-bold">ALL CATEGORIES</span>
@@ -151,7 +151,7 @@ export function StaffBookings() {
                   </button>
                 </div>
                 {/* Reset Filter Button */}
-                <button className="px-3 py-2 text-on-surface-variant hover:text-on-surface font-label-mono text-label-mono uppercase underline underline-offset-4 ml-1 transition-colors">RESET</button>
+                <button className="px-3 py-2 text-on-surface-variant hover:text-on-surface font-label-mono text-label-mono uppercase underline underline-offset-4 ml-1 transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">RESET</button>
               </div>
             </div>
             {/* Primary Archival Bookings Ledger Table */}
@@ -484,10 +484,10 @@ export function StaffBookings() {
               {/* Archival Pagination Bar */}
               <div className="flex items-center gap-1 font-label-mono text-label-mono select-none">
                 <button className="px-3 py-1.5 bg-surface-container text-on-surface-variant/50 cursor-not-allowed uppercase" disabled>PREV</button>
-                <button className="px-3 py-1.5 bg-primary text-on-primary font-bold">1</button>
-                <button className="px-3 py-1.5 bg-surface hover:bg-surface-container text-on-surface transition-colors">2</button>
-                <button className="px-3 py-1.5 bg-surface hover:bg-surface-container text-on-surface transition-colors">3</button>
-                <button className="px-3 py-1.5 bg-surface hover:bg-surface-container text-on-surface uppercase transition-colors">NEXT</button>
+                <button className="px-3 py-1.5 bg-primary text-on-primary font-bold" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">1</button>
+                <button className="px-3 py-1.5 bg-surface hover:bg-surface-container text-on-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">2</button>
+                <button className="px-3 py-1.5 bg-surface hover:bg-surface-container text-on-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">3</button>
+                <button className="px-3 py-1.5 bg-surface hover:bg-surface-container text-on-surface uppercase transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">NEXT</button>
               </div>
             </div>
           </div>

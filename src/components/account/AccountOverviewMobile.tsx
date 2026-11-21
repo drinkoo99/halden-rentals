@@ -15,7 +15,7 @@ export function AccountOverviewMobile({ empty = false }: { empty?: boolean }) {
           </div>
           <div className="flex items-center gap-space-sm">
             <span className="font-headline-sm text-headline-sm tracking-tight text-on-surface hidden">Overview</span>
-            <button aria-label="Archive Index" className="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors"><span className="material-symbols-outlined text-[20px]">search</span></button>
+            
             <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span className="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
           </div>
         </div>
@@ -35,10 +35,10 @@ export function AccountOverviewMobile({ empty = false }: { empty?: boolean }) {
             <p className="font-label-mono text-[10px] uppercase tracking-[0.14em] text-on-surface-variant leading-relaxed">{"PATRON CIRCLE // TIER-1 ARCHIVE CLEARANCE • 03 JOURNEYS COMPLETED"}</p>
             {/* Space Mono Tab Strip */}
             <div className="flex items-center gap-6 mt-6 overflow-x-auto no-scrollbar">
-              <button className="relative pb-2 font-label-mono text-[11px] tracking-[0.18em] uppercase text-primary font-bold">
+              <Link className="relative pb-2 font-label-mono text-[11px] tracking-[0.18em] uppercase text-primary font-bold" aria-current="page" href="/account">
                 OVERVIEW{" "}
                 <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary" />
-              </button>
+              </Link>
               <a className="pb-2 font-label-mono text-[11px] tracking-[0.18em] uppercase text-on-surface-variant hover:text-on-surface transition-colors" href="#m-reservations">RESERVATIONS</a>
               <a className="pb-2 font-label-mono text-[11px] tracking-[0.18em] uppercase text-on-surface-variant hover:text-on-surface transition-colors" href="#m-saved">SAVED</a>
               <Link className="pb-2 font-label-mono text-[11px] tracking-[0.18em] uppercase text-on-surface-variant hover:text-on-surface transition-colors" href="/account/settings">SETTINGS</Link>
@@ -182,7 +182,7 @@ export function AccountOverviewMobile({ empty = false }: { empty?: boolean }) {
                       €380{" "}
                       <span className="font-label-mono text-[8px] text-secondary font-normal">/ DAY</span>
                     </span>
-                    <button aria-label="Reserve Lexus LC 500" className="text-primary hover:text-on-surface transition-colors"><span className="material-symbols-outlined text-[18px]">bookmark_added</span></button>
+                    <Link aria-label="View Lexus LC 500" className="text-primary hover:text-on-surface transition-colors" href="/fleet/lexus-lc-500"><span className="material-symbols-outlined text-[18px]">bookmark_added</span></Link>
                   </div>
                 </div>
               </div>
@@ -203,7 +203,7 @@ export function AccountOverviewMobile({ empty = false }: { empty?: boolean }) {
                       €540{" "}
                       <span className="font-label-mono text-[8px] text-secondary font-normal">/ DAY</span>
                     </span>
-                    <button aria-label="Reserve Porsche 911" className="text-primary hover:text-on-surface transition-colors"><span className="material-symbols-outlined text-[18px]">bookmark_added</span></button>
+                    <Link aria-label="View Porsche 911 GT3 Touring" className="text-primary hover:text-on-surface transition-colors" href="/fleet/porsche-911-gt3-touring"><span className="material-symbols-outlined text-[18px]">bookmark_added</span></Link>
                   </div>
                 </div>
               </div>
@@ -224,7 +224,7 @@ export function AccountOverviewMobile({ empty = false }: { empty?: boolean }) {
                       €410{" "}
                       <span className="font-label-mono text-[8px] text-secondary font-normal">/ DAY</span>
                     </span>
-                    <button aria-label="Reserve Audi RS6" className="text-on-surface-variant hover:text-on-surface transition-colors"><span className="material-symbols-outlined text-[18px]">notifications</span></button>
+                    <Link aria-label="View Audi RS6 Avant Performance" className="text-on-surface-variant hover:text-on-surface transition-colors" href="/fleet/audi-rs6-avant-performance"><span className="material-symbols-outlined text-[18px]">notifications</span></Link>
                   </div>
                 </div>
               </div>
@@ -240,7 +240,7 @@ export function AccountOverviewMobile({ empty = false }: { empty?: boolean }) {
                   <span className="font-action text-[13px] text-on-surface font-semibold">Julian von Berg • Liaison № 4</span>
                 </div>
               </div>
-              <button className="px-3 py-1.5 bg-surface-container-lowest text-primary font-label-mono text-[10px] tracking-wider uppercase hover:bg-primary hover:text-on-primary transition-colors">TRANSMIT →</button>
+              <Link className="px-3 py-1.5 bg-surface-container-lowest text-primary font-label-mono text-[10px] tracking-wider uppercase hover:bg-primary hover:text-on-primary transition-colors" href="/about#contact">TRANSMIT →</Link>
             </div>
           </section>
         </div>

@@ -37,6 +37,9 @@ export function SystemStatesSheet() {
         </div>
       </div>
       <main className="max-w-[1720px] mx-auto px-6 py-12 space-y-20">
+        <div role="note" className="bg-amber-soft border-l-2 border-amber p-4 font-mono text-xs uppercase tracking-wider text-ink">
+          Design reference board: the controls below are visual specimens. The live versions are used across the site (error, 404 and offline pages, loading skeletons, cookie consent).
+        </div>
         {/* ========================================== */}
         {/* 01 / LOADING SKELETONS */}
         {/* ========================================== */}

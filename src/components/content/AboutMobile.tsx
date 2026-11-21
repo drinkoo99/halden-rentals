@@ -269,11 +269,11 @@ export function AboutMobile() {
                 <span className="font-label-mono text-[10px] text-secondary tracking-widest uppercase">DIRECTOR OF CURATORIAL LOGISTICS</span>
                 <h3 className="font-headline-sm text-headline-sm text-primary mt-1 mb-1">Julian von Berg</h3>
                 <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">Previously with the St. Moritz Concours d’Elegance. Oversees fleet acquisition, chassis allocation, and cross-border transport.</p>
-                <button className="h-11 w-full bg-surface-container-high hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 text-action font-action text-primary">
+                <a className="h-11 w-full bg-surface-container-high hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 text-action font-action text-primary" href="#enquiry-section">
                   <span className="font-label-mono text-label-mono uppercase tracking-wider">Direct Transmission</span>
                   {" "}
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </button>
+                </a>
               </div>
               {/* Profile 2 */}
               <div className="bg-surface p-4 flex flex-col">
@@ -281,11 +281,11 @@ export function AboutMobile() {
                 <span className="font-label-mono text-[10px] text-secondary tracking-widest uppercase">TRANSCONTINENTAL FLEET LIAISON</span>
                 <h3 className="font-headline-sm text-headline-sm text-primary mt-1 mb-1">Elena Rostova</h3>
                 <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">Specializing in Alpine route preparation, helicopter-to-cockpit staging, and private hangar handover at Zurich and Malpensa.</p>
-                <button className="h-11 w-full bg-surface-container-high hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 text-action font-action text-primary">
+                <a className="h-11 w-full bg-surface-container-high hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 text-action font-action text-primary" href="#enquiry-section">
                   <span className="font-label-mono text-label-mono uppercase tracking-wider">Direct Transmission</span>
                   {" "}
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </button>
+                </a>
               </div>
               {/* Profile 3 */}
               <div className="bg-surface p-4 flex flex-col">
@@ -293,11 +293,11 @@ export function AboutMobile() {
                 <span className="font-label-mono text-[10px] text-secondary tracking-widest uppercase">MASTER TECHNICAL CUSTODIAN</span>
                 <h3 className="font-headline-sm text-headline-sm text-primary mt-1 mb-1">Marc Oberholzer</h3>
                 <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">Thirty years tuning competition machinery in Winterthur. Responsible for the 48-point telemetry and diagnostic sign-off.</p>
-                <button className="h-11 w-full bg-surface-container-high hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 text-action font-action text-primary">
+                <a className="h-11 w-full bg-surface-container-high hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 text-action font-action text-primary" href="#enquiry-section">
                   <span className="font-label-mono text-label-mono uppercase tracking-wider">Direct Transmission</span>
                   {" "}
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </button>
+                </a>
               </div>
             </div>
           </section>

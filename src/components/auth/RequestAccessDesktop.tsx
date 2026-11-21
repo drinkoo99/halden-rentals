@@ -77,7 +77,7 @@ export function RequestAccessDesktop() {
                 {/* Segmented Mode Control */}
                 <div className="grid grid-cols-2 p-1 bg-surface-container-high rounded-[2px] mb-8 max-w-md">
                   <Link className="py-2.5 font-action text-action text-secondary text-center hover:text-on-surface transition-colors" href="/sign-in">Sign In</Link>
-                  <button className="py-2.5 font-action text-action bg-primary text-on-primary text-center rounded-[2px]" type="button">Request Access</button>
+                  <span className="py-2.5 font-action text-action bg-primary text-on-primary text-center rounded-[2px]" aria-current="page">Request Access</span>
                 </div>
                 {/* Credential Intake Form */}
                 <form className="space-y-6 max-w-xl" noValidate onSubmit={f.submit}>

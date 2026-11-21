@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useState } from "react";
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_mobile_patron_settings/code.html */
 export function AccountSettingsMobile() {
@@ -11,14 +13,14 @@ export function AccountSettingsMobile() {
       <header className="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(23,26,24,0.02)]">
         <div className="h-16 px-gutter-mobile flex items-center justify-between">
           <div className="flex items-center gap-space-sm">
-            <button aria-label="Navigate back" className="w-11 h-11 -ml-2 flex items-center justify-center text-on-surface hover:text-primary transition-colors"><span className="material-symbols-outlined text-[20px]">arrow_back</span></button>
+            <Link aria-label="Navigate back" className="w-11 h-11 -ml-2 flex items-center justify-center text-on-surface hover:text-primary transition-colors" href="/account"><span className="material-symbols-outlined text-[20px]">arrow_back</span></Link>
             <div className="flex flex-col">
               <span className="font-label-mono text-[9px] uppercase tracking-[0.16em] text-on-surface-variant font-medium">DOSSIER SPECIFICATION</span>
               <h1 className="font-headline-sm text-headline-sm text-on-surface leading-tight">Patron Settings</h1>
             </div>
           </div>
           <div className="flex items-center gap-space-xs">
-            <button aria-label="Protocol options" className="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span className="material-symbols-outlined text-[20px]">more_vert</span></button>
+            
             <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span className="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
           </div>
         </div>
@@ -200,7 +202,7 @@ export function AccountSettingsMobile() {
                   <h3 className="font-headline-sm text-[18px] text-on-surface font-normal">Decommission Dossier</h3>
                   <p className="font-body-sm text-on-surface-variant">Terminating this atelier profile revokes all bespoke driving privileges, archive vehicle allocations, and confidential concierge services across the European network.</p>
                   <div className="mt-2 pt-2 flex justify-start">
-                    <button className="font-action text-action text-error uppercase tracking-wider flex items-center gap-1.5 py-2 hover:opacity-80 transition-opacity" type="button">
+                    <button className="font-action text-action text-error uppercase tracking-wider flex items-center gap-1.5 py-2 hover:opacity-80 transition-opacity" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                       <span className="material-symbols-outlined text-[16px]">delete_forever</span>
                       {" "}
                       <span>{"Delete Account & Archival Record"}</span>

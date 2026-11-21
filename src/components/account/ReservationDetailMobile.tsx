@@ -1,5 +1,7 @@
 "use client";
 
+import { ShareButton } from "@/components/ui/ShareButton";
+
 import Link from "next/link";
 import { useState } from "react";
 import { Photo } from "@/components/ui/Photo";
@@ -38,7 +40,7 @@ export function ReservationDetailMobile({ cancelled = false }: { cancelled?: boo
           {/* Sub-Header Meta & Dossier Navigation Reference */}
           <div className="px-margin-mobile pt-3 pb-3 bg-surface-container-low flex items-center justify-between border-b border-outline-variant">
             <div className="flex items-center gap-2"><span className="font-label-mono text-label-mono tracking-[0.16em] uppercase text-on-surface-variant font-medium">DOSSIER · HLD-0612-4821</span></div>
-            <div className="flex items-center gap-3"><button aria-label="Share reservation manifest" className="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors"><span className="material-symbols-outlined text-[18px]">share</span></button></div>
+            <div className="flex items-center gap-3"><ShareButton aria-label="Share reservation manifest" className="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors"><span className="material-symbols-outlined text-[18px]">share</span></ShareButton></div>
           </div>
           {/* Hero Exhibition Stage */}
           <div className="px-margin-mobile pt-6 pb-2">
@@ -230,7 +232,7 @@ export function ReservationDetailMobile({ cancelled = false }: { cancelled?: boo
                 </div>
                 <div className="pt-2 flex items-center justify-between">
                   <span className="font-label-mono text-[10px] text-on-surface-variant uppercase">DUE AT HANDOVER · NOTHING CHARGED ONLINE</span>
-                  <button className="font-label-mono text-[10px] uppercase text-primary underline tracking-wider flex items-center gap-1 hover:text-on-surface">
+                  <button className="font-label-mono text-[10px] uppercase text-primary underline tracking-wider flex items-center gap-1 hover:text-on-surface" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span>TAX INVOICE PDF</span>
                     {" "}
                     <span className="material-symbols-outlined text-[12px]">download</span>

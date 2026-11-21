@@ -40,7 +40,7 @@ export function StaffOverview() {
           </div>
           <div className="flex items-center gap-6">
             <span className="font-label-mono text-label-mono uppercase text-on-surface-variant">THU 24 OCT 2024</span>
-            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
               <span className="material-symbols-outlined text-[20px]">notifications</span>
               <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-error rounded-full" />
             </button>
@@ -59,8 +59,8 @@ export function StaffOverview() {
                 <h1 className="font-headline-lg text-headline-lg text-on-surface">Operations overview</h1>
               </div>
               <div className="flex items-center gap-3">
-                <button className="px-4 py-2 border border-on-surface text-on-surface font-action text-action uppercase hover:bg-surface-container transition-colors rounded-none" type="button">EXPORT LOG</button>
-                <button className="px-5 py-2 bg-primary-container text-on-primary font-action text-action uppercase hover:bg-primary transition-colors rounded-none" type="button">+ NEW RESERVATION</button>
+                <button className="px-4 py-2 border border-on-surface text-on-surface font-action text-action uppercase hover:bg-surface-container transition-colors rounded-none" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">EXPORT LOG</button>
+                <button className="px-5 py-2 bg-primary-container text-on-primary font-action text-action uppercase hover:bg-primary transition-colors rounded-none" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">+ NEW RESERVATION</button>
               </div>
             </div>
             {/* KPI Strip: 5 Hairline-Separated Figures */}
@@ -315,7 +315,7 @@ export function StaffOverview() {
                         <span className="font-body-sm text-body-sm text-on-surface-variant">International driving permit scan requires manual review before 10:30 ZRH handover.</span>
                       </div>
                     </div>
-                    <button className="font-label-mono text-label-mono uppercase text-on-surface border border-outline-variant px-2.5 py-1 hover:bg-surface-container shrink-0" type="button">REVIEW →</button>
+                    <button className="font-label-mono text-label-mono uppercase text-on-surface border border-outline-variant px-2.5 py-1 hover:bg-surface-container shrink-0" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">REVIEW →</button>
                   </div>
                   {/* Item 2: Problem */}
                   <div className="p-5 flex items-start justify-between gap-4 hover:bg-surface-container-low transition-colors">
@@ -327,7 +327,7 @@ export function StaffOverview() {
                         <span className="font-body-sm text-body-sm text-on-surface-variant">BMW 540i xDrive exceeded 15,000 km interval by 340 km. Hold from MUC dispatch.</span>
                       </div>
                     </div>
-                    <button className="font-label-mono text-label-mono uppercase text-error border border-error px-2.5 py-1 hover:bg-error-container shrink-0" type="button">HOLD →</button>
+                    <button className="font-label-mono text-label-mono uppercase text-error border border-error px-2.5 py-1 hover:bg-error-container shrink-0" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">HOLD →</button>
                   </div>
                   {/* Item 3: Problem */}
                   <div className="p-5 flex items-start justify-between gap-4 hover:bg-surface-container-low transition-colors">
@@ -339,7 +339,7 @@ export function StaffOverview() {
                         <span className="font-body-sm text-body-sm text-on-surface-variant">Card issuer declined security hold for L. Conti (MXP). Retry link dispatched.</span>
                       </div>
                     </div>
-                    <button className="font-label-mono text-label-mono uppercase text-on-surface border border-outline-variant px-2.5 py-1 hover:bg-surface-container shrink-0" type="button">RETRY →</button>
+                    <button className="font-label-mono text-label-mono uppercase text-on-surface border border-outline-variant px-2.5 py-1 hover:bg-surface-container shrink-0" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">RETRY →</button>
                   </div>
                 </div>
               </div>

@@ -44,7 +44,7 @@ export function StaffAvailability() {
           </div>
           <div className="flex items-center gap-6">
             <span className="font-label-mono text-label-mono uppercase text-on-surface-variant">THU 24 OCT 2024</span>
-            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
               <span className="material-symbols-outlined text-[20px]">notifications</span>
               <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-error rounded-full" />
             </button>
@@ -146,28 +146,28 @@ export function StaffAvailability() {
                 </div>
                 {/* Date Span Controls */}
                 <div className="flex items-center bg-surface border border-[#D8D6CE]">
-                  <button className="px-2.5 py-1.5 border-r border-[#D8D6CE] hover:bg-surface-container transition-colors text-on-surface flex items-center justify-center"><span className="material-symbols-outlined text-[16px]">chevron_left</span></button>
-                  <button className="px-3 py-1.5 font-label-mono text-[11px] uppercase tracking-wider text-primary border-r border-[#D8D6CE] hover:bg-surface-container transition-colors">TODAY</button>
+                  <button className="px-2.5 py-1.5 border-r border-[#D8D6CE] hover:bg-surface-container transition-colors text-on-surface flex items-center justify-center" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true"><span className="material-symbols-outlined text-[16px]">chevron_left</span></button>
+                  <button className="px-3 py-1.5 font-label-mono text-[11px] uppercase tracking-wider text-primary border-r border-[#D8D6CE] hover:bg-surface-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">TODAY</button>
                   <div className="px-3.5 py-1.5 font-label-mono text-spec-numeral text-on-surface font-medium tracking-wide">
                     24 OCT 2024 — 20 NOV 2024{" "}
                     <span className="text-xs text-on-surface-variant uppercase font-normal">(4 WEEKS)</span>
                   </div>
-                  <button className="px-2.5 py-1.5 border-l border-[#D8D6CE] hover:bg-surface-container transition-colors text-on-surface flex items-center justify-center"><span className="material-symbols-outlined text-[16px]">chevron_right</span></button>
+                  <button className="px-2.5 py-1.5 border-l border-[#D8D6CE] hover:bg-surface-container transition-colors text-on-surface flex items-center justify-center" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true"><span className="material-symbols-outlined text-[16px]">chevron_right</span></button>
                 </div>
               </div>
               {/* Zoom & Actions */}
               <div className="flex items-center gap-3">
                 <div className="flex items-center border border-[#D8D6CE] bg-surface p-0.5">
-                  <button className="px-2.5 py-1 font-label-mono text-[10px] uppercase bg-primary text-on-primary font-bold">4 WEEKS (DIURNAL)</button>
-                  <button className="px-2.5 py-1 font-label-mono text-[10px] uppercase text-on-surface hover:bg-surface-container transition-colors">8 WEEKS</button>
-                  <button className="px-2.5 py-1 font-label-mono text-[10px] uppercase text-on-surface hover:bg-surface-container transition-colors">QUARTER</button>
+                  <button className="px-2.5 py-1 font-label-mono text-[10px] uppercase bg-primary text-on-primary font-bold" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">4 WEEKS (DIURNAL)</button>
+                  <button className="px-2.5 py-1 font-label-mono text-[10px] uppercase text-on-surface hover:bg-surface-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">8 WEEKS</button>
+                  <button className="px-2.5 py-1 font-label-mono text-[10px] uppercase text-on-surface hover:bg-surface-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">QUARTER</button>
                 </div>
                 <button className="px-3 py-1.5 border border-[#171A18] bg-surface hover:bg-surface-container font-action text-action text-on-surface uppercase tracking-wider flex items-center gap-1.5 transition-colors" id="btn-open-block-modal" aria-expanded={blocking} onClick={() => setBlocking((b) => !b)} type="button">
                   <span className="material-symbols-outlined text-[16px]">add</span>
                   {" "}
                   <span>Block Dates</span>
                 </button>
-                <button className="px-3 py-1.5 border border-[#D8D6CE] bg-surface hover:bg-surface-container font-action text-action text-on-surface uppercase tracking-wider flex items-center gap-1.5 transition-colors">
+                <button className="px-3 py-1.5 border border-[#D8D6CE] bg-surface hover:bg-surface-container font-action text-action text-on-surface uppercase tracking-wider flex items-center gap-1.5 transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                   <span className="material-symbols-outlined text-[16px]">download</span>
                   {" "}
                   <span>Manifest</span>
@@ -812,8 +812,8 @@ export function StaffAvailability() {
                           <textarea className="w-full p-2 border border-[#D8D6CE] font-body-sm text-xs text-on-surface bg-surface focus:outline-hidden focus:border-primary resize-none placeholder:text-outline" placeholder="Enter reason for block..." rows={2} defaultValue="Scheduled transmission diagnostic & sensor recalibration" />
                         </div>
                         <div className="flex items-center justify-end gap-2 pt-2 border-t border-[#D8D6CE]">
-                          <button className="px-3 py-1.5 font-action text-xs text-on-surface uppercase tracking-wider hover:bg-surface-container" type="button">Cancel</button>
-                          <button className="px-4 py-1.5 font-action text-xs font-semibold bg-primary text-on-primary uppercase tracking-wider hover:bg-primary-container transition-colors" type="button">Save Block</button>
+                          <button className="px-3 py-1.5 font-action text-xs text-on-surface uppercase tracking-wider hover:bg-surface-container" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Cancel</button>
+                          <button className="px-4 py-1.5 font-action text-xs font-semibold bg-primary text-on-primary uppercase tracking-wider hover:bg-primary-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Save Block</button>
                         </div>
                       </div>
                     </div>
@@ -897,7 +897,7 @@ export function StaffAvailability() {
                     <p className="font-body-sm text-xs text-on-surface-variant leading-relaxed">No chassis currently stationed in Vienna (VIE) for this diurnal period. Transfer an unassigned unit from Munich (MUC) or adjust regional search criteria.</p>
                   </div>
                   <div className="mt-4 pt-3 border-t border-[#D8D6CE] flex items-center justify-between">
-                    <button className="font-action text-xs text-primary font-bold uppercase tracking-wider hover:underline flex items-center gap-1">
+                    <button className="font-action text-xs text-primary font-bold uppercase tracking-wider hover:underline flex items-center gap-1" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                       <span>Initiate Hub Relay Dispatch</span>
                       {" "}
                       <span className="material-symbols-outlined text-[14px]">arrow_forward</span>

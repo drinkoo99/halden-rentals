@@ -44,7 +44,7 @@ export function StaffCustomers() {
               <span className="font-label-mono text-label-mono text-on-surface uppercase tracking-wider">THU 24 OCT 2024</span>
             </div>
             <div className="h-4 w-px bg-outline-variant" />
-            <button className="relative p-1.5 text-on-surface-variant hover:text-on-surface transition-colors">
+            <button className="relative p-1.5 text-on-surface-variant hover:text-on-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
               <span className="material-symbols-outlined text-[20px]">notifications</span>
               <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface" />
             </button>
@@ -71,12 +71,12 @@ export function StaffCustomers() {
                   <h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">Customers</h1>
                 </div>
                 <div className="flex items-center gap-3">
-                  <button className="px-5 py-2.5 bg-transparent border border-on-surface text-on-surface font-action text-action hover:bg-surface-container transition-colors rounded-[2px] flex items-center gap-2">
+                  <button className="px-5 py-2.5 bg-transparent border border-on-surface text-on-surface font-action text-action hover:bg-surface-container transition-colors rounded-[2px] flex items-center gap-2" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="material-symbols-outlined text-[16px]">file_download</span>
                     {" "}
                     <span>EXPORT CSV DIRECTORY</span>
                   </button>
-                  <button className="px-6 py-2.5 bg-primary text-surface font-action text-action hover:bg-primary-container transition-colors rounded-[2px] flex items-center gap-2">
+                  <button className="px-6 py-2.5 bg-primary text-surface font-action text-action hover:bg-primary-container transition-colors rounded-[2px] flex items-center gap-2" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="material-symbols-outlined text-[16px]">add</span>
                     {" "}
                     <span>ENROLL PATRON</span>
@@ -143,7 +143,7 @@ export function StaffCustomers() {
               <div className="flex flex-wrap items-center gap-2">
                 {/* Licence Status Dropdown Indicator */}
                 <div className="relative">
-                  <button className="px-3 py-1.5 bg-surface border border-outline-variant text-on-surface font-label-mono text-label-mono uppercase flex items-center gap-2 hover:bg-surface-container transition-colors rounded-[2px]">
+                  <button className="px-3 py-1.5 bg-surface border border-outline-variant text-on-surface font-label-mono text-label-mono uppercase flex items-center gap-2 hover:bg-surface-container transition-colors rounded-[2px]" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span>Licence: All Statuses (782/7/3)</span>
                     {" "}
                     <span className="material-symbols-outlined text-[14px] text-outline">arrow_drop_down</span>
@@ -151,28 +151,28 @@ export function StaffCustomers() {
                 </div>
                 {/* Home Hub */}
                 <div className="relative">
-                  <button className="px-3 py-1.5 bg-surface border border-outline-variant text-on-surface font-label-mono text-label-mono uppercase flex items-center gap-2 hover:bg-surface-container transition-colors rounded-[2px]">
+                  <button className="px-3 py-1.5 bg-surface border border-outline-variant text-on-surface font-label-mono text-label-mono uppercase flex items-center gap-2 hover:bg-surface-container transition-colors rounded-[2px]" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span>Hub: All (MUC, ZRH, GVA...)</span>
                     {" "}
                     <span className="material-symbols-outlined text-[14px] text-outline">arrow_drop_down</span>
                   </button>
                 </div>
                 {/* Upcoming Booking Active Filter */}
-                <button className="px-3 py-1.5 bg-primary text-surface border border-primary font-label-mono text-label-mono uppercase flex items-center gap-1.5 rounded-[2px]">
+                <button className="px-3 py-1.5 bg-primary text-surface border border-primary font-label-mono text-label-mono uppercase flex items-center gap-1.5 rounded-[2px]" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                   <span className="material-symbols-outlined text-[14px]">check</span>
                   {" "}
                   <span>HAS UPCOMING BOOKING</span>
                 </button>
                 {/* Tier */}
                 <div className="relative">
-                  <button className="px-3 py-1.5 bg-surface border border-outline-variant text-on-surface font-label-mono text-label-mono uppercase flex items-center gap-2 hover:bg-surface-container transition-colors rounded-[2px]">
+                  <button className="px-3 py-1.5 bg-surface border border-outline-variant text-on-surface font-label-mono text-label-mono uppercase flex items-center gap-2 hover:bg-surface-container transition-colors rounded-[2px]" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span>Tier: All (I–III)</span>
                     {" "}
                     <span className="material-symbols-outlined text-[14px] text-outline">arrow_drop_down</span>
                   </button>
                 </div>
                 {/* Reset */}
-                <button className="px-2 py-1.5 text-outline hover:text-on-surface font-label-mono text-label-mono uppercase underline underline-offset-4 ml-1 transition-colors">Reset</button>
+                <button className="px-2 py-1.5 text-outline hover:text-on-surface font-label-mono text-label-mono uppercase underline underline-offset-4 ml-1 transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Reset</button>
               </div>
             </div>
             {/* Table Directory Matrix */}
@@ -504,12 +504,12 @@ export function StaffCustomers() {
                 <span className="font-label-mono text-label-mono text-outline uppercase tracking-wider">Showing 1–7 of 864 Patrons</span>
                 <div className="flex items-center gap-1 font-label-mono text-label-mono">
                   <button className="px-2.5 py-1 bg-surface-container-low text-outline hover:text-on-surface border border-outline-variant rounded-[1px] disabled:opacity-40 transition-colors" disabled>PREV</button>
-                  <button className="px-2.5 py-1 bg-primary text-surface border border-primary font-bold rounded-[1px]">1</button>
-                  <button className="px-2.5 py-1 bg-surface text-on-surface hover:bg-surface-container border border-outline-variant rounded-[1px] transition-colors">2</button>
-                  <button className="px-2.5 py-1 bg-surface text-on-surface hover:bg-surface-container border border-outline-variant rounded-[1px] transition-colors">3</button>
+                  <button className="px-2.5 py-1 bg-primary text-surface border border-primary font-bold rounded-[1px]" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">1</button>
+                  <button className="px-2.5 py-1 bg-surface text-on-surface hover:bg-surface-container border border-outline-variant rounded-[1px] transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">2</button>
+                  <button className="px-2.5 py-1 bg-surface text-on-surface hover:bg-surface-container border border-outline-variant rounded-[1px] transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">3</button>
                   <span className="px-1 text-outline">...</span>
-                  <button className="px-2.5 py-1 bg-surface text-on-surface hover:bg-surface-container border border-outline-variant rounded-[1px] transition-colors">124</button>
-                  <button className="px-2.5 py-1 bg-surface-container-low text-on-surface hover:bg-surface-container border border-outline-variant rounded-[1px] transition-colors">NEXT</button>
+                  <button className="px-2.5 py-1 bg-surface text-on-surface hover:bg-surface-container border border-outline-variant rounded-[1px] transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">124</button>
+                  <button className="px-2.5 py-1 bg-surface-container-low text-on-surface hover:bg-surface-container border border-outline-variant rounded-[1px] transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">NEXT</button>
                 </div>
               </div>
               {/* Data Privacy Notice */}

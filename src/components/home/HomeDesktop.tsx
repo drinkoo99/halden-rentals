@@ -420,9 +420,9 @@ export function HomeDesktop() {
           <div className="flex flex-col md:flex-row items-center justify-between pt-8 text-[11px] font-mono text-text-muted">
             <div>© 2025 HALDEN AUTOMOBILE AG. ALL RIGHTS RESERVED.</div>
             <div className="flex items-center space-x-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-ivory transition-colors">INSTAGRAM</a>
-              <a href="#" className="hover:text-ivory transition-colors">SUBSTACK</a>
-              <a href="#" className="hover:text-ivory transition-colors">LINKEDIN</a>
+              
+              
+              
             </div>
           </div>
         </div>

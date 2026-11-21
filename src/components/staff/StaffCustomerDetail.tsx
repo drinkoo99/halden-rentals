@@ -51,7 +51,7 @@ export function StaffCustomerDetail() {
               <span className="font-label-mono text-label-mono text-on-surface uppercase tracking-wider">THU 24 OCT 2024</span>
             </div>
             <div className="h-4 w-px bg-outline-variant" />
-            <button className="relative p-1.5 text-on-surface-variant hover:text-on-surface transition-colors">
+            <button className="relative p-1.5 text-on-surface-variant hover:text-on-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
               <span className="material-symbols-outlined text-[20px]">notifications</span>
               <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface" />
             </button>
@@ -135,12 +135,12 @@ export function StaffCustomerDetail() {
                 </div>
                 {/* Top Direct Actions */}
                 <div className="col-span-12 md:col-span-4 xl:col-span-3 flex flex-col gap-2.5 justify-center">
-                  <button className="w-full bg-primary text-on-primary font-action text-action py-3 px-4 flex items-center justify-between hover:bg-primary-container transition-colors shadow-sm">
+                  <button className="w-full bg-primary text-on-primary font-action text-action py-3 px-4 flex items-center justify-between hover:bg-primary-container transition-colors shadow-sm" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span>BOOK EXPEDITION FOR PATRON</span>
                     {" "}
                     <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                   </button>
-                  <button className="w-full bg-surface text-on-surface font-action text-action py-2.5 px-4 hover:bg-surface-container transition-colors flex items-center justify-center gap-2">
+                  <button className="w-full bg-surface text-on-surface font-action text-action py-2.5 px-4 hover:bg-surface-container transition-colors flex items-center justify-center gap-2" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                     <span className="material-symbols-outlined text-[16px] text-outline">tune</span>
                     {" "}
                     <span>EDIT PROFILE</span>
@@ -214,14 +214,14 @@ export function StaffCustomerDetail() {
                           <span className="material-symbols-outlined text-[16px] text-secondary">security</span>
                           <span className="font-label-mono text-[10px] uppercase text-on-surface tracking-wider font-semibold">AUDITOR VERDICT WORKFLOW</span>
                         </div>
-                        <a className="font-label-mono text-[10px] text-primary uppercase tracking-widest hover:underline flex items-center gap-1" href="#">
+                        <span className="font-label-mono text-[10px] text-primary uppercase tracking-widest hover:underline flex items-center gap-1" data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                           <span>AUDIT KBA API HASH (SHA-256)</span>
                           {" "}
                           <span className="material-symbols-outlined text-[12px]">open_in_new</span>
-                        </a>
+                        </span>
                       </div>
                       <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                        <button className="flex-1 bg-primary text-on-primary font-action text-action py-3 px-4 hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
+                        <button className="flex-1 bg-primary text-on-primary font-action text-action py-3 px-4 hover:bg-primary-container transition-colors flex items-center justify-center gap-2" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                           <span className="material-symbols-outlined text-[18px]">verified</span>
                           {" "}
                           <span>{"APPROVE ACCREDITATION & CLEAR FOR EXPEDITIONS"}</span>
@@ -235,7 +235,7 @@ export function StaffCustomerDetail() {
                             <option value="catb">Category B Missing</option>
                             <option value="hologram">Suspicious Hologram</option>
                           </select>
-                          <button className="bg-surface-variant text-error font-action text-action py-2.5 px-4 hover:bg-error-container hover:text-on-error-container transition-colors">REJECT</button>
+                          <button className="bg-surface-variant text-error font-action text-action py-2.5 px-4 hover:bg-error-container hover:text-on-error-container transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">REJECT</button>
                         </div>
                       </div>
                     </div>
@@ -399,7 +399,7 @@ export function StaffCustomerDetail() {
                       <label className="font-label-mono text-[10px] uppercase text-outline tracking-wider">RECORD CONFIDENTIAL STAFF DIRECTIVE</label>
                       <textarea className="w-full p-3 bg-surface-container-low font-body-sm text-body-sm text-on-surface placeholder:text-outline placeholder:font-body-sm focus:outline-hidden focus:bg-surface resize-none" placeholder="Add confidential internal directive or patron preference..." rows={3} />
                       <div className="flex justify-end">
-                        <button className="bg-primary text-on-primary font-action text-[12px] py-2 px-4 hover:bg-primary-container transition-colors flex items-center gap-1.5">
+                        <button className="bg-primary text-on-primary font-action text-[12px] py-2 px-4 hover:bg-primary-container transition-colors flex items-center gap-1.5" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                           <span className="material-symbols-outlined text-[16px]">add</span>
                           {" "}
                           <span>POST INTERNAL NOTE</span>
@@ -465,7 +465,7 @@ export function StaffCustomerDetail() {
                       </div>
                     </div>
                     <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Regulated under Canton of Zurich Data Protection Act (DSG/IDG) and EU GDPR Art. 17/20. All ledger records remain cryptographically signed.</p>
-                    <button className="w-full bg-surface-container text-on-surface font-action text-action py-3 px-4 hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+                    <button className="w-full bg-surface-container text-on-surface font-action text-action py-3 px-4 hover:bg-surface-variant transition-colors flex items-center justify-center gap-2" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                       <span className="material-symbols-outlined text-[18px] text-outline">download</span>
                       {" "}
                       <span>EXPORT COMPLETE PATRON DOSSIER (JSON/PDF)</span>

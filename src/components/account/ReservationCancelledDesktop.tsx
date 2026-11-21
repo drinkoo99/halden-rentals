@@ -43,10 +43,10 @@ export function ReservationCancelledDesktop() {
               {/* Header CTAs */}
               <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end gap-space-sm shrink-0">
                 <Link className="bg-primary hover:bg-primary-container text-on-primary font-action text-action uppercase tracking-[0.12em] px-7 py-3 rounded-[2px] transition-colors cursor-pointer w-full sm:w-auto text-center" href="/book/range-rover-autobiography/trip">Book again</Link>
-                <a className="font-label-mono text-label-mono uppercase tracking-[0.12em] text-on-surface-variant hover:text-on-surface underline decoration-outline-variant underline-offset-4 transition-colors flex items-center gap-1.5 pt-1" href="#">
+                <span className="font-label-mono text-label-mono uppercase tracking-[0.12em] text-on-surface-variant hover:text-on-surface underline decoration-outline-variant underline-offset-4 transition-colors flex items-center gap-1.5 pt-1" data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
                   <span className="material-symbols-outlined text-[15px]">download</span>
                   {" "}Download cancellation receipt (PDF)
-                </a>
+                </span>
               </div>
             </div>
             {/* Formal Cancellation Notice Panel */}

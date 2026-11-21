@@ -145,7 +145,7 @@ export function ForgotPasscodeMobile() {
               <div className="flex items-center space-x-2 text-[10px] font-label-mono text-outline uppercase tracking-wider">
                 <span>HALDEN AG</span>
                 <span>·</span>
-                <a className="underline hover:text-on-surface transition-colors" href="#">{"PRIVACY & PROTOCOL"}</a>
+                <Link className="underline hover:text-on-surface transition-colors" href="/privacy">{"PRIVACY & PROTOCOL"}</Link>
               </div>
             </div>
           </section>
