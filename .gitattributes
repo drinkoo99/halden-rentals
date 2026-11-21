@@ -1,0 +1,14 @@
+# Normalise text to LF in the repository; treat media as binary
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.gif binary
+*.woff binary
+*.woff2 binary
+
+# Verbatim Google Stitch exports: keep byte-for-byte, exclude from whitespace checks and GitHub language stats
+design/stitch-export/** -whitespace linguist-vendored

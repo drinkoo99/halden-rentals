@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HALDEN — The Collection | Fleet Discovery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#F5F3EE',
+            stone: {
+              DEFAULT: '#EAE8E1',
+              dim: '#D8D6CE',
+              surface: '#F0EEE7'
+            },
+            ink: '#171A18',
+            forest: {
+              DEFAULT: '#344A3D',
+              hover: '#293B30'
+            },
+            sage: '#738273',
+            muted: '#666B65',
+            dark: '#171B19',
+            darkpanel: '#252A27'
+          },
+          fontFamily: {
+            serif: ['"Bodoni Moda"', 'serif'],
+            sans: ['"Manrope"', 'sans-serif'],
+            mono: ['"DM Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F5F3EE;
+      color: #171A18;
+      font-family: 'Manrope', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    input[type=range] {
+      accent-color: #344A3D;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #D8D6CE;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-ivory text-ink flex flex-col selection:bg-forest selection:text-ivory">
+
+  <!-- 1. SOLID IVORY HEADER -->
+  <header class="w-full bg-ivory border-b border-stone-dim sticky top-0 z-50">
+    <div class="max-w-[1440px] mx-auto px-8 h-20 flex items-center justify-between">
+      <!-- Wordmark -->
+      <a href="#" class="text-xl font-semibold tracking-[0.28em] font-sans text-ink uppercase">
+        HALDEN
+      </a>
+
+      <!-- Center Links -->
+      <nav class="flex items-center space-x-10 text-sm font-medium">
+        <a href="#" class="text-forest font-semibold tracking-wide border-b-2 border-forest pb-1 -mb-[1px]">Fleet</a>
+        <a href="#" class="text-muted hover:text-ink transition-colors tracking-wide">Journeys</a>
+        <a href="#" class="text-muted hover:text-ink transition-colors tracking-wide">About</a>
+      </nav>
+
+      <!-- Right CTAs -->
+      <div class="flex items-center space-x-6 text-sm">
+        <a href="#" class="text-muted hover:text-ink font-medium tracking-wide">Sign in</a>
+        <a href="#" class="px-5 py-2.5 border border-ink text-ink hover:bg-ink hover:text-ivory rounded-[2px] transition-all duration-200 text-xs font-semibold uppercase tracking-wider">
+          Book a car
+        </a>
+      </div>
+    </div>
+
+    <!-- Search Summary Strip (Stone #EAE8E1) -->
+    <div class="w-full bg-stone border-b border-stone-dim">
+      <div class="max-w-[1440px] mx-auto px-8 py-3 flex items-center justify-between text-xs font-mono">
+        <div class="flex items-center space-x-3 text-ink tracking-tight">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-forest"></span>
+          <span class="font-medium text-ink">Munich Airport (MUC)</span>
+          <span class="text-stone-dim">·</span>
+          <span class="text-muted">12 Jun 10:00 → 15 Jun 10:00</span>
+          <span class="text-stone-dim">·</span>
+          <span class="bg-ivory border border-stone-dim px-2 py-0.5 rounded-[2px] text-ink font-mono text-[11px]">3 days rental</span>
+        </div>
+        <a href="#" class="inline-flex items-center space-x-1.5 text-xs text-forest hover:underline font-mono uppercase tracking-wider font-medium">
+          <span>Edit itinerary</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. MAIN CONTAINER -->
+  <main class="max-w-[1440px] mx-auto px-8 w-full flex-grow pt-10 pb-24">
+
+    <!-- Title & Exhibition Intro Area -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-stone-dim pb-8 mb-10">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-muted mb-2">01 / THE COLLECTION</p>
+        <h1 class="font-serif text-5xl md:text-6xl text-ink font-normal tracking-tight">
+          24 cars for your dates.
+        </h1>
+      </div>
+      <div class="max-w-md mt-6 md:mt-0 text-sm text-muted leading-relaxed font-sans">
+        Every vehicle is prepared in exhibition condition, delivered curbside with comprehensive European insurance, zero counter paperwork, and cross-border passes included.
+      </div>
+    </div>
+
+    <!-- Layout: Left Sidebar + Results Grid -->
+    <div class="flex flex-col lg:flex-row items-start gap-12">
+
+      <!-- LEFT SIDEBAR: STONE BACKGROUND FILTER PANEL -->
+      <aside class="w-full lg:w-[310px] shrink-0 bg-stone p-6 rounded-[2px] border border-stone-dim space-y-7">
+        
+        <!-- Filter Header -->
+        <div class="flex items-center justify-between border-b border-stone-dim pb-4">
+          <span class="font-mono text-xs uppercase tracking-wider font-semibold text-ink">Filters</span>
+          <button class="font-mono text-xs text-muted hover:text-forest underline transition-colors">Clear all</button>
+        </div>
+
+        <!-- Toggle: Only Available -->
+        <div class="flex items-center justify-between pt-1">
+          <label for="avail-toggle" class="text-xs font-medium text-ink cursor-pointer select-none">
+            Only available for my dates
+          </label>
+          <div class="relative inline-block w-9 h-5 select-none">
+            <input type="checkbox" id="avail-toggle" checked class="sr-only peer">
+            <div class="w-9 h-5 bg-stone-dim peer-checked:bg-forest rounded-full transition-colors cursor-pointer"></div>
+            <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-ivory rounded-full transition-transform peer-checked:translate-x-4"></div>
+          </div>
+        </div>
+
+        <!-- Hairline Divider -->
+        <hr class="border-t border-stone-dim my-4">
+
+        <!-- Category Filter -->
+        <div class="space-y-3">
+          <p class="font-mono text-[11px] uppercase tracking-wider text-muted font-medium">Category</p>
+          <div class="space-y-2 text-xs">
+            <label class="flex items-center justify-between text-ink cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" checked class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="font-medium group-hover:text-forest transition-colors">All categories</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">24</span>
+            </label>
+            <label class="flex items-center justify-between text-ink cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="group-hover:text-forest transition-colors">Sports & Grand Tourer</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">6</span>
+            </label>
+            <label class="flex items-center justify-between text-ink cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="group-hover:text-forest transition-colors">Executive & Luxury Sedans</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">8</span>
+            </label>
+            <label class="flex items-center justify-between text-ink cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="group-hover:text-forest transition-colors">SUVs & Overlanding</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">7</span>
+            </label>
+            <label class="flex items-center justify-between text-ink cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="group-hover:text-forest transition-colors">Performance Wagons</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">3</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Hairline Divider -->
+        <hr class="border-t border-stone-dim my-4">
+
+        <!-- Price Range Slider -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <p class="font-mono text-[11px] uppercase tracking-wider text-muted font-medium">Daily Rate</p>
+            <span class="font-mono text-xs font-medium text-forest">Up to €480/day</span>
+          </div>
+          <input type="range" min="150" max="800" value="480" class="w-full h-1 bg-stone-dim rounded cursor-pointer">
+          <div class="flex justify-between text-[11px] font-mono text-muted">
+            <span>€150</span>
+            <span>€800</span>
+          </div>
+        </div>
+
+        <!-- Hairline Divider -->
+        <hr class="border-t border-stone-dim my-4">
+
+        <!-- Brand Filter (Audi, BMW, Land Rover, Lexus, Mercedes-Benz, Porsche, Toyota, Volvo) -->
+        <div class="space-y-3">
+          <p class="font-mono text-[11px] uppercase tracking-wider text-muted font-medium">Brand</p>
+          <div class="grid grid-cols-1 gap-2 text-xs">
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" checked class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="font-medium group-hover:text-forest transition-colors">Porsche</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">5</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" checked class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="font-medium group-hover:text-forest transition-colors">Mercedes-Benz</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">4</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="group-hover:text-forest transition-colors">BMW</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">4</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="group-hover:text-forest transition-colors">Audi</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">3</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="group-hover:text-forest transition-colors">Land Rover</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">3</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="group-hover:text-forest transition-colors">Volvo</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">2</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="group-hover:text-forest transition-colors">Lexus</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">2</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <span class="flex items-center space-x-2.5">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+                <span class="group-hover:text-forest transition-colors">Toyota</span>
+              </span>
+              <span class="font-mono text-[11px] text-muted">1</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Hairline Divider -->
+        <hr class="border-t border-stone-dim my-4">
+
+        <!-- Transmission Segmented Control -->
+        <div class="space-y-2">
+          <p class="font-mono text-[11px] uppercase tracking-wider text-muted font-medium">Transmission</p>
+          <div class="grid grid-cols-3 gap-1 bg-ivory p-1 border border-stone-dim rounded-[2px]">
+            <button class="py-1.5 text-xs font-mono font-medium rounded-[2px] bg-forest text-ivory">Any</button>
+            <button class="py-1.5 text-xs font-mono font-medium rounded-[2px] text-ink hover:bg-stone transition-colors">Auto</button>
+            <button class="py-1.5 text-xs font-mono font-medium rounded-[2px] text-ink hover:bg-stone transition-colors">Manual</button>
+          </div>
+        </div>
+
+        <!-- Hairline Divider -->
+        <hr class="border-t border-stone-dim my-4">
+
+        <!-- Seats (2 / 4 / 5 / 7+ Square Buttons) -->
+        <div class="space-y-2">
+          <p class="font-mono text-[11px] uppercase tracking-wider text-muted font-medium">Seats</p>
+          <div class="grid grid-cols-4 gap-2">
+            <button class="h-9 border border-stone-dim bg-ivory text-ink hover:border-forest text-xs font-mono font-medium rounded-[2px]">2</button>
+            <button class="h-9 border border-forest bg-forest text-ivory text-xs font-mono font-semibold rounded-[2px]">4</button>
+            <button class="h-9 border border-stone-dim bg-ivory text-ink hover:border-forest text-xs font-mono font-medium rounded-[2px]">5</button>
+            <button class="h-9 border border-stone-dim bg-ivory text-ink hover:border-forest text-xs font-mono font-medium rounded-[2px]">7+</button>
+          </div>
+        </div>
+
+        <!-- Hairline Divider -->
+        <hr class="border-t border-stone-dim my-4">
+
+        <!-- Fuel Type -->
+        <div class="space-y-3">
+          <p class="font-mono text-[11px] uppercase tracking-wider text-muted font-medium">Powertrain</p>
+          <div class="space-y-2 text-xs">
+            <label class="flex items-center space-x-2.5 cursor-pointer">
+              <input type="checkbox" checked class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+              <span>Petrol</span>
+            </label>
+            <label class="flex items-center space-x-2.5 cursor-pointer">
+              <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+              <span>Diesel</span>
+            </label>
+            <label class="flex items-center space-x-2.5 cursor-pointer">
+              <input type="checkbox" checked class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+              <span>Hybrid</span>
+            </label>
+            <label class="flex items-center space-x-2.5 cursor-pointer">
+              <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+              <span>Pure Electric</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Hairline Divider -->
+        <hr class="border-t border-stone-dim my-4">
+
+        <!-- Features Checkboxes -->
+        <div class="space-y-3">
+          <p class="font-mono text-[11px] uppercase tracking-wider text-muted font-medium">Features</p>
+          <div class="space-y-2 text-xs">
+            <label class="flex items-center space-x-2.5 cursor-pointer">
+              <input type="checkbox" checked class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+              <span>All-Wheel Drive (AWD/4WD)</span>
+            </label>
+            <label class="flex items-center space-x-2.5 cursor-pointer">
+              <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+              <span>Ski rack & Winterised</span>
+            </label>
+            <label class="flex items-center space-x-2.5 cursor-pointer">
+              <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+              <span>Curbside Chauffeur Delivery</span>
+            </label>
+            <label class="flex items-center space-x-2.5 cursor-pointer">
+              <input type="checkbox" class="w-3.5 h-3.5 rounded-[2px] accent-forest border-stone-dim">
+              <span>Adaptive Cruise Control</span>
+            </label>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- RIGHT RESULTS: CATALOGUE GALLERY -->
+      <section class="flex-grow w-full">
+
+        <!-- RESULTS TOOLBAR -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-dim pb-4 mb-8">
+          
+          <!-- Result Count & Filter Chips -->
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-xs uppercase tracking-wider text-muted font-medium mr-2">Showing 6 of 24:</span>
+            
+            <!-- Chip: Porsche -->
+            <span class="inline-flex items-center space-x-1.5 bg-forest text-ivory text-[11px] font-mono py-1 px-2.5 rounded-[2px]">
+              <span>Porsche</span>
+              <button class="hover:text-stone transition-colors font-mono leading-none">×</button>
+            </span>
+            <!-- Chip: Mercedes -->
+            <span class="inline-flex items-center space-x-1.5 bg-forest text-ivory text-[11px] font-mono py-1 px-2.5 rounded-[2px]">
+              <span>Mercedes-Benz</span>
+              <button class="hover:text-stone transition-colors font-mono leading-none">×</button>
+            </span>
+            <!-- Chip: 4 Seats -->
+            <span class="inline-flex items-center space-x-1.5 bg-forest text-ivory text-[11px] font-mono py-1 px-2.5 rounded-[2px]">
+              <span>4 Seats</span>
+              <button class="hover:text-stone transition-colors font-mono leading-none">×</button>
+            </span>
+          </div>
+
+          <!-- Sort Dropdown -->
+          <div class="flex items-center space-x-2 text-xs font-mono">
+            <span class="text-muted">Sort:</span>
+            <div class="relative">
+              <select class="bg-ivory border border-stone-dim px-3 py-1.5 rounded-[2px] text-ink font-mono text-xs focus:outline-none focus:border-forest cursor-pointer pr-7 appearance-none">
+                <option>Recommended</option>
+                <option>Daily Rate: Low to High</option>
+                <option>Daily Rate: High to Low</option>
+                <option>Power (Horsepower)</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-2 flex items-center text-muted text-[10px]">▼</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROW 1 (3-COLUMN STUDIO CATALOGUE) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-12">
+
+          <!-- CAR 1: PORSCHE 911 GT3 -->
+          <div class="group flex flex-col">
+            <!-- Studio Image 3:2 square corners, no border -->
+            <div class="relative aspect-[3/2] overflow-hidden bg-stone">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5ZyeMiUiBDNQjTLnLzIaamcLYVkpjCBZP_RNpI1SS3k_ukW6kZHhUGm1zGyKnlhIBY-VcefeI3UJTp8PwJ_QzLVOwnUo7fKdKbx8aVLRXPHBP-JZ9Oblz9VlETOc_Vdys7j5Mbfa5neNIDS6Rb6mTqEzbnoLseFc0WEsmdvah_Eh_k-szc0WDk4PUlvdo54quE_M05c3Mc8YyKu09Kd3p1CyDQjmIZw7rjt9syOg" 
+                alt="Obsidian Black Porsche 911 GT3 Touring" 
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+              >
+              <!-- Small Heart Icon top right -->
+              <button class="absolute top-3 right-3 w-8 h-8 rounded-[2px] bg-ivory/80 backdrop-blur-sm flex items-center justify-center text-ink hover:text-red-700 transition-colors" title="Save to shortlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- HALDEN Exhibit Placard -->
+            <div class="pt-4 pb-2">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-[10px] tracking-[0.16em] uppercase text-muted">PORSCHE · EXHIBIT 09</span>
+                <!-- Availability status with green dot -->
+                <div class="flex items-center space-x-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  <span class="font-mono text-[11px] text-emerald-800 font-medium">Available</span>
+                </div>
+              </div>
+              <h3 class="text-base font-semibold text-ink tracking-tight font-sans">
+                911 GT3 Touring
+              </h3>
+              <!-- Hairline divider inside placard -->
+              <div class="w-full h-[1px] bg-stone-dim my-2.5"></div>
+              <div class="flex items-baseline justify-between">
+                <span class="font-mono text-xs text-muted">2 seats · PDK · 502 hp</span>
+                <div class="text-right">
+                  <span class="font-mono text-sm font-semibold text-ink">€440</span>
+                  <span class="font-mono text-xs text-muted"> / day</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CAR 2: MERCEDES-BENZ S-CLASS -->
+          <div class="group flex flex-col">
+            <div class="relative aspect-[3/2] overflow-hidden bg-stone">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2GTknAcetvqTEfrhDrGmEv2oxP73InVEt1By47sHrBMZmTMIIhHLAAiwVhiAr41HL0SfDWhD7g0-VAtcDjzbZjbseZMIMMHKZ6WVNYGB6ud3gdPGGdE8E5q9ehL2jciAb0PzZnB0cZpsSZ4oCpy_Q9xTT-WEVWPpPc6SzURShpcnljMWOFPK99AbhN4cYVBEmrWbr1OnhrofB-2auoKkidvnltiUFia9BoShcVg8" 
+                alt="Graphite Grey Mercedes-Benz S-Class" 
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+              >
+              <button class="absolute top-3 right-3 w-8 h-8 rounded-[2px] bg-ivory/80 backdrop-blur-sm flex items-center justify-center text-ink hover:text-red-700 transition-colors" title="Save to shortlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- HALDEN Exhibit Placard -->
+            <div class="pt-4 pb-2">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-[10px] tracking-[0.16em] uppercase text-muted">MERCEDES-BENZ · EXHIBIT 04</span>
+                <div class="flex items-center space-x-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  <span class="font-mono text-[11px] text-emerald-800 font-medium">Available</span>
+                </div>
+              </div>
+              <h3 class="text-base font-semibold text-ink tracking-tight font-sans">
+                S 500 4MATIC Sedan
+              </h3>
+              <div class="w-full h-[1px] bg-stone-dim my-2.5"></div>
+              <div class="flex items-baseline justify-between">
+                <span class="font-mono text-xs text-muted">5 seats · 9G-TRONIC · 435 hp</span>
+                <div class="text-right">
+                  <span class="font-mono text-sm font-semibold text-ink">€310</span>
+                  <span class="font-mono text-xs text-muted"> / day</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CAR 3: BMW 5 SERIES -->
+          <div class="group flex flex-col">
+            <div class="relative aspect-[3/2] overflow-hidden bg-stone">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfAOgXZ8p3CYxuA7cePc6yekkzWAdCpxc5Pdf9t-nZTyjctMMSKwgQB1xqDZ4Pt8TiQyf6IJyRbupIYkOGoWqIJx4QW6fgPWsJ32xRMbOFptjCNDqXEE_6jIXvX5A-rZmIurfWY9g1Qe4WjchqoQlOa_vtc_DeABpjWvshaytMEOzarcTWXlgPUkZ0I8jXA9JKKjRcy6LvpQMsLuJCIe7dGEgkjEGll1rMubCcUWI" 
+                alt="Dark Slate Grey BMW 5 Series" 
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+              >
+              <button class="absolute top-3 right-3 w-8 h-8 rounded-[2px] bg-ivory/80 backdrop-blur-sm flex items-center justify-center text-ink hover:text-red-700 transition-colors" title="Save to shortlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- HALDEN Exhibit Placard -->
+            <div class="pt-4 pb-2">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-[10px] tracking-[0.16em] uppercase text-muted">BMW · EXHIBIT 07</span>
+                <div class="flex items-center space-x-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  <span class="font-mono text-[11px] text-emerald-800 font-medium">Available</span>
+                </div>
+              </div>
+              <h3 class="text-base font-semibold text-ink tracking-tight font-sans">
+                530e xDrive M Sport
+              </h3>
+              <div class="w-full h-[1px] bg-stone-dim my-2.5"></div>
+              <div class="flex items-baseline justify-between">
+                <span class="font-mono text-xs text-muted">5 seats · Steptronic · 292 hp</span>
+                <div class="text-right">
+                  <span class="font-mono text-sm font-semibold text-ink">€220</span>
+                  <span class="font-mono text-xs text-muted"> / day</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ROW 2 (3-COLUMN STUDIO CATALOGUE) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-12 mt-12 mb-16">
+
+          <!-- CAR 4: RANGE ROVER -->
+          <div class="group flex flex-col">
+            <div class="relative aspect-[3/2] overflow-hidden bg-stone">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbiZEGI5az5OS-2r2Y8rgv2LnF-Akq9gWIHrTCTOAJQu3kzUqFXzXekQtDhUIcU2BeDp-9nUkTas1pFgNuhRIGzNNbh1sC-jW4lHr1riTA1a1lV4r2-nCBKBGV4PYuQQaYxIH8z1zqBbnOMNRBmk81Mgl2RzjKOEpCPWXe2SLAGPWYgNjdcm1d5a5PivJTo_Uw9Fw8quLCfQstyA7mHOSYUkCO7NW08eiujnLK-us" 
+                alt="Silver-Grey Range Rover" 
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+              >
+              <button class="absolute top-3 right-3 w-8 h-8 rounded-[2px] bg-ivory/80 backdrop-blur-sm flex items-center justify-center text-ink hover:text-red-700 transition-colors" title="Save to shortlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- HALDEN Exhibit Placard -->
+            <div class="pt-4 pb-2">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-[10px] tracking-[0.16em] uppercase text-muted">LAND ROVER · EXHIBIT 08</span>
+                <div class="flex items-center space-x-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  <span class="font-mono text-[11px] text-emerald-800 font-medium">Available</span>
+                </div>
+              </div>
+              <h3 class="text-base font-semibold text-ink tracking-tight font-sans">
+                Range Rover Autobiography
+              </h3>
+              <div class="w-full h-[1px] bg-stone-dim my-2.5"></div>
+              <div class="flex items-baseline justify-between">
+                <span class="font-mono text-xs text-muted">5 seats · 8-Speed · 530 hp</span>
+                <div class="text-right">
+                  <span class="font-mono text-sm font-semibold text-ink">€390</span>
+                  <span class="font-mono text-xs text-muted"> / day</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CAR 5: AUDI RS6 AVANT -->
+          <div class="group flex flex-col">
+            <div class="relative aspect-[3/2] overflow-hidden bg-stone">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmAwnHJu0czAUQYYaGpmYFvN3B85jtDAUg8XKwlVi8-OlxVHxT9a8xcwmmHnY5cy3ijidlDoXULq6fNCedP2KDngPW1E6kwz2GJH5SHiksq7lM70-5hrgNtpOdxnjW8x62q9cfMOidAqKauqcU7Iw_C0osN2exoJL57jLOYrum_gsHuNqhel7bqy-RQf_aMto1luvNm_z7TgIzrg4Uuxjg5ZE3-tyKteX641YmXU0" 
+                alt="Midnight Blue Audi RS6 Avant" 
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+              >
+              <button class="absolute top-3 right-3 w-8 h-8 rounded-[2px] bg-ivory/80 backdrop-blur-sm flex items-center justify-center text-ink hover:text-red-700 transition-colors" title="Save to shortlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- HALDEN Exhibit Placard -->
+            <div class="pt-4 pb-2">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-[10px] tracking-[0.16em] uppercase text-muted">AUDI · EXHIBIT 06</span>
+                <div class="flex items-center space-x-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  <span class="font-mono text-[11px] text-emerald-800 font-medium">Available</span>
+                </div>
+              </div>
+              <h3 class="text-base font-semibold text-ink tracking-tight font-sans">
+                RS6 Avant Performance
+              </h3>
+              <div class="w-full h-[1px] bg-stone-dim my-2.5"></div>
+              <div class="flex items-baseline justify-between">
+                <span class="font-mono text-xs text-muted">5 seats · Tiptronic · 600 hp</span>
+                <div class="text-right">
+                  <span class="font-mono text-sm font-semibold text-ink">€360</span>
+                  <span class="font-mono text-xs text-muted"> / day</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CAR 6: TOYOTA LAND CRUISER -->
+          <div class="group flex flex-col">
+            <div class="relative aspect-[3/2] overflow-hidden bg-stone">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa1FNljxEJ5FB4HJ0YAs2GW2SGLdEQf8P3uSftlQYZX-7LsksuQd-CtjizhhC2Enxk5c80ud_O_qLYk0Kz76fjdVqBQjng46xMud2D1JCXgWATKfm5jt98Lh24pQREy90Ar0vrXWcXtCmrflueKaf3-2x7o8Yy7U2w4YPTrFMm6wPjvv4SlrNuoF3ZASA6p1W88SVopKxZdkLt0wM-pX3d0wNMK5v6X-iqSj8Pszw" 
+                alt="Bronze Champagne Toyota Land Cruiser" 
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+              >
+              <button class="absolute top-3 right-3 w-8 h-8 rounded-[2px] bg-ivory/80 backdrop-blur-sm flex items-center justify-center text-ink hover:text-red-700 transition-colors" title="Save to shortlist">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- HALDEN Exhibit Placard -->
+            <div class="pt-4 pb-2">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-[10px] tracking-[0.16em] uppercase text-muted">TOYOTA · EXHIBIT 11</span>
+                <div class="flex items-center space-x-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  <span class="font-mono text-[11px] text-emerald-800 font-medium">Available</span>
+                </div>
+              </div>
+              <h3 class="text-base font-semibold text-ink tracking-tight font-sans">
+                Land Cruiser GR-S Overlanding
+              </h3>
+              <div class="w-full h-[1px] bg-stone-dim my-2.5"></div>
+              <div class="flex items-baseline justify-between">
+                <span class="font-mono text-xs text-muted">7 seats · Direct Shift · 415 hp</span>
+                <div class="text-right">
+                  <span class="font-mono text-sm font-semibold text-ink">€280</span>
+                  <span class="font-mono text-xs text-muted"> / day</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- BREAK THE GRID: FULL-WIDTH "CURATOR'S PICK" LOCATION SHOWCASE -->
+        <div class="w-full my-16 bg-stone border-t border-b border-stone-dim py-8">
+          <div class="flex flex-col space-y-4">
+            
+            <div class="flex items-center justify-between border-b border-stone-dim pb-3">
+              <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-forest font-semibold">
+                CURATOR’S PICK · EXHIBITION HIGHLIGHT
+              </span>
+              <span class="font-mono text-xs text-muted">Lake Como & Alpine Itinerary Match</span>
+            </div>
+
+            <!-- Wide location photo (Lexus LC500 at Lake Como Modern Villa) -->
+            <div class="relative w-full aspect-[21/9] md:aspect-[16/7] overflow-hidden bg-stone-surface">
+              <img 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtrfxjRyy8KXU2BWwb9zgiz4YI3JR2MqBFXhzGsQnD2KL1fOfYPiZag7rFT7Hh8Km3VV2jidjw6l-k1lVZn491oEpUWMv2meDDkR6MWHwagAPGsUEAsgCsQzrEskDl-1MvFIIPtJdv5-R9ZKHUw9Jl49yU_ffMTSS-m8gzNJKeJ4d7yxhyDrNenGCi1CIx48qPROLxuolHd95K3gX5Jy91u00DnB6mltR-f6VjXsg" 
+                alt="Champagne Lexus LC500 at Lake Como modernist villa" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute bottom-4 left-4 bg-ivory/95 border border-stone-dim px-4 py-2 rounded-[2px] hidden sm:block">
+                <span class="font-mono text-[11px] text-ink uppercase tracking-wider">Provenance: Villa Passalacqua, Moltrasio</span>
+              </div>
+            </div>
+
+            <!-- Curator Placard and One-sentence Note -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-3 items-center">
+              
+              <!-- Vehicle Details & Placard -->
+              <div class="lg:col-span-2">
+                <div class="flex items-center space-x-4 mb-1">
+                  <span class="font-mono text-xs tracking-wider uppercase text-muted">LEXUS · EXHIBIT 05</span>
+                  <span class="text-stone-dim">·</span>
+                  <span class="font-mono text-xs text-emerald-800 font-medium">Curbside Reserve Available</span>
+                </div>
+                <h4 class="font-serif text-2xl text-ink font-normal">
+                  Lexus LC 500 V8 Coupe
+                </h4>
+                <p class="font-sans text-xs text-muted mt-1 italic">
+                  “A naturally aspirated 5.0L symphony with grand touring refinement tailored for the twisting ribbons between St. Moritz and Bellagio.”
+                </p>
+              </div>
+
+              <!-- Price & Direct Action -->
+              <div class="flex items-center lg:justify-end space-x-6 border-t lg:border-t-0 border-stone-dim pt-4 lg:pt-0">
+                <div class="text-right">
+                  <div class="font-mono text-xl font-semibold text-ink">€375</div>
+                  <div class="font-mono text-xs text-muted">daily rate · VAT incl.</div>
+                </div>
+                <button class="px-6 py-3 bg-forest hover:bg-forest-hover text-ivory text-xs font-mono uppercase tracking-wider rounded-[2px] transition-colors">
+                  Reserve Exhibit
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- CATALOGUE PAGINATION & FOOTNOTE -->
+        <div class="flex flex-col sm:flex-row items-center justify-between pt-6 border-t border-stone-dim">
+          <p class="font-mono text-xs text-muted">
+            Displaying page 1 of 4 · All 24 catalogue vehicles maintained in exhibition condition
+          </p>
+          <div class="flex items-center space-x-2 mt-4 sm:mt-0 font-mono text-xs">
+            <span class="px-3 py-1.5 bg-forest text-ivory rounded-[2px]">1</span>
+            <a href="#" class="px-3 py-1.5 border border-stone-dim hover:border-forest text-ink rounded-[2px] transition-colors">2</a>
+            <a href="#" class="px-3 py-1.5 border border-stone-dim hover:border-forest text-ink rounded-[2px] transition-colors">3</a>
+            <a href="#" class="px-3 py-1.5 border border-stone-dim hover:border-forest text-ink rounded-[2px] transition-colors">4</a>
+            <a href="#" class="px-3 py-1.5 border border-stone-dim hover:border-forest text-ink rounded-[2px] transition-colors">Next →</a>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- 3. FOOTER (DARK #171B19 AS PRESCRIBED IN DESIGN SYSTEM) -->
+  <footer class="w-full bg-dark text-stone-dim border-t border-[#252A27] mt-auto">
+    <div class="max-w-[1440px] mx-auto px-8 py-16">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[#252A27]">
+        <!-- Brand Summary -->
+        <div class="md:col-span-4 space-y-4">
+          <div class="text-xl font-semibold tracking-[0.28em] font-sans text-ivory uppercase">
+            HALDEN
+          </div>
+          <p class="text-xs text-[#8A9089] leading-relaxed max-w-sm">
+            European automobile atelier and rental gallery. Providing impeccably prepared vehicles for meaningful journeys across Switzerland, Germany, France, and Northern Italy.
+          </p>
+        </div>
+
+        <!-- Links Columns -->
+        <div class="md:col-span-2 space-y-3">
+          <p class="font-mono text-[11px] uppercase tracking-wider text-ivory font-medium">Fleet</p>
+          <ul class="space-y-2 text-xs text-[#8A9089]">
+            <li><a href="#" class="hover:text-ivory transition-colors">Sports Tier (911, M5)</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">SUVs & Overlanding</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Executive Sedans</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Pure Electric</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Heritage Reserve</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-3 space-y-3">
+          <p class="font-mono text-[11px] uppercase tracking-wider text-ivory font-medium">Curated Locations</p>
+          <ul class="space-y-2 text-xs text-[#8A9089]">
+            <li><a href="#" class="hover:text-ivory transition-colors">Munich Airport Terminal 2 (MUC)</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Zurich Flughafen Privatterminal (ZRH)</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Geneva Cointrin Private Aviation (GVA)</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Milan Malpensa VIP Lounge (MXP)</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Vienna Schwechat Executive (VIE)</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-3 space-y-3">
+          <p class="font-mono text-[11px] uppercase tracking-wider text-ivory font-medium">Support & Delivery</p>
+          <ul class="space-y-2 text-xs text-[#8A9089]">
+            <li><a href="#" class="hover:text-ivory transition-colors">Concierge Desk (24/7)</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Hotel & Villa Curbside Delivery</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Cross-border Protocols & Vignettes</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Insurance & Excess Terms</a></li>
+            <li><a href="#" class="hover:text-ivory transition-colors">Privacy Notice</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright & Colophon -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#666B65] font-mono">
+        <p>© 2025 HALDEN AUTOMOBILE AG. ALL RIGHTS RESERVED.</p>
+        <div class="flex space-x-6 mt-4 sm:mt-0">
+          <a href="#" class="hover:text-ivory transition-colors">INSTAGRAM</a>
+          <a href="#" class="hover:text-ivory transition-colors">SUBSTACK</a>
+          <a href="#" class="hover:text-ivory transition-colors">LINKEDIN</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

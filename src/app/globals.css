@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+/*
+ * HALDEN design tokens.
+ * Colours, type scale and spacing are generated from the Google Stitch exports
+ * (design/stitch-export/NN/code.html + DESIGN.md). Both token sets used by Stitch are kept:
+ * the brand hexes (ivory, stone, ink, forest, …) used on the desktop home/fleet/detail screens,
+ * and the Material-style tokens (surface, primary, outline, …) used on the mobile and booking screens.
+ */
+@theme {
+  /* Font families (next/font variables are set on <html> in layout.tsx) */
+  --font-serif: var(--font-bodoni), "Bodoni Moda", serif;
+  --font-sans: var(--font-manrope), "Manrope", sans-serif;
+  --font-mono: var(--font-dm-mono), "DM Mono", monospace;
+  --font-display: var(--font-bodoni), "Bodoni Moda", serif;
+  --font-display-mobile: var(--font-bodoni), "Bodoni Moda", serif;
+  --font-headline-lg: var(--font-bodoni), "Bodoni Moda", serif;
+  --font-headline-lg-mobile: var(--font-bodoni), "Bodoni Moda", serif;
+  --font-headline-md: var(--font-bodoni), "Bodoni Moda", serif;
+  --font-headline-sm: var(--font-bodoni), "Bodoni Moda", serif;
+  --font-body-lg: var(--font-manrope), "Manrope", sans-serif;
+  --font-body-md: var(--font-manrope), "Manrope", sans-serif;
+  --font-body-sm: var(--font-manrope), "Manrope", sans-serif;
+  --font-action: var(--font-manrope), "Manrope", sans-serif;
+  --font-label-mono: var(--font-space-mono), "Space Mono", monospace;
+  --font-spec-numeral: var(--font-space-mono), "Space Mono", monospace;
+
+  /* Stitch border-radius config (same values as Tailwind v3 defaults) */
+  --radius: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  /* Tailwind v3 shadow / blur scale, which the Stitch markup was written against */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --blur-sm: 4px;
+  --blur: 8px;
+
+  /* Brand + Stitch colour tokens (merged from every exported screen) */
+  --color-ivory: #F5F3EE;
+  --color-stone-bg: #EAE8E1;
+  --color-ink: #171A18;
+  --color-forest: #344A3D;
+  --color-forest-hover: #2a3b31;
+  --color-sage: #738273;
+  --color-border-stone: #D8D6CE;
+  --color-text-muted: #666B65;
+  --color-dark-bg: #171B19;
+  --color-dark-panel: #252A27;
+  --color-dark-border: #2d3330;
+  --color-stone: #EAE8E1;
+  --color-stone-dim: #D8D6CE;
+  --color-stone-surface: #F0EEE7;
+  --color-muted: #666B65;
+  --color-dark: #171B19;
+  --color-darkpanel: #252A27;
+  --color-error-container: #ffdad6;
+  --color-surface-container: #edeeeb;
+  --color-surface-container-highest: #e1e3df;
+  --color-tertiary-fixed: #e4e2db;
+  --color-surface: #f8faf6;
+  --color-primary-container: #344a3d;
+  --color-inverse-primary: #b4cdbb;
+  --color-tertiary: #2e2f2a;
+  --color-on-background: #191c1a;
+  --color-on-primary: #ffffff;
+  --color-on-secondary-container: #59685a;
+  --color-surface-tint: #4d6355;
+  --color-surface-bright: #f8faf6;
+  --color-on-secondary-fixed-variant: #3c4a3d;
+  --color-primary-fixed: #cfe9d7;
+  --color-on-error-container: #93000a;
+  --color-primary: #1e3327;
+  --color-outline-variant: #c2c8c2;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #d7e7d5;
+  --color-on-secondary-fixed: #121e14;
+  --color-surface-container-high: #e7e9e5;
+  --color-on-error: #ffffff;
+  --color-on-surface: #191c1a;
+  --color-secondary-fixed: #d7e7d5;
+  --color-on-primary-container: #a0b9a8;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-tertiary: #ffffff;
+  --color-surface-variant: #e1e3df;
+  --color-surface-container-low: #f3f4f0;
+  --color-primary-fixed-dim: #b4cdbb;
+  --color-on-primary-fixed: #0a2015;
+  --color-tertiary-fixed-dim: #c8c6c0;
+  --color-background: #f8faf6;
+  --color-on-primary-fixed-variant: #364c3f;
+  --color-outline: #737973;
+  --color-secondary: #546254;
+  --color-secondary-fixed-dim: #bbcbba;
+  --color-on-tertiary-container: #b4b2ac;
+  --color-inverse-surface: #2e312f;
+  --color-inverse-on-surface: #f0f1ed;
+  --color-on-surface-variant: #424844;
+  --color-on-tertiary-fixed: #1b1c18;
+  --color-error: #ba1a1a;
+  --color-on-tertiary-fixed-variant: #474742;
+  --color-surface-dim: #d9dad7;
+  --color-tertiary-container: #454540;
+
+  /* Stitch type scale (DESIGN.md) */
+  --text-body-md: 15px;
+  --text-body-md--line-height: 24px;
+  --text-body-md--font-weight: 400;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--font-weight: 400;
+  --text-display: 56px;
+  --text-display--line-height: 64px;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 400;
+  --text-label-mono: 11px;
+  --text-label-mono--line-height: 16px;
+  --text-label-mono--letter-spacing: 0.12em;
+  --text-label-mono--font-weight: 400;
+  --text-display-mobile: 38px;
+  --text-display-mobile--line-height: 44px;
+  --text-display-mobile--letter-spacing: -0.01em;
+  --text-display-mobile--font-weight: 400;
+  --text-action: 13px;
+  --text-action--line-height: 16px;
+  --text-action--letter-spacing: 0.04em;
+  --text-action--font-weight: 600;
+  --text-spec-numeral: 14px;
+  --text-spec-numeral--line-height: 20px;
+  --text-spec-numeral--letter-spacing: 0.02em;
+  --text-spec-numeral--font-weight: 400;
+  --text-headline-md: 28px;
+  --text-headline-md--line-height: 36px;
+  --text-headline-md--font-weight: 400;
+  --text-headline-lg: 40px;
+  --text-headline-lg--line-height: 48px;
+  --text-headline-lg--letter-spacing: -0.015em;
+  --text-headline-lg--font-weight: 400;
+  --text-body-sm: 13px;
+  --text-body-sm--line-height: 20px;
+  --text-body-sm--font-weight: 400;
+  --text-headline-lg-mobile: 28px;
+  --text-headline-lg-mobile--line-height: 34px;
+  --text-headline-lg-mobile--letter-spacing: -0.01em;
+  --text-headline-lg-mobile--font-weight: 400;
+  --text-headline-sm: 22px;
+  --text-headline-sm--line-height: 28px;
+  --text-headline-sm--font-weight: 400;
+
+  /* Stitch spacing tokens */
+  --spacing-space-lg: 2rem;
+  --spacing-space-xl: 4rem;
+  --spacing-gutter-mobile: 1rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-margin-mobile: 1.5rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-margin: 4rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-xs: 0.25rem;
+}
+
+/* Tailwind v3 base behaviour the Stitch markup relies on */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-gray-400);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--color-forest);
+    color: var(--color-ivory);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    ::before,
+    ::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Material Symbols (Stitch icon set) */
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: "liga";
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  user-select: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Dual-handle range (mobile filter sheet, screen 29): two stacked native inputs where only the thumbs
+   receive pointer events, so both handles can be dragged. The designed track/thumbs are drawn beneath. */
+.range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  pointer-events: none;
+}
+.range-thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.range-thumb::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.range-thumb:focus-visible {
+  opacity: 0.35;
+}
