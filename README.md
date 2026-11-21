@@ -16,7 +16,8 @@ The visual design is a faithful implementation of the Google Stitch project **"H
 | Forms & validation | react-hook-form + Zod 4 |
 | Fonts / icons | `next/font` (Bodoni Moda, Manrope, DM Mono, Space Mono), Material Symbols |
 | Tests | Vitest |
-| Planned | MongoDB Atlas, authentication, payments (not built yet) |
+| Backend (Phase 2, in progress) | Next.js Route Handlers, MongoDB Atlas (official driver) — see `docs/BACKEND.md` |
+| Planned | Authentication, bookings, staff data (later milestones); payments |
 
 ## Scripts
 
@@ -26,7 +27,8 @@ npm run build      # production build (prerenders every route)
 npm run start      # serve the production build
 npm run lint       # ESLint
 npm run typecheck  # tsc --noEmit
-npm test           # Vitest unit tests
+npm test           # Vitest unit tests (frontend and backend)
+npm run db:setup   # dry run of the database collection/index setup (see docs/BACKEND.md)
 ```
 
 ## What works
