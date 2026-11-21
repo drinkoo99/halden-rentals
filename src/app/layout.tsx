@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bodoni_Moda, DM_Mono, Manrope, Space_Mono } from "next/font/google";
 import { CookieConsent } from "@/components/site/CookieConsent";
 import { OfflineBanner } from "@/components/states/OfflineBanner";
+import { ICON_FONT_HREF } from "@/lib/icons";
 import "./globals.css";
 
 const bodoni = Bodoni_Moda({
@@ -51,12 +52,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${bodoni.variable} ${manrope.variable} ${dmMono.variable} ${spaceMono.variable}`}
     >
       <head>
-        {/* Material Symbols — icon font used throughout the Stitch screens (not available in next/font) */}
+        {/* Material Symbols — icon font used throughout the Stitch screens (not available in next/font), subset to the icons we use */}
         {/* display=block avoids icon ligature names flashing as text before the font loads */}
-        {/* eslint-disable-next-line @next/next/no-page-custom-font, @next/next/google-font-display */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
+          href={ICON_FONT_HREF}
         />
       </head>
       <body className="bg-ivory text-ink antialiased">
