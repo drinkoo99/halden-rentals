@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 /**
- * Server environment schema. Pure (no Next.js imports) so `scripts/db-setup.mjs` can reuse it.
+ * Server environment schema. Pure (no Next.js imports) so the scripts (`scripts/db-setup.ts`) can reuse it.
  * Values are never echoed in errors — only the variable names and what is wrong with them.
  *
  * M1: the database is optional so the frontend keeps working without one; the health endpoint
