@@ -99,7 +99,7 @@ export function AccountOverviewDesktop() {
                       {/* Actions */}
                       <div className="flex flex-col gap-space-md pt-space-sm">
                         <div className="flex flex-wrap items-center gap-space-sm">
-                          <Link className="bg-primary-container text-on-primary font-action text-action uppercase px-7 py-3.5 rounded-[2px] hover:bg-primary transition-colors text-center" href="/account#reservations">View reservation</Link>
+                          <Link className="bg-primary-container text-on-primary font-action text-action uppercase px-7 py-3.5 rounded-[2px] hover:bg-primary transition-colors text-center" href="/account/reservations/hld-0612-4821">View reservation</Link>
                           <Link className="border border-on-surface text-on-surface font-action text-action uppercase px-7 py-3.5 rounded-[2px] hover:bg-surface-container transition-colors" href="/account/reservations/hld-0612-4821/modify">Modify</Link>
                         </div>
                         <div><AddToCalendarButton className="font-label-mono text-label-mono uppercase text-on-surface underline underline-offset-4 hover:text-primary-container transition-colors" /></div>

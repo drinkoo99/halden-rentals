@@ -46,7 +46,7 @@ export function MobileExtrasStep() {
             {extras.map((e, i) => {
               const qty = e.included ? 1 : (state.extras[e.id] ?? 0);
               const total = extraCost(e, Math.max(1, qty), days);
-              const titleId = `extra-${e.id}`;
+              const titleId = `m-extra-${e.id}`;
               return (
                 <article key={e.id} className="py-5 flex flex-col gap-3">
                   <div className="flex items-start justify-between gap-4">

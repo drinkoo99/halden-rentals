@@ -180,9 +180,9 @@ export function ConfirmedStep() {
           <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
             <Link
               className="inline-flex items-center justify-center bg-primary text-on-primary font-action text-action uppercase tracking-widest px-8 py-3.5 hover:bg-primary-container transition-colors rounded-[2px]"
-              href="/fleet"
+              href="/account"
             >
-              Browse the fleet
+              View my reservations
             </Link>
             <Link
               className="inline-flex items-center justify-center bg-transparent border border-outline text-on-surface font-action text-action uppercase tracking-widest px-8 py-3.5 hover:bg-surface-container-high transition-colors rounded-[2px]"

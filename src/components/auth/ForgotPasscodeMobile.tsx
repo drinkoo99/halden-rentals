@@ -71,12 +71,12 @@ export function ForgotPasscodeMobile() {
             <div className="flex flex-col space-y-4">
               <div className="flex flex-col space-y-2">
                 <div className="flex items-center justify-between">
-                  <label className="font-label-mono text-label-mono uppercase tracking-wider text-on-surface" htmlFor="patron-email">PATRON IDENTIFIER / EMAIL</label>
+                  <label className="font-label-mono text-label-mono uppercase tracking-wider text-on-surface" htmlFor="m-patron-email">PATRON IDENTIFIER / EMAIL</label>
                   <span className="font-label-mono text-[9px] uppercase px-1.5 py-0.5 bg-secondary-container text-on-secondary-container rounded">ARCHIVE-REGISTERED</span>
                 </div>
                 <div className="relative w-full h-[52px] bg-surface-container-lowest rounded flex items-center px-4">
                   <span className="material-symbols-outlined text-[18px] text-outline mr-3 select-none">fingerprint</span>
-                  <input className="w-full bg-transparent font-body-md text-body-md text-on-surface focus:outline-hidden placeholder:text-outline" id="patron-email" placeholder="patron@domain.com" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} aria-invalid={!!error} />
+                  <input className="w-full bg-transparent font-body-md text-body-md text-on-surface focus:outline-hidden placeholder:text-outline" id="m-patron-email" placeholder="patron@domain.com" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} aria-invalid={!!error} />
                   <span className="material-symbols-outlined text-[16px] text-secondary">verified</span>
                 </div>
               </div>
@@ -86,7 +86,7 @@ export function ForgotPasscodeMobile() {
                 </p>
               )}
               {/* Action Button */}
-              <button className="w-full h-[52px] bg-primary hover:bg-primary-container text-on-primary font-action text-action uppercase tracking-widest rounded flex items-center justify-center space-x-2 transition-all active:scale-[0.99]" id="dispatch-btn" onClick={send} type="button">
+              <button className="w-full h-[52px] bg-primary hover:bg-primary-container text-on-primary font-action text-action uppercase tracking-widest rounded flex items-center justify-center space-x-2 transition-all active:scale-[0.99]" id="m-dispatch-btn" onClick={send} type="button">
                 <span>Send Reset Link</span>
                 {" "}
                 <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
@@ -118,16 +118,16 @@ export function ForgotPasscodeMobile() {
                   <div className="relative w-7 h-7 flex items-center justify-center">
                     <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
                       <path className="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="3" />
-                      <path className="text-primary transition-all duration-1000 ease-linear" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" id="countdown-ring" stroke="currentColor" strokeDasharray={`${Math.round(timer.progress * 100)}, 100`} strokeLinecap="square" strokeWidth="3" />
+                      <path className="text-primary transition-all duration-1000 ease-linear" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" id="m-countdown-ring" stroke="currentColor" strokeDasharray={`${Math.round(timer.progress * 100)}, 100`} strokeLinecap="square" strokeWidth="3" />
                     </svg>
                     <span className="material-symbols-outlined absolute text-[12px] text-primary">schedule</span>
                   </div>
                   <div className="flex flex-col">
                     <span className="font-label-mono text-[10px] text-on-surface-variant uppercase">AUTH EXPIRATION</span>
-                    <span className="font-spec-numeral text-spec-numeral text-on-surface font-semibold" id="countdown-text">{timer.left > 0 ? `Resend link in ${timer.label}` : "Ready to resend"}</span>
+                    <span className="font-spec-numeral text-spec-numeral text-on-surface font-semibold" id="m-countdown-text">{timer.left > 0 ? `Resend link in ${timer.label}` : "Ready to resend"}</span>
                   </div>
                 </div>
-                <button className={`font-action text-body-sm px-2 py-1 transition-opacity uppercase tracking-wider ${timer.left > 0 ? "text-outline opacity-50" : "text-primary"}`} disabled={timer.left > 0} id="resend-btn" onClick={timer.start} type="button">Resend</button>
+                <button className={`font-action text-body-sm px-2 py-1 transition-opacity uppercase tracking-wider ${timer.left > 0 ? "text-outline opacity-50" : "text-primary"}`} disabled={timer.left > 0} id="m-resend-btn" onClick={timer.start} type="button">Resend</button>
               </div>
               {/* Navigation Exit Touch Target (44px min-height) */}
               <div className="pt-2">

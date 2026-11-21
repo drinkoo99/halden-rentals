@@ -74,7 +74,6 @@ npm test           # Vitest unit tests
 | "Total settled" on confirmation (23) | "Total reserved · due at handover" | No payment is taken |
 | Card number pre-filled (24) | Illustrative placeholders, no card fields | No card data is collected online |
 | Counts like "24 cars", "Showing 6 of 24" | Derived from the data | The UI never claims numbers it can't back up |
-| "View my bookings" (23) | "Browse the fleet" | No account dashboard exists yet |
 
 ## Round 2 notes
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MobileMenu } from "@/components/site/MobileMenu";
 import Link from "next/link";
 import { Photo } from "@/components/ui/Photo";
@@ -9,6 +9,17 @@ import { media } from "@/data/media";
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_about_the_standard_mobile/code.html */
 export function AboutMobile() {
   const [sent, setSent] = useState(false);
+  // #contact belongs to the desktop layout; on phones send that link to this enquiry section instead
+  useEffect(() => {
+    const go = () => {
+      if (window.location.hash === "#contact" && window.matchMedia("(max-width: 767px)").matches) {
+        document.getElementById("enquiry-section")?.scrollIntoView();
+      }
+    };
+    go();
+    window.addEventListener("hashchange", go);
+    return () => window.removeEventListener("hashchange", go);
+  }, []);
   return (
     <div className="md:hidden bg-surface text-on-surface antialiased min-h-screen flex flex-col">
       <header className="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
