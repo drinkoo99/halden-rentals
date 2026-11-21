@@ -20,6 +20,9 @@ export const LEGAL_LINKS = [
   { label: "Imprint", href: "/imprint" },
 ];
 
+/** Reopens the cookie preferences (handled by CookieConsent). */
+export const COOKIE_PREFERENCES_HREF = "#cookie-preferences";
+
 const link = "text-inverse-on-surface hover:text-primary-fixed transition-colors";
 
 /**
@@ -51,6 +54,9 @@ export function SiteFooter() {
                 {l.label}
               </Link>
             ))}
+            <a className="hover:text-inverse-on-surface transition-colors" href={COOKIE_PREFERENCES_HREF}>
+              Cookie preferences
+            </a>
           </nav>
         </div>
       </div>

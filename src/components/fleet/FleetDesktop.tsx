@@ -650,6 +650,7 @@ export function FleetFooter() {
               <li><Link href="/#standard" className={a}>Cross-border Protocols &amp; Vignettes</Link></li>
               <li><Link href="/terms#liability" className={a}>Insurance &amp; Excess Terms</Link></li>
               <li><Link href="/privacy" className={a}>Privacy Notice</Link></li>
+              <li><a href="#cookie-preferences" className={a}>Cookie Preferences</a></li>
             </ul>
           </div>
         </div>

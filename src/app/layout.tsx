@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, DM_Mono, Manrope, Space_Mono } from "next/font/google";
+import { CookieConsent } from "@/components/site/CookieConsent";
 import { OfflineBanner } from "@/components/states/OfflineBanner";
 import "./globals.css";
 
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="bg-ivory text-ink antialiased">
         {children}
         <OfflineBanner />
+        <CookieConsent />
       </body>
     </html>
   );

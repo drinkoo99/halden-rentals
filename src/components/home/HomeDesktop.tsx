@@ -412,6 +412,7 @@ export function HomeDesktop() {
                 { label: "Insurance & Excess Terms", href: "/terms#liability" },
                 { label: "Cross-border Protocols", href: "/terms#prices" },
                 { label: "Privacy Notice", href: "/privacy" },
+                { label: "Cookie Preferences", href: "#cookie-preferences" },
               ]}
             />
           </div>

@@ -409,6 +409,9 @@ export function VehicleDesktop({ vehicle: v, similar }: { vehicle: Vehicle; simi
               <Link className="hover:text-white transition" href="/imprint">
                 Impressum
               </Link>
+              <a className="hover:text-white transition" href="#cookie-preferences">
+                Cookie preferences
+              </a>
             </div>
           </div>
         </div>
