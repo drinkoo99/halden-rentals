@@ -20,7 +20,7 @@ export function SignInLockoutScreen() {
         <div className="flex flex-col w-full">
           <div className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-surface text-on-surface">
             {/* LEFT 50% COLUMN: GALLERY PHOTO STAGE & ARCHIVAL PLACARD */}
-            <section className="lg:col-span-6 relative flex flex-col justify-between bg-surface-container-low p-8 lg:p-14 border-b lg:border-b-0 lg:border-r border-outline-variant/40 overflow-hidden">
+            <section className="lg:col-span-6 relative flex flex-col justify-between bg-surface-container-low h-[200px] lg:h-auto p-6 lg:p-14 border-b lg:border-b-0 lg:border-r border-outline-variant/40 overflow-hidden">
               {/* Background Ambient Photo */}
               <div className="absolute inset-0 z-0">
                 <Photo src={media.porscheGalleryPortrait} alt="Architectural gallery with silver Porsche 911 in raking morning light" className="w-full h-full object-cover filter contrast-[1.03] saturate-[0.92]" sizes="(max-width: 767px) 100vw, 50vw" />
@@ -37,7 +37,7 @@ export function SignInLockoutScreen() {
                 </span>
               </div>
               {/* Bottom Museum Placard & Architectural Framing */}
-              <div className="relative z-10 mt-auto pt-24">
+              <div className="hidden lg:block relative z-10 mt-auto pt-24">
                 {/* Placard Container */}
                 <div className="bg-surface/95 backdrop-blur-md p-7 lg:p-9 text-on-surface border border-outline-variant/50 max-w-xl">
                   <div className="flex items-center justify-between pb-4 border-b border-outline-variant/40">

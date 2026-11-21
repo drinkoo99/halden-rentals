@@ -10,7 +10,7 @@ export function ResetPasscodeScreen() {
         <div className="flex flex-col w-full">
           <div className="w-full grid grid-cols-1 lg:grid-cols-12 min-h-screen">
             {/* LEFT STAGE: 50% Exhibition Pedestal with Architectural Gallery Photo */}
-            <aside className="lg:col-span-6 relative bg-surface-container-low flex flex-col justify-between p-8 lg:p-16 overflow-hidden">
+            <aside className="lg:col-span-6 relative bg-surface-container-low flex flex-col justify-between h-[200px] lg:h-auto p-6 lg:p-16 overflow-hidden">
               {/* Ambient Image Canvas */}
               <div className="absolute inset-0 z-0">
                 <Photo src={media.porscheGalleryPortrait} alt="Architectural gallery exhibition" className="w-full h-full object-cover object-center filter grayscale-[15%] contrast-[1.03]" sizes="(max-width: 767px) 100vw, 50vw" />
@@ -25,12 +25,12 @@ export function ResetPasscodeScreen() {
                 <span className="font-label-mono text-label-mono text-surface-container-lowest tracking-widest opacity-80">EXHIBIT № 09-K</span>
               </div>
               {/* Center Space intentionally preserved for composition & shadow lines */}
-              <div className="relative z-10 my-auto py-16">
+              <div className="hidden lg:block relative z-10 my-auto py-16">
                 <span className="inline-block font-label-mono text-label-mono text-surface-container-lowest/70 tracking-widest uppercase mb-2">CURATED FLEET ASSET</span>
                 <h2 className="font-headline-lg text-headline-lg text-surface-container-lowest max-w-md italic font-light">Sculpted endurance, mechanical silence.</h2>
               </div>
               {/* Museum Placard (Signature Component) */}
-              <div className="relative z-10 bg-surface-container-lowest text-on-surface p-6 sm:p-8">
+              <div className="hidden lg:block relative z-10 bg-surface-container-lowest text-on-surface p-6 sm:p-8">
                 <div className="flex items-center justify-between pb-4 border-b border-surface-container-highest">
                   <div>
                     <span className="font-label-mono text-label-mono uppercase text-on-surface-variant block">{"CATALOGUE № 49 // PERMANENT COLLECTION"}</span>

@@ -174,7 +174,7 @@ export function ReservationCancelScreen() {
                   <span className="material-symbols-outlined text-[#344A3D] text-[18px]">verified</span>
                   <span className="font-body-sm text-[12px] text-[#1E3327] leading-tight">
                     <strong>Tier I Patron Policy Applied:</strong>
-                    {" "}100% full reimbursement with zero processing or restocking fee.
+                    {" "}No cancellation fee more than 48 hours before handover.
                   </span>
                 </div>
               </div>
@@ -190,12 +190,12 @@ export function ReservationCancelScreen() {
                     <span className="text-[#171A18]">€1,731.45</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="font-body-sm">Custodial Release Fee</span>
+                    <span className="font-body-sm">Cancellation fee</span>
                     <span className="text-[#344A3D]">-€0.00</span>
                   </div>
                   <div className="pt-2 border-t border-[#D8D6CE] flex justify-between text-[#171A18] font-bold text-spec-numeral">
-                    <span className="font-action text-[12px] uppercase tracking-wider">Net Refund Payable</span>
-                    <span className="text-[15px] text-[#1E3327]">€1,731.45</span>
+                    <span className="font-action text-[12px] uppercase tracking-wider">Amount due after cancelling</span>
+                    <span className="text-[15px] text-[#1E3327]">€0.00</span>
                   </div>
                 </div>
                 <p className="font-label-mono text-[10px] text-[#546254] mt-2.5 pt-2 border-t border-[#D8D6CE]/60 leading-normal">

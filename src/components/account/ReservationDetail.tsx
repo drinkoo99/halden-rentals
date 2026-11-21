@@ -16,7 +16,7 @@ export function ReservationDetail() {
   const cancelled = useSyncExternalStore(subscribe, () => isCancelled(), () => false);
   return (
     <>
-      <ReservationDetailMobile />
+      <ReservationDetailMobile cancelled={cancelled} />
       {cancelled ? <ReservationCancelledDesktop /> : <ReservationDetailDesktop />}
     </>
   );

@@ -13,13 +13,14 @@ const subscribe = (cb: () => void) => {
 
 /**
  * Patron overview. Shows the upcoming reservation; once it has been cancelled there is nothing
- * upcoming, so the desktop switches to the Stitch empty state ("Account Overview (Empty State)").
+ * upcoming: desktop switches to the Stitch empty state ("Account Overview (Empty State)") and the
+ * mobile overview shows the same message in its upcoming-allocation card.
  */
 export function AccountOverview() {
   const empty = useSyncExternalStore(subscribe, () => isCancelled(), () => false);
   return (
     <>
-      <AccountOverviewMobile />
+      <AccountOverviewMobile empty={empty} />
       {empty ? <AccountOverviewEmptyDesktop /> : <AccountOverviewDesktop />}
     </>
   );

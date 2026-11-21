@@ -4,7 +4,7 @@ import { Photo } from "@/components/ui/Photo";
 import { media } from "@/data/media";
 
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_mobile_patron_account_overview/code.html */
-export function AccountOverviewMobile() {
+export function AccountOverviewMobile({ empty = false }: { empty?: boolean }) {
   return (
     <div className="md:hidden bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary">
       <header className="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe">
@@ -46,6 +46,25 @@ export function AccountOverviewMobile() {
           </section>
           {/* Section 1: Upcoming Allocation (Exhibit Placard Signature Component) */}
           <section className="px-gutter-mobile mb-space-lg">
+            {empty ? (
+              <div className="bg-surface-container-lowest">
+                <div className="px-4 py-3 bg-surface-container-low flex items-center justify-between">
+                  <span className="font-label-mono text-[11px] tracking-[0.15em] uppercase text-on-surface">UPCOMING ALLOCATION</span>
+                  <span className="font-label-mono text-[10px] tracking-wider uppercase text-secondary font-medium">00 ACTIVE</span>
+                </div>
+                <div className="px-4 py-space-lg flex flex-col gap-space-sm">
+                  <h2 className="font-headline-sm text-headline-sm text-on-surface">No journeys planned yet.</h2>
+                  <p className="font-body-sm text-body-sm text-on-surface-variant">Your confirmed itineraries and curbside handover dossiers will appear here.</p>
+                  <Link className="mt-space-sm h-12 bg-primary text-on-primary font-action text-action uppercase tracking-widest flex items-center justify-center gap-2" href="/fleet">
+                    Explore the collection
+                    <span className="material-symbols-outlined text-[18px]" aria-hidden>
+                      arrow_forward
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            ) : (
+              <>
             <div className="bg-surface-container-lowest p-0">
               {/* Allocation Bar */}
               <div className="px-4 py-3 bg-surface-container-low flex items-center justify-between">
@@ -98,6 +117,8 @@ export function AccountOverviewMobile() {
                 </div>
               </div>
             </div>
+          </>
+            )}
           </section>
           {/* Section 2: Past Journeys (Compact Archival Ledger Rows) */}
           <section id="m-reservations" className="px-gutter-mobile mb-space-lg">

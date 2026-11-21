@@ -6,7 +6,7 @@ import { Photo } from "@/components/ui/Photo";
 import { media } from "@/data/media";
 
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_mobile_reservation_detail/code.html */
-export function ReservationDetailMobile() {
+export function ReservationDetailMobile({ cancelled = false }: { cancelled?: boolean }) {
   const [drawer, setDrawer] = useState(false);
   return (
     <div className="md:hidden bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary">
@@ -27,6 +27,14 @@ export function ReservationDetailMobile() {
       </header>
       <main className="flex-1 w-full pt-16 bg-surface flex flex-col">
         <div className="flex flex-col w-full pb-32">
+          {cancelled && (
+            <div role="status" className="mx-margin-mobile mt-space-md p-space-md bg-surface-container-high border-l-2 border-error flex flex-col gap-1">
+              <span className="font-label-mono text-[10px] uppercase tracking-[0.14em] text-error font-bold">RESERVATION CANCELLED</span>
+              <p className="font-body-sm text-body-sm text-on-surface-variant">
+                Nothing was charged online, so there is nothing to refund and no cancellation fee applies.
+              </p>
+            </div>
+          )}
           {/* Sub-Header Meta & Dossier Navigation Reference */}
           <div className="px-margin-mobile pt-3 pb-3 bg-surface-container-low flex items-center justify-between border-b border-outline-variant">
             <div className="flex items-center gap-2"><span className="font-label-mono text-label-mono tracking-[0.16em] uppercase text-on-surface-variant font-medium">DOSSIER · HLD-0612-4821</span></div>
@@ -41,7 +49,7 @@ export function ReservationDetailMobile() {
                 {" "}
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
               </span>
-              <span className="font-label-mono text-[10px] uppercase tracking-[0.14em] text-primary font-medium">{"CONFIRMED // VIP STAGING"}</span>
+              <span className="font-label-mono text-[10px] uppercase tracking-[0.14em] text-primary font-medium">{cancelled ? "CANCELLED // RELEASED" : "CONFIRMED // VIP STAGING"}</span>
             </div>
             {/* Title Block */}
             <h2 className="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-tight">Range Rover Autobiography</h2>
@@ -264,7 +272,16 @@ export function ReservationDetailMobile() {
             <span className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-wider -mt-1">Free cancellation until 10 Jun 10:00 CEST</span>
           </div>
           {/* Sticky Bottom Action Bar with Architectural Framing */}
-          <div className="fixed bottom-0 inset-x-0 z-40 bg-surface/95 backdrop-blur-md border-t border-outline-variant pb-safe">
+          {cancelled ? (
+            <div className="fixed bottom-0 inset-x-0 z-40 bg-surface/95 backdrop-blur-md border-t border-outline-variant pb-safe">
+              <div className="max-w-md mx-auto px-margin-mobile py-3">
+                <Link className="h-12 w-full bg-primary text-on-primary font-action text-action flex items-center justify-center tracking-[0.04em]" href="/book/range-rover-autobiography/trip">
+                  Book again
+                </Link>
+              </div>
+            </div>
+          ) : (
+            <div className="fixed bottom-0 inset-x-0 z-40 bg-surface/95 backdrop-blur-md border-t border-outline-variant pb-safe">
             <div className="max-w-md mx-auto px-margin-mobile py-3 grid grid-cols-2 gap-3 items-center">
               <Link className="h-12 border border-on-surface bg-surface text-on-surface font-action text-action hover:bg-surface-container transition-colors flex items-center justify-center text-center tracking-[0.04em]" href="/account/reservations/hld-0612-4821/modify">Modify Itinerary</Link>
               <a className="h-12 bg-primary text-on-primary font-action text-action hover:bg-primary-container transition-colors flex items-center justify-center gap-1.5 tracking-[0.04em]" href="https://www.google.com/maps/search/?api=1&query=Munich+Airport+Terminal+2" rel="noopener noreferrer" target="_blank">
@@ -274,6 +291,7 @@ export function ReservationDetailMobile() {
               </a>
             </div>
           </div>
+          )}
           {/* Micro-Drawer Modal for Modification */}
           <div className={`${drawer ? "flex" : "hidden"} fixed inset-0 z-50 bg-black/40 backdrop-blur-xs items-end justify-center`} id="itineraryDrawer" role="dialog" aria-modal="true" aria-label="Modification protocol">
             <div className="bg-surface w-full max-w-md p-6 border-t border-outline-variant shadow-2xl flex flex-col gap-4 animate-in slide-in-from-bottom duration-200">
