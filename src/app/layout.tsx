@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, DM_Mono, Manrope, Space_Mono } from "next/font/google";
+import { OfflineBanner } from "@/components/states/OfflineBanner";
 import "./globals.css";
 
 const bodoni = Bodoni_Moda({
@@ -57,7 +58,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
         />
       </head>
-      <body className="bg-ivory text-ink antialiased">{children}</body>
+      <body className="bg-ivory text-ink antialiased">
+        {children}
+        <OfflineBanner />
+      </body>
     </html>
   );
 }
