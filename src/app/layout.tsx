@@ -4,6 +4,7 @@ import { CatalogueProvider } from "@/components/catalogue/CatalogueProvider";
 import { CookieConsent } from "@/components/site/CookieConsent";
 import { OfflineBanner } from "@/components/states/OfflineBanner";
 import { ICON_FONT_HREF } from "@/lib/icons";
+import { resolveSiteUrl } from "@/lib/siteUrl";
 import { getSiteCatalogue } from "@/server/catalogue/service";
 import "./globals.css";
 
@@ -33,7 +34,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(resolveSiteUrl()),
   openGraph: {
     type: "website",
     siteName: "HALDEN",
