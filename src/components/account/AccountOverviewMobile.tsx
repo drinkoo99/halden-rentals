@@ -4,7 +4,7 @@ import { Photo } from "@/components/ui/Photo";
 import { media } from "@/data/media";
 
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_mobile_patron_account_overview/code.html */
-export function AccountOverviewMobile({ empty = false }: { empty?: boolean }) {
+export function AccountOverviewMobile({ empty = false, firstName }: { empty?: boolean; firstName: string }) {
   return (
     <div className="md:hidden bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary">
       <header className="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe">
@@ -31,7 +31,7 @@ export function AccountOverviewMobile({ empty = false }: { empty?: boolean }) {
                 {" "}ACTIVE PATRON
               </span>
             </div>
-            <h1 className="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight mb-2">Welcome back, Clara.</h1>
+            <h1 className="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight mb-2">Welcome back, {firstName}.</h1>
             <p className="font-label-mono text-[10px] uppercase tracking-[0.14em] text-on-surface-variant leading-relaxed">{"PATRON CIRCLE // TIER-1 ARCHIVE CLEARANCE • 03 JOURNEYS COMPLETED"}</p>
             {/* Space Mono Tab Strip */}
             <div className="flex items-center gap-6 mt-6 overflow-x-auto no-scrollbar">

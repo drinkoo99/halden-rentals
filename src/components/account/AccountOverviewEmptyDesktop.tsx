@@ -3,7 +3,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_patron_circle_account_overview_empty_state/code.html */
-export function AccountOverviewEmptyDesktop() {
+export function AccountOverviewEmptyDesktop({ firstName }: { firstName: string }) {
   return (
     <div className="hidden md:block bg-surface font-body-md text-body-md text-on-surface antialiased">
       <SiteHeader patron />
@@ -26,7 +26,7 @@ export function AccountOverviewEmptyDesktop() {
                 {/* Greeting Header */}
                 <section className="pb-space-lg border-b border-outline-variant">
                   <p className="font-label-mono text-label-mono uppercase text-outline mb-space-sm">{"PATRON CIRCLE // ACCOUNT ARCHIVE"}</p>
-                  <h1 className="font-display text-display text-on-surface">Good evening, Clara.</h1>
+                  <h1 className="font-display text-display text-on-surface">Good evening, {firstName}.</h1>
                 </section>
                 {/* Upcoming Reservation Empty State */}
                 <section className="flex flex-col gap-space-md">

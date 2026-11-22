@@ -1,17 +1,22 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { useCountdown } from "@/lib/useCountdown";
 import Link from "next/link";
 import { Photo } from "@/components/ui/Photo";
 import { media } from "@/data/media";
 
-/** Stitch screen "" — generated from design/stitch-export-round2/halden_sign_in_error_states_security_lockout/code.html */
+/**
+ * Stitch "Sign In: Error States & Security Lockout" — shown after too many failed sign-ins. The wait comes
+ * from the server's rate limit (?retry=seconds); the limit itself is enforced on the server.
+ */
 export function SignInLockoutScreen() {
-  const lock = useCountdown(14 * 60 + 28);
+  const retry = Math.min(3600, Math.max(1, Math.round(Number(useSearchParams().get("retry")) || 900)));
+  const lock = useCountdown(retry);
   const { start } = lock;
   useEffect(() => start(), [start]);
-  const left = lock.left || 14 * 60 + 28; // server render shows the starting value
+  const left = lock.left || retry; // server render shows the starting value
   const mm = String(Math.floor(left / 60)).padStart(2, "0");
   const ss = String(left % 60).padStart(2, "0");
   return (
@@ -146,7 +151,7 @@ export function SignInLockoutScreen() {
                       <span className="text-outline text-[10px]">VERIFIED FORMAT</span>
                     </label>
                     <div className="relative">
-                      <input id="lockout-1" className="w-full bg-surface-container-low text-on-surface font-body-md text-body-md px-3.5 py-3 border border-outline-variant/80 focus:outline-hidden cursor-not-allowed opacity-90 select-none" readOnly type="text" defaultValue="patron@halden-circle.com" />
+                      <input id="lockout-1" className="w-full bg-surface-container-low text-on-surface font-body-md text-body-md px-3.5 py-3 border border-outline-variant/80 focus:outline-hidden cursor-not-allowed opacity-90 select-none" readOnly type="text" placeholder="Patron identifier locked" />
                       <span className="absolute right-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-secondary text-lg">check</span>
                     </div>
                   </div>

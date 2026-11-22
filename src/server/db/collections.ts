@@ -1,5 +1,6 @@
 import type { CreateCollectionOptions, Db, Document, IndexDescription } from "mongodb";
 import { CATALOGUE_COLLECTION_SPECS } from "../catalogue/collections";
+import { AUTH_COLLECTION_SPECS } from "../auth/collections";
 
 /**
  * Declarative collection setup: each milestone registers the collections it introduces (name, named
@@ -32,7 +33,7 @@ export type CollectionSpec = {
 /** moderate: existing documents that do not match are not re-validated until they are updated. */
 export const VALIDATION_SETTINGS = { validationLevel: "moderate", validationAction: "error" } as const;
 
-export const COLLECTIONS: CollectionSpec[] = [...CATALOGUE_COLLECTION_SPECS];
+export const COLLECTIONS: CollectionSpec[] = [...CATALOGUE_COLLECTION_SPECS, ...AUTH_COLLECTION_SPECS];
 
 export type SetupAction =
   | { action: "create-collection"; collection: string }

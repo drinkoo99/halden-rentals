@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { signOutAction } from "@/app/actions/auth";
 import { MobileMenu } from "@/components/site/MobileMenu";
+import { shortName } from "@/lib/names";
+import { setSessionUser, useSession } from "@/lib/session";
 
 type Section = "fleet" | "journeys" | "about";
 
@@ -21,11 +24,14 @@ const ACCOUNT_LINKS = [
 
 /**
  * Shared header for the round-2 desktop pages (About, Journeys, patron account), consolidated from the
- * Stitch variants: 80px bar, HALDEN wordmark, Fleet / Journeys / About. Public pages are signed out
- * ("Patron sign in"); account pages pass `patron` and get the Stitch patron menu (Clara V.).
+ * Stitch variants: 80px bar, HALDEN wordmark, Fleet / Journeys / About. Signed-out visitors see "Patron
+ * sign in"; a signed-in patron (or an account page, which passes `patron`) gets the Stitch patron menu with
+ * their name and a real sign-out.
  * Below md the nav collapses into the shared mobile menu.
  */
 export function SiteHeader({ active, patron = false }: { active?: Section; patron?: boolean }) {
+  const session = useSession();
+  const signedIn = patron || session.status === "signed-in";
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl border-b border-outline-variant">
       <div className="h-20 max-w-7xl mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
@@ -46,7 +52,7 @@ export function SiteHeader({ active, patron = false }: { active?: Section; patro
           )}
         </nav>
         <div className="flex items-center gap-space-sm">
-          {patron ? (
+          {signedIn ? (
             <PatronMenu />
           ) : (
             <Link className="hidden md:inline-block font-label-mono text-label-mono uppercase tracking-[0.14em] text-on-surface-variant hover:text-on-surface transition-colors" href="/sign-in">
@@ -64,6 +70,7 @@ export function SiteHeader({ active, patron = false }: { active?: Section; patro
 
 /** Patron menu: opens on click (works with keyboard and touch), closes on Escape / outside click. */
 function PatronMenu() {
+  const { user } = useSession();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -86,7 +93,7 @@ function PatronMenu() {
         onClick={() => setOpen((o) => !o)}
         type="button"
       >
-        <span className="font-body-sm text-body-sm font-medium">Clara V.</span>
+        <span className="font-body-sm text-body-sm font-medium">{user ? shortName(user.name) : "Patron"}</span>
         <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
           <span className="material-symbols-outlined text-on-primary text-[18px]" aria-hidden>
             person
@@ -104,10 +111,17 @@ function PatronMenu() {
                 {l.label}
               </Link>
             ))}
+            {user && user.role !== "customer" && (
+              <Link className="px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="/staff">
+                Staff console
+              </Link>
+            )}
             <div className="my-space-xs border-t border-outline-variant" />
-            <Link className="px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="/sign-in">
-              Sign out
-            </Link>
+            <form action={signOutAction} onSubmit={() => setSessionUser(null)}>
+              <button className="w-full text-left px-space-md py-space-sm font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" type="submit">
+                Sign out
+              </button>
+            </form>
           </nav>
         </div>
       )}

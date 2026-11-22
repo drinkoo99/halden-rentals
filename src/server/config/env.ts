@@ -28,6 +28,9 @@ export const serverEnvSchema = z.object({
       .regex(/^[A-Za-z0-9_-]{1,38}$/, "must be 1–38 letters, digits, '_' or '-'"),
   ).transform((v) => v ?? "halden_dev"),
   LOG_LEVEL: optional(z.enum(["debug", "info", "warn", "error"])).transform((v) => v ?? "info"),
+  /** Transactional email (Resend). Both must be set for password reset / email verification to send mail. */
+  RESEND_API_KEY: optional(z.string().trim().regex(/^re_[A-Za-z0-9_]+$/, "must be a Resend API key (re_…)")),
+  EMAIL_FROM: optional(z.string().trim().min(3).max(200).regex(/@/, "must be a sender address, e.g. HALDEN <concierge@example.com>")),
 });
 
 export type ServerEnv = z.infer<typeof serverEnvSchema>;

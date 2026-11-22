@@ -3,9 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { signOutAction } from "@/app/actions/auth";
 import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import { Icon } from "@/components/ui/Icon";
 import { media } from "@/data/media";
+import { setSessionUser, useSession } from "@/lib/session";
 import { useMounted } from "@/lib/useMounted";
 
 type TriggerVariant = "bars" | "icon";
@@ -51,6 +53,7 @@ export function MobileMenu({
 }) {
   const [open, setOpen] = useState(false);
   const { vehicles } = useCatalogue();
+  const session = useSession();
   const navLinks = links.map((l) => (l.href === "/fleet" ? { ...l, tag: `${vehicles.length} EXHIBITS` } : l));
   const mounted = useMounted();
   const time = useCetClock(open && mounted);
@@ -231,17 +234,24 @@ export function MobileMenu({
                 <Icon name="calendar_today" className="text-[18px]" />
               </Link>
               <Link
-                href="/sign-in"
+                href={session.user ? (session.user.role === "customer" ? "/account" : "/staff") : "/sign-in"}
                 onNavigate={() => setOpen(false)}
                 className="h-12 flex items-center justify-between px-3 bg-tertiary-container text-secondary-fixed rounded group"
               >
                 <span className="font-label-mono text-label-mono tracking-widest uppercase text-secondary-fixed">
-                  Patron Sign In
+                  {session.user ? (session.user.role === "customer" ? "Patron Account" : "Staff Console") : "Patron Sign In"}
                 </span>
                 <span className="font-label-mono text-label-mono text-secondary-fixed group-hover:translate-x-1 transition-transform duration-200">
                   →
                 </span>
               </Link>
+              {session.user && (
+                <form action={signOutAction} onSubmit={() => setSessionUser(null)}>
+                  <button type="submit" className="w-full h-10 font-label-mono text-label-mono tracking-widest uppercase text-on-surface-variant hover:text-on-surface transition-colors">
+                    Sign out
+                  </button>
+                </form>
+              )}
             </div>
 
             {/* Exhibition Footer & Concierge Terminal */}
