@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { ItineraryEditor } from "@/components/site/ItineraryEditor";
 import { countWithout, useFleetState } from "@/components/fleet/useFleetState";
-import { getVehicle, brandOptions, categoryOptions, featureOptions, powertrainOptions, vehicles, type Vehicle } from "@/data/vehicles";
+import { brandOptions, categoryOptions, featureOptions, powertrainOptions, type Vehicle } from "@/data/vehicles";
+import { findVehicle } from "@/lib/catalogue";
 import { useFavourites } from "@/lib/favourites";
 import { emptyFilters, PRICE_MAX, PRICE_MIN, seatOptions, sortOptions, toggle, type SortKey } from "@/lib/fleetFilters";
 import { formatDayTimeCompact, rentalDays } from "@/lib/itinerary";
@@ -14,13 +15,13 @@ const PER_PAGE = 6;
 
 /** Desktop fleet discovery — Stitch screen 12 ("The Collection | Fleet Discovery"). Shown from lg up. */
 export function FleetDesktop() {
-  const { filters, setFilters, itinerary, setItinerary, results, page, setPage, tripQuery } = useFleetState();
+  const { vehicles, filters, setFilters, itinerary, setItinerary, results, page, setPage, tripQuery } = useFleetState();
   const [editing, setEditing] = useState(false);
   const days = rentalDays(itinerary.from, itinerary.to);
   const pages = Math.max(1, Math.ceil(results.length / PER_PAGE));
   const current = Math.min(page, pages);
   const shown = results.slice((current - 1) * PER_PAGE, current * PER_PAGE);
-  const curator = getVehicle("lexus-lc-500")!;
+  const curator = findVehicle(vehicles, "lexus-lc-500") ?? vehicles[0];
 
   const chips: { label: string; remove: () => void }[] = [
     ...filters.categories.map((c) => ({
@@ -80,7 +81,7 @@ export function FleetDesktop() {
               Sign in
             </Link>
             <Link
-              href={`/book/${results[0]?.slug ?? vehicles[0].slug}/trip?${tripQuery}`}
+              href={(results[0] ?? vehicles[0]) ? `/book/${(results[0] ?? vehicles[0]).slug}/trip?${tripQuery}` : "/fleet"}
               className="px-5 py-2.5 border border-ink text-ink hover:bg-ink hover:text-ivory rounded-[2px] transition-all duration-200 text-xs font-semibold uppercase tracking-wider"
             >
               Book a car
@@ -166,7 +167,7 @@ export function FleetDesktop() {
                   label="All categories"
                   checked={filters.categories.length === 0}
                   bold={filters.categories.length === 0}
-                  count={countWithout(filters, "categories", () => true)}
+                  count={countWithout(vehicles, filters, "categories", () => true)}
                   onChange={() => setFilters({ ...filters, categories: [] })}
                 />
                 {categoryOptions.map((c) => (
@@ -174,7 +175,7 @@ export function FleetDesktop() {
                     key={c.value}
                     label={c.label}
                     checked={filters.categories.includes(c.value)}
-                    count={countWithout(filters, "categories", (v) => v.category === c.value)}
+                    count={countWithout(vehicles, filters, "categories", (v) => v.category === c.value)}
                     onChange={() => setFilters({ ...filters, categories: toggle(filters.categories, c.value) })}
                   />
                 ))}
@@ -219,7 +220,7 @@ export function FleetDesktop() {
                     label={b}
                     checked={filters.brands.includes(b)}
                     bold={filters.brands.includes(b)}
-                    count={countWithout(filters, "brands", (v) => v.brand === b)}
+                    count={countWithout(vehicles, filters, "brands", (v) => v.brand === b)}
                     onChange={() => setFilters({ ...filters, brands: toggle(filters.brands, b) })}
                   />
                 ))}
@@ -401,7 +402,7 @@ export function FleetDesktop() {
             )}
 
             {/* BREAK THE GRID: CURATOR'S PICK */}
-            {current === 1 && (
+            {current === 1 && curator && (
               <div className="w-full my-16 bg-stone border-t border-b border-stone-dim py-8">
                 <div className="flex flex-col space-y-4">
                   <div className="flex items-center justify-between border-b border-stone-dim pb-3">

@@ -4,12 +4,12 @@ Phase 2 adds a backend to the existing Next.js app: a **modular monolith** (no s
 MongoDB Atlas through the official driver and Zod for validation. The architecture and the milestone plan
 were approved before implementation; this file documents what exists so far.
 
-**Status: M2 — Database catalogue.** M1 provides environment validation, the database client, API
+**Status: M3 — Catalogue API.** M1 provides environment validation, the database client, API
 conventions, a health endpoint and collection-setup tooling. M2 adds the catalogue (`locations`,
 `vehicleModels`, `extras`): schemas, collection validators and indexes, the demo seed and an
-integration-test harness. The application database is set up and holds the demo catalogue. There is no
-catalogue API yet, no authentication, bookings or pricing, and no page reads from the database — the
-frontend behaves exactly as in Phase 1.
+integration-test harness. M3 serves the catalogue from MongoDB: three read-only endpoints, and the pages
+(fleet, vehicle detail, booking, search, menus) render the database catalogue. No authentication,
+bookings, availability or server-side pricing yet — booking still runs in the browser as in Phase 1.
 
 ## Setup
 
@@ -61,7 +61,8 @@ src/server/                 server-only code (never imported by Client Component
   http/handler.ts           route() wrapper and json() helper for Route Handlers
   log.ts                    structured JSON logging with redaction
   db/targets.ts             database target guards: script flags, test-database resolution
-  catalogue/                schemas (Zod), types, taxonomy, collection validators and indexes
+  catalogue/                schemas (Zod), types, taxonomy, collection validators and indexes;
+                            public.ts / read.ts / service.ts / routes.ts — the public catalogue (M3)
   catalogue/seed/           demo seed: mapping from src/data, validation, planning, apply
   testing/integrationDb.ts  integration-test harness: guarded halden_test access, run-scoped collections
 src/app/api/v1/…            Route Handlers (thin: parse → service → respond)
@@ -114,6 +115,33 @@ and secrets cannot leak into the browser bundle. Later milestones add `domain/`,
 | unreachable / too slow (2.5 s) / bad credentials / other | 503 | `…"database":{"status":"down","reason":"unreachable" \| "timeout" \| "auth_failed" \| "error","latencyMs":…}` |
 
 Only a coarse reason is returned; hosts and driver messages stay out of the response.
+
+## Catalogue API
+
+`GET /api/v1/locations`, `GET /api/v1/vehicles`, `GET /api/v1/extras` — the public catalogue, read-only.
+
+- **Response:** `200 { "data": [ … ] }`, in catalogue order (`sortOrder`). Only public items: locations and
+  extras with status `active`, vehicles with status `published`. An empty collection returns `{ "data": [] }`.
+- **Fields:** the stored document without `_id`, `createdAt`, `updatedAt`, `dataOrigin`, `schemaVersion`,
+  `status` and `sortOrder` (`src/server/catalogue/public.ts`). Money is in cents (`displayRate`, `charge`).
+- **Query parameters:** none. The catalogue is small and the frontend filters and sorts it itself, so any
+  parameter is rejected with `400 VALIDATION_FAILED` rather than silently ignored.
+- **Errors:** `503 SERVICE_UNAVAILABLE` when the database is not configured or unreachable; `500 INTERNAL`
+  if a stored document fails schema validation (logged with field paths only, never values).
+- **Caching:** each list is cached on the server (`"use cache"`, `cacheLife("hours")`, tag `catalogue` — call
+  `revalidateTag("catalogue")` after a catalogue change). Successful responses also carry
+  `cache-control: public, max-age=60, s-maxage=300, stale-while-revalidate=3600`; errors are `no-store`.
+
+**Pages.** Server Components read the same cached service (`src/server/catalogue/service.ts`) directly —
+they do not call the HTTP endpoints. The root layout loads the catalogue once and hands it to Client
+Components through `CatalogueProvider` / `useCatalogue()`; `src/lib/catalogue.ts` maps public items to the
+view types the components were built on, so the UI is unchanged. Hub time-zone labels (CET/CEST) are
+derived from each hub's IANA zone. `src/data/*.ts` is now only the seed source.
+
+**Without a database.** If `MONGODB_URI` is not set at all, pages render the static demo catalogue
+(mapped through the seed, so it is identical to the seeded data) and log a warning; the API answers 503.
+A configured database that fails is an error, never a silent fallback. Builds read the catalogue at build
+time, so a build with `MONGODB_URI` set needs database access.
 
 ## Database setup
 

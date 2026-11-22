@@ -2,7 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
-import { locations } from "@/data/locations";
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
+import { findLocation } from "@/lib/catalogue";
 import { defaultItinerary, formatDayTime, itineraryQuery } from "@/lib/itinerary";
 import { useMounted } from "@/lib/useMounted";
 
@@ -13,6 +14,7 @@ import { useMounted } from "@/lib/useMounted";
  */
 export function HomeSearchBar() {
   const router = useRouter();
+  const { locations } = useCatalogue();
   const mounted = useMounted();
   const id = useId();
   const [loc, setLoc] = useState("zrh");
@@ -20,7 +22,7 @@ export function HomeSearchBar() {
   const [error, setError] = useState<string | null>(null);
 
   const current = dates ?? (mounted ? defaultItinerary() : null);
-  const location = locations.find((l) => l.id === loc) ?? locations[0];
+  const location = findLocation(locations, loc);
 
   function update(key: "from" | "to", value: string) {
     if (!value) return;

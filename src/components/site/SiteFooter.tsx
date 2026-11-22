@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { locations } from "@/data/locations";
+import { FooterColumn } from "./FooterColumn";
+import { FooterHubs } from "./FooterHubs";
 
 const FLEET = [
   { label: "Sports & Grand Touring", href: "/fleet?category=sports" },
@@ -23,11 +24,9 @@ export const LEGAL_LINKS = [
 /** Reopens the cookie preferences (handled by CookieConsent). */
 export const COOKIE_PREFERENCES_HREF = "#cookie-preferences";
 
-const link = "text-inverse-on-surface hover:text-primary-fixed transition-colors";
-
 /**
  * Shared footer for the round-2 pages, consolidated from the Stitch footers (dark room, four columns).
- * Every link goes somewhere real; hub names come from the location data.
+ * Every link goes somewhere real; hub names come from the catalogue (FooterHubs).
  */
 export function SiteFooter() {
   return (
@@ -43,7 +42,7 @@ export function SiteFooter() {
             </p>
           </div>
           <FooterColumn title="Fleet" links={FLEET} />
-          <FooterColumn title="Hubs" links={locations.map((l) => ({ label: l.label, href: "/about#hubs" }))} />
+          <FooterHubs />
           <FooterColumn title="Support" links={SUPPORT} />
         </div>
         <div className="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md font-label-mono text-label-mono uppercase text-on-tertiary-container">
@@ -61,22 +60,5 @@ export function SiteFooter() {
         </div>
       </div>
     </footer>
-  );
-}
-
-function FooterColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
-  return (
-    <div>
-      <h2 className="font-label-mono text-label-mono uppercase text-on-tertiary-container mb-space-md">{title}</h2>
-      <ul className="space-y-space-sm font-body-sm text-body-sm">
-        {links.map((l) => (
-          <li key={l.label}>
-            <Link className={link} href={l.href}>
-              {l.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }

@@ -1,16 +1,17 @@
 "use client";
 
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { useBooking } from "@/components/booking/BookingProvider";
 import { longDateTime } from "@/components/booking/ReviewStep";
 import { Icon } from "@/components/ui/Icon";
-import { extras } from "@/data/extras";
 import { formatEuroCents } from "@/lib/pricing";
 
 /** Booking step 06 · Confirmed — Stitch screen 23. A demo confirmation: nothing is reserved or charged. */
 export function ConfirmedStep() {
   const { vehicle: v, state, pickup, dropoff, days } = useBooking();
+  const { extras } = useCatalogue();
   const c = state.confirmation;
 
   if (!c || !state.driver) {

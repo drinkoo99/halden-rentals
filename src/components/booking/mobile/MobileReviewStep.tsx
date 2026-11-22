@@ -1,12 +1,13 @@
 "use client";
 
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { newReference, useBooking } from "@/components/booking/BookingProvider";
 import { MobileBookingBar, MobileBookingHeader } from "@/components/booking/mobile/MobileBookingChrome";
 import { Photo } from "@/components/ui/Photo";
-import { extraCost, extras } from "@/data/extras";
+import { extraCost } from "@/data/extras";
 import { driverSchema, licenceCountries } from "@/lib/booking/driverSchema";
 import { formatEuroCents } from "@/lib/pricing";
 
@@ -24,6 +25,7 @@ const when = (v: string, tz: string) => {
 export function MobileReviewStep() {
   const router = useRouter();
   const { vehicle: v, state, update, pickup, dropoff, days, quote } = useBooking();
+  const { extras } = useCatalogue();
   const [agreed, setAgreed] = useState(state.agreed);
   const [error, setError] = useState<string | null>(null);
   const d = state.driver;

@@ -1,4 +1,5 @@
-import { getLocation, type Location } from "@/data/locations";
+import type { Location } from "@/data/locations";
+import { findLocation } from "./catalogue";
 
 /**
  * The rental itinerary (pick-up hub + dates) travels between pages in the URL:
@@ -31,7 +32,7 @@ export function defaultItinerary(now: Date = new Date()): { from: string; to: st
 const isValidLocal = (v: string | null | undefined): v is string =>
   !!v && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(v) && !Number.isNaN(new Date(v).getTime());
 
-export function readItinerary(params: URLSearchParams | null): Itinerary {
+export function readItinerary(params: URLSearchParams | null, locations: Location[]): Itinerary {
   const fallback = defaultItinerary();
   const from = params?.get("from");
   const to = params?.get("to");
@@ -42,7 +43,7 @@ export function readItinerary(params: URLSearchParams | null): Itinerary {
     t.setDate(t.getDate() + 3);
     validTo = toLocalInput(t);
   }
-  return { location: getLocation(params?.get("loc")), from: validFrom, to: validTo };
+  return { location: findLocation(locations, params?.get("loc")), from: validFrom, to: validTo };
 }
 
 export function itineraryQuery(it: { location: Location | string; from: string; to: string }): string {

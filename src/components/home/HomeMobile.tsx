@@ -5,7 +5,6 @@ import { NewsletterForm } from "@/components/site/NewsletterForm";
 import { Icon } from "@/components/ui/Icon";
 import { ResponsiveHero } from "@/components/ui/ResponsiveHero";
 import { media } from "@/data/media";
-import { vehicles } from "@/data/vehicles";
 
 /** Mobile homepage — Stitch screen 28. Shown below the md breakpoint. */
 
@@ -84,7 +83,7 @@ const routes = [
   },
 ];
 
-export function HomeMobile() {
+export function HomeMobile({ vehicleCount }: { vehicleCount: number }) {
   return (
     <div className="md:hidden bg-surface font-body-md text-on-surface flex flex-col min-h-screen pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)]">
       <div className="flex flex-col relative w-full bg-surface min-h-screen">
@@ -226,7 +225,7 @@ export function HomeMobile() {
               </div>
               <div className="px-6 mt-6">
                 <Link className="font-action text-on-surface flex items-center gap-1.5 py-2" href="/fleet">
-                  <span>View all {vehicles.length} models in catalogue</span>
+                  <span>View all {vehicleCount} models in catalogue</span>
                   <span className="text-base font-normal">→</span>
                 </Link>
               </div>

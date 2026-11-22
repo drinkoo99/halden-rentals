@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, DM_Mono, Manrope, Space_Mono } from "next/font/google";
+import { CatalogueProvider } from "@/components/catalogue/CatalogueProvider";
 import { CookieConsent } from "@/components/site/CookieConsent";
 import { OfflineBanner } from "@/components/states/OfflineBanner";
 import { ICON_FONT_HREF } from "@/lib/icons";
+import { getSiteCatalogue } from "@/server/catalogue/service";
 import "./globals.css";
 
 const bodoni = Bodoni_Moda({
@@ -45,7 +47,9 @@ export const metadata: Metadata = {
     "A curated fleet of premium cars, ready in Europe’s best cities and airports.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  // the catalogue (MongoDB, cached on the server) for every Client Component that lists cars, hubs or extras
+  const catalogue = await getSiteCatalogue();
   return (
     <html
       lang="en"
@@ -60,7 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="bg-ivory text-ink antialiased">
-        {children}
+        <CatalogueProvider catalogue={catalogue}>{children}</CatalogueProvider>
         <OfflineBanner />
         <CookieConsent />
       </body>

@@ -3,7 +3,8 @@ import { Suspense } from "react";
 import { BookingFooter, BookingHeader, BookingSummary } from "@/components/booking/BookingChrome";
 import { BookingProvider } from "@/components/booking/BookingProvider";
 import { BookingSkeleton } from "@/components/states/Skeletons";
-import { getVehicle, vehicles } from "@/data/vehicles";
+import { findVehicle } from "@/lib/catalogue";
+import { getSiteCatalogue } from "@/server/catalogue/service";
 
 /**
  * The booking UI renders only in the browser (its state lives in sessionStorage), so its prerendered
@@ -12,7 +13,8 @@ import { getVehicle, vehicles } from "@/data/vehicles";
  */
 export const instant = false;
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const { vehicles } = await getSiteCatalogue();
   return vehicles.map((v) => ({ slug: v.slug }));
 }
 
@@ -45,7 +47,7 @@ export default function BookingLayout({ params, children }: LayoutProps<"/book/[
 
 async function Shell({ params, children }: { params: LayoutProps<"/book/[slug]">["params"]; children: React.ReactNode }) {
   const { slug } = await params;
-  const vehicle = getVehicle(slug);
+  const vehicle = findVehicle((await getSiteCatalogue()).vehicles, slug);
   if (!vehicle) notFound();
   return (
     <>

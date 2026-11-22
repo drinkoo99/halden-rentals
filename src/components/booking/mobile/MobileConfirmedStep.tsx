@@ -1,10 +1,10 @@
 "use client";
 
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import Link from "next/link";
 import { useBooking } from "@/components/booking/BookingProvider";
 import { MobileBookingHeader } from "@/components/booking/mobile/MobileBookingChrome";
 import { Photo } from "@/components/ui/Photo";
-import { extras } from "@/data/extras";
 import { downloadIcs, reservationIcs } from "@/lib/ics";
 import { formatEuroCents, SECURITY_DEPOSIT } from "@/lib/pricing";
 
@@ -17,6 +17,7 @@ const at = (v: string, tz: string) => {
 /** Mobile booking step 06 · Confirmed — Stitch "Mobile Booking: Confirmed". Demo: nothing is reserved or charged. */
 export function MobileConfirmedStep() {
   const { vehicle: v, state, pickup, dropoff } = useBooking();
+  const { extras } = useCatalogue();
   const c = state.confirmation;
   const d = state.driver;
 
