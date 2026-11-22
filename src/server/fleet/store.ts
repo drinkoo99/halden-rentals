@@ -1,5 +1,6 @@
 import { randomBytes } from "node:crypto";
 import { ObjectId, type Db } from "mongodb";
+import { BOOKING_COLLECTIONS } from "../bookings/collections";
 import { CATALOGUE_COLLECTIONS } from "../catalogue/collections";
 import { AppError } from "../http/errors";
 import { FLEET_COLLECTIONS, type FleetCollectionNames } from "./collections";
@@ -12,7 +13,9 @@ import { canTransition, type BlockInput, type CreateUnitInput, type FleetStatus,
  * - unit code, plate and VIN are unique (also guaranteed by unique indexes);
  * - the odometer never goes backwards; the model of a physical car never changes;
  * - status changes follow STATUS_TRANSITIONS and are applied only if nobody changed the status meanwhile;
- * - a rented car cannot be reassigned to another hub (it moves on return);
+ * - a rented car cannot be reassigned to another hub (it moves on return), and neither can a car with
+ *   held or confirmed bookings ahead (they expect it at its hub; reassign those bookings first) — M7;
+ * - a car with held or confirmed bookings cannot be retired (`inactive`) — M7;
  * - blocks of one unit never overlap and must end in the future.
  */
 
@@ -36,6 +39,7 @@ export type FleetContext = {
   db: Pick<Db, "collection" | "listCollections">;
   names?: FleetCollectionNames;
   catalogueNames?: { locations: string; vehicleModels: string };
+  bookingNames?: { bookings: string };
   now?: () => Date;
 };
 
@@ -75,6 +79,15 @@ export function assertFleetReady(ctx: FleetContext): Promise<void> {
     perDb.set(key, check);
   }
   return check;
+}
+
+/** Held (unexpired) or confirmed bookings of this car — they depend on its hub and availability. */
+async function pendingBookings(ctx: FleetContext, unitId: ObjectId): Promise<number> {
+  const at = now(ctx);
+  return ctx.db.collection((ctx.bookingNames ?? BOOKING_COLLECTIONS).bookings).countDocuments({
+    unitId,
+    $or: [{ status: "confirmed" }, { status: "held", holdExpiresAt: { $gt: at } }],
+  });
 }
 
 export function parseId(id: string): ObjectId {
@@ -156,6 +169,7 @@ export async function updateUnit(ctx: FleetContext, id: ObjectId, patch: UpdateU
   const unit = await getUnit(ctx, id);
   if (patch.locationCode && patch.locationCode !== unit.locationCode) {
     if (unit.status === "rented") throw new AppError("CONFLICT", "A rented car cannot be moved to another hub; it is reassigned when it is returned.");
+    if (await pendingBookings(ctx, id)) throw new AppError("CONFLICT", "This car has upcoming bookings at its hub; reassign them to another car first.");
     await assertLocation(ctx, patch.locationCode);
   }
   if (patch.mileageKm !== undefined && patch.mileageKm < unit.mileageKm)
@@ -180,6 +194,7 @@ export async function changeStatus(ctx: FleetContext, id: ObjectId, to: FleetSta
   const unit = await getUnit(ctx, id);
   if (unit.status === to) return unit;
   if (!canTransition(unit.status, to)) throw new AppError("CONFLICT", `A ${unit.status} car cannot be marked ${to}.`, { details: [{ path: "status", message: `allowed from ${unit.status}: see STATUS_TRANSITIONS` }] });
+  if (to === "inactive" && (await pendingBookings(ctx, id))) throw new AppError("CONFLICT", "This car has upcoming bookings; reassign them before retiring it.");
   const res = await unitsOf(ctx).findOneAndUpdate({ _id: id, status: unit.status }, { $set: { status: to, updatedAt: now(ctx) } }, { returnDocument: "after" });
   if (!res) throw new AppError("CONFLICT", "The status was changed meanwhile; reload and try again.");
   return res;

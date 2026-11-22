@@ -1,4 +1,5 @@
 import { AUTH_COLLECTION_SPECS } from "../auth/collections";
+import { BOOKING_COLLECTION_SPECS } from "../bookings/collections";
 import { FLEET_COLLECTION_SPECS } from "../fleet/collections";
 import { describe, expect, it, vi } from "vitest";
 import { CATALOGUE_COLLECTION_SPECS } from "../catalogue/collections";
@@ -65,8 +66,8 @@ const upToDate = (): Record<string, FakeCollection> => ({
 
 describe("registry", () => {
   it("registers exactly the catalogue collections", () => {
-    expect(COLLECTIONS).toEqual([...CATALOGUE_COLLECTION_SPECS, ...AUTH_COLLECTION_SPECS, ...FLEET_COLLECTION_SPECS]);
-    expect(COLLECTIONS.map((c) => c.name)).toEqual(["locations", "vehicleModels", "extras", "users", "sessions", "authTokens", "rateLimits", "fleetUnits", "availabilityBlocks"]);
+    expect(COLLECTIONS).toEqual([...CATALOGUE_COLLECTION_SPECS, ...AUTH_COLLECTION_SPECS, ...FLEET_COLLECTION_SPECS, ...BOOKING_COLLECTION_SPECS]);
+    expect(COLLECTIONS.map((c) => c.name)).toEqual(["locations", "vehicleModels", "extras", "users", "sessions", "authTokens", "rateLimits", "fleetUnits", "availabilityBlocks", "bookings", "bookingLocks"]);
   });
 });
 

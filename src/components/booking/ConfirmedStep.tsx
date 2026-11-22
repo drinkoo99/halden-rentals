@@ -8,7 +8,11 @@ import { longDateTime } from "@/components/booking/ReviewStep";
 import { Icon } from "@/components/ui/Icon";
 import { formatEuroCents } from "@/lib/pricing";
 
-/** Booking step 06 · Confirmed — Stitch screen 23. A demo confirmation: nothing is reserved or charged. */
+/**
+ * Booking step 06 · Confirmed — Stitch screen 23. Shows the real reservation returned by the booking engine
+ * (reference and server total). Nothing has been charged: online payment arrives with M10, so the total is
+ * due at handover. Whether the confirmation email went out is stated as the server reported it.
+ */
 export function ConfirmedStep() {
   const { vehicle: v, state, pickup, dropoff, days } = useBooking();
   const { extras } = useCatalogue();
@@ -58,7 +62,7 @@ export function ConfirmedStep() {
           </div>
           <div className="inline-flex flex-wrap items-center gap-4 bg-surface-container-lowest border border-primary px-4 py-2">
             <span className="font-label-mono text-label-mono text-outline uppercase tracking-widest">RESERVATION DOSSIER</span>
-            <span className="font-spec-numeral text-spec-numeral text-primary font-bold tracking-wider">{c.ref} (demo)</span>
+            <span className="font-spec-numeral text-spec-numeral text-primary font-bold tracking-wider">{c.ref}</span>
             <span className="h-3 w-px bg-outline-variant" />
             <span className="font-label-mono text-label-mono text-on-surface-variant">ISSUED {issued}</span>
           </div>
@@ -135,7 +139,8 @@ export function ConfirmedStep() {
                       <span className="font-label-mono text-label-mono text-on-surface-variant">INCL. 19% VAT · DUE AT HANDOVER</span>
                     </div>
                     <p className="font-label-mono text-label-mono text-outline mt-1">
-                      Demo confirmation — no email is sent and nothing is charged. Contact on file:{" "}
+                      Nothing has been charged — online payment is not available yet; the total is due at handover.{" "}
+                      {c.email === "sent" ? "A confirmation email was sent to " : "No confirmation email was sent (email delivery is not set up); your reservation is in your HALDEN account. Contact on file: "}
                       <span className="text-on-surface break-all">{state.driver.email}</span>
                     </p>
                   </Row>
@@ -199,7 +204,7 @@ export function ConfirmedStep() {
               onClick={() => window.print()}
               className="font-label-mono text-label-mono uppercase tracking-widest text-on-surface underline underline-offset-4 hover:text-primary transition-colors"
             >
-              Download printable dossier PDF (demo) ↓
+              Print reservation dossier ↓
             </button>
           </div>
         </div>

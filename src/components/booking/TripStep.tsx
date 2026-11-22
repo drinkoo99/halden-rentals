@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useBooking } from "@/components/booking/BookingProvider";
+import { checkTrip } from "@/components/booking/useReservation";
 import { Icon } from "@/components/ui/Icon";
 
 /** Booking step 02 · Trip — Stitch screen 20. */
@@ -78,9 +79,14 @@ export function TripStep() {
     update(which === "from" ? { from: `${fromDate}T${t}` } : { to: `${toDate}T${t}` });
   }
 
-  function next() {
+  const [checking, setChecking] = useState(false);
+  async function next() {
     if (new Date(state.from) < new Date()) return setError("Pick-up must be in the future.");
     if (new Date(state.to) <= new Date(state.from)) return setError("Return must be after pick-up.");
+    setChecking(true);
+    const problem = await checkTrip(v.slug, state); // real availability: fleet, bookings, blocks, hubs
+    setChecking(false);
+    if (problem) return setError(problem);
     router.push(`/book/${v.slug}/extras`);
   }
 
@@ -431,8 +437,9 @@ export function TripStep() {
         </Link>
         <button
           type="button"
-          onClick={next}
-          disabled={!v.available}
+          onClick={() => void next()}
+          disabled={!v.available || checking}
+          aria-busy={checking}
           className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-primary text-on-primary py-3.5 px-8 rounded-none font-action text-action tracking-wider uppercase hover:bg-primary-container transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <span>Continue to Extras</span>

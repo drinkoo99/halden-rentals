@@ -69,9 +69,9 @@ export function DetailsStep() {
             <span className="w-3.5 h-3.5 bg-primary flex items-center justify-center">
               <span className="w-1.5 h-1.5 bg-surface-container-lowest" />
             </span>
-            <span className="font-action text-action uppercase tracking-wider text-on-surface">Continue as guest</span>
+            <span className="font-action text-action uppercase tracking-wider text-on-surface">Enter driver details</span>
           </div>
-          <span className="font-label-mono text-label-mono text-outline">GUEST ACCESS</span>
+          <span className="font-label-mono text-label-mono text-outline">SIGN IN TO CONFIRM</span>
         </button>
         <Link
           role="radio"

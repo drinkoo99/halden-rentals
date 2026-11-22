@@ -10,7 +10,9 @@ conventions, a health endpoint and collection-setup tooling. M2 adds the catalog
 integration-test harness. M3 serves the catalogue from MongoDB: three read-only endpoints, and the pages
 (fleet, vehicle detail, booking, search, menus) render the database catalogue. M5 adds patron accounts:
 registration, sign-in, sessions, roles and protected account/staff areas. M6 adds the physical fleet
-(units per vehicle model) and the availability engine. No bookings or server-side pricing yet — booking still runs in the browser as in Phase 1.
+(units per vehicle model) and the availability engine. M7 adds the booking engine: server-side quotes,
+holds, confirmation, cancellation, check-out/check-in, the booking flow, the patron's reservations and
+the staff booking console. Payments arrive with M10 — nothing is charged yet.
 
 ## Setup
 
@@ -209,13 +211,65 @@ periods do not overlap. A unit is available when its status is `available`, it i
 own hub, or the return hub of its last reservation), no block overlaps the rental, and no reservation
 overlaps it once widened by a 2-hour turnaround. Rentals last 1 hour to 90 days and cannot start in the past;
 one-way returns to another active hub are allowed; a model that is not `bookable` is never available.
-**Reservations come from a `ReservationSource`; until the booking engine (M7) provides one, the source is
-empty** — availability then means "a car in service at that hub, free of blocks", and nothing yet prevents
-two customers booking the same car. A rented car counts as unavailable (its return time is unknown).
+Reservations come from a `ReservationSource`, implemented over the bookings since M7 (see Bookings). A car
+marked rented by hand, without an active rental, counts as unavailable (its return time is unknown).
 
 The staff fleet register (`/staff/fleet`) lists the real units with hub/status/model filters, registers cars
-and changes status and hub through this API. "Next allocation" and utilisation wait for reservations (M7);
-the vehicle editor and availability calendar pages are still Stitch demo screens.
+and changes status and hub through this API; next allocation and 14-day utilisation come from the bookings.
+The vehicle editor page is still a Stitch demo screen.
+
+## Bookings (M7)
+
+**Model.** A booking reserves a specific fleet unit (`bookings.unitId`) for `[pickupAt, returnAt)` between
+two hubs, with an immutable price snapshot (cents), a driver snapshot, timestamps and an append-only
+`history`. Reference: `HLD-MMDD-XXXX` (unique). Staff can move a booking to another free car of the model.
+
+**Lifecycle** (`src/server/bookings/statuses.ts`): `held` → `confirmed` → `checked_out` → `completed`;
+`held` → `expired` (hold lapsed, 15 min) or `cancelled`; `confirmed` → `cancelled`. Customers cancel their own
+bookings until pick-up; staff until check-out. Check-out (from 6 h before pick-up) needs the assigned car
+`available` at the pick-up hub and sets it `rented`; check-in moves the car to the return hub, back into
+service or to maintenance, with the odometer reading. There is no in-place modification: change = cancel
+and book again (or staff reassign the car). No refunds exist because nothing is charged before M10.
+
+**Availability** reuses the M6 engine through the bookings' `ReservationSource`: unexpired holds,
+confirmed bookings, active rentals (an overdue rental counts until now, never forever) and rentals
+completed within the turnaround all occupy the car; one-way returns move it, and a trip may not strand
+the car before its next booking. Cars with upcoming bookings cannot be moved to another hub or retired.
+
+**No overselling.** Creating a hold, reassigning, check-out and check-in run in a MongoDB transaction that
+first writes a per-car document in `bookingLocks` for every car involved, then re-checks availability and
+writes. Two requests for the same car conflict on that write; MongoDB aborts one, `withTransaction` retries
+it and the retry sees the first booking (`409` "no longer available"). Requires a replica set (Atlas is
+one). Repeating a booking request with the same `idempotencyKey` returns the same booking.
+
+**Pricing** (`src/server/bookings/pricing.ts`, integer cents): day rate × started 24-hour days; extras per
+day × days × quantity or per rental × quantity (included extras free, quantities ≤ the extra's maximum);
+optional one-way fee `ONE_WAY_FEE_EUR` (default 0 — not defined by the business yet); VAT 19 % (the
+booking screens' rate) on the whole subtotal, rounded to the cent. Trip times are hub-local wall-clock
+times converted with each hub's IANA time zone (times skipped by a DST change are rejected). The client
+sends the total it showed; if the server's total differs the hold is refused (`409 price_changed`).
+
+**Emails.** With Resend configured, confirmation and cancellation emails are sent; otherwise nothing is
+sent. Either way the outcome is recorded in the booking history and shown on the confirmation page —
+email never decides whether a booking succeeds.
+
+| Method & path | Who | Purpose |
+| --- | --- | --- |
+| `POST /api/v1/quote` | public, rate-limited | price + availability for a trip (nothing reserved) |
+| `GET /api/v1/availability` | public, rate-limited | yes/no, now including bookings |
+| `GET` / `POST /api/v1/bookings` | signed in | own bookings / create a hold (201; 200 on idempotent replay) |
+| `GET /api/v1/bookings/:ref` | owner | one booking (404 for anyone else's) |
+| `POST /api/v1/bookings/:ref/confirm`, `…/cancel` | owner | confirm the hold / cancel until pick-up |
+| `GET /api/v1/staff/bookings?status=&location=&from=&to=&q=` | staff | search bookings |
+| `GET /api/v1/staff/bookings/:ref` | staff | operational view (car, driver, history, notes) |
+| `POST /api/v1/staff/bookings/:ref/{confirm,cancel,assign,check-out,check-in,notes}` | staff | lifecycle actions |
+
+Customers never see the car assignment, staff notes or audit trail; there is no generic status update.
+**Pages:** the booking flow checks availability on the trip step, shows the server's price on review and
+reserves on confirm (sign-in required; the trip is kept through sign-in); `/account` lists the patron's
+reservations and `/account/reservations/:ref` shows one with cancel; `/staff/bookings`, its detail page,
+`/staff/availability` (14-day planner) and the fleet register's allocation/utilisation use real data.
+Still demo: the staff overview, customers and curbside screens.
 
 ## Catalogue API
 

@@ -6,15 +6,17 @@
  * (Date), so time zones and DST never enter the comparison.
  *
  * A unit is available for a request when ALL hold:
- * 1. its operational status is `available` (rented: return time unknown until M7 stores reservations;
- *    maintenance / inactive: out of service until a staff member changes the status);
- * 2. it is at the pick-up hub at the start of the rental — its own hub, or, once reservations exist, the
- *    return hub of its last reservation ending before the start (there are no inter-hub transfers);
+ * 1. it is in service: not `maintenance` or `inactive`. A `rented` car is busy only through its active
+ *    rental (a reservation marked `active`, whose end the source extends while it is overdue); a car marked
+ *    rented by hand, without an active rental, has an unknown return and is unavailable;
+ * 2. it is at the pick-up hub at the start of the rental — its own hub, or the return hub of its last
+ *    reservation ending before the start (there are no inter-hub transfers);
  * 3. no maintenance/unavailability block overlaps the rental;
  * 4. no reservation overlaps the rental once each reservation is widened by the turnaround time
- *    (cleaning and preparation between two rentals).
- * Reservations are supplied by a ReservationSource. Until the booking engine (M7) exists the only source
- * is NO_RESERVATIONS: the engine does not invent bookings and cannot yet prevent double-booking.
+ *    (cleaning and preparation between two rentals);
+ * 5. the rental does not strand the car: if another reservation follows it, the car must be returned to
+ *    that reservation's pick-up hub (relevant for one-way rentals).
+ * Reservations are supplied by a ReservationSource: NO_RESERVATIONS, or the bookings store (M7).
  */
 
 export type Interval = { start: Date; end: Date };
@@ -25,7 +27,14 @@ export function overlaps(a: Interval, b: Interval): boolean {
 }
 
 export type Block = Interval & { id: string; unitId: string; kind: "maintenance" | "unavailable" };
-export type Reservation = Interval & { id: string; unitId: string; pickupLocationCode: string; returnLocationCode: string };
+export type Reservation = Interval & {
+  id: string;
+  unitId: string;
+  pickupLocationCode: string;
+  returnLocationCode: string;
+  /** the car is out on this rental right now (checked out) */
+  active?: boolean;
+};
 
 /** Where reservations come from. M7 implements this over its bookings collection. */
 export interface ReservationSource {
@@ -73,7 +82,8 @@ export type UnavailableReason =
   | { code: "status"; status: UnitSnapshot["status"] }
   | { code: "location"; at: string }
   | { code: "blocked"; blockId: string; kind: Block["kind"] }
-  | { code: "reserved"; reservationId: string };
+  | { code: "reserved"; reservationId: string }
+  | { code: "strands_next"; reservationId: string; needs: string };
 
 export type UnitAvailability = { unitId: string; available: boolean; reasons: UnavailableReason[] };
 
@@ -85,15 +95,20 @@ export function unitAvailability(
   policy: AvailabilityPolicy = DEFAULT_POLICY,
 ): UnitAvailability {
   const reasons: UnavailableReason[] = [];
-  if (unit.status !== "available") reasons.push({ code: "status", status: unit.status });
+  const own = reservations.filter((r) => r.unitId === unit.id);
+  const outOfService = unit.status === "maintenance" || unit.status === "inactive";
+  const rentedWithoutRecord = unit.status === "rented" && !own.some((r) => r.active);
+  if (outOfService || rentedWithoutRecord) reasons.push({ code: "status", status: unit.status });
   const at = locationAt(unit, reservations, req.start);
   if (at !== req.pickupLocationCode) reasons.push({ code: "location", at });
   for (const b of blocks) if (b.unitId === unit.id && overlaps(b, req)) reasons.push({ code: "blocked", blockId: b.id, kind: b.kind });
-  for (const r of reservations) {
-    if (r.unitId !== unit.id) continue;
+  for (const r of own) {
     const padded = { start: new Date(r.start.getTime() - policy.turnaroundMs), end: new Date(r.end.getTime() + policy.turnaroundMs) };
     if (overlaps(padded, req)) reasons.push({ code: "reserved", reservationId: r.id });
   }
+  let next: Reservation | undefined;
+  for (const r of own) if (r.start.getTime() >= req.end.getTime() && (!next || r.start < next.start)) next = r;
+  if (next && next.pickupLocationCode !== req.returnLocationCode) reasons.push({ code: "strands_next", reservationId: next.id, needs: next.pickupLocationCode });
   return { unitId: unit.id, available: reasons.length === 0, reasons };
 }
 

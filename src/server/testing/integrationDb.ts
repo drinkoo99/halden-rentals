@@ -1,5 +1,5 @@
 import { randomBytes } from "node:crypto";
-import type { Db, MongoClient } from "mongodb";
+import type { ClientSession, Db, MongoClient } from "mongodb";
 import { createMongoClient } from "../db/mongo";
 import { isTestDatabase, resolveTestDatabase, TargetGuardError } from "../db/targets";
 
@@ -89,6 +89,8 @@ export type IntegrationDatabase = {
   runId: string;
   /** Collection name scoped to this run: `it_<runId>_<base>`. */
   scoped: (base: string) => string;
+  /** A client session on the test database's client (for transactions). */
+  startSession: () => ClientSession;
   /** Drops this run's collections only. */
   cleanup: () => Promise<string[]>;
   close: () => Promise<void>;
@@ -115,6 +117,7 @@ export async function openIntegrationDatabase(
       db,
       runId,
       scoped: (base) => scopedName(runId, base),
+      startSession: () => client.startSession(),
       cleanup: () => cleanupRun(db, runId, env),
       close: () => client.close(),
     };

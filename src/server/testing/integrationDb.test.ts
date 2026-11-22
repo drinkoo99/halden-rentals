@@ -147,6 +147,9 @@ describe("withIntegrationDatabase", () => {
         calls.push("close");
         if (opts.closeFails) throw new Error("close failed");
       }),
+      startSession: () => {
+        throw new Error("not used");
+      },
     } satisfies IntegrationDatabase;
     return { it, calls, open: async () => it };
   }

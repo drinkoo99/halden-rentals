@@ -1,17 +1,16 @@
 import { AccountOverviewEmptyDesktop } from "@/components/account/AccountOverviewEmptyDesktop";
 import { AccountOverviewMobile } from "@/components/account/AccountOverviewMobile";
+import type { BookingRow } from "@/lib/bookingDisplay";
 
 /**
- * Patron overview for the signed-in patron. Reservations are not stored yet (a later milestone), so a
- * real account has nothing upcoming: desktop shows the Stitch empty state ("Account Overview (Empty
- * State)") and mobile the same message in its upcoming-allocation card. The demo reservation dossier
- * (AccountOverviewDesktop, /account/reservations/hld-0612-4821) is no longer linked from here.
+ * Patron overview for the signed-in patron, with their real reservations (M7): upcoming (held, confirmed,
+ * on rent) and past (completed, cancelled, expired). Without any, the Stitch empty states show.
  */
-export function AccountOverview({ firstName }: { firstName: string }) {
+export function AccountOverview({ firstName, upcoming, past, unavailable }: { firstName: string; upcoming: BookingRow[]; past: BookingRow[]; unavailable?: boolean }) {
   return (
     <>
-      <AccountOverviewMobile empty firstName={firstName} />
-      <AccountOverviewEmptyDesktop firstName={firstName} />
+      <AccountOverviewMobile firstName={firstName} upcoming={upcoming} past={past} />
+      <AccountOverviewEmptyDesktop firstName={firstName} upcoming={upcoming} past={past} unavailable={unavailable} />
     </>
   );
 }

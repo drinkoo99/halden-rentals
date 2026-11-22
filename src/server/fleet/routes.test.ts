@@ -7,6 +7,7 @@ import type { UnitDoc } from "./store";
 const state = { user: null as PublicUser | null };
 vi.mock("@/server/auth/session", () => ({ currentUser: async () => state.user }));
 vi.mock("@/server/fleet/context", () => ({ fleetContext: async () => ({ db: {} }) }));
+vi.mock("@/server/bookings/context", () => ({ bookingContext: async () => ({ db: {} }), limitByIp: async () => {} }));
 vi.mock("next/server", () => ({ connection: async () => {} }));
 const unit: UnitDoc = {
   _id: new ObjectId(),
@@ -149,7 +150,7 @@ describe("availability API", () => {
     const res = await publicAvail.GET(get(`/api/v1/availability${q}`));
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ data: { model: "lexus-lc-500", pickup: "muc", return: "zrh", from: "2030-06-10T10:00:00.000Z", to: "2030-06-12T10:00:00.000Z", available: true } });
-    expect(availability.checkAvailability).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ pickupLocationCode: "muc", returnLocationCode: "zrh" }));
+    expect(availability.checkAvailability).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ pickupLocationCode: "muc", returnLocationCode: "zrh" }), { reservations: expect.objectContaining({ forUnits: expect.any(Function) }) }); // bookings count (M7)
   });
 
   it("rejects ambiguous or missing parameters", async () => {

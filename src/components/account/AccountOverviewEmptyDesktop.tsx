@@ -1,9 +1,11 @@
+import { AccountBookings } from "@/components/account/AccountBookings";
+import type { BookingRow } from "@/lib/bookingDisplay";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_patron_circle_account_overview_empty_state/code.html */
-export function AccountOverviewEmptyDesktop({ firstName }: { firstName: string }) {
+export function AccountOverviewEmptyDesktop({ firstName, upcoming, past, unavailable }: { firstName: string; upcoming: BookingRow[]; past: BookingRow[]; unavailable?: boolean }) {
   return (
     <div className="hidden md:block bg-surface font-body-md text-body-md text-on-surface antialiased">
       <SiteHeader patron />
@@ -28,7 +30,12 @@ export function AccountOverviewEmptyDesktop({ firstName }: { firstName: string }
                   <p className="font-label-mono text-label-mono uppercase text-outline mb-space-sm">{"PATRON CIRCLE // ACCOUNT ARCHIVE"}</p>
                   <h1 className="font-display text-display text-on-surface">Good evening, {firstName}.</h1>
                 </section>
-                {/* Upcoming Reservation Empty State */}
+                {unavailable && (
+                  <p role="alert" className="font-body-sm text-body-sm text-error">Your reservations cannot be loaded right now. Please try again shortly.</p>
+                )}
+                {upcoming.length > 0 ? (
+                  <AccountBookings title="UPCOMING RESERVATIONS" bookings={upcoming} empty="" />
+                ) : (
                 <section className="flex flex-col gap-space-md">
                   <div className="flex items-center justify-between">
                     <h2 className="font-label-mono text-label-mono uppercase text-on-surface-variant">UPCOMING RESERVATION</h2>
@@ -48,17 +55,11 @@ export function AccountOverviewEmptyDesktop({ firstName }: { firstName: string }
                     </div>
                   </div>
                 </section>
-                {/* Past Journeys Empty State */}
-                <section className="flex flex-col gap-space-md pt-space-lg border-t border-outline-variant">
-                  <div className="flex items-center justify-between">
-                    <h2 className="font-label-mono text-label-mono uppercase text-on-surface-variant">PAST JOURNEYS</h2>
-                    <span className="font-label-mono text-label-mono uppercase text-outline">ARCHIVE</span>
-                  </div>
-                  <div className="py-space-lg border-y border-outline-variant flex items-center justify-between">
-                    <p className="font-body-md text-body-md text-on-surface-variant">No completed journeys on record.</p>
-                    <span className="font-label-mono text-label-mono uppercase text-outline">—</span>
-                  </div>
-                </section>
+                )}
+                {/* Past, cancelled and expired reservations */}
+                <div className="pt-space-lg border-t border-outline-variant">
+                  <AccountBookings title="PAST JOURNEYS" bookings={past} empty="No completed journeys on record." />
+                </div>
                 {/* Saved Cars Empty State */}
                 <section className="flex flex-col gap-space-md">
                   <div className="flex items-center justify-between">

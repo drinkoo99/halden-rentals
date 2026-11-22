@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { newReference, useBooking } from "@/components/booking/BookingProvider";
+import { useBooking } from "@/components/booking/BookingProvider";
+import { reserve, useServerQuote } from "@/components/booking/useReservation";
 import { Icon } from "@/components/ui/Icon";
 import { extraCost } from "@/data/extras";
 import { driverSchema, licenceCountries } from "@/lib/booking/driverSchema";
@@ -25,7 +26,11 @@ export function longDateTime(v: string) {
 /** Booking step 05 · Review — Stitch screen 24. */
 export function ReviewStep() {
   const router = useRouter();
-  const { vehicle: v, state, update, pickup, dropoff, days, quote } = useBooking();
+  const { vehicle: v, state, update, pickup, dropoff, days, quote: estimate } = useBooking();
+  // the authoritative price comes from the server; the browser estimate only shows until it arrives
+  const { result: server, refresh } = useServerQuote(v.slug, state);
+  const quote = server?.quote ?? estimate;
+  const [pending, setPending] = useState(false);
   const { extras } = useCatalogue();
   const [agreed, setAgreed] = useState(state.agreed);
   const [error, setError] = useState<string | null>(null);
@@ -34,17 +39,31 @@ export function ReviewStep() {
   const country = licenceCountries.find((c) => c.code === state.driver?.licenceCountry);
   const hours = Math.round((new Date(state.to).getTime() - new Date(state.from).getTime()) / 3_600_000);
 
-  function confirm() {
+  async function confirm() {
+    if (pending) return;
     if (!driverValid) return setError("Complete the principal driver details before confirming.");
     if (!agreed) return setError("Please confirm the driver criteria and accept the Exhibition Terms to continue.");
+    if (server?.error) return setError(server.error);
+    if (!server?.quote || server.totalCents === undefined) return setError("The final price is still being calculated — one moment.");
+    if (!server.available) return setError("This car is no longer available for these dates. Go back to choose other dates or another car.");
+    setError(null);
+    setPending(true);
+    const key = state.idempotencyKey ?? crypto.randomUUID();
+    if (!state.idempotencyKey) update({ idempotencyKey: key });
+    const res = await reserve(v.slug, state, key, server.totalCents);
+    setPending(false);
+    if (!res.ok) {
+      if (res.needsSignIn) return router.push(`/sign-in?next=${encodeURIComponent(`/book/${v.slug}/review`)}`);
+      if (res.restart) {
+        update({ idempotencyKey: undefined });
+        refresh();
+      }
+      return setError(res.error);
+    }
     update({
       agreed: true,
-      confirmation: {
-        ref: newReference(),
-        issuedAt: new Date().toISOString(),
-        total: quote.total,
-        extrasCount: quote.extras.length,
-      },
+      idempotencyKey: undefined,
+      confirmation: { ref: res.reference, issuedAt: new Date().toISOString(), total: res.totalCents / 100, extrasCount: quote.extras.length, email: res.email },
     });
     router.push(`/book/${v.slug}/confirmed`);
   }
@@ -353,8 +372,9 @@ export function ReviewStep() {
               agreed && driverValid ? "" : "opacity-50"
             }`}
             type="button"
-            onClick={confirm}
-            aria-disabled={!(agreed && driverValid)}
+            onClick={() => void confirm()}
+            aria-disabled={!(agreed && driverValid) || pending}
+            aria-busy={pending}
           >
             <span>Confirm reservation</span>
             <Icon name="arrow_forward" className="text-[18px]" />

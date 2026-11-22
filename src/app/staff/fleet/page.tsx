@@ -7,6 +7,11 @@ import { fleetContext } from "@/server/fleet/context";
 import { fleetQuery } from "@/server/fleet/schemas";
 import { listUnits, toStaffUnit } from "@/server/fleet/store";
 import { AppError } from "@/server/http/errors";
+import { hubDateTime } from "@/lib/bookingDisplay";
+import { bookingContext } from "@/server/bookings/context";
+import { unitSchedule } from "@/server/bookings/store";
+import { getPublicLocations } from "@/server/catalogue/service";
+import { ObjectId } from "mongodb";
 
 export const metadata: Metadata = { title: { absolute: "Fleet — HALDEN Operations" }, robots: { index: false } };
 
@@ -25,6 +30,17 @@ export default async function Page({ searchParams }: PageProps<"/staff/fleet">) 
   let setupError: string | undefined;
   try {
     units = (await listUnits(await fleetContext(), filters)).map(toStaffUnit);
+    try {
+      // next allocation and 14-day utilisation from the real bookings (M7)
+      const [schedule, hubs] = await Promise.all([unitSchedule(await bookingContext(), units.map((u) => new ObjectId(u.id))), getPublicLocations()]);
+      units = units.map((u) => {
+        const s = schedule.get(u.id);
+        const tz = hubs.find((h) => h.code === u.locationCode)?.timezone ?? "UTC";
+        return { ...u, utilisation: s?.utilisation ?? 0, ...(s?.next ? { next: { reference: s.next.reference, label: hubDateTime(s.next.pickupAt.toISOString(), tz) } } : {}) };
+      });
+    } catch {
+      units = units.map((u) => ({ ...u, utilisation: null }));
+    }
   } catch (err) {
     if (!(err instanceof AppError) || err.code !== "SERVICE_UNAVAILABLE") throw err;
     setupError = "The fleet register is not set up on this database yet (run db:setup), so no units can be shown or added.";

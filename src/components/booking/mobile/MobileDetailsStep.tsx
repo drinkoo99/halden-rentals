@@ -64,7 +64,7 @@ export function MobileDetailsStep() {
           <section className="px-gutter-mobile pb-6 bg-surface">
             <div aria-label="How would you like to continue" className="p-1 bg-surface-container flex items-center gap-1 rounded-[2px]">
               <span className="flex-1 h-9 flex items-center justify-center bg-primary text-on-primary font-action text-action uppercase tracking-[0.06em] rounded-[2px]" aria-current="true">
-                Continue as guest
+                Driver details
               </span>
               <Link
                 className="flex-1 h-9 flex items-center justify-center bg-transparent text-on-surface-variant hover:text-on-surface font-action text-action uppercase tracking-[0.06em] transition-all rounded-[2px]"
