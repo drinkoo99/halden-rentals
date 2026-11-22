@@ -4,8 +4,10 @@ import { z } from "zod";
  * Server environment schema. Pure (no Next.js imports) so the scripts (`scripts/db-setup.ts`) can reuse it.
  * Values are never echoed in errors — only the variable names and what is wrong with them.
  *
- * M1: the database is optional so the frontend keeps working without one; the health endpoint
- * reports `not_configured`. It becomes required once pages read from the database (M2).
+ * The database is optional in development and CI (pages then render the static demo catalogue and the
+ * health endpoint reports `not_configured`). In a Vercel PRODUCTION deployment (`VERCEL_ENV=production`)
+ * MONGODB_URI and MONGODB_DB are required and the `halden_dev` default is never used, so a missing
+ * variable fails loudly instead of silently serving demo data or the wrong database.
  */
 
 /** Unset and empty-string variables are both treated as "not provided". */
@@ -40,12 +42,20 @@ export class EnvValidationError extends Error {
   }
 }
 
+/** Variables a production deployment must set explicitly (no development defaults or fallbacks). */
+export const PRODUCTION_REQUIRED = ["MONGODB_URI", "MONGODB_DB"] as const;
+
 export function parseServerEnv(source: Record<string, string | undefined>): ServerEnv {
   const result = serverEnvSchema.safeParse(source);
-  if (result.success) return result.data;
-  throw new EnvValidationError(
-    result.error.issues.map((i) => ({ variable: String(i.path[0] ?? "environment"), problem: i.message })),
-  );
+  const issues = result.success
+    ? []
+    : result.error.issues.map((i) => ({ variable: String(i.path[0] ?? "environment"), problem: i.message }));
+  if (source.VERCEL_ENV === "production")
+    for (const variable of PRODUCTION_REQUIRED)
+      if (!source[variable]?.trim() && !issues.some((i) => i.variable === variable))
+        issues.push({ variable, problem: "is required in production (VERCEL_ENV=production); set it in the deployment's environment variables" });
+  if (issues.length) throw new EnvValidationError(issues);
+  return result.data!;
 }
 
 /**

@@ -24,14 +24,17 @@ Without `MONGODB_URI` the app runs normally and the health endpoint answers **50
 
 | Variable | Required | Default | Purpose |
 | --- | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | for deploys | `http://localhost:3000` | Canonical URLs, sitemap, social previews (Phase 1) |
-| `MONGODB_URI` | from M2 | — | MongoDB connection string (`mongodb://` or `mongodb+srv://`) |
-| `MONGODB_DB` | no | `halden_dev` | Database name. Names containing `prod` count as production for `db:setup` and `db:seed` |
+| `NEXT_PUBLIC_SITE_URL` | production | previews: deployment URL; else `http://localhost:3000` | Canonical URLs, sitemap, robots, social previews |
+| `MONGODB_URI` | production | — | MongoDB connection string (`mongodb://` or `mongodb+srv://`) |
+| `MONGODB_DB` | production | `halden_dev` (never in production) | Database name. Names containing `prod` count as production for `db:setup` and `db:seed` |
 | `MONGODB_TEST_DB` | no | `halden_test` | Integration-test database (see [Integration tests](#integration-tests)) |
 | `LOG_LEVEL` | no | `info` | `debug` \| `info` \| `warn` \| `error` |
 
 - Validated by `src/server/config/env.ts` the first time server code needs them. An invalid value fails
   with the variable name and the problem — never the value.
+- In a production deployment (`VERCEL_ENV=production`) `MONGODB_URI`, `MONGODB_DB` and
+  `NEXT_PUBLIC_SITE_URL` must be set explicitly: the build fails with the missing variable's name instead of
+  falling back to `halden_dev`, the static demo catalogue or localhost.
 - Secrets live only in `.env.local` (git-ignored) and in Vercel's environment settings. Nothing secret uses
   the `NEXT_PUBLIC_` prefix, which would ship it to the browser.
 - Use a development or staging database locally. Production credentials belong only in Vercel's
@@ -46,6 +49,30 @@ Without `MONGODB_URI` the app runs normally and the health endpoint answers **50
    (0.0.0.0/0 with strong credentials, or the Atlas–Vercel integration) is made at deployment.
 4. Connect → Drivers → copy the `mongodb+srv://…` string into `MONGODB_URI`, and set `MONGODB_DB`.
 5. Check: `curl -i http://localhost:3000/api/v1/health` → `200` with `"database":{"status":"up",…}`.
+
+## Deployment (Vercel)
+
+No `vercel.json` is needed: Vercel detects Next.js and runs `npm run build`. Nothing has been deployed yet;
+these are the manual steps when a project is created.
+
+1. **Environment variables** (Settings → Environment Variables), per environment:
+   - *Production*: `MONGODB_URI`, `MONGODB_DB`, `NEXT_PUBLIC_SITE_URL` (all required), optional `LOG_LEVEL`.
+   - *Preview*: point `MONGODB_URI`/`MONGODB_DB` at a non-production database (or leave them unset to
+     render the static demo catalogue). Never give previews production credentials.
+2. **The build reads the database.** Pages are prerendered with the catalogue, so a build with
+   `MONGODB_URI` set connects to MongoDB at build time. Vercel builds and functions have no fixed IPs:
+   Atlas network access must allow them (the Atlas–Vercel integration or an explicit decision on the
+   access list). The database user needs `readWrite` on that database only.
+3. **Catalogue changes** (`db:seed`) appear after the server cache expires (hours) or a redeploy.
+
+**CI.** `.github/workflows/ci.yml` runs on pull requests to `main` and pushes to `main`: `npm ci`, typecheck,
+lint, unit tests and the production build, with a read-only token and **no secrets or database** (the
+build renders the static demo catalogue). Integration tests need the Atlas test database and run locally.
+
+**Security headers** (`src/lib/securityHeaders.ts`, applied to every response by `next.config.ts`): CSP
+(same-origin, plus Google Fonts for the icon font; inline scripts allowed because prerendered pages cannot
+carry nonces; framing refused), `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`,
+`Permissions-Policy`, `Cross-Origin-Opener-Policy` and HSTS (not in development). `X-Powered-By` is off.
 
 ## Code layout
 
@@ -115,6 +142,9 @@ and secrets cannot leak into the browser bundle. Later milestones add `domain/`,
 | unreachable / too slow (2.5 s) / bad credentials / other | 503 | `…"database":{"status":"down","reason":"unreachable" \| "timeout" \| "auth_failed" \| "error","latencyMs":…}` |
 
 Only a coarse reason is returned; hosts and driver messages stay out of the response.
+
+Unknown paths under `/api` answer `404 NOT_FOUND` with the standard JSON error body and a request ID
+(`src/app/api/[...path]/route.ts`), not the HTML not-found page.
 
 ## Catalogue API
 

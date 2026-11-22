@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
+import { securityHeaders } from "./src/lib/securityHeaders";
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
+  poweredByHeader: false,
+  async headers() {
+    return [{ source: "/:path*", headers: securityHeaders({ dev: process.env.NODE_ENV === "development" }) }];
+  },
   images: {
     // All photography is local (public/images, see src/data/media.ts).
     // AVIF first, WebP fallback. 90 is used for full-bleed and gallery images, 75 for the rest.
