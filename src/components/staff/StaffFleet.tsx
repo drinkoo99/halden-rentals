@@ -17,6 +17,10 @@ export type FleetRow = {
   mileageKm: number;
   year: number;
   notes?: string;
+  /** next held/confirmed booking of this car (reference and hub-local pick-up) */
+  next?: { reference: string; label: string };
+  /** share of the last 14 days the car was booked or on rent, 0–100 (null when bookings are not set up) */
+  utilisation?: number | null;
 };
 export type FleetModel = { slug: string; name: string; image: string; specLine: string; categoryLabel: string; pricePerDay: number };
 export type FleetHub = { code: string; iata: string; city: string };
@@ -29,7 +33,7 @@ const STATUS_BADGE: Record<FleetStatus, { badge: string; dot: string }> = {
   maintenance: { badge: "bg-[#F9F5EC] border border-[#C98A2C] text-[#956621]", dot: "bg-[#C98A2C]" },
   inactive: { badge: "bg-surface-container border border-outline-variant text-on-surface-variant", dot: "bg-outline" },
 };
-const NEEDS_RESERVATIONS = "Shown once reservations are stored (booking engine, M7)";
+const NEEDS_RESERVATIONS = "Booking data is not available on this database yet";
 const selectCls =
   "appearance-none bg-surface-container-low text-on-surface border border-outline-variant pl-3 pr-8 py-1.5 rounded-none font-label-mono text-label-mono uppercase focus:outline-hidden focus:border-primary cursor-pointer";
 const fieldCls = "w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-3 py-2 border border-outline-variant rounded-none focus:outline-hidden focus:border-primary";
@@ -58,6 +62,8 @@ export function StaffFleet({ units, models, hubs, filters, staffName, today, set
   const hubOf = (code: string) => hubs.find((h) => h.code === code);
   const counts = { total: units.length, available: units.filter((u) => u.status === "available").length, service: units.filter((u) => u.status === "maintenance").length };
   const filtered = Boolean(filters.location || filters.status || filters.model);
+  const measured = units.filter((u) => typeof u.utilisation === "number");
+  const allocated = measured.length ? Math.round(measured.reduce((s, u) => s + (u.utilisation ?? 0), 0) / measured.length) : null;
 
   function setFilter(key: keyof FleetFilters, value: string) {
     const next = new URLSearchParams(Object.entries({ ...filters, [key]: value }).filter(([, v]) => v) as [string, string][]);
@@ -164,7 +170,7 @@ export function StaffFleet({ units, models, hubs, filters, staffName, today, set
                 </div>
                 <div className="bg-surface-container-low px-5 py-3 flex flex-col">
                   <span className="font-label-mono text-label-mono text-on-surface-variant uppercase">ALLOCATED</span>
-                  <span className="font-spec-numeral text-spec-numeral text-primary font-bold mt-1" title={NEEDS_RESERVATIONS}>—</span>
+                  <span className="font-spec-numeral text-spec-numeral text-primary font-bold mt-1" title={allocated === null ? NEEDS_RESERVATIONS : "Average share of the last 14 days booked or on rent"}>{allocated === null ? "—" : `${allocated}%`}</span>
                 </div>
                 <div className="bg-surface-container-low px-5 py-3 flex flex-col">
                   <span className="font-label-mono text-label-mono text-on-surface-variant uppercase">SCHEDULED SRV</span>
@@ -287,7 +293,8 @@ export function StaffFleet({ units, models, hubs, filters, staffName, today, set
                       <th className="py-3 px-4 font-normal tracking-wider w-40">STATUS</th>
                       <th className="py-3 px-4 font-normal tracking-wider text-right w-24">DAY RATE</th>
                       <th className="py-3 px-4 font-normal tracking-wider w-28">ODOMETER</th>
-                      <th className="py-3 px-4 font-normal tracking-wider min-w-[140px]">NEXT ALLOCATION</th>
+                      <th className="py-3 px-4 font-normal tracking-wider min-w-[160px]">NEXT ALLOCATION</th>
+                      <th className="py-3 px-4 font-normal tracking-wider w-36">14D UTILISATION</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-outline-variant font-body-sm text-body-sm">
@@ -325,7 +332,26 @@ export function StaffFleet({ units, models, hubs, filters, staffName, today, set
                           </td>
                           <td className="py-4 px-4 text-right font-spec-numeral text-spec-numeral text-on-surface font-bold">{m ? `€${m.pricePerDay}` : "—"}</td>
                           <td className="py-4 px-4 font-spec-numeral text-spec-numeral text-on-surface-variant">{u.mileageKm.toLocaleString("de-CH")} km</td>
-                          <td className="py-4 px-4 text-on-surface-variant" title={NEEDS_RESERVATIONS}>—</td>
+                          <td className="py-4 px-4">
+                            {u.next ? (
+                              <Link className="flex flex-col hover:underline" href={`/staff/bookings/${u.next.reference}`}>
+                                <span className="font-spec-numeral text-spec-numeral text-primary">{u.next.reference}</span>
+                                <span className="font-label-mono text-[10px] text-on-surface-variant uppercase">{u.next.label}</span>
+                              </Link>
+                            ) : (
+                              <span className="text-on-surface-variant" title={u.utilisation === null ? NEEDS_RESERVATIONS : "No upcoming booking"}>—</span>
+                            )}
+                          </td>
+                          <td className="py-4 px-4">
+                            {typeof u.utilisation === "number" ? (
+                              <div className="flex items-center gap-2">
+                                <div className="flex-1 h-1.5 bg-surface-container overflow-hidden"><div className="h-full bg-primary" style={{ width: `${u.utilisation}%` }} /></div>
+                                <span className="font-label-mono text-[11px] text-on-surface-variant">{u.utilisation}%</span>
+                              </div>
+                            ) : (
+                              <span className="text-on-surface-variant" title={NEEDS_RESERVATIONS}>—</span>
+                            )}
+                          </td>
                         </tr>
                       );
                     })}

@@ -17,6 +17,8 @@ export type Confirmation = {
   issuedAt: string;
   total: number;
   extrasCount: number;
+  /** booking email outcome from the server: sent / not_configured / failed */
+  email?: string;
 };
 
 export type BookingState = {
@@ -30,6 +32,8 @@ export type BookingState = {
   driver: DriverDetails | null;
   agreed: boolean;
   confirmation: Confirmation | null;
+  /** one key per reservation attempt, so a retried request never creates a second booking */
+  idempotencyKey?: string;
 };
 
 type Ctx = {

@@ -14,7 +14,7 @@ const at = (v: string, tz: string) => {
   return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()} · ${v.slice(11, 16)} ${tz}`;
 };
 
-/** Mobile booking step 06 · Confirmed — Stitch "Mobile Booking: Confirmed". Demo: nothing is reserved or charged. */
+/** Mobile booking step 06 · Confirmed — Stitch "Mobile Booking: Confirmed". The real reservation; nothing is charged (payments: M10). */
 export function MobileConfirmedStep() {
   const { vehicle: v, state, pickup, dropoff } = useBooking();
   const { extras } = useCatalogue();
@@ -75,7 +75,7 @@ export function MobileConfirmedStep() {
               </span>
             </div>
             <p className="font-body-sm text-body-sm text-on-surface-variant max-w-[320px] leading-relaxed">
-              Your {v.name} reservation is confirmed for {pickup.city}. Demo confirmation — nothing has been charged.
+              Your {v.name} reservation is confirmed for {pickup.city}. Nothing has been charged — the total is due at handover.
             </p>
           </div>
           <div className="px-gutter-mobile mt-space-lg">
@@ -146,7 +146,7 @@ export function MobileConfirmedStep() {
             </div>
             <ol className="space-y-space-md relative">
               {[
-                ["Digital Dossier Prepared", <>Your confirmation would be emailed to <span className="text-on-surface font-medium break-all">{d.email}</span> (not sent in this demo).</>],
+                ["Digital Dossier Prepared", <>Your confirmation would be emailed to <span className="text-on-surface font-medium break-all">{d.email}</span> {c.email === "sent" ? "(sent)." : "(not sent — email delivery is not set up; see your HALDEN account)."}</>],
                 ["Atelier Staging", <>The {v.name} is cleaned, charged and climate-conditioned 30 minutes before your window.</>],
                 ["Curbside Handover", <>Your custodian meets you at {pickup.terminalPoint} with the keys.</>],
               ].map(([t, body], i) => (

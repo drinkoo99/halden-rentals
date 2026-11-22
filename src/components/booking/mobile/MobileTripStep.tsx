@@ -4,6 +4,7 @@ import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useBooking } from "@/components/booking/BookingProvider";
+import { checkTrip } from "@/components/booking/useReservation";
 import { MobileBookingBar, MobileBookingHeader, MobileSheet, Switch } from "@/components/booking/mobile/MobileBookingChrome";
 import { rentalDays } from "@/lib/itinerary";
 import { formatEuroCents } from "@/lib/pricing";
@@ -34,8 +35,10 @@ export function MobileTripStep() {
   const start = dayLabel(state.from);
   const end = dayLabel(state.to);
 
-  function next() {
+  async function next() {
     if (new Date(state.to) <= new Date(state.from)) return setError("The return must be after the pick-up.");
+    const problem = await checkTrip(v.slug, state); // real availability: fleet, bookings, blocks, hubs
+    if (problem) return setError(problem);
     router.push(`/book/${v.slug}/extras`);
   }
 
@@ -151,7 +154,7 @@ export function MobileTripStep() {
           </div>
         </div>
       </div>
-      <MobileBookingBar label="Continue" onAction={next} />
+      <MobileBookingBar label="Continue" onAction={() => void next()} />
 
       {(sheet === "pickup" || sheet === "return") && (
         <HubSheet

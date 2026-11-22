@@ -1,10 +1,13 @@
+import { AccountBookings } from "@/components/account/AccountBookings";
+import type { BookingRow } from "@/lib/bookingDisplay";
 import { MobileMenu } from "@/components/site/MobileMenu";
 import Link from "next/link";
 import { Photo } from "@/components/ui/Photo";
 import { media } from "@/data/media";
 
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_mobile_patron_account_overview/code.html */
-export function AccountOverviewMobile({ empty = false, firstName }: { empty?: boolean; firstName: string }) {
+export function AccountOverviewMobile({ firstName, upcoming, past }: { firstName: string; upcoming: BookingRow[]; past: BookingRow[] }) {
+  const empty = upcoming.length === 0;
   return (
     <div className="md:hidden bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary">
       <header className="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe">
@@ -64,60 +67,12 @@ export function AccountOverviewMobile({ empty = false, firstName }: { empty?: bo
                 </div>
               </div>
             ) : (
-              <>
-            <div className="bg-surface-container-lowest p-0">
-              {/* Allocation Bar */}
-              <div className="px-4 py-3 bg-surface-container-low flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="font-label-mono text-[11px] tracking-[0.15em] uppercase text-on-surface">UPCOMING ALLOCATION • HLD-0612-4821</span>
-                </div>
-                <span className="font-label-mono text-[10px] tracking-wider uppercase text-secondary font-medium">{"CONFIRMED // STAGED"}</span>
+              <AccountBookings compact title="UPCOMING RESERVATIONS" bookings={upcoming} empty="" />
+            )}
+            {past.length > 0 && (
+              <div className="mt-space-lg">
+                <AccountBookings compact title="PAST JOURNEYS" bookings={past} empty="" />
               </div>
-              {/* Vehicle Stage */}
-              <div className="relative w-full aspect-[4/3] bg-surface-container">
-                <Photo src={media.accountRangeRover} priority className="w-full h-full object-cover" data-alt="Editorial studio portrait of a silver Range Rover Autobiography parked in an architectural concrete pavilion with gentle overhead diffused softbox lighting and neutral stone flooring, catalog aesthetic" sizes="100vw" alt="" />
-                <div className="absolute top-3 left-3 bg-surface/90 px-2 py-1 font-label-mono text-[9px] uppercase tracking-widest text-on-surface">STAGE 01 • MUNICH</div>
-              </div>
-              {/* Information & Specs Ledger */}
-              <div className="p-space-md bg-surface-container-lowest">
-                <div className="flex flex-col mb-4">
-                  <span className="font-label-mono text-[10px] tracking-[0.16em] uppercase text-secondary mb-1">{"CATALOGUE № 14 // SOLIHULL ATELIER"}</span>
-                  <h2 className="font-headline-sm text-headline-sm text-on-surface">Range Rover Autobiography</h2>
-                  <span className="font-spec-numeral text-spec-numeral text-on-surface-variant mt-0.5">MY2024 • 4.4L V8 TWIN-TURBO • 530 PS</span>
-                </div>
-                <div className="grid grid-cols-2 gap-2 p-3 bg-surface-container-low mb-4">
-                  <div>
-                    <span className="block font-label-mono text-[9px] tracking-widest text-on-surface-variant uppercase">DISPATCH SCHEDULE</span>
-                    <span className="font-spec-numeral text-[13px] text-on-surface font-medium">12 JUN → 15 JUN 2025</span>
-                    <span className="block font-label-mono text-[9px] text-secondary mt-0.5">3 DIURNAL CYCLES</span>
-                  </div>
-                  <div>
-                    <span className="block font-label-mono text-[9px] tracking-widest text-on-surface-variant uppercase">STAGING SALON</span>
-                    <span className="font-body-sm text-body-sm text-on-surface font-medium">Munich Airport (MUC)</span>
-                    <span className="block font-label-mono text-[9px] text-secondary mt-0.5">TERMINAL 2 VIP PAVILION</span>
-                  </div>
-                </div>
-                {/* Financial Ledger Row */}
-                <div className="flex items-center justify-between py-2 px-1 mb-5 bg-surface-container-high/40 px-3">
-                  <span className="font-label-mono text-label-mono uppercase tracking-[0.15em] text-on-surface-variant">TOTAL COMMITMENT</span>
-                  <span className="font-spec-numeral text-spec-numeral text-on-surface font-semibold tracking-wider">
-                    €1,731.45{" "}
-                    <span className="font-label-mono text-[9px] font-normal text-secondary">VAT INCL.</span>
-                  </span>
-                </div>
-                {/* Actions */}
-                <div className="grid grid-cols-2 gap-3">
-                  <Link className="w-full py-3.5 px-3 bg-surface-container text-on-surface font-action text-action uppercase tracking-[0.06em] text-center hover:bg-surface-container-high transition-colors" href="/account/reservations/hld-0612-4821/modify">Modify Itinerary</Link>
-                  <Link className="w-full py-3.5 px-3 bg-primary text-on-primary font-action text-action uppercase tracking-[0.06em] text-center flex items-center justify-center gap-1.5 hover:bg-primary-container transition-colors" href="/account/reservations/hld-0612-4821">
-                    <span>View Dossier</span>
-                    {" "}
-                    <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </>
             )}
           </section>
           {/* Section 2: Past Journeys (Compact Archival Ledger Rows) */}

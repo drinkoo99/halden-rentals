@@ -4,7 +4,8 @@ import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { newReference, useBooking } from "@/components/booking/BookingProvider";
+import { useBooking } from "@/components/booking/BookingProvider";
+import { reserve, useServerQuote } from "@/components/booking/useReservation";
 import { MobileBookingBar, MobileBookingHeader } from "@/components/booking/mobile/MobileBookingChrome";
 import { Photo } from "@/components/ui/Photo";
 import { extraCost } from "@/data/extras";
@@ -24,7 +25,10 @@ const when = (v: string, tz: string) => {
  */
 export function MobileReviewStep() {
   const router = useRouter();
-  const { vehicle: v, state, update, pickup, dropoff, days, quote } = useBooking();
+  const { vehicle: v, state, update, pickup, dropoff, days, quote: estimate } = useBooking();
+  const { result: server, refresh } = useServerQuote(v.slug, state);
+  const quote = server?.quote ?? estimate;
+  const [pending, setPending] = useState(false);
   const { extras } = useCatalogue();
   const [agreed, setAgreed] = useState(state.agreed);
   const [error, setError] = useState<string | null>(null);
@@ -34,12 +38,31 @@ export function MobileReviewStep() {
   const country = licenceCountries.find((c) => c.code === d?.licenceCountry);
   const spec = (label: string) => v.specs.find((s) => s.label.toLowerCase().startsWith(label))?.value ?? "—";
 
-  function confirm() {
+  async function confirm() {
+    if (pending) return;
     if (!driverValid) return setError("Complete the principal driver details before confirming.");
     if (!agreed) return setError("Tick the terms box to confirm your reservation.");
+    if (server?.error) return setError(server.error);
+    if (!server?.quote || server.totalCents === undefined) return setError("The final price is still being calculated — one moment.");
+    if (!server.available) return setError("This car is no longer available for these dates. Go back to choose other dates or another car.");
+    setError(null);
+    setPending(true);
+    const key = state.idempotencyKey ?? crypto.randomUUID();
+    if (!state.idempotencyKey) update({ idempotencyKey: key });
+    const res = await reserve(v.slug, state, key, server.totalCents);
+    setPending(false);
+    if (!res.ok) {
+      if (res.needsSignIn) return router.push(`/sign-in?next=${encodeURIComponent(`/book/${v.slug}/review`)}`);
+      if (res.restart) {
+        update({ idempotencyKey: undefined });
+        refresh();
+      }
+      return setError(res.error);
+    }
     update({
       agreed: true,
-      confirmation: { ref: newReference(), issuedAt: new Date().toISOString(), total: quote.total, extrasCount: quote.extras.length },
+      idempotencyKey: undefined,
+      confirmation: { ref: res.reference, issuedAt: new Date().toISOString(), total: res.totalCents / 100, extrasCount: quote.extras.length, email: res.email },
     });
     router.push(`/book/${v.slug}/confirmed`);
   }
@@ -239,9 +262,9 @@ export function MobileReviewStep() {
       </div>
       <MobileBookingBar
         caption={agreed ? "Total Commitment" : "Total Due at Handover"}
-        label="Confirm reservation"
-        onAction={confirm}
-        disabled={!agreed || !driverValid}
+        label={pending ? "Reserving…" : "Confirm reservation"}
+        onAction={() => void confirm()}
+        disabled={!agreed || !driverValid || pending}
         helper={agreed ? undefined : "Tick terms to confirm"}
       />
     </div>
