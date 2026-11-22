@@ -7,6 +7,8 @@ import type { BookingDoc } from "./store";
 const state = { user: null as PublicUser | null };
 vi.mock("@/server/auth/session", () => ({ currentUser: async () => state.user }));
 vi.mock("@/server/bookings/context", async (orig) => ({ ...(await orig<typeof import("./context")>()), bookingContext: async () => ({ db: {} }), limitByIp: async () => {} }));
+const audit = vi.hoisted(() => ({ recordAudit: vi.fn(async () => ({})) }));
+vi.mock("@/server/audit/audit", async (orig) => ({ ...(await orig<typeof import("../audit/audit")>()), ...audit }));
 vi.mock("@/server/fleet/store", async (orig) => ({ ...(await orig<typeof import("../fleet/store")>()), unitsOf: () => ({ findOne: async () => null, find: () => ({ toArray: async () => [] }) }) }));
 const store = vi.hoisted(() => ({ createHold: vi.fn(), customerBookings: vi.fn(), customerBooking: vi.fn(), confirmBooking: vi.fn(), cancelBooking: vi.fn(), quoteTrip: vi.fn(), staffBookings: vi.fn(), staffBooking: vi.fn(), checkOut: vi.fn(), checkIn: vi.fn(), assignUnit: vi.fn(), addStaffNote: vi.fn() }));
 vi.mock("@/server/bookings/store", async (orig) => ({ ...(await orig<typeof import("./store")>()), ...store }));
@@ -59,6 +61,7 @@ beforeEach(() => {
   store.cancelBooking.mockResolvedValue({ booking: { ...booking, status: "cancelled" }, email: "skipped" });
   store.staffBookings.mockResolvedValue([booking]);
   store.checkOut.mockResolvedValue({ ...booking, status: "checked_out" });
+  store.staffBooking.mockResolvedValue({ ...booking, status: "confirmed" });
 });
 afterEach(() => {
   vi.restoreAllMocks();
@@ -129,6 +132,7 @@ describe("staff booking API", () => {
     const res = await staffAction.POST(post(`/api/v1/staff/bookings/${REF}/check-out`, { mileageKm: 1200 }), params({ reference: REF, action: "check-out" }));
     expect(res.status).toBe(200);
     expect(store.checkOut).toHaveBeenCalledWith(expect.anything(), REF, expect.objectContaining({ role: "staff" }), 1200);
+    expect(audit.recordAudit).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ action: "booking_check_out", before: expect.objectContaining({ status: "confirmed" }), after: expect.objectContaining({ status: "checked_out" }) }));
     expect((await staffAction.POST(post(`/api/v1/staff/bookings/${REF}/status`, { status: "completed" }), params({ reference: REF, action: "status" }))).status).toBe(404);
   });
 

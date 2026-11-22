@@ -178,9 +178,10 @@ dependency) in `src/server/auth/`.
 - **Setup:** `users` (unique email), `sessions`, `authTokens` and `rateLimits` are registered with `db:setup`.
   Until they exist, auth refuses to write (it never lets MongoDB create them without their indexes).
 
-**Granting staff or admin** (operator only, e.g. Atlas Data Explorer or mongosh against the application
-database): `db.users.updateOne({ email: "person@example.com" }, { $set: { role: "staff", updatedAt: new Date() } })`.
-The change applies on that user's next request.
+**Granting staff or admin.** Admins change roles in the staff console (Team). The FIRST admin — and any
+operator fix — uses the guarded command line (dry run by default; the account must have registered):
+`npm run user:role -- --email=person@example.com --role=admin --apply --confirm-db=<database>`. It goes
+through the same service (audited, last-admin protection). There is no web endpoint for bootstrapping.
 
 ## Fleet and availability (M6)
 
@@ -269,7 +270,45 @@ Customers never see the car assignment, staff notes or audit trail; there is no 
 reserves on confirm (sign-in required; the trip is kept through sign-in); `/account` lists the patron's
 reservations and `/account/reservations/:ref` shows one with cancel; `/staff/bookings`, its detail page,
 `/staff/availability` (14-day planner) and the fleet register's allocation/utilisation use real data.
-Still demo: the staff overview, customers and curbside screens.
+Since M8 the staff overview, customers and curbside screens are real as well (see below).
+
+## Staff and admin operations (M8)
+
+Every staff screen shares one console frame (`StaffChrome`): navigation, a header search into bookings,
+sign-out. Admin-only entries are hidden from staff, but pages and APIs enforce roles on the server.
+
+- **Overview** (`/staff`): today's pick-ups and returns (each hub's own calendar day), rentals out, overdue
+  returns, bookings needing attention in the next 48 h, upcoming pick-ups/returns, recent bookings, fleet
+  counts by hub and cars in maintenance — derived from the bookings and fleet (`src/server/staff/operations.ts`).
+- **Curbside** (`/staff/curbside`, handheld): today's pick-ups, returns and overdue cars at a hub with a
+  readiness state DERIVED from the booking lifecycle (upcoming, ready, needs attention, return expected,
+  overdue, returned). Hand-over and take-back are the M7 check-out/check-in actions (odometer, condition
+  note, maintenance), so the server re-checks car, hub and booking.
+- **Customers** (`/staff/customers`, detail `/staff/customers/:id`): search by name/email, filter by status,
+  booking history grouped by state. Staff can suspend/reactivate customer accounts (reason audited; all
+  sessions end at once; sign-in refused). Accounts are never deleted: bookings and the audit log refer to them.
+- **Team** (`/staff/team`, admins only): staff/admin accounts, exact-email lookup to promote any account,
+  role changes and staff suspension. Nobody changes their own role or status; the last active admin can be
+  neither demoted nor suspended — enforced in a transaction on a fixed roster lock, so two admins acting at
+  once cannot remove each other.
+- **Audit log** (`/staff/audit`, admins only): `auditEvents` — actor, action, entity, before/after and reason
+  for staff booking actions, fleet changes, blocks, account status and role changes. Insert-only; secret
+  fields are scrubbed; bookings additionally keep their own history.
+- **Settings** (`/staff/settings`): the configuration in force, read-only, with its source (release,
+  deployment variable, catalogue). Pricing and booking rules are not editable from the web on purpose:
+  a quote must not change between review and confirmation. No secrets are shown.
+
+| Method & path | Who |
+| --- | --- |
+| `GET /api/v1/staff/operations?hub=` | staff |
+| `GET /api/v1/staff/customers?q=&status=`, `GET …/:id` | staff |
+| `POST /api/v1/staff/accounts/:id/{suspend,reactivate}` | staff (customers) · admin (staff/admin accounts) |
+| `GET /api/v1/admin/team?q=` or `?email=` | admin |
+| `POST /api/v1/admin/accounts/:id/role` | admin |
+| `GET /api/v1/admin/audit?entity=&id=` | admin |
+| `GET /api/v1/staff/settings` | staff |
+
+The vehicle editor page remains a labelled Stitch design preview; cars are managed in the fleet register.
 
 ## Catalogue API
 
