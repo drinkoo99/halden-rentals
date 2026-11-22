@@ -4,11 +4,12 @@ Phase 2 adds a backend to the existing Next.js app: a **modular monolith** (no s
 MongoDB Atlas through the official driver and Zod for validation. The architecture and the milestone plan
 were approved before implementation; this file documents what exists so far.
 
-**Status: M2 — Database catalogue (in progress).** M1 provides environment validation, the database
-client, API conventions, a health endpoint and collection-setup tooling. M2 adds the catalogue
-(`locations`, `vehicleModels`, `extras`): schemas, demo seed mapping, collection validators and indexes so
-far; seeding and the catalogue API follow. No authentication, bookings or pricing yet, and no page reads
-from the database — the frontend behaves exactly as in Phase 1.
+**Status: M2 — Database catalogue.** M1 provides environment validation, the database client, API
+conventions, a health endpoint and collection-setup tooling. M2 adds the catalogue (`locations`,
+`vehicleModels`, `extras`): schemas, collection validators and indexes, the demo seed and an
+integration-test harness. The application database is set up and holds the demo catalogue. There is no
+catalogue API yet, no authentication, bookings or pricing, and no page reads from the database — the
+frontend behaves exactly as in Phase 1.
 
 ## Setup
 
@@ -25,7 +26,8 @@ Without `MONGODB_URI` the app runs normally and the health endpoint answers **50
 | --- | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | for deploys | `http://localhost:3000` | Canonical URLs, sitemap, social previews (Phase 1) |
 | `MONGODB_URI` | from M2 | — | MongoDB connection string (`mongodb://` or `mongodb+srv://`) |
-| `MONGODB_DB` | no | `halden_dev` | Database name. Names containing `prod` count as production for `db:setup` |
+| `MONGODB_DB` | no | `halden_dev` | Database name. Names containing `prod` count as production for `db:setup` and `db:seed` |
+| `MONGODB_TEST_DB` | no | `halden_test` | Integration-test database (see [Integration tests](#integration-tests)) |
 | `LOG_LEVEL` | no | `info` | `debug` \| `info` \| `warn` \| `error` |
 
 - Validated by `src/server/config/env.ts` the first time server code needs them. An invalid value fails
@@ -38,7 +40,8 @@ Without `MONGODB_URI` the app runs normally and the health endpoint answers **50
 ### MongoDB Atlas (when you are ready to connect)
 
 1. Create a project per environment (e.g. `halden-staging`, later `halden-prod`) and a free M0 cluster.
-2. Database Access → add a user with **readWrite on the app database only** (not Atlas admin).
+2. Database Access → add a user with **readWrite on the app database and the test database only**
+   (not Atlas admin, not `dbAdmin`).
 3. Network Access → your IP for local development. Vercel functions have no fixed IPs; that choice
    (0.0.0.0/0 with strong credentials, or the Atlas–Vercel integration) is made at deployment.
 4. Connect → Drivers → copy the `mongodb+srv://…` string into `MONGODB_URI`, and set `MONGODB_DB`.
@@ -57,9 +60,13 @@ src/server/                 server-only code (never imported by Client Component
   http/requestId.ts         request-ID resolution
   http/handler.ts           route() wrapper and json() helper for Route Handlers
   log.ts                    structured JSON logging with redaction
+  db/targets.ts             database target guards: script flags, test-database resolution
+  catalogue/                schemas (Zod), types, taxonomy, collection validators and indexes
+  catalogue/seed/           demo seed: mapping from src/data, validation, planning, apply
   testing/integrationDb.ts  integration-test harness: guarded halden_test access, run-scoped collections
 src/app/api/v1/…            Route Handlers (thin: parse → service → respond)
 scripts/db-setup.ts         applies the collection registry to a database (run with tsx)
+scripts/db-seed.ts          writes the demo catalogue to a database (run with tsx)
 ```
 
 Modules that import `server-only` fail the build if a Client Component imports them, so database code
@@ -172,7 +179,27 @@ everything checked before connecting).
   error stops the run; the report lists what was written and what was not attempted. Fix the cause and
   run again — the seed re-plans from the stored state and converges.
 
-_(Full M2 database documentation follows at the end of P2.)_
+## Catalogue collections
+
+Defined in `src/server/catalogue/collections.ts` and applied by `db:setup`:
+
+| Collection | Natural key | Unique indexes | List index |
+| --- | --- | --- | --- |
+| `locations` | `code` | `locations_code_unique` `{ code: 1 }`, `locations_iata_unique` `{ iataCode: 1 }` | `locations_status_sort` `{ status: 1, sortOrder: 1 }` |
+| `vehicleModels` | `slug` | `vehicleModels_slug_unique` `{ slug: 1 }`, `vehicleModels_exhibit_unique` `{ exhibit: 1 }` (across all statuses) | `vehicleModels_status_sort` `{ status: 1, sortOrder: 1 }` |
+| `extras` | `code` | `extras_code_unique` `{ code: 1 }` | `extras_status_sort` `{ status: 1, sortOrder: 1 }` |
+
+Each collection has a `$jsonSchema` validator (required fields, types, enums and patterns; unknown
+top-level fields rejected) with `validationLevel: "moderate"` and `validationAction: "error"`. The Zod
+schemas in `src/server/catalogue/schemas.ts` are the stricter check (cross-field rules such as "published
+models have a rate"); the seed applies them to every stored document before writing. Every document
+carries `dataOrigin` (`demo` or `managed`), `schemaVersion`, `createdAt` and `updatedAt`.
+
+**Current state.** The application database has the three collections, their validators and all eight
+indexes, and holds the demo catalogue: 5 locations, 10 vehicle models and 5 extras, all
+`dataOrigin: "demo"`. `db:setup` and `db:seed` dry runs against it both report 0 changes. The test
+database has the same three collections (setup only, no documents), which the integration tests leave
+untouched.
 
 ## Tests
 
