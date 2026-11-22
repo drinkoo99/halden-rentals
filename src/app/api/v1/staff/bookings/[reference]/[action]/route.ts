@@ -1,8 +1,10 @@
 import { ObjectId } from "mongodb";
+import { recordAudit } from "@/server/audit/audit";
+import { auditActor } from "@/server/staff/context";
 import { readJson, requireApiRole, STAFF_ROLES } from "@/server/auth/api";
 import { actorOf, bookingContext } from "@/server/bookings/context";
 import { assignInput, cancelInput, checkInInput, checkOutInput, noteInput, referenceSchema } from "@/server/bookings/schemas";
-import { addStaffNote, assignUnit, cancelBooking, checkIn, checkOut, confirmBooking, type BookingDoc } from "@/server/bookings/store";
+import { addStaffNote, assignUnit, cancelBooking, checkIn, checkOut, confirmBooking, staffBooking, type BookingDoc } from "@/server/bookings/store";
 import { toStaffBooking } from "@/server/bookings/views";
 import { unitsOf } from "@/server/fleet/store";
 import { AppError } from "@/server/http/errors";
@@ -20,6 +22,7 @@ export const POST = route<{ reference: string; action: string }>("staff-bookings
   if (!ref.success) throw new AppError("NOT_FOUND", "No such booking.");
   const ctx = await bookingContext();
   const staff = actorOf(user);
+  const before = await staffBooking(ctx, ref.data);
   let booking: BookingDoc;
   switch (params.action) {
     case "confirm":
@@ -43,6 +46,15 @@ export const POST = route<{ reference: string; action: string }>("staff-bookings
     default:
       throw new AppError("NOT_FOUND", "No such booking action.");
   }
+  // every staff action on a booking also goes to the operational audit log (the booking keeps its own history)
+  await recordAudit(ctx, {
+    actor: auditActor(user),
+    action: `booking_${params.action.replace("-", "_")}`,
+    entity: { type: "booking", id: booking.reference, label: `${booking.reference} · ${booking.vehicle.name}` },
+    before: { status: before.status, unitId: before.unitId?.toHexString() ?? null },
+    after: { status: booking.status, unitId: booking.unitId?.toHexString() ?? null, ...(booking.mileageInKm !== undefined && params.action === "check-in" ? { mileageInKm: booking.mileageInKm } : {}) },
+    reason: booking.cancellation?.reason && params.action === "cancel" ? booking.cancellation.reason : undefined,
+  });
   const unit = booking.unitId ? await unitsOf(ctx).findOne({ _id: booking.unitId }) : null;
   return json({ data: toStaffBooking(booking, unit) });
 });

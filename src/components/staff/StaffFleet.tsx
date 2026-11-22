@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { StaffChrome } from "@/components/staff/StaffChrome";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Photo } from "@/components/ui/Photo";
@@ -101,52 +102,7 @@ export function StaffFleet({ units, models, hubs, filters, staffName, today, set
   }
 
   return (
-    <div className="bg-surface font-body-md text-on-surface">
-      <aside aria-label="Console navigation" className="fixed left-0 top-0 h-full w-60 bg-on-tertiary-fixed text-inverse-on-surface z-50 flex flex-col border-r border-tertiary">
-        <div className="h-14 px-6 flex items-center border-b border-tertiary"><span className="font-headline-sm text-headline-sm tracking-widest uppercase text-inverse-on-surface">HALDEN</span></div>
-        <div className="px-4 py-4 border-b border-tertiary">
-          <label className="block font-label-mono text-label-mono uppercase text-on-tertiary-container mb-2">ACTIVE HUB</label>
-          <select aria-label="Active hub" className="w-full bg-tertiary text-on-tertiary font-label-mono text-label-mono uppercase px-3 py-2 rounded-none border border-tertiary-container focus:outline-hidden focus:border-primary-fixed">
-            <option value="all">ALL HUBS</option>
-            <option value="muc">MUC — MUNICH</option>
-            <option value="zrh">ZRH — ZURICH</option>
-            <option value="gva">GVA — GENEVA</option>
-            <option value="mxp">MXP — MILAN</option>
-            <option value="vie">VIE — VIENNA</option>
-          </select>
-        </div>
-        <nav className="flex-1 py-4 flex flex-col gap-1">
-          <Link className="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" href="/staff">OVERVIEW</Link>
-          <Link className="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" href="/staff/bookings">BOOKINGS</Link>
-          <Link className="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" href="/staff/fleet">FLEET</Link>
-          <Link className="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" href="/staff/availability">AVAILABILITY</Link>
-          <Link className="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" href="/staff/customers">CUSTOMERS</Link>
-          <Link className="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" href="/staff/fleet">PRICING</Link>
-          <Link className="px-6 py-2.5 font-label-mono text-label-mono uppercase text-on-tertiary-container hover:bg-tertiary hover:text-on-tertiary transition-colors" href="/staff">SETTINGS</Link>
-        </nav>
-        <div className="px-6 py-4 border-t border-tertiary"><span className="font-label-mono text-label-mono uppercase text-on-tertiary-container">CONSOLE V2.4</span></div>
-      </aside>
-      <div className="pl-60">
-        <header className="fixed top-0 left-60 right-0 h-14 bg-surface border-b border-outline-variant z-40 px-8 flex items-center justify-between">
-          <div className="flex items-center w-96">
-            <div className="relative w-full">
-              <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
-              <input className="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pl-9 pr-3 py-1.5 rounded-none border border-outline-variant focus:outline-hidden focus:border-primary placeholder:text-on-surface-variant" placeholder="Search booking ref, plate, customer..." type="text" />
-            </div>
-          </div>
-          <div className="flex items-center gap-6">
-            <span className="font-label-mono text-label-mono uppercase text-on-surface-variant">{today}</span>
-            <button aria-label="Notifications" className="relative flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button" disabled data-planned="quiet" title="Planned: available once the HALDEN backend is live" aria-disabled="true">
-              <span className="material-symbols-outlined text-[20px]">notifications</span>
-              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-error rounded-full" />
-            </button>
-            <div className="flex items-center gap-3 pl-4 border-l border-outline-variant">
-              <span className="font-body-sm text-body-sm text-on-surface">{staffName}</span>
-              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span className="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
-            </div>
-          </div>
-        </header>
-        <main className="relative pt-14 w-full px-8 bg-surface">
+    <StaffChrome section="fleet" staffName={staffName} today={today}>
           <div className="flex flex-col w-full pb-32">
             {/* Page Header & Exhibition Ledger Banner */}
             <section className="w-full pt-8 pb-6 border-b border-outline-variant flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -363,8 +319,6 @@ export function StaffFleet({ units, models, hubs, filters, staffName, today, set
               <div className="font-label-mono text-label-mono text-on-surface-variant uppercase">{`SHOWING ${units.length} FLEET UNIT${units.length === 1 ? "" : "S"}`}</div>
             </section>
           </div>
-        </main>
-      </div>
-    </div>
+    </StaffChrome>
   );
 }

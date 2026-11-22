@@ -9,6 +9,8 @@ vi.mock("@/server/auth/session", () => ({ currentUser: async () => state.user })
 vi.mock("@/server/fleet/context", () => ({ fleetContext: async () => ({ db: {} }) }));
 vi.mock("@/server/bookings/context", () => ({ bookingContext: async () => ({ db: {} }), limitByIp: async () => {} }));
 vi.mock("next/server", () => ({ connection: async () => {} }));
+const audit = vi.hoisted(() => ({ recordAudit: vi.fn(async () => ({})) }));
+vi.mock("@/server/audit/audit", async (orig) => ({ ...(await orig<typeof import("../audit/audit")>()), ...audit }));
 const unit: UnitDoc = {
   _id: new ObjectId(),
   unitCode: "FU-ABC234",
@@ -104,6 +106,10 @@ describe("fleet API authorization", () => {
     for (const call of mutations()) statuses.push((await call()).status);
     expect(statuses).toEqual([201, 200, 200, 201, 204]);
     expect(store.createUnit).toHaveBeenCalledTimes(1);
+    // every change is audited with the acting user (M8)
+    expect(audit.recordAudit.mock.calls.map((c) => (c as unknown as [unknown, { action: string; actor: { role: string } }])[1].action)).toEqual(["fleet_unit_created", "fleet_unit_updated", "fleet_status_changed", "block_created", "block_removed"]);
+    expect((audit.recordAudit.mock.calls[0] as unknown as [unknown, { actor: { role: string } }])[1].actor.role).toBe(role);
+    audit.recordAudit.mockClear();
   });
 
   it("refuses cross-origin and non-JSON writes even for staff", async () => {

@@ -25,13 +25,13 @@ export const isTestDatabase = (dbName: string) => TEST_DB_PATTERN.test(dbName);
 
 // ---- Command-line flags ------------------------------------------------------------------------
 
-export type TargetArgs = { apply: boolean; allowProduction: boolean; confirmDb?: string };
+export type TargetArgs = { apply: boolean; allowProduction: boolean; confirmDb?: string; /** values of the command's own --name=value options (only commands that declare some) */ options?: Record<string, string> };
 
 /**
  * Parse the flags shared by db:setup and db:seed. Unknown arguments are rejected, so a typo such as
  * "--aply" or "--confirm-db halden" (space instead of "=") fails instead of silently doing something else.
  */
-export function parseTargetArgs(argv: string[]): TargetArgs {
+export function parseTargetArgs(argv: string[], optionNames: readonly string[] = []): TargetArgs {
   const args: TargetArgs = { apply: false, allowProduction: false };
   for (const arg of argv) {
     if (arg === "--apply") args.apply = true;
@@ -40,7 +40,11 @@ export function parseTargetArgs(argv: string[]): TargetArgs {
       const value = arg.slice("--confirm-db=".length);
       if (!value) throw new TargetGuardError("--confirm-db needs a database name, e.g. --confirm-db=halden");
       args.confirmDb = value;
-    } else throw new TargetGuardError(`Unknown argument "${arg}". Allowed: --apply, --confirm-db=<database>, --allow-production`);
+    } else {
+      const name = optionNames.find((n) => arg.startsWith(`--${n}=`));
+      if (!name) throw new TargetGuardError(`Unknown argument "${arg}". Allowed: --apply, --confirm-db=<database>, --allow-production${optionNames.map((n) => `, --${n}=<value>`).join("")}`);
+      (args.options ??= {})[name] = arg.slice(name.length + 3);
+    }
   }
   if (args.confirmDb !== undefined && !args.apply) throw new TargetGuardError("--confirm-db is only used together with --apply");
   return args;

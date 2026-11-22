@@ -1,4 +1,6 @@
 import { ObjectId } from "mongodb";
+import { recordAudit } from "@/server/audit/audit";
+import { auditActor } from "@/server/staff/context";
 import { readJson, requireApiRole, STAFF_ROLES } from "@/server/auth/api";
 import { fleetContext } from "@/server/fleet/context";
 import { blockInput } from "@/server/fleet/schemas";
@@ -19,6 +21,8 @@ export const POST = route<{ id: string }>("staff-fleet-block-create", async (req
   const user = await requireApiRole(request, STAFF_ROLES);
   const id = parseId(params.id);
   const input = await readJson(request, blockInput);
-  const block = await createBlock(await fleetContext(), id, input, new ObjectId(user.id));
+  const ctx = await fleetContext();
+  const block = await createBlock(ctx, id, input, new ObjectId(user.id));
+  await recordAudit(ctx, { actor: auditActor(user), action: "block_created", entity: { type: "block", id: block._id.toHexString(), label: `${block.kind} · unit ${id.toHexString()}` }, after: { unitId: id.toHexString(), kind: block.kind, startsAt: block.startsAt.toISOString(), endsAt: block.endsAt.toISOString() }, reason: block.reason });
   return json({ data: toStaffBlock(block) }, { status: 201 });
 });

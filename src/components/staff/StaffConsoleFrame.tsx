@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { StaffDemoBanner } from "./StaffDemoBanner";
 
 /**
  * Wraps the desktop staff-console screens (Stitch designed them for laptop widths only).
@@ -26,7 +25,6 @@ export function StaffConsoleFrame({ children }: { children: React.ReactNode }) {
       <div className="max-xl:overflow-x-auto">
         <div className="max-xl:w-[1280px] max-xl:relative max-xl:[transform:translateZ(0)]">{children}</div>
       </div>
-      <StaffDemoBanner />
     </>
   );
 }
