@@ -139,6 +139,39 @@ a new unique index — can leave part of the plan applied. Fix the underlying ca
 again: setup is diff-based, plans only what is still missing, and never drops anything, so it converges.
 A dry run first shows what remains.
 
+## Demo catalogue seed
+
+The demo catalogue (5 locations, 10 vehicle models, 5 extras) is generated from the frontend's static
+data by `catalogueSeedFromStatic()` and written by a script. Run `db:setup` first — the seed never
+creates collections or indexes and refuses to run until setup is complete.
+
+```bash
+npm run db:seed                                        # dry run: read-only, prints the plan per collection
+npm run db:seed -- --apply --confirm-db=<database>     # apply; --confirm-db must equal MONGODB_DB exactly
+npm run db:seed -- --apply --confirm-db=<db> --allow-production   # also needed when the target looks like production
+```
+
+The same target guards as `db:setup` apply (unknown arguments rejected, `halden_test*` refused,
+everything checked before connecting).
+
+- **Validation before any write.** The whole seed is validated, every stored catalogue document is read
+  and validated against the stored schemas, and the complete plan is built — all before the first
+  write. Any validation error or conflict in *any* collection aborts the run with nothing written.
+  Problems are reported as field paths, never stored values.
+- **Ownership.** The seed manages only documents with `dataOrigin: "demo"`, matched by natural key
+  (`locations.code`, `vehicleModels.slug`, `extras.code`). Missing → inserted; demo-owned and different
+  → only the changed fields are updated (plus `updatedAt`; `createdAt` is kept); demo-owned and equal →
+  untouched. A non-demo document holding a seed key — or holding a uniquely indexed value a seed document
+  needs (IATA code, exhibit number) — is a conflict and aborts the run; it is never overwritten.
+  Documents the seed does not mention (unmanaged, or demo documents no longer seeded) are reported and
+  left alone. Nothing is ever deleted.
+- **Idempotent.** `_id` and timestamps are not compared, so a second run plans 0 changes.
+- **Not transactional.** Writes are applied one document at a time in the order locations →
+  vehicleModels → extras. An insert that hits a duplicate key (another writer got there first) and an
+  update whose document is no longer demo-owned are skipped and reported, never forced. An unexpected
+  error stops the run; the report lists what was written and what was not attempted. Fix the cause and
+  run again — the seed re-plans from the stored state and converges.
+
 _(Full M2 database documentation follows at the end of P2.)_
 
 ## Tests
@@ -151,6 +184,8 @@ _(Full M2 database documentation follows at the end of P2.)_
 - `pingDatabase`: success, timeout, authentication failure and synchronous throws with a fake client, plus
   the **real driver** against a closed local port (unreachable);
 - collection setup, dry run and apply, against a fake `Db`;
+- seed planning (ownership, conflicts, idempotency, validation), the write step against a fake `Db`, and
+  the `db:seed` command's guards (spawned with a closed local port; every case stops before connecting);
 - the health route for up / not configured / down / unexpected errors.
 
 ### Integration tests
@@ -176,3 +211,9 @@ Safety is enforced in code:
 
 If a run is killed before cleanup, its `it_<runId>_*` collections stay behind; they are inert and can be
 dropped by hand in `halden_test`.
+
+The seed's integration tests (`src/server/catalogue/seed/seed.int.test.ts`) share one guarded connection
+per file and give every test its own run-scoped copies of the catalogue collections, created with the real
+validators and indexes; `afterAll` drops them. The `locations`, `vehicleModels` and `extras` collections in
+`halden_test` are never written by tests. Integration timeouts are generous (20 s to connect, 120 s per
+test) because fresh TLS handshakes to Atlas can take several seconds.
