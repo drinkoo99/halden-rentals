@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import type { Vehicle } from "@/data/vehicles";
 import { itineraryQuery, readItinerary, rentalDays } from "@/lib/itinerary";
 import { quote } from "@/lib/pricing";
@@ -9,10 +10,11 @@ import { quote } from "@/lib/pricing";
 /** Itinerary + price for one vehicle. Falls back to the vehicle's home hub when no location is in the URL. */
 export function useTrip(vehicle: Vehicle) {
   const params = useSearchParams();
+  const { locations } = useCatalogue();
   return useMemo(() => {
     const p = new URLSearchParams(params);
     if (!p.get("loc")) p.set("loc", vehicle.homeLocation);
-    const itinerary = readItinerary(p);
+    const itinerary = readItinerary(p, locations);
     const days = rentalDays(itinerary.from, itinerary.to);
     return {
       itinerary,
@@ -20,5 +22,5 @@ export function useTrip(vehicle: Vehicle) {
       quote: quote(vehicle.pricePerDay, days),
       query: itineraryQuery(itinerary),
     };
-  }, [params, vehicle]);
+  }, [params, vehicle, locations]);
 }

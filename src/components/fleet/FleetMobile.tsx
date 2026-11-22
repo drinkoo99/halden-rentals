@@ -8,7 +8,8 @@ import { useFleetState } from "@/components/fleet/useFleetState";
 import { ItineraryEditor } from "@/components/site/ItineraryEditor";
 import { MobileMenu } from "@/components/site/MobileMenu";
 import { Icon } from "@/components/ui/Icon";
-import { getVehicle, type Vehicle } from "@/data/vehicles";
+import type { Vehicle } from "@/data/vehicles";
+import { findVehicle } from "@/lib/catalogue";
 import { useFavourites } from "@/lib/favourites";
 import { countActive, emptyFilters, sortOptions, toggle, type SortKey } from "@/lib/fleetFilters";
 import { formatDay, rentalDays } from "@/lib/itinerary";
@@ -17,12 +18,12 @@ const STEP = 4;
 
 /** Mobile fleet discovery — Stitch screen 26. Shown below lg. */
 export function FleetMobile() {
-  const { filters, setFilters, itinerary, setItinerary, results, tripQuery } = useFleetState();
+  const { vehicles, filters, setFilters, itinerary, setItinerary, results, tripQuery } = useFleetState();
   const [sheetOpen, setSheetOpen] = useState(false);
   const [editing, setEditing] = useState(false);
   const [visible, setVisible] = useState(STEP);
   const days = rentalDays(itinerary.from, itinerary.to);
-  const curator = getVehicle("lexus-lc-500")!;
+  const curator = findVehicle(vehicles, "lexus-lc-500") ?? vehicles[0];
   const active = countActive(filters);
   const shown = results.slice(0, visible);
   const sortLabel = sortOptions.find((o) => o.value === filters.sort)?.label ?? "Recommended";
@@ -156,7 +157,7 @@ export function FleetMobile() {
           {shown.map((v, i) => (
             <Fragment key={v.slug}>
               <MobileCard v={v} tripQuery={tripQuery} eager={i === 0} />
-              {i === 2 && (
+              {i === 2 && curator && (
                 <section className="w-full bg-inverse-surface text-inverse-on-surface my-4 py-8">
                   <div className="px-margin-mobile flex flex-col gap-5">
                     <div className="flex items-center justify-between">

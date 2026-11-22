@@ -2,10 +2,12 @@
 
 import { usePathname, useSearchParams } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { extraCost, extras, type ExtraId } from "@/data/extras";
-import { getLocation, type Location } from "@/data/locations";
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
+import { extraCost, type ExtraId } from "@/data/extras";
+import type { Location } from "@/data/locations";
 import type { Vehicle } from "@/data/vehicles";
 import type { DriverDetails } from "@/lib/booking/driverSchema";
+import { findLocation } from "@/lib/catalogue";
 import { readItinerary, rentalDays } from "@/lib/itinerary";
 import { quote, type Quote } from "@/lib/pricing";
 import { useMounted } from "@/lib/useMounted";
@@ -75,6 +77,7 @@ export function BookingProvider({
 }
 
 function ProviderInner({ vehicle, children }: { vehicle: Vehicle; children: React.ReactNode }) {
+  const { extras, locations } = useCatalogue();
   const params = useSearchParams();
   const pathname = usePathname();
 
@@ -85,7 +88,7 @@ function ProviderInner({ vehicle, children }: { vehicle: Vehicle; children: Reac
     const hasTripInUrl = params.has("from") && params.has("to");
     const p = new URLSearchParams(params);
     if (!p.get("loc")) p.set("loc", stored?.loc ?? vehicle.homeLocation);
-    const it = readItinerary(p);
+    const it = readItinerary(p, locations);
     const base: BookingState = stored ?? {
       loc: it.location.id,
       returnSame: true,
@@ -131,12 +134,12 @@ function ProviderInner({ vehicle, children }: { vehicle: Vehicle; children: Reac
       state,
       update,
       reset,
-      pickup: getLocation(state.loc),
-      dropoff: getLocation(state.returnSame ? state.loc : state.returnLoc),
+      pickup: findLocation(locations, state.loc),
+      dropoff: findLocation(locations, state.returnSame ? state.loc : state.returnLoc),
       days,
       quote: quote(vehicle.pricePerDay, days, lines),
     };
-  }, [state, update, reset, vehicle]);
+  }, [state, update, reset, vehicle, extras, locations]);
 
   return <BookingContext.Provider value={value}>{children}</BookingContext.Provider>;
 }

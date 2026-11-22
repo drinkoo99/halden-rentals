@@ -1,4 +1,7 @@
-/** Pick-up hubs named in the Stitch screens (homepage, fleet, detail and booking footers). Demo data. */
+/**
+ * Pick-up hubs named in the Stitch screens (homepage, fleet, detail and booking footers). Demo data.
+ * Since M3 this is only the seed source (src/server/catalogue/seed): pages render the database catalogue.
+ */
 export type Location = {
   id: string;
   code: string;
@@ -83,7 +86,3 @@ export const locations: Location[] = [
     handoverWindow: "06:00 – 23:30 CET",
   },
 ];
-
-export function getLocation(id: string | null | undefined): Location {
-  return locations.find((l) => l.id === id) ?? locations[0];
-}

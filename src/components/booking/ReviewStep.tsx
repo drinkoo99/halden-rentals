@@ -1,12 +1,13 @@
 "use client";
 
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { newReference, useBooking } from "@/components/booking/BookingProvider";
 import { Icon } from "@/components/ui/Icon";
-import { extraCost, extras } from "@/data/extras";
+import { extraCost } from "@/data/extras";
 import { driverSchema, licenceCountries } from "@/lib/booking/driverSchema";
 import { formatEuroCents } from "@/lib/pricing";
 
@@ -25,6 +26,7 @@ export function longDateTime(v: string) {
 export function ReviewStep() {
   const router = useRouter();
   const { vehicle: v, state, update, pickup, dropoff, days, quote } = useBooking();
+  const { extras } = useCatalogue();
   const [agreed, setAgreed] = useState(state.agreed);
   const [error, setError] = useState<string | null>(null);
   const driverValid = state.driver ? driverSchema.safeParse(state.driver).success : false;

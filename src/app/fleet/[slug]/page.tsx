@@ -4,16 +4,18 @@ import { Suspense } from "react";
 import { VehicleSkeleton } from "@/components/states/Skeletons";
 import { VehicleDesktop } from "@/components/vehicle/VehicleDesktop";
 import { VehicleMobile } from "@/components/vehicle/VehicleMobile";
-import { getVehicle, similarVehicles, vehicles } from "@/data/vehicles";
+import { findVehicle, similarVehicles } from "@/lib/catalogue";
 import { publicMeta } from "@/lib/seo";
+import { getSiteCatalogue } from "@/server/catalogue/service";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const { vehicles } = await getSiteCatalogue();
   return vehicles.map((v) => ({ slug: v.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/fleet/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const v = getVehicle(slug);
+  const v = findVehicle((await getSiteCatalogue()).vehicles, slug);
   if (!v) return { title: "Vehicle not found" };
   return publicMeta({
     title: `${v.name} — €${v.pricePerDay} / day`,
@@ -35,9 +37,10 @@ export default function VehiclePage({ params }: PageProps<"/fleet/[slug]">) {
 
 async function Vehicle({ params }: { params: PageProps<"/fleet/[slug]">["params"] }) {
   const { slug } = await params;
-  const vehicle = getVehicle(slug);
+  const { vehicles } = await getSiteCatalogue();
+  const vehicle = findVehicle(vehicles, slug);
   if (!vehicle) notFound();
-  const similar = similarVehicles(vehicle);
+  const similar = similarVehicles(vehicles, vehicle);
   return (
     <>
       <VehicleMobile vehicle={vehicle} similar={similar} />

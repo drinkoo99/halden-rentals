@@ -3,15 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import { Icon } from "@/components/ui/Icon";
 import { media } from "@/data/media";
-import { vehicles } from "@/data/vehicles";
 import { useMounted } from "@/lib/useMounted";
 
 type TriggerVariant = "bars" | "icon";
 
 const links = [
-  { n: "01", label: "Fleet", href: "/fleet", tag: `${vehicles.length} EXHIBITS`, sub: "Sculptural Automotive Archive" },
+  // tag: the live catalogue count, filled in by MobileMenu
+  { n: "01", label: "Fleet", href: "/fleet", tag: "", sub: "Sculptural Automotive Archive" },
   // Anchors point at the mobile homepage sections (screen 28), since this menu only shows below md.
   { n: "02", label: "Journeys", href: "/journeys", tag: "CURATED ROUTES", sub: "Alpine Passes & St. Moritz" },
   { n: "03", label: "The Standard", href: "/about", tag: "MANIFESTO", sub: "Purity & Mechanical Protocol" },
@@ -49,6 +50,8 @@ export function MobileMenu({
   triggerClassName?: string;
 }) {
   const [open, setOpen] = useState(false);
+  const { vehicles } = useCatalogue();
+  const navLinks = links.map((l) => (l.href === "/fleet" ? { ...l, tag: `${vehicles.length} EXHIBITS` } : l));
   const mounted = useMounted();
   const time = useCetClock(open && mounted);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -153,7 +156,7 @@ export function MobileMenu({
 
             {/* Primary Index Links */}
             <nav className="flex flex-col px-6 pt-5 pb-6">
-              {links.map((l) => (
+              {navLinks.map((l) => (
                 <Link
                   key={l.n}
                   href={l.href}

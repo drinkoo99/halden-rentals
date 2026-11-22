@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { locations } from "@/data/locations";
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import type { Itinerary } from "@/lib/itinerary";
 
 /**
@@ -20,6 +20,7 @@ export function ItineraryEditor({ open, ...props }: EditorProps & { open: boolea
 }
 
 function EditorDialog({ itinerary, onClose, onApply }: EditorProps) {
+  const { locations } = useCatalogue();
   const id = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
   const [loc, setLoc] = useState(itinerary.location.id);

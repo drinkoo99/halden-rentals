@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { publicMeta } from "@/lib/seo";
 import { HomeDesktop } from "@/components/home/HomeDesktop";
 import { HomeMobile } from "@/components/home/HomeMobile";
+import { getSiteCatalogue } from "@/server/catalogue/service";
 
 const home = publicMeta({ title: "HALDEN — The Gallery", description: "A curated fleet of premium cars, ready in Europe’s best cities and airports.", path: "/" });
 export const metadata: Metadata = {
@@ -15,11 +16,12 @@ export const metadata: Metadata = {
  * Homepage. Stitch designed separate desktop (screen 04) and mobile (screen 28) compositions,
  * so both are rendered and the breakpoint decides which one is visible.
  */
-export default function HomePage() {
+export default async function HomePage() {
+  const { vehicles } = await getSiteCatalogue();
   return (
     <>
-      <HomeMobile />
-      <HomeDesktop />
+      <HomeMobile vehicleCount={vehicles.length} />
+      <HomeDesktop vehicleCount={vehicles.length} />
     </>
   );
 }

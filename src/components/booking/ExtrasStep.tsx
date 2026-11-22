@@ -1,15 +1,17 @@
 "use client";
 
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { useBooking } from "@/components/booking/BookingProvider";
 import { Icon } from "@/components/ui/Icon";
-import { extraCost, extras, type Extra } from "@/data/extras";
+import { extraCost, type Extra } from "@/data/extras";
 import { formatEuroCents } from "@/lib/pricing";
 
 /** Booking step 03 · Extras — Stitch screen 21. Paid extras start switched off (opt-in). */
 export function ExtrasStep() {
   const { vehicle: v, state, update, pickup, days } = useBooking();
+  const { extras } = useCatalogue();
 
   const setQty = (e: Extra, qty: number) =>
     update({ extras: { ...state.extras, [e.id]: Math.max(0, Math.min(e.max, qty)) } });

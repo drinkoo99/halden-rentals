@@ -1,16 +1,18 @@
 "use client";
 
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import { useRouter } from "next/navigation";
 import { useBooking } from "@/components/booking/BookingProvider";
 import { MobileBookingBar, MobileBookingHeader, Switch } from "@/components/booking/mobile/MobileBookingChrome";
 import { Photo } from "@/components/ui/Photo";
-import { extraCost, extras, type Extra } from "@/data/extras";
+import { extraCost, type Extra } from "@/data/extras";
 import { formatEuroCents } from "@/lib/pricing";
 
 /** Mobile booking step 03 · Extras — Stitch "Mobile Booking: Extras (Step 2)". */
 export function MobileExtrasStep() {
   const router = useRouter();
   const { vehicle: v, state, update, days, quote } = useBooking();
+  const { extras } = useCatalogue();
   const setQty = (e: Extra, qty: number) => update({ extras: { ...state.extras, [e.id]: Math.max(0, Math.min(e.max, qty)) } });
 
   return (

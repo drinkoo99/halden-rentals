@@ -1,4 +1,7 @@
-/** Booking extras ("curated provisions") — Stitch screens 21 (selection) and 24 (review). Demo pricing. */
+/**
+ * Booking extras ("curated provisions") — Stitch screens 21 (selection) and 24 (review). Demo pricing.
+ * Since M3 the data is only the seed source (src/server/catalogue/seed); extraCost() is still used by the booking UI.
+ */
 export type ExtraId = "waiver" | "driver" | "childseat" | "delivery" | "winter";
 
 export type Extra = {

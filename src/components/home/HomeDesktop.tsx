@@ -4,7 +4,6 @@ import { HomeSearchBar } from "@/components/home/HomeSearchBar";
 import { ResponsiveHero } from "@/components/ui/ResponsiveHero";
 import { NewsletterForm } from "@/components/site/NewsletterForm";
 import { media } from "@/data/media";
-import { vehicles } from "@/data/vehicles";
 
 /** Desktop homepage — Stitch screen 04 ("HALDEN — The Gallery"). Shown from the md breakpoint up. */
 
@@ -33,7 +32,7 @@ const footerLocations = [
   { label: "Vienna Schwechat (VIE)", loc: "vie" },
 ];
 
-export function HomeDesktop() {
+export function HomeDesktop({ vehicleCount }: { vehicleCount: number }) {
   return (
     <div className="hidden md:block bg-ivory text-ink selection:bg-forest selection:text-ivory">
       {/* 1. HEADER (Transparent overlay on hero with ivory text) */}
@@ -258,7 +257,7 @@ export function HomeDesktop() {
               href="/fleet"
               className="inline-flex items-center font-mono text-xs uppercase tracking-widest text-ink hover:text-forest transition-colors py-2 border-b border-ink/40"
             >
-              View the complete catalogue ({vehicles.length} models) →
+              View the complete catalogue ({vehicleCount} models) →
             </Link>
           </div>
         </section>

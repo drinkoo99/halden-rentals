@@ -1,11 +1,11 @@
 "use client";
 
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useBooking } from "@/components/booking/BookingProvider";
 import { Icon } from "@/components/ui/Icon";
-import { locations } from "@/data/locations";
 
 /** Booking step 02 · Trip — Stitch screen 20. */
 
@@ -38,6 +38,7 @@ function monthGrid(year: number, month: number) {
 export function TripStep() {
   const router = useRouter();
   const { vehicle: v, state, update, pickup, dropoff, days } = useBooking();
+  const { locations } = useCatalogue();
   const fromDate = state.from.slice(0, 10);
   const toDate = state.to.slice(0, 10);
   const fromTime = state.from.slice(11, 16);

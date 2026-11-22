@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import { Icon } from "@/components/ui/Icon";
-import { brandOptions, categoryOptions, vehicles, type Feature, type Powertrain } from "@/data/vehicles";
+import { brandOptions, categoryOptions, type Feature, type Powertrain, type Vehicle } from "@/data/vehicles";
 import { applyFilters, countActive, emptyFilters, seatOptions, toggle, type FleetFilters } from "@/lib/fleetFilters";
 import { formatDay, type Itinerary } from "@/lib/itinerary";
 
@@ -23,10 +24,15 @@ const driveOptions: { label: string; icon: string; kind: "power" | "feature"; va
   { label: "Ski rack & winterised", icon: "ac_unit", kind: "feature", value: "ski" },
 ];
 
-const prices = vehicles.map((v) => v.pricePerDay);
-const SHEET_MIN = Math.floor(Math.min(...prices) / 10) * 10 - 60;
-const SHEET_MAX = Math.ceil(Math.max(...prices) / 10) * 10 + 60;
-const AVG = Math.round(prices.reduce((a, b) => a + b, 0) / prices.length / 10) * 10;
+/** Price slider bounds from the catalogue day rates (a 60 euro margin, rounded to tens). */
+function priceRange(vehicles: Vehicle[]) {
+  const prices = vehicles.length ? vehicles.map((v) => v.pricePerDay) : [0];
+  return {
+    SHEET_MIN: Math.floor(Math.min(...prices) / 10) * 10 - 60,
+    SHEET_MAX: Math.ceil(Math.max(...prices) / 10) * 10 + 60,
+    AVG: Math.round(prices.reduce((a, b) => a + b, 0) / prices.length / 10) * 10,
+  };
+}
 
 type SheetProps = {
   filters: FleetFilters;
@@ -51,6 +57,7 @@ function Box({ on }: { on: boolean }) {
 }
 
 function Sheet({ filters, itinerary, onClose, onApply }: SheetProps) {
+  const { vehicles } = useCatalogue();
   const [draft, setDraft] = useState(filters);
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -67,11 +74,12 @@ function Sheet({ filters, itinerary, onClose, onApply }: SheetProps) {
   }, [onClose]);
 
   const resultCount = applyFilters(vehicles, draft).length;
+  const { SHEET_MIN, SHEET_MAX, AVG } = priceRange(vehicles);
   const active = countActive(draft);
   const min = draft.minPrice ?? SHEET_MIN;
   const max = draft.maxPrice ?? SHEET_MAX;
   const pct = (n: number) => ((n - SHEET_MIN) / (SHEET_MAX - SHEET_MIN)) * 100;
-  const count = (pred: (v: (typeof vehicles)[number]) => boolean, skip: keyof FleetFilters) =>
+  const count = (pred: (v: Vehicle) => boolean, skip: keyof FleetFilters) =>
     applyFilters(vehicles, draft, skip).filter(pred).length;
 
 

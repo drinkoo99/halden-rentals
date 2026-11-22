@@ -3,6 +3,7 @@ import { media } from "./media";
 /**
  * Fleet data. Names, exhibit numbers, specs and day rates are taken from the Stitch screens
  * (homepage 04/28, fleet 12/26, vehicle detail 19/30). This is demo data — there is no real inventory yet.
+ * Since M3 this is only the seed source (src/server/catalogue/seed): pages render the database catalogue.
  */
 
 export type Category = "sports" | "sedan" | "suv" | "wagon";
@@ -503,22 +504,6 @@ export const vehicles: Vehicle[] = [
     homeLocation: "zrh",
   },
 ];
-
-export function getVehicle(slug: string): Vehicle | undefined {
-  return vehicles.find((v) => v.slug === slug);
-}
-
-/** Up to n other cars: same category first, then closest day rate. */
-export function similarVehicles(v: Vehicle, n = 3): Vehicle[] {
-  return vehicles
-    .filter((x) => x.slug !== v.slug)
-    .sort((a, b) => {
-      const ca = a.category === v.category ? 0 : 1;
-      const cb = b.category === v.category ? 0 : 1;
-      return ca - cb || Math.abs(a.pricePerDay - v.pricePerDay) - Math.abs(b.pricePerDay - v.pricePerDay);
-    })
-    .slice(0, n);
-}
 
 export const categoryOptions: { value: Category; label: string }[] = [
   { value: "sports", label: "Sports & Grand Tourer" },

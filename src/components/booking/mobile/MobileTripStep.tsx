@@ -1,10 +1,10 @@
 "use client";
 
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useBooking } from "@/components/booking/BookingProvider";
 import { MobileBookingBar, MobileBookingHeader, MobileSheet, Switch } from "@/components/booking/mobile/MobileBookingChrome";
-import { locations } from "@/data/locations";
 import { rentalDays } from "@/lib/itinerary";
 import { formatEuroCents } from "@/lib/pricing";
 
@@ -238,6 +238,7 @@ function TimeSelect({ label, value, tz, onChange }: { label: string; value: stri
 
 function HubSheet({ current, onClose, onConfirm }: { current: string; onClose: () => void; onConfirm: (id: string) => void }) {
   const [picked, setPicked] = useState(current);
+  const { locations } = useCatalogue();
   return (
     <MobileSheet title="Pavilion & Handover Stations" kicker="Select Hub" onClose={onClose} labelledBy="hub-sheet-title">
       <div className="px-5 py-2 bg-surface-container-low flex items-center justify-between">

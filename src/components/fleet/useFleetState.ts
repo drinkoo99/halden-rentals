@@ -2,7 +2,8 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useMemo } from "react";
-import { vehicles } from "@/data/vehicles";
+import { useCatalogue } from "@/components/catalogue/CatalogueProvider";
+import type { Vehicle } from "@/data/vehicles";
 import { applyFilters, readFilters, writeFilters, type FleetFilters } from "@/lib/fleetFilters";
 import { readItinerary, itineraryQuery } from "@/lib/itinerary";
 
@@ -12,9 +13,10 @@ export function useFleetState() {
   const router = useRouter();
   const pathname = usePathname();
 
+  const { vehicles, locations } = useCatalogue();
   const filters = useMemo(() => readFilters(params), [params]);
-  const itinerary = useMemo(() => readItinerary(params), [params]);
-  const results = useMemo(() => applyFilters(vehicles, filters), [filters]);
+  const itinerary = useMemo(() => readItinerary(params, locations), [params, locations]);
+  const results = useMemo(() => applyFilters(vehicles, filters), [vehicles, filters]);
   const page = Math.max(1, Number(params.get("page")) || 1);
 
   const setFilters = useCallback(
@@ -48,10 +50,10 @@ export function useFleetState() {
   /** Query string for links into detail/booking pages, carrying the itinerary only. */
   const tripQuery = itineraryQuery(itinerary);
 
-  return { filters, setFilters, itinerary, setItinerary, results, page, setPage, tripQuery };
+  return { vehicles, filters, setFilters, itinerary, setItinerary, results, page, setPage, tripQuery };
 }
 
 
-export function countWithout(filters: FleetFilters, key: keyof FleetFilters, pred: (v: (typeof vehicles)[number]) => boolean) {
+export function countWithout(vehicles: Vehicle[], filters: FleetFilters, key: keyof FleetFilters, pred: (v: Vehicle) => boolean) {
   return applyFilters(vehicles, filters, key).filter(pred).length;
 }
