@@ -9,8 +9,8 @@ conventions, a health endpoint and collection-setup tooling. M2 adds the catalog
 `vehicleModels`, `extras`): schemas, collection validators and indexes, the demo seed and an
 integration-test harness. M3 serves the catalogue from MongoDB: three read-only endpoints, and the pages
 (fleet, vehicle detail, booking, search, menus) render the database catalogue. M5 adds patron accounts:
-registration, sign-in, sessions, roles and protected account/staff areas. No bookings, availability or
-server-side pricing yet — booking still runs in the browser as in Phase 1.
+registration, sign-in, sessions, roles and protected account/staff areas. M6 adds the physical fleet
+(units per vehicle model) and the availability engine. No bookings or server-side pricing yet — booking still runs in the browser as in Phase 1.
 
 ## Setup
 
@@ -179,6 +179,43 @@ dependency) in `src/server/auth/`.
 **Granting staff or admin** (operator only, e.g. Atlas Data Explorer or mongosh against the application
 database): `db.users.updateOne({ email: "person@example.com" }, { $set: { role: "staff", updatedAt: new Date() } })`.
 The change applies on that user's next request.
+
+## Fleet and availability (M6)
+
+**Fleet units** (`fleetUnits`) are the physical cars: `unitCode` (generated, `FU-XXXXXX`), `modelSlug` →
+`vehicleModels.slug`, `registration` (normalised, unique), optional `vin` (unique when present), `locationCode`
+→ an active hub, `status`, `mileageKm` (never decreases), `year`, optional `notes`, timestamps. Status changes
+follow `STATUS_TRANSITIONS` (`src/server/fleet/statuses.ts`): available → rented / maintenance / inactive;
+rented → available / maintenance; maintenance → available / inactive; inactive → available / maintenance.
+A rented car cannot be reassigned to another hub. **Blocks** (`availabilityBlocks`) take a car out of
+service for `[startsAt, endsAt)` (maintenance or unavailable); blocks of one car never overlap.
+
+Staff API (staff/admin only; signed out → 401, customers → 403; writes must be same-origin JSON):
+
+| Method & path | Purpose |
+| --- | --- |
+| `GET /api/v1/staff/fleet?model=&location=&status=` | list units |
+| `POST /api/v1/staff/fleet` | register a car (201) |
+| `GET` / `PATCH /api/v1/staff/fleet/:id` | details with upcoming blocks / update details or hub |
+| `POST /api/v1/staff/fleet/:id/status` | `{ status }`, following the transitions |
+| `GET` / `POST /api/v1/staff/fleet/:id/blocks`, `DELETE …/blocks/:blockId` | maintenance/unavailability blocks |
+| `GET /api/v1/staff/availability?model=&pickup=&return=&from=&to=` | availability with per-unit reasons |
+
+`GET /api/v1/availability?model=&pickup=&return=&from=&to=` is public and answers only `available: true|false`
+(no units, plates or counts). Times are ISO 8601 with seconds and a zone (`2030-06-10T10:00:00Z` or `+02:00`).
+
+**Availability engine** (`src/server/availability/engine.ts`, pure): periods are half-open, so back-to-back
+periods do not overlap. A unit is available when its status is `available`, it is at the pick-up hub (its
+own hub, or the return hub of its last reservation), no block overlaps the rental, and no reservation
+overlaps it once widened by a 2-hour turnaround. Rentals last 1 hour to 90 days and cannot start in the past;
+one-way returns to another active hub are allowed; a model that is not `bookable` is never available.
+**Reservations come from a `ReservationSource`; until the booking engine (M7) provides one, the source is
+empty** — availability then means "a car in service at that hub, free of blocks", and nothing yet prevents
+two customers booking the same car. A rented car counts as unavailable (its return time is unknown).
+
+The staff fleet register (`/staff/fleet`) lists the real units with hub/status/model filters, registers cars
+and changes status and hub through this API. "Next allocation" and utilisation wait for reservations (M7);
+the vehicle editor and availability calendar pages are still Stitch demo screens.
 
 ## Catalogue API
 
