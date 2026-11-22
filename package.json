@@ -10,7 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "db:setup": "tsx --env-file-if-exists=.env.local scripts/db-setup.ts"
+    "db:setup": "tsx --env-file-if-exists=.env.local scripts/db-setup.ts",
+    "test:integration": "vitest run --config vitest.integration.config.mts"
   },
   "dependencies": {
     "@hookform/resolvers": "^7.0.8",

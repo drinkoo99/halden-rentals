@@ -57,6 +57,7 @@ src/server/                 server-only code (never imported by Client Component
   http/requestId.ts         request-ID resolution
   http/handler.ts           route() wrapper and json() helper for Route Handlers
   log.ts                    structured JSON logging with redaction
+  testing/integrationDb.ts  integration-test harness: guarded halden_test access, run-scoped collections
 src/app/api/v1/…            Route Handlers (thin: parse → service → respond)
 scripts/db-setup.ts         applies the collection registry to a database (run with tsx)
 ```
@@ -152,5 +153,26 @@ _(Full M2 database documentation follows at the end of P2.)_
 - collection setup, dry run and apply, against a fake `Db`;
 - the health route for up / not configured / down / unexpected errors.
 
-An in-memory MongoDB replica set for integration tests (`mongodb-memory-server`, dev dependency) is
-deferred to the milestone that first needs real queries and transactions.
+### Integration tests
+
+`npm run test:integration` runs `src/**/*.int.test.ts` against the dedicated **`halden_test`** database
+(the same Atlas cluster, configured through `.env.local`; `npm test` never runs them). They need a
+database user with `readWrite` on `halden_test` — no administrative rights.
+
+Safety is enforced in code:
+
+- the test database comes only from `resolveTestDatabase` (`src/server/db/targets.ts`): it must be
+  `halden_test` or `halden_test_<suffix>` (override with `MONGODB_TEST_DB`), must differ from
+  `MONGODB_DB`, and is never `halden` or production. A missing or unsafe configuration aborts the run
+  before any test starts (global setup). There is no fallback to the application database;
+- tests reach MongoDB only through `src/server/testing/integrationDb.ts`, which re-checks the database
+  name on the connected handle and again before cleanup;
+- every collection a run creates is named `it_<runId>_<name>` (UTC timestamp + 48 random bits). Cleanup
+  drops only that run's collections — concurrent runs and anything else in the database are untouched —
+  and never uses `dropDatabase`;
+- `withIntegrationDatabase(fn)` cleans up in a `finally` block; if both the test and its cleanup fail,
+  the test's own error is reported first (an `AggregateError`), and a cleanup failure fails an otherwise
+  passing test.
+
+If a run is killed before cleanup, its `it_<runId>_*` collections stay behind; they are inert and can be
+dropped by hand in `halden_test`.
