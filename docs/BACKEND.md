@@ -8,8 +8,9 @@ were approved before implementation; this file documents what exists so far.
 conventions, a health endpoint and collection-setup tooling. M2 adds the catalogue (`locations`,
 `vehicleModels`, `extras`): schemas, collection validators and indexes, the demo seed and an
 integration-test harness. M3 serves the catalogue from MongoDB: three read-only endpoints, and the pages
-(fleet, vehicle detail, booking, search, menus) render the database catalogue. No authentication,
-bookings, availability or server-side pricing yet — booking still runs in the browser as in Phase 1.
+(fleet, vehicle detail, booking, search, menus) render the database catalogue. M5 adds patron accounts:
+registration, sign-in, sessions, roles and protected account/staff areas. No bookings, availability or
+server-side pricing yet — booking still runs in the browser as in Phase 1.
 
 ## Setup
 
@@ -29,6 +30,7 @@ Without `MONGODB_URI` the app runs normally and the health endpoint answers **50
 | `MONGODB_DB` | production | `halden_dev` (never in production) | Database name. Names containing `prod` count as production for `db:setup` and `db:seed` |
 | `MONGODB_TEST_DB` | no | `halden_test` | Integration-test database (see [Integration tests](#integration-tests)) |
 | `LOG_LEVEL` | no | `info` | `debug` \| `info` \| `warn` \| `error` |
+| `RESEND_API_KEY`, `EMAIL_FROM` | for email | — | Password-reset and verification emails (Resend); both or neither |
 
 - Validated by `src/server/config/env.ts` the first time server code needs them. An invalid value fails
   with the variable name and the problem — never the value.
@@ -145,6 +147,38 @@ Only a coarse reason is returned; hosts and driver messages stay out of the resp
 
 Unknown paths under `/api` answer `404 NOT_FOUND` with the standard JSON error body and a request ID
 (`src/app/api/[...path]/route.ts`), not the HTML not-found page.
+
+## Authentication (M5)
+
+Email + passcode accounts with server-side sessions, built on Node's `crypto` (no auth framework, no new
+dependency) in `src/server/auth/`.
+
+- **Passcodes** are hashed with scrypt (N=2^17, r=8, p=1, random salt; stored as `scrypt$N$r$p$salt$hash`) and
+  compared in constant time. Policy: 12–128 characters, a letter, a number or symbol. Never logged or returned.
+- **Sessions:** a 256-bit random token in an HttpOnly, SameSite=Lax cookie (`__Host-halden_session`, Secure,
+  in production); the database stores only its SHA-256 hash. 30 days with "remember me", otherwise 12 hours
+  (and the cookie ends with the browser). Every request looks the session up, so sign-out, a passcode reset
+  or disabling an account takes effect immediately. A TTL index removes expired sessions.
+- **Server Actions** (`src/app/actions/auth.ts`) handle sign-in, registration, sign-out, password reset and
+  profile changes. Next.js only accepts them from this origin, which with SameSite=Lax is the CSRF protection.
+- **Roles:** `customer` (every registration — the role is never read from input), `staff`, `admin`. There is
+  no public way to change a role; an operator sets it in the database (see below).
+- **Brute force:** failed sign-ins are limited to 5 per email and 50 per IP address per 15 minutes
+  (`rateLimits`, TTL-expired; email keys are hashed). Registrations: 10 per IP per hour. Passcode changes
+  share the sign-in budget. Errors never say whether an email exists or the passcode was wrong.
+- **Protected areas:** `/account/**` (signed in) and `/staff/**` (staff or admin) are enforced on the server
+  by the layouts' `AuthGate`; a customer asking for the staff console gets a 404. `src/proxy.ts` only adds an
+  early redirect to `/sign-in?next=…` when there is no session cookie. `GET /api/v1/me` returns the public
+  profile or 401. Return targets are same-site paths only.
+- **Email:** with `RESEND_API_KEY` and `EMAIL_FROM` set, "forgot passcode" emails a single-use link (1 hour)
+  and registration sends a verification link (48 hours, `/api/v1/auth/verify-email`); tokens are stored hashed.
+  Without them nothing is sent and the forgot-passcode page says email is unavailable.
+- **Setup:** `users` (unique email), `sessions`, `authTokens` and `rateLimits` are registered with `db:setup`.
+  Until they exist, auth refuses to write (it never lets MongoDB create them without their indexes).
+
+**Granting staff or admin** (operator only, e.g. Atlas Data Explorer or mongosh against the application
+database): `db.users.updateOne({ email: "person@example.com" }, { $set: { role: "staff", updatedAt: new Date() } })`.
+The change applies on that user's next request.
 
 ## Catalogue API
 

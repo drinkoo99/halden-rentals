@@ -176,7 +176,7 @@ export function RequestAccessDesktop() {
                   )}
                   {/* Primary Call to Action */}
                   <div className="pt-3">
-                    <button className="w-full h-[54px] bg-primary text-on-primary font-action text-action uppercase tracking-widest rounded-[2px] hover:bg-primary-container transition-colors flex items-center justify-center space-x-2" type="submit">
+                    <button disabled={f.pending} aria-busy={f.pending} className="disabled:opacity-70 disabled:cursor-wait w-full h-[54px] bg-primary text-on-primary font-action text-action uppercase tracking-widest rounded-[2px] hover:bg-primary-container transition-colors flex items-center justify-center space-x-2" type="submit">
                       <span>REQUEST PATRON ACCESS</span>
                       {" "}
                       <span className="text-sm">→</span>

@@ -7,8 +7,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { signInAction } from "@/app/actions/auth";
 import { Icon } from "@/components/ui/Icon";
 import { media } from "@/data/media";
+import { refreshSession } from "@/lib/session";
 
 const signInSchema = z.object({
   fullName: z.string().optional(),
@@ -32,9 +34,9 @@ function safeNext(v: string | null) {
 }
 
 /**
- * Sign in / request access — Stitch screen 31.
- * Accounts are not live yet (backend phase), so the form validates and then says so plainly
- * instead of pretending to sign the visitor in.
+ * Sign in — Stitch screen 31. Credentials are checked on the server (signInAction); a wrong email or
+ * passcode gets one generic message, and too many attempts lead to the lockout screen with the real wait.
+ * Registration has its own Stitch screen (/request-access).
  */
 export function SignInScreen() {
   const params = useSearchParams();
@@ -43,6 +45,8 @@ export function SignInScreen() {
   const [mode, setMode] = useState<"signin" | "register">("signin");
   const [show, setShow] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
+  const [formError, setFormError] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
 
   const {
     register,
@@ -54,11 +58,20 @@ export function SignInScreen() {
     defaultValues: { fullName: "", email: "", passcode: "", remember: true },
   });
 
-  function onSubmit() {
-    // No patron accounts exist yet (backend phase), so every sign-in is honestly an invalid credential:
-    // show the Stitch error-state screen ("Sign In: Error States & Security Lockout").
-    if (mode === "signin") return router.push("/sign-in/error");
-    setNotice("Thank you. Patron registration opens with the next HALDEN release; your details were not stored.");
+  async function onSubmit(values: Values) {
+    setFormError(null);
+    setPending(true);
+    const res = await signInAction({ email: values.email, password: values.passcode, remember: values.remember, next: params.get("next") ?? undefined });
+    if (res.ok) {
+      await refreshSession();
+      router.replace(res.redirectTo ?? "/account");
+      router.refresh();
+      return;
+    }
+    setPending(false);
+    // too many attempts: the Stitch lockout screen ("Sign In: Error States & Security Lockout") with the real wait
+    if (res.code === "rate_limited") return router.push(`/sign-in/error?retry=${res.retryAfterSeconds ?? 900}`);
+    setFormError(res.error);
   }
 
   const switchMode = (m: "signin" | "register") => {
@@ -66,6 +79,7 @@ export function SignInScreen() {
     if (m === "register") return router.push("/request-access");
     setMode(m);
     setNotice(null);
+    setFormError(null);
     clearErrors();
   };
 
@@ -258,11 +272,19 @@ export function SignInScreen() {
                   </label>
                 </div>
 
+                {formError && (
+                  <p role="alert" className="font-body-sm text-body-sm text-error">
+                    {formError}
+                  </p>
+                )}
+
                 <button
-                  className="w-full h-[52px] bg-primary text-on-primary font-action text-action uppercase tracking-widest rounded hover:bg-primary-container active:scale-[0.99] transition-all flex items-center justify-center space-x-3 group"
+                  className="w-full h-[52px] bg-primary text-on-primary font-action text-action uppercase tracking-widest rounded hover:bg-primary-container active:scale-[0.99] transition-all flex items-center justify-center space-x-3 group disabled:opacity-70 disabled:cursor-wait"
                   type="submit"
+                  disabled={pending}
+                  aria-busy={pending}
                 >
-                  <span>{mode === "signin" ? "Sign in to Patron Circle" : "Request patron access"}</span>
+                  <span>{pending ? "Verifying…" : mode === "signin" ? "Sign in to Patron Circle" : "Request patron access"}</span>
                   <Icon name="arrow_forward" className="text-[18px] group-hover:translate-x-1 transition-transform" />
                 </button>
               </form>
@@ -279,7 +301,7 @@ export function SignInScreen() {
               <button
                 className="w-full h-[50px] bg-surface-container-lowest hover:bg-surface-container text-on-surface font-body-sm text-body-sm rounded border border-outline-variant/60 hover:border-outline transition-all flex items-center justify-center space-x-3 group"
                 type="button"
-                onClick={() => setNotice("Google sign-in opens with patron accounts. Nothing was sent to Google.")}
+                onClick={() => setNotice("Google sign-in is not available yet — sign in with your email and passcode. Nothing was sent to Google.")}
               >
                 <svg className="w-4 h-4 fill-current text-on-surface" viewBox="0 0 24 24" aria-hidden>
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />

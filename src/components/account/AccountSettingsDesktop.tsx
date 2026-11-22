@@ -1,13 +1,61 @@
 "use client";
 
 import { useState } from "react";
+import { changePasswordAction, signOutAction, updateNameAction } from "@/app/actions/auth";
+import { passcodeStrength, strengthLabel } from "@/components/auth/useRequestAccess";
+import { setSessionUser } from "@/lib/session";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_patron_circle_account_settings/code.html */
-export function AccountSettingsDesktop() {
-  const [saved, setSaved] = useState(false);
+/**
+ * Settings for the signed-in patron: the name (saved), the email (read-only) and the passcode change are
+ * live; the remaining Stitch fields are stored with bookings in a later release and shown as Planned.
+ */
+export function AccountSettingsDesktop({ name, email, emailVerified }: { name: string; email: string; emailVerified: boolean }) {
+  const [saved, setSaved] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
+  const [savedName, setSavedName] = useState(name);
+  const [first, setFirst] = useState(name.split(/\s+/)[0] ?? "");
+  const [last, setLast] = useState(name.split(/\s+/).slice(1).join(" "));
+  const [current, setCurrent] = useState("");
+  const [next, setNext] = useState("");
+  const [confirmNext, setConfirmNext] = useState("");
+  const fullName = `${first} ${last}`.trim();
+  const dirty = fullName !== savedName || next.length > 0;
+  const strength = passcodeStrength(next);
+
+  async function save() {
+    setError(null);
+    setSaved(null);
+    if (next && next !== confirmNext) return setError("The two new passcodes do not match.");
+    setPending(true);
+    const done: string[] = [];
+    if (fullName !== savedName) {
+      const res = await updateNameAction({ name: fullName });
+      if (!res.ok) {
+        setPending(false);
+        return setError(res.error);
+      }
+      setSavedName(fullName);
+      done.push("Your name was updated.");
+    }
+    if (next) {
+      const res = await changePasswordAction({ current, next });
+      if (!res.ok) {
+        setPending(false);
+        return setError(res.error);
+      }
+      setCurrent("");
+      setNext("");
+      setConfirmNext("");
+      done.push("Your passcode was changed and every other session was signed out.");
+    }
+    setPending(false);
+    setSaved(done.join(" ") || "Nothing to save.");
+  }
   return (
     <div className="hidden md:block bg-surface font-body-md text-body-md text-on-surface antialiased">
       <SiteHeader patron />
@@ -68,7 +116,7 @@ export function AccountSettingsDesktop() {
                           <label className="font-label-mono text-label-mono uppercase text-on-surface" htmlFor="first-name">Legal Forename</label>
                           <span className="font-label-mono text-label-mono text-on-surface-variant">PASSPORT ID</span>
                         </div>
-                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-hidden transition-colors rounded-[2px]" id="first-name" type="text" defaultValue="Clara" />
+                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-hidden transition-colors rounded-[2px]"  type="text" id="first-name" value={first} onChange={(e) => setFirst(e.target.value)} autoComplete="given-name" />
                       </div>
                       {/* Last Name */}
                       <div className="space-y-space-xs">
@@ -76,7 +124,7 @@ export function AccountSettingsDesktop() {
                           <label className="font-label-mono text-label-mono uppercase text-on-surface" htmlFor="last-name">Legal Surname</label>
                           <span className="font-label-mono text-label-mono text-on-surface-variant">PASSPORT ID</span>
                         </div>
-                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-hidden transition-colors rounded-[2px]" id="last-name" type="text" defaultValue="von Bergmann" />
+                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-hidden transition-colors rounded-[2px]"  type="text" id="last-name" value={last} onChange={(e) => setLast(e.target.value)} autoComplete="family-name" />
                       </div>
                       {/* Email Field with Verified Badge */}
                       <div className="space-y-space-xs">
@@ -84,10 +132,10 @@ export function AccountSettingsDesktop() {
                           <label className="font-label-mono text-label-mono uppercase text-on-surface" htmlFor="email">Custodial Email</label>
                           <span className="inline-flex items-center gap-1 font-label-mono text-label-mono text-primary bg-secondary-fixed px-1.5 py-0.5 uppercase tracking-wider">
                             <span className="w-1.5 h-1.5 bg-primary" />
-                            {" "}Verified
+                            {" "}{emailVerified ? "Verified" : "Unverified"}
                           </span>
                         </div>
-                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-hidden transition-colors rounded-[2px]" id="email" type="email" defaultValue="clara.bergmann@atelier-v.ch" />
+                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-hidden transition-colors rounded-[2px]"  type="email" id="email" value={email} readOnly aria-readonly="true" />
                       </div>
                       {/* Mobile Phone */}
                       <div className="space-y-space-xs">
@@ -95,7 +143,7 @@ export function AccountSettingsDesktop() {
                           <label className="font-label-mono text-label-mono uppercase text-on-surface" htmlFor="phone">Mobile Telephone</label>
                           <span className="font-label-mono text-label-mono text-on-surface-variant uppercase">PRIMARY DISPATCH SMS</span>
                         </div>
-                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-hidden transition-colors rounded-[2px]" id="phone" type="tel" defaultValue="+49 170 558 9124" />
+                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-hidden transition-colors rounded-[2px]" id="phone" type="tel" disabled data-planned="" title="Planned: stored with your bookings in a later release" />
                       </div>
                       {/* Date of Birth */}
                       <div className="space-y-space-xs">
@@ -103,7 +151,7 @@ export function AccountSettingsDesktop() {
                           <label className="font-label-mono text-label-mono uppercase text-on-surface" htmlFor="dob">Date of Birth</label>
                           <span className="font-label-mono text-label-mono text-on-surface-variant uppercase">REQUIRED FOR INSURANCE</span>
                         </div>
-                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden transition-colors rounded-[2px]" id="dob" type="text" defaultValue="14 / 08 / 1988" />
+                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden transition-colors rounded-[2px]" id="dob" type="text" disabled data-planned="" title="Planned: stored with your bookings in a later release" />
                       </div>
                       {/* Error State Demonstration: Emergency Dispatch Field */}
                       <div className="space-y-space-xs">
@@ -111,7 +159,7 @@ export function AccountSettingsDesktop() {
                           <label className="font-label-mono text-label-mono uppercase text-error font-semibold" htmlFor="emergency-contact">Secondary Hotline / Escort</label>
                           <span className="font-label-mono text-label-mono text-error uppercase">{"REQUIRED // INVALID FORMAT"}</span>
                         </div>
-                        <input aria-describedby="emergency-error" aria-invalid="true" className="w-full h-12 px-space-sm bg-surface-container-lowest border border-error text-error font-body-md focus:border-error focus:outline-hidden rounded-[2px]" id="emergency-contact" type="text" defaultValue="089 / 41-T2" />
+                        <input aria-describedby="emergency-error" className="w-full h-12 px-space-sm bg-surface-container-lowest border border-error text-error font-body-md focus:border-error focus:outline-hidden rounded-[2px]" id="emergency-contact" type="text" disabled data-planned="" title="Planned: stored with your bookings in a later release" />
                         <p className="font-label-mono text-label-mono text-error uppercase tracking-normal" id="emergency-error">Please enter a valid Swiss or EU mobile telephone number (+41 / +49).</p>
                       </div>
                     </div>
@@ -130,7 +178,7 @@ export function AccountSettingsDesktop() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-space-md">
                       <div className="space-y-space-xs md:col-span-2">
                         <label className="font-label-mono text-label-mono uppercase text-on-surface block" htmlFor="licence-country">Issuing Authority / Category</label>
-                        <select className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-hidden rounded-[2px]" id="licence-country" defaultValue="Switzerland (CH) — Category B / BE">
+                        <select className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-hidden rounded-[2px]" id="licence-country" disabled data-planned="" title="Planned: stored with your bookings in a later release">
                           <option>Switzerland (CH) — Category B / BE</option>
                           <option>Germany (DE) — Klasse B / BE</option>
                           <option>Austria (AT) — Klasse B</option>
@@ -149,11 +197,11 @@ export function AccountSettingsDesktop() {
                       </div>
                       <div className="space-y-space-xs md:col-span-2">
                         <label className="font-label-mono text-label-mono uppercase text-on-surface block" htmlFor="licence-number">Licence Identification Code</label>
-                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden rounded-[2px]" id="licence-number" type="text" defaultValue="B-84920419-ZH" />
+                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden rounded-[2px]" id="licence-number" type="text" disabled data-planned="" title="Planned: stored with your bookings in a later release" />
                       </div>
                       <div className="space-y-space-xs">
                         <label className="font-label-mono text-label-mono uppercase text-on-surface block" htmlFor="licence-expiry">Expiration Spec</label>
-                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden rounded-[2px]" id="licence-expiry" type="text" defaultValue="12 / 2031" />
+                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden rounded-[2px]" id="licence-expiry" type="text" disabled data-planned="" title="Planned: stored with your bookings in a later release" />
                       </div>
                     </div>
                     {/* Upload Zone */}
@@ -195,7 +243,7 @@ export function AccountSettingsDesktop() {
                         <label className="font-label-mono text-label-mono uppercase text-on-surface" htmlFor="primary-hub">Default Archival Pavilion (Pick-up Hub)</label>
                         <span className="font-label-mono text-label-mono text-on-surface-variant">PRIORITY TRANSIT</span>
                       </div>
-                      <select className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-hidden rounded-[2px]" id="primary-hub" defaultValue="Munich Airport (MUC) — Terminal 2 VIP Pavilion">
+                      <select className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md focus:border-primary-container focus:outline-hidden rounded-[2px]" id="primary-hub" disabled data-planned="" title="Planned: stored with your bookings in a later release">
                         <option>Munich Airport (MUC) — Terminal 2 VIP Pavilion</option>
                         <option>Zurich Kloten (ZRH) — Executive Aviation Center</option>
                         <option>Milan Linate (LIN) — Private Aviation Gallery</option>
@@ -207,7 +255,7 @@ export function AccountSettingsDesktop() {
                       <span className="font-label-mono text-label-mono uppercase text-on-surface block">{"Dispatch & Curatorial Signals"}</span>
                       {/* Item 1 */}
                       <label className="flex items-start gap-space-sm p-space-sm bg-surface-container-low border border-outline-variant cursor-pointer hover:bg-surface-container transition-colors">
-                        <input defaultChecked className="mt-1 w-4 h-4 rounded-none accent-primary border border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox" />
+                        <input defaultChecked disabled data-planned="" title="Planned: stored with your bookings in a later release" className="mt-1 w-4 h-4 rounded-none accent-primary border border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox" />
                         {" "}
                         <div className="flex flex-col">
                           <span className="font-body-md text-body-md text-on-surface font-semibold">{"Booking & dossier updates by encrypted email"}</span>
@@ -216,7 +264,7 @@ export function AccountSettingsDesktop() {
                       </label>
                       {/* Item 2 */}
                       <label className="flex items-start gap-space-sm p-space-sm bg-surface-container-low border border-outline-variant cursor-pointer hover:bg-surface-container transition-colors">
-                        <input defaultChecked className="mt-1 w-4 h-4 rounded-none accent-primary border border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox" />
+                        <input defaultChecked disabled data-planned="" title="Planned: stored with your bookings in a later release" className="mt-1 w-4 h-4 rounded-none accent-primary border border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox" />
                         {" "}
                         <div className="flex flex-col">
                           <span className="font-body-md text-body-md text-on-surface font-semibold">{"SMS handover concierge reminders & chauffeur coordinates"}</span>
@@ -225,7 +273,7 @@ export function AccountSettingsDesktop() {
                       </label>
                       {/* Item 3 */}
                       <label className="flex items-start gap-space-sm p-space-sm bg-surface-container-low border border-outline-variant cursor-pointer hover:bg-surface-container transition-colors">
-                        <input defaultChecked className="mt-1 w-4 h-4 rounded-none accent-primary border border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox" />
+                        <input defaultChecked disabled data-planned="" title="Planned: stored with your bookings in a later release" className="mt-1 w-4 h-4 rounded-none accent-primary border border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox" />
                         {" "}
                         <div className="flex flex-col">
                           <span className="font-body-md text-body-md text-on-surface font-semibold">{"\"The Dispatch\" — Halden quarterly automotive monograph & private salon invitations"}</span>
@@ -244,66 +292,44 @@ export function AccountSettingsDesktop() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-xs">
                       <div className="space-y-space-xs">
                         <label className="font-label-mono text-label-mono uppercase text-on-surface block" htmlFor="current-pass">Current Passcode</label>
-                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden rounded-[2px]" id="current-pass" type="password" defaultValue="••••••••••••" />
+                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden rounded-[2px]"  type="password" id="current-pass" value={current} onChange={(e) => setCurrent(e.target.value)} autoComplete="current-password" />
                       </div>
                       <div className="space-y-space-xs">
                         <div className="flex justify-between items-center">
                           <label className="font-label-mono text-label-mono uppercase text-on-surface" htmlFor="new-pass">New Passcode</label>
-                          <span className="font-label-mono text-label-mono text-primary font-bold">STRONG</span>
+                          <span className="font-label-mono text-label-mono text-primary font-bold" aria-live="polite">{strengthLabel[strength]}</span>
                         </div>
-                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden rounded-[2px]" id="new-pass" type="password" defaultValue="vB-Munich_2025!" />
+                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden rounded-[2px]"  type="password" id="new-pass" value={next} onChange={(e) => setNext(e.target.value)} autoComplete="new-password" />
                         {/* Password Strength Meter: 4 Segments */}
-                        <div role="img" aria-label="Passcode Strength: 4 out of 4" className="grid grid-cols-4 gap-1 pt-1">
-                          <div className="h-1 bg-primary" />
-                          <div className="h-1 bg-primary" />
-                          <div className="h-1 bg-primary" />
-                          <div className="h-1 bg-primary" />
+                        <div role="img" aria-label={`Passcode strength: ${strength} out of 4`} className="grid grid-cols-4 gap-1 pt-1">
+                          {[1, 2, 3, 4].map((n) => (
+                            <div key={n} className={`h-1 ${n <= strength ? "bg-primary" : "bg-surface-container-highest"}`} />
+                          ))}
                         </div>
                       </div>
                       <div className="space-y-space-xs">
                         <label className="font-label-mono text-label-mono uppercase text-on-surface block" htmlFor="confirm-pass">Confirm New Passcode</label>
-                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden rounded-[2px]" id="confirm-pass" type="password" defaultValue="vB-Munich_2025!" />
+                        <input className="w-full h-12 px-space-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-spec-numeral focus:border-primary-container focus:outline-hidden rounded-[2px]"  type="password" id="confirm-pass" value={confirmNext} onChange={(e) => setConfirmNext(e.target.value)} autoComplete="new-password" />
                       </div>
                     </div>
                     {/* Active Sessions List */}
                     <div className="space-y-space-xs pt-space-md">
                       <span className="font-label-mono text-label-mono uppercase text-on-surface block">Authenticated Sessions</span>
                       <div className="border border-outline-variant bg-surface-container-lowest divide-y divide-outline-variant">
-                        {/* Session 1: Current */}
                         <div className="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
                           <div className="flex items-center gap-space-sm">
                             <span className="w-2.5 h-2.5 bg-primary shrink-0" />
                             <div>
                               <div className="flex items-center gap-2">
-                                <span className="font-body-md text-body-md font-semibold text-on-surface">Munich, Germany · Safari on macOS</span>
+                                <span className="font-body-md text-body-md font-semibold text-on-surface">This browser</span>
                                 <span className="font-label-mono text-[10px] tracking-wider uppercase bg-secondary-fixed text-primary px-1 py-0.5 font-bold">Active Now</span>
                               </div>
-                              <p className="font-label-mono text-label-mono text-on-surface-variant mt-0.5">IP: 84.114.22.18 · SESSION ID: #HAL-MUC-991A</p>
+                              <p className="font-label-mono text-label-mono text-on-surface-variant mt-0.5">Changing your passcode signs out every other session.</p>
                             </div>
                           </div>
-                          <span className="font-label-mono text-label-mono text-on-surface-variant uppercase self-start md:self-auto">Primary Terminal</span>
-                        </div>
-                        {/* Session 2 */}
-                        <div className="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
-                          <div className="flex items-center gap-space-sm">
-                            <span className="w-2.5 h-2.5 bg-outline-variant shrink-0" />
-                            <div>
-                              <span className="font-body-md text-body-md font-medium text-on-surface">Zurich, Switzerland · Halden Mobile App (iOS 18)</span>
-                              <p className="font-label-mono text-label-mono text-on-surface-variant mt-0.5">LAST ACTIVE: YESTERDAY 21:14 · IP: 178.197.230.12</p>
-                            </div>
-                          </div>
-                          <button className="font-action text-action uppercase text-on-surface-variant hover:text-error transition-colors self-start md:self-auto" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Sign out</button>
-                        </div>
-                        {/* Session 3 */}
-                        <div className="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
-                          <div className="flex items-center gap-space-sm">
-                            <span className="w-2.5 h-2.5 bg-outline-variant shrink-0" />
-                            <div>
-                              <span className="font-body-md text-body-md font-medium text-on-surface">Milan, Italy · Chrome on iPadOS</span>
-                              <p className="font-label-mono text-label-mono text-on-surface-variant mt-0.5">LAST ACTIVE: 28 MAY 2025 · IP: 93.42.180.77</p>
-                            </div>
-                          </div>
-                          <button className="font-action text-action uppercase text-on-surface-variant hover:text-error transition-colors self-start md:self-auto" type="button" disabled data-planned="" title="Planned: available once the HALDEN backend is live" aria-disabled="true">Sign out</button>
+                          <form action={signOutAction} onSubmit={() => setSessionUser(null)}>
+                            <button className="font-action text-action uppercase text-on-surface-variant hover:text-error transition-colors self-start md:self-auto" type="submit">Sign out</button>
+                          </form>
                         </div>
                       </div>
                     </div>
@@ -327,11 +353,16 @@ export function AccountSettingsDesktop() {
                 <div className="sticky bottom-0 z-40 bg-surface-container-high border-t border-outline-variant p-space-md flex flex-col sm:flex-row justify-between items-center gap-space-sm mt-space-xl">
                   <div className="flex items-center gap-space-xs">
                     <span className="w-2 h-2 rounded-none bg-amber-600 animate-pulse" />
-                    <span className="font-label-mono text-label-mono uppercase tracking-wider text-on-surface">{"UNSAVED CHANGES // EDITED 1 MIN AGO"}</span>
+                    <span className="font-label-mono text-label-mono uppercase tracking-wider text-on-surface">{dirty ? "UNSAVED CHANGES" : "ALL CHANGES SAVED"}</span>
                   </div>
                   <div className="flex items-center gap-space-md w-full sm:w-auto justify-end">
                     <button className="font-action text-action uppercase text-on-surface hover:text-primary transition-colors px-space-sm py-space-xs" onClick={() => window.location.reload()} type="button">Discard changes</button>
-                    <button className="bg-primary-container text-on-primary font-action text-action uppercase tracking-widest px-6 py-3 rounded-[2px] hover:bg-primary transition-colors" onClick={() => setSaved(true)} type="button">Save changes</button>
+                    {error && (
+                      <p className="font-body-sm text-body-sm text-error" role="alert">
+                        {error}
+                      </p>
+                    )}
+                    <button className="bg-primary-container text-on-primary font-action text-action uppercase tracking-widest px-6 py-3 rounded-[2px] hover:bg-primary transition-colors disabled:opacity-70 disabled:cursor-wait" onClick={() => void save()} disabled={pending} aria-busy={pending} type="button">{pending ? "Saving…" : "Save changes"}</button>
                   </div>
                 </div>
               </section>
@@ -342,9 +373,9 @@ export function AccountSettingsDesktop() {
             <div className="w-5 h-5 bg-primary text-on-primary flex items-center justify-center shrink-0 mt-0.5"><span className="material-symbols-outlined text-[16px]">check</span></div>
             <div className="flex flex-col gap-0.5">
               <span className="font-label-mono text-label-mono text-primary-fixed uppercase tracking-wider font-bold">SETTINGS SAVED</span>
-              <p className="font-body-sm text-body-sm text-inverse-on-surface">Patron credentials and notification dispatch preferences updated in the archival ledger.</p>
+              <p className="font-body-sm text-body-sm text-inverse-on-surface">{saved}</p>
             </div>
-            <button aria-label="Close notification" className="text-on-tertiary-container hover:text-inverse-on-surface ml-auto -mr-1 -mt-1 p-1" onClick={() => setSaved(false)} type="button"><span className="material-symbols-outlined text-[18px]">close</span></button>
+            <button aria-label="Close notification" className="text-on-tertiary-container hover:text-inverse-on-surface ml-auto -mr-1 -mt-1 p-1" onClick={() => setSaved(null)} type="button"><span className="material-symbols-outlined text-[18px]">close</span></button>
           </aside>
           {/* Interactive script for toast demo */}
         </div>

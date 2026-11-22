@@ -1,6 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { registerAction } from "@/app/actions/auth";
+import { refreshSession } from "@/lib/session";
 import { isEmail } from "@/lib/useCountdown";
 
 /** Passcode rules from the Stitch request-access screens: 12+ characters, a letter, a number or symbol. */
@@ -19,8 +22,8 @@ export function passcodeStrength(p: string) {
 export const strengthLabel = ["", "WEAK", "FAIR", "STRONG", "EXCELLENT STRENGTH"] as const;
 
 /**
- * Request-access form state. Patron accounts are not live yet (backend phase), so a valid request is
- * acknowledged with an honest notice and nothing is stored or sent.
+ * Request-access (registration) form state. The browser checks the rules for instant feedback; the server
+ * (registerAction) validates again, creates a customer account, signs the patron in and opens the account.
  */
 export function useRequestAccess() {
   const [name, setName] = useState("");
@@ -30,11 +33,13 @@ export function useRequestAccess() {
   const [agree, setAgree] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
+  const router = useRouter();
   const rules = passcodeRules(pass);
   const strength = passcodeStrength(pass);
   const matches = confirm.length > 0 && confirm === pass;
 
-  function submit(e?: React.FormEvent) {
+  async function submit(e?: React.FormEvent) {
     e?.preventDefault();
     setNotice(null);
     if (name.trim().length < 2) return setError("Enter your full name as shown on your passport.");
@@ -43,8 +48,18 @@ export function useRequestAccess() {
     if (!matches) return setError("The two passcodes do not match.");
     if (!agree) return setError("Please accept the Custodial Charter and data protocols.");
     setError(null);
-    setNotice("Thank you. Patron registration opens with the next HALDEN release — your details were not stored. You can book as a guest meanwhile.");
+    if (pending) return;
+    setPending(true);
+    const res = await registerAction({ name, email, password: pass });
+    if (res.ok) {
+      await refreshSession();
+      router.replace(res.redirectTo ?? "/account");
+      router.refresh();
+      return;
+    }
+    setPending(false);
+    setError(res.fieldErrors ? (Object.values(res.fieldErrors)[0] ?? res.error) : res.error);
   }
 
-  return { name, setName, email, setEmail, pass, setPass, confirm, setConfirm, agree, setAgree, error, notice, rules, strength, matches, submit };
+  return { name, setName, email, setEmail, pass, setPass, confirm, setConfirm, agree, setAgree, error, notice, rules, strength, matches, submit, pending };
 }

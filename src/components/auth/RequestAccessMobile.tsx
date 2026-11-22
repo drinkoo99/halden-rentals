@@ -126,7 +126,7 @@ export function RequestAccessMobile() {
               )}
               {/* Primary Action */}
               <div className="pt-3">
-                <button className="w-full h-[52px] bg-primary text-on-primary font-action text-action flex items-center justify-center space-x-2 active:bg-primary-container transition-colors" type="submit">
+                <button disabled={f.pending} aria-busy={f.pending} className="disabled:opacity-70 disabled:cursor-wait w-full h-[52px] bg-primary text-on-primary font-action text-action flex items-center justify-center space-x-2 active:bg-primary-container transition-colors" type="submit">
                   <span>Request Patron Access</span>
                   {" "}
                   <span>→</span>

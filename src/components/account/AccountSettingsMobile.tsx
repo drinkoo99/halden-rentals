@@ -3,10 +3,26 @@
 import Link from "next/link";
 
 import { useState } from "react";
+import { updateNameAction } from "@/app/actions/auth";
 /** Stitch screen "" — generated from design/stitch-export-round2/halden_mobile_patron_settings/code.html */
-export function AccountSettingsMobile() {
+/** Mobile settings: the name (saved) and email (read-only) are live; the other Stitch fields are Planned. */
+export function AccountSettingsMobile({ name, email, emailVerified }: { name: string; email: string; emailVerified: boolean }) {
   const [open, setOpen] = useState(1);
   const [saved, setSaved] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [savedName, setSavedName] = useState(name);
+  const [first, setFirst] = useState(name.split(/\s+/)[0] ?? "");
+  const [last, setLast] = useState(name.split(/\s+/).slice(1).join(" "));
+  const fullName = `${first} ${last}`.trim();
+
+  async function save() {
+    setError(null);
+    if (fullName === savedName) return setSaved(true);
+    const res = await updateNameAction({ name: fullName });
+    if (!res.ok) return setError(res.error);
+    setSavedName(fullName);
+    setSaved(true);
+  }
   const toggle = (n: number) => setOpen((o) => (o === n ? 0 : n));
   return (
     <div className="md:hidden bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary">
@@ -56,14 +72,14 @@ export function AccountSettingsMobile() {
                       <label htmlFor="m-settings-1" className="font-label-mono text-[10px] uppercase text-on-surface-variant tracking-wider">Forename</label>
                       <span className="font-label-mono text-[9px] text-outline uppercase">PASSPORT ID</span>
                     </div>
-                    <div className="h-[52px] bg-surface-container-lowest px-3 flex items-center rounded-[2px] shadow-sm"><input id="m-settings-1" className="w-full bg-transparent font-body-md text-on-surface focus:outline-hidden" type="text" defaultValue="Clara" /></div>
+                    <div className="h-[52px] bg-surface-container-lowest px-3 flex items-center rounded-[2px] shadow-sm"><input id="m-settings-1" className="w-full bg-transparent font-body-md text-on-surface focus:outline-hidden" type="text" value={first} onChange={(e) => { setFirst(e.target.value); setSaved(false); }} autoComplete="given-name" /></div>
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <div className="flex justify-between items-center">
                       <label htmlFor="m-settings-2" className="font-label-mono text-[10px] uppercase text-on-surface-variant tracking-wider">Surname</label>
                       <span className="font-label-mono text-[9px] text-outline uppercase">PASSPORT ID</span>
                     </div>
-                    <div className="h-[52px] bg-surface-container-lowest px-3 flex items-center rounded-[2px] shadow-sm"><input id="m-settings-2" className="w-full bg-transparent font-body-md text-on-surface focus:outline-hidden" type="text" defaultValue="von Bergmann" /></div>
+                    <div className="h-[52px] bg-surface-container-lowest px-3 flex items-center rounded-[2px] shadow-sm"><input id="m-settings-2" className="w-full bg-transparent font-body-md text-on-surface focus:outline-hidden" type="text" value={last} onChange={(e) => { setLast(e.target.value); setSaved(false); }} autoComplete="family-name" /></div>
                   </div>
                 </div>
                 {/* Custodial Email */}
@@ -72,11 +88,11 @@ export function AccountSettingsMobile() {
                     <label htmlFor="m-settings-3" className="font-label-mono text-[10px] uppercase text-on-surface-variant tracking-wider">Custodial Email</label>
                     <span className="font-label-mono text-[9px] text-primary flex items-center gap-1 font-semibold uppercase tracking-wider">
                       <span className="w-1.5 h-1.5 bg-primary" />
-                      {" "}VERIFIED
+                      {" "}{emailVerified ? "VERIFIED" : "UNVERIFIED"}
                     </span>
                   </div>
                   <div className="h-[52px] bg-surface-container-lowest px-3 flex items-center rounded-[2px] shadow-sm justify-between">
-                    <input id="m-settings-3" className="w-full bg-transparent font-body-md text-on-surface focus:outline-hidden" type="email" defaultValue="clara.bergmann@atelier-v.ch" />
+                    <input id="m-settings-3" className="w-full bg-transparent font-body-md text-on-surface focus:outline-hidden" type="email" value={email} readOnly aria-readonly="true" />
                     <span className="material-symbols-outlined text-primary text-[18px]">verified</span>
                   </div>
                 </div>
@@ -84,13 +100,12 @@ export function AccountSettingsMobile() {
                 <div className="flex flex-col gap-1.5">
                   <div className="flex justify-between items-center">
                     <label htmlFor="m-settings-4" className="font-label-mono text-[10px] uppercase text-error tracking-wider font-semibold">Mobile Telephone</label>
-                    <span className="font-label-mono text-[9px] text-error font-bold uppercase tracking-wider">{"REQUIRED // INVALID FORMAT"}</span>
+                    <span className="font-label-mono text-[9px] text-outline uppercase tracking-wider">PLANNED</span>
                   </div>
                   <div className="h-[52px] bg-error-container/20 px-3 flex items-center rounded-[2px] shadow-sm justify-between">
-                    <input id="m-settings-4" className="w-full bg-transparent font-spec-numeral text-error font-medium focus:outline-hidden" type="tel" defaultValue="089 / 41-T2" />
+                    <input id="m-settings-4" className="w-full bg-transparent font-spec-numeral text-error font-medium focus:outline-hidden" type="tel" disabled data-planned="" title="Planned: stored with your bookings in a later release" />
                     <span className="material-symbols-outlined text-error text-[18px]">error</span>
                   </div>
-                  <p className="font-body-sm text-[12px] text-error leading-tight mt-0.5">Please enter a valid Swiss or EU mobile telephone number (+41 / +49).</p>
                 </div>
                 {/* Date of Birth */}
                 <div className="flex flex-col gap-1.5">
@@ -216,7 +231,7 @@ export function AccountSettingsMobile() {
           <div hidden={!saved} role="status" className="fixed top-20 inset-x-4 z-40 bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-[2px] shadow-md flex items-center justify-between transition-all duration-300 transform translate-y-0 opacity-100" id="statusToast">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-primary-fixed rounded-full animate-pulse" />
-              <span className="font-label-mono text-[11px] tracking-wide uppercase">Settings saved · Archival ledger updated</span>
+              <span className="font-label-mono text-[11px] tracking-wide uppercase">Name saved</span>
             </div>
             <button aria-label="Dismiss toast" className="text-inverse-on-surface hover:opacity-75 flex items-center" onClick={() => setSaved(false)} type="button"><span className="material-symbols-outlined text-[16px]">close</span></button>
           </div>
@@ -225,9 +240,9 @@ export function AccountSettingsMobile() {
             <div className="flex items-center justify-between max-w-md mx-auto gap-3">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-amber-600 animate-ping" />
-                <span className="font-label-mono text-[11px] font-bold text-on-surface tracking-wider uppercase">{saved ? "● ALL CHANGES SAVED" : "● UNSAVED CHANGES"}</span>
+                <span className="font-label-mono text-[11px] font-bold text-on-surface tracking-wider uppercase">{error ? <span className="text-error normal-case">{error}</span> : saved || fullName === savedName ? "● ALL CHANGES SAVED" : "● UNSAVED CHANGES"}</span>
               </div>
-              <button className="h-12 px-6 bg-primary text-on-primary font-action text-action uppercase tracking-widest rounded-[2px] flex items-center justify-center hover:opacity-95 active:scale-[0.99] transition-all" onClick={() => setSaved(true)} type="button">Save changes</button>
+              <button className="h-12 px-6 bg-primary text-on-primary font-action text-action uppercase tracking-widest rounded-[2px] flex items-center justify-center hover:opacity-95 active:scale-[0.99] transition-all" onClick={() => void save()} type="button">Save changes</button>
             </div>
           </aside>
         </div>

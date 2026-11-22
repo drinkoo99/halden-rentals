@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { requestPasswordResetAction } from "@/app/actions/auth";
 import { isEmail, maskEmail, useCountdown } from "@/lib/useCountdown";
 import Link from "next/link";
 import { media } from "@/data/media";
@@ -11,10 +12,15 @@ export function ForgotPasscodeMobile() {
   const [error, setError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
   const timer = useCountdown(45);
-  /** Accounts are not live yet: the request is validated and acknowledged, but no email is sent. */
-  function send() {
+  /** Same flow as desktop: the confirmation only appears when the server really sent a link. */
+  async function send() {
     if (!isEmail(email)) return setError("Enter the email address linked to your patron account.");
     setError(null);
+    const res = await requestPasswordResetAction({ email });
+    if (!res.ok) {
+      setSent(false);
+      return setError(res.error);
+    }
     setSent(true);
     timer.start();
   }
@@ -106,9 +112,9 @@ export function ForgotPasscodeMobile() {
               <div className="flex flex-col space-y-1.5">
                 <h2 className="font-headline-sm text-headline-sm text-on-surface">Check your inbox.</h2>
                 <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  An authenticated recovery dispatch has been transmitted to{" "}
+                  If{" "}
                   <span className="font-spec-numeral text-on-surface font-medium">{maskEmail(email)}</span>
-                  {" "}with a single-use token.
+                  {" "}belongs to a patron account, a single-use link is on its way.
                 </p>
               </div>
               {/* Interactive Progress Indicator & Timer Row */}
@@ -127,7 +133,7 @@ export function ForgotPasscodeMobile() {
                     <span className="font-spec-numeral text-spec-numeral text-on-surface font-semibold" id="m-countdown-text">{timer.left > 0 ? `Resend link in ${timer.label}` : "Ready to resend"}</span>
                   </div>
                 </div>
-                <button className={`font-action text-body-sm px-2 py-1 transition-opacity uppercase tracking-wider ${timer.left > 0 ? "text-outline opacity-50" : "text-primary"}`} disabled={timer.left > 0} id="m-resend-btn" onClick={timer.start} type="button">Resend</button>
+                <button className={`font-action text-body-sm px-2 py-1 transition-opacity uppercase tracking-wider ${timer.left > 0 ? "text-outline opacity-50" : "text-primary"}`} disabled={timer.left > 0} id="m-resend-btn" onClick={() => void send()} type="button">Resend</button>
               </div>
               {/* Navigation Exit Touch Target (44px min-height) */}
               <div className="pt-2">

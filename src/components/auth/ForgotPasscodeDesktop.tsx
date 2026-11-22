@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { requestPasswordResetAction } from "@/app/actions/auth";
 import { isEmail, maskEmail, useCountdown } from "@/lib/useCountdown";
 import Link from "next/link";
 import { media } from "@/data/media";
@@ -11,16 +12,23 @@ export function ForgotPasscodeDesktop() {
   const [error, setError] = useState<string | null>(null);
   const [phase, setPhase] = useState<"idle" | "sending" | "sent">("idle");
   const timer = useCountdown(45);
-  /** Accounts are not live yet: the request is validated and acknowledged, but no email is sent. */
-  function submit(e: React.FormEvent) {
+  /**
+   * The server sends a single-use link (requestPasswordResetAction). The confirmation is only shown when a
+   * link was really sent; without email delivery the error says so instead of pretending.
+   */
+  async function submit(e: { preventDefault(): void }) {
     e.preventDefault();
     if (!isEmail(email)) return setError("Enter the email address linked to your patron account.");
+    if (phase === "sending") return;
     setError(null);
     setPhase("sending");
-    window.setTimeout(() => {
-      setPhase("sent");
-      timer.start();
-    }, 800);
+    const res = await requestPasswordResetAction({ email });
+    if (!res.ok) {
+      setPhase("idle");
+      return setError(res.error);
+    }
+    setPhase("sent");
+    timer.start();
   }
   return (
     <div className="hidden md:block bg-surface font-body-md text-on-surface antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container">
@@ -132,16 +140,16 @@ export function ForgotPasscodeDesktop() {
                         <div className="w-7 h-7 bg-primary-container flex items-center justify-center text-on-primary shrink-0"><span className="material-symbols-outlined text-[16px]">check</span></div>
                         <div className="flex flex-col">
                           <span className="font-label-mono text-label-mono text-primary font-semibold tracking-widest uppercase">RECOVERY DISPATCH TRANSMITTED</span>
-                          <span className="font-label-mono text-[10px] text-secondary tracking-wide">DISPATCH HASH: 911-CR-7904-B</span>
+                          <span className="font-label-mono text-[10px] text-secondary tracking-wide">LINK VALID FOR 60 MINUTES</span>
                         </div>
                       </div>
                       {/* Archival Document Text */}
                       <div className="space-y-2 pt-2">
                         <h3 className="font-headline-md text-headline-md text-on-background">Check your inbox.</h3>
                         <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                          An authenticated recovery dispatch has been transmitted to{" "}
+                          If{" "}
                           <span className="font-spec-numeral text-spec-numeral font-medium text-on-background px-1 py-0.5 bg-surface-container-high">{maskEmail(email)}</span>
-                          {" "}with a cryptographic single-use session token.
+                          {" "}belongs to a patron account, a recovery dispatch with a single-use link is on its way.
                         </p>
                       </div>
                       {/* Countdown / Resend Block */}
@@ -165,7 +173,7 @@ export function ForgotPasscodeDesktop() {
                           </span>
                         </div>
                         {/* Resend Action Trigger */}
-                        <button className={timer.left > 0 ? "font-label-mono text-label-mono text-outline cursor-not-allowed uppercase tracking-widest transition-colors duration-150 py-1 text-left sm:text-right" : "font-label-mono text-label-mono text-primary hover:text-primary-container cursor-pointer uppercase tracking-widest transition-colors duration-150 py-1 text-left sm:text-right underline"} disabled={timer.left > 0} id="resend-action" onClick={timer.start} type="button">Resend link</button>
+                        <button className={timer.left > 0 ? "font-label-mono text-label-mono text-outline cursor-not-allowed uppercase tracking-widest transition-colors duration-150 py-1 text-left sm:text-right" : "font-label-mono text-label-mono text-primary hover:text-primary-container cursor-pointer uppercase tracking-widest transition-colors duration-150 py-1 text-left sm:text-right underline"} disabled={timer.left > 0} id="resend-action" onClick={(e) => void submit(e)} type="button">Resend link</button>
                       </div>
                       {/* Navigation Back */}
                       <div className="pt-2 flex items-center justify-between">
