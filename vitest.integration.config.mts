@@ -27,7 +27,7 @@ export default defineConfig({
     include: ["src/**/*.int.test.ts"],
     globalSetup: ["./src/server/testing/integrationGlobalSetup.ts"],
     fileParallelism: false, // one file at a time against the shared test database
-    testTimeout: 30_000,
-    hookTimeout: 30_000,
+    testTimeout: 120_000, // real network round trips to Atlas
+    hookTimeout: 120_000,
   },
 });

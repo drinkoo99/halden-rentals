@@ -99,7 +99,9 @@ type ClientFactory = (uri: string) => MongoClient;
 /** Connect to the guard-resolved test database. Throws (before connecting) if the configuration is unsafe. */
 export async function openIntegrationDatabase(
   env: Env = process.env,
-  createClient: ClientFactory = (uri) => createMongoClient(uri, { appName: "halden-integration-tests", serverSelectionTimeoutMS: 10_000 }),
+  // generous timeouts: TLS handshakes to the shared Atlas cluster can take several seconds on slow links
+  createClient: ClientFactory = (uri) =>
+    createMongoClient(uri, { appName: "halden-integration-tests", serverSelectionTimeoutMS: 20_000, connectTimeoutMS: 20_000 }),
 ): Promise<IntegrationDatabase> {
   const name = resolveTestDatabase(env); // throws for missing URI, halden, production, wrong naming, == MONGODB_DB
   const client = createClient(env.MONGODB_URI as string);
