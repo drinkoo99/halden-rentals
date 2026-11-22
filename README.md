@@ -28,7 +28,9 @@ npm run start      # serve the production build
 npm run lint       # ESLint
 npm run typecheck  # tsc --noEmit
 npm test           # Vitest unit tests (frontend and backend)
+npm run test:integration  # backend integration tests against the halden_test database (see docs/BACKEND.md)
 npm run db:setup   # dry run of the database collection/index setup (see docs/BACKEND.md)
+npm run db:seed    # dry run of the demo catalogue seed (see docs/BACKEND.md)
 ```
 
 ## What works
@@ -69,7 +71,8 @@ npm run db:setup   # dry run of the database collection/index setup (see docs/BA
 
 ## Honest limits (demo)
 
-- No backend: fleet, locations and extras are typed data in `src/data/`. No real availability, bookings, accounts,
+- Pages don't read from a backend yet: fleet, locations and extras are typed data in `src/data/` (the same data
+  is seeded into MongoDB as the demo catalogue, but no page uses it yet). No real availability, bookings, accounts,
   emails or payments. Every place that would normally confirm a real action is labelled as a demo.
 - Copy for vehicles other than the Range Rover (which Stitch designed in full) follows the same structure but was
   written for this build; specs marked in `src/data/vehicles.ts` should be verified before launch.
@@ -122,5 +125,6 @@ src/app/           Routes
 src/components/    home/, fleet/, vehicle/, booking/ (+ mobile/), account/, auth/, content/, staff/, states/, site/, ui/
 src/data/          vehicles, locations, extras, media (single place for every image)
 src/lib/           itinerary, pricing, fleet filters, favourites, booking validation, ics, countdown, seo (+ *.test.ts)
-scripts/           image finalize (Real-ESRGAN blend), photo-sizes generator
+src/server/        backend (Phase 2): config, database, catalogue, HTTP helpers — see docs/BACKEND.md
+scripts/           image finalize (Real-ESRGAN blend), photo-sizes generator, db-setup / db-seed
 ```
